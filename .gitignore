@@ -1,0 +1,9 @@
+GUI/bin
+GUI/obj
+DAL/bin
+DAL/obj
+BO/bin
+BO/obj
+BLL/bin
+BLL/obj
+*.suo
