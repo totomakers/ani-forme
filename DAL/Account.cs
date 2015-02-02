@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL.Dapper;
+using System.Data;
 
 namespace DAL
 {
@@ -13,7 +14,7 @@ namespace DAL
         /// <summary>
         /// Retourne l'ensemble des comptes
         /// </summary>
-        /// <returns></returns>
+        /// <returns>List de BO.Account</returns>
         public static List<BO.Account> GetAccounts()
         {
             try
@@ -42,12 +43,27 @@ namespace DAL
             {
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
                 var query = @"SELECT * FROM Account WHERE id = @id";
-                List<BO.Account> results = cnx.Query<BO.Account>(query, new { id = idParam });
-
+                List<BO.Account> results = cnx.Query<BO.Account>(query, new { id = idParam }).ToList<BO.Account>();
                 if (results.Count > 0)
                     return results.First();
 
                 return null;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static bool CreateAccount(BO.Account account)
+        {
+            try
+            {
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                int output = cnx.Execute("ajout_account", new { username = account.Username, password = account.PasswordSHA1 }, 
+                                        commandType: CommandType.StoredProcedure);
+                cnx.Close();
+                return (output > 0);
             }
             catch (Exception e)
             {
@@ -62,7 +78,7 @@ namespace DAL
             {
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
                 var query = @"SELECT * FROM Account WHERE username = @user AND password = @password";
-                List<BO.Account> results = cnx.Query<BO.Account>(query, new { user = usernameParam, password = passwordParam });
+                List<BO.Account> results = cnx.Query<BO.Account>(query, new { user = usernameParam, password = passwordParam }).ToList<BO.Account>();
 
                 if (results.Count > 0)
                     return results.First();
