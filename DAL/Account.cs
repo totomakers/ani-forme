@@ -55,6 +55,11 @@ namespace DAL
             }
         }
 
+        /// <summary>
+        /// Creer en base le compte passer en parametre
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns>Vrai si l'insertion a reussi, faux sinon</returns>
         public static bool CreateAccount(BO.Account account)
         {
             try
@@ -71,7 +76,56 @@ namespace DAL
             }
         }
 
+        /// <summary>
+        /// Supprime le compte passé en paramètre
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns>vrai si reussite, faux sinon</returns>
+        public static bool DeleteAccount(BO.Account account)
+        {
+            try
+            {
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                var query = @"DELETE FROM Account WHERE id = @id";
+                int rowNb = cnx.Execute(query, new { id = account.Id });
 
+                return (rowNb > 0);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        /// <summary>
+        /// Modifie le compte passé en paramètre avec le nom d'utilisateur et le mot de passe passés en paramètre
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public static bool UpdateAccount(BO.Account account, String username, String password)
+        {
+            try
+            {
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                var query = @"UPDATE Account SET username=@user, password=@pwd WHERE id=@id";
+                int rowNb = cnx.Execute(query, new { id = account.Id, user=username, pwd=password });
+
+                return (rowNb > 0);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        /// <summary>
+        /// Selectionne les données en base correspondant au username et au password passés en paramètre.
+        /// </summary>
+        /// <param name="usernameParam"></param>
+        /// <param name="passwordParam"></param>
+        /// <returns>Un BO.Account si reussite, null sinon</returns>
         public static BO.Account Login(String usernameParam, String passwordParam)
         {
             try
@@ -81,7 +135,11 @@ namespace DAL
                 List<BO.Account> results = cnx.Query<BO.Account>(query, new { user = usernameParam, password = passwordParam }).ToList<BO.Account>();
 
                 if (results.Count > 0)
+                {
+                    query = @"UPDATE Account SET is_onlie=1 WHERE id = @id";
+                    cnx.Query(query, new { id = results.First().Id });
                     return results.First();
+                }
 
                 return null;
             }
@@ -90,5 +148,27 @@ namespace DAL
                 throw e;
             }
         }
+
+        /// <summary>
+        /// Selectionne les données en base correspondant au compte passé en paramètre.
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns>Vrai si reussite, faux sinon</returns>
+        public static bool Logout(BO.Account account)
+        {
+            try
+            {
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                var query = @"UPDATE Account SET is_onlie=0 WHERE id = @id";
+                int rowNb = cnx.Execute(query, new { id = account.Id });
+
+                return (rowNb > 0);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
     }
 }
