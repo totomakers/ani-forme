@@ -47,8 +47,8 @@ namespace GUI
             }
             else
             {
-                MessageBox.Show(GUI.Lang.FORM_LOGIN_LOGIN_FAIL_TITLE, 
-                                GUI.Lang.FORM_LOGIN_LOGIN_FAIL_TEXT,
+                MessageBox.Show(GUI.Lang.FORM_LOGIN_LOGIN_FAIL_TEXT, 
+                                GUI.Lang.FORM_LOGIN_LOGIN_FAIL_TITLE,   
                                 MessageBoxButtons.OK, 
                                 MessageBoxIcon.Error);
             }
