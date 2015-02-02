@@ -32,9 +32,9 @@
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.labelUsername = new System.Windows.Forms.Label();
             this.panelLogin = new System.Windows.Forms.Panel();
+            this.buttonLogin = new System.Windows.Forms.Button();
             this.labelPassword = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.buttonLogin = new System.Windows.Forms.Button();
             this.panelLogin.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,6 +68,18 @@
             this.panelLogin.Size = new System.Drawing.Size(244, 89);
             this.panelLogin.TabIndex = 2;
             // 
+            // buttonLogin
+            // 
+            this.buttonLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonLogin.AutoSize = true;
+            this.buttonLogin.Location = new System.Drawing.Point(131, 61);
+            this.buttonLogin.Name = "buttonLogin";
+            this.buttonLogin.Size = new System.Drawing.Size(110, 23);
+            this.buttonLogin.TabIndex = 4;
+            this.buttonLogin.Text = "buttonLogin";
+            this.buttonLogin.UseVisualStyleBackColor = true;
+            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
+            // 
             // labelPassword
             // 
             this.labelPassword.Location = new System.Drawing.Point(3, 38);
@@ -86,19 +98,6 @@
             this.textBox1.TabIndex = 3;
             this.textBox1.UseSystemPasswordChar = true;
             // 
-            // buttonLogin
-            // 
-            this.buttonLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonLogin.AutoSize = true;
-            this.buttonLogin.Location = new System.Drawing.Point(131, 61);
-            this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(110, 23);
-            this.buttonLogin.TabIndex = 4;
-            this.buttonLogin.Text = "buttonLogin";
-            this.buttonLogin.UseVisualStyleBackColor = true;
-            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
-            this.buttonLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.buttonLogin_KeyPress);
-            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -108,8 +107,10 @@
             this.Controls.Add(this.panelLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "FormLogin";
             this.Text = "FormLogin";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FormLogin_KeyPress);
             this.panelLogin.ResumeLayout(false);
             this.panelLogin.PerformLayout();
             this.ResumeLayout(false);

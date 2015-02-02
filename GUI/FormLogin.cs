@@ -57,21 +57,15 @@ namespace GUI
         //EVENTS =============
         //====================
 
-        private void buttonLogin_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if(sender.Equals(this.buttonLogin)) //buttonLogin
-            {
-                if (e.KeyChar == (char)Keys.Enter)
-                {  
-                    //@TODO doit appeler la méthode de validation du formulaire
-                    TryLogin();
-                }
-            }
-        }
-
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             TryLogin();
+        }
+
+        private void FormLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+                TryLogin();
         }
     }
 }
