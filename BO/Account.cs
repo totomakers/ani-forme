@@ -46,7 +46,7 @@ namespace BO
         public void setPassword(String password)
         {
             String finalString = Username.ToUpper() + ':' + password.ToUpper();
-            PasswordSHA1 = Utils.HelperSHA1.GetSHA1HashData(finalString);
+            PasswordSHA1 = BO.Utils.HelperSHA1.GetSHA1HashData(finalString);
         }
 
         #endregion
