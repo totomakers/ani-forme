@@ -51,8 +51,23 @@ namespace DAL
                 throw e;
             }
         }
-        
-        
+
+        public static BO.Account Login(String usernameParam, String passwordParam)
+        {
+            try
+            {
+                var sql = @"SELECT * FROM Account WHERE username = @user";
+                BO.Account account = cnx.Query<BO.Account>(sql, new { user = usernameParam }).First();
+                if (BO.Utils.HelperSHA1.ValidateSHA1HashData(passwordParam, account.PasswordSHA1))
+                    return account;
+                else
+                    return null;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
 
     }
 }
