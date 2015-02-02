@@ -44,7 +44,6 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Connexion.settings</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Lang.cs" />
     <Compile Include="SqlConnexion.cs" />
@@ -62,7 +61,6 @@
     <None Include="Properties\Connexion.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Connexion.Designer.cs</LastGenOutput>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

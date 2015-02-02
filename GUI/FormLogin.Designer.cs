@@ -34,7 +34,7 @@
             this.panelLogin = new System.Windows.Forms.Panel();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.labelPassword = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.panelLogin.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +59,7 @@
             // 
             this.panelLogin.Controls.Add(this.buttonLogin);
             this.panelLogin.Controls.Add(this.labelPassword);
-            this.panelLogin.Controls.Add(this.textBox1);
+            this.panelLogin.Controls.Add(this.textBoxPassword);
             this.panelLogin.Controls.Add(this.labelUsername);
             this.panelLogin.Controls.Add(this.textBoxUsername);
             this.panelLogin.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -88,15 +88,15 @@
             this.labelPassword.TabIndex = 2;
             this.labelPassword.Text = "labelPassword";
             // 
-            // textBox1
+            // textBoxPassword
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(95, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(146, 20);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.UseSystemPasswordChar = true;
+            this.textBoxPassword.Location = new System.Drawing.Point(95, 35);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(146, 20);
+            this.textBoxPassword.TabIndex = 3;
+            this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // FormLogin
             // 
@@ -124,7 +124,7 @@
         private System.Windows.Forms.Label labelUsername;
         private System.Windows.Forms.Panel panelLogin;
         private System.Windows.Forms.Label labelPassword;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Button buttonLogin;
 
 

@@ -14,13 +14,15 @@ namespace DAL
         public static SqlConnection OpenConnexion()
         {
             try
-            {    
-                var connexion = new SqlConnection(String.Format(ConnexionString, 
-                                                  Properties.Connexion.Default.Server,
-                                                  Properties.Connexion.Default.Port,
-                                                  Properties.Connexion.Default.Database,
-                                                  Properties.Connexion.Default.Username,
-                                                  Properties.Connexion.Default.Password));
+            {
+                String cnxStr = String.Format(ConnexionString,
+                                              Properties.Connexion.Default.Server,
+                                              Properties.Connexion.Default.Port,
+                                              Properties.Connexion.Default.Database,
+                                              Properties.Connexion.Default.Username,
+                                              Properties.Connexion.Default.Password);
+
+                var connexion = new SqlConnection(cnxStr);
                 connexion.Open();
                 return connexion;
             }

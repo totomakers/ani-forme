@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL;
+using BO;
+
 namespace GUI
 {
     public partial class FormLogin : Form
@@ -31,8 +34,11 @@ namespace GUI
 
         private void TryLogin()
         {
+            String username = this.textBoxUsername.Text;
+            String password = this.textBoxPassword.Text;
+
             //Succefull login
-            if (1 == 1)
+            if (BLL.AccountMgr.Login(username, password))
             {
                 this.Hide();
                 FormMain mainForm = new FormMain();

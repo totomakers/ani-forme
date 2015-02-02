@@ -8,7 +8,7 @@ using DAL.Dapper;
 
 namespace DAL
 {
-    class Account
+    public class Account
     {
         /// <summary>
         /// Retourne l'ensemble des comptes
@@ -42,7 +42,7 @@ namespace DAL
             {
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
                 var query = @"SELECT * FROM Account WHERE id = @id";
-                List<BO.Account> results = cnx.Query<BO.Account>(query, new { id = idParam });
+                List<BO.Account> results = cnx.Query<BO.Account>(query, new { id = idParam }).ToList<BO.Account>();
 
                 if (results.Count > 0)
                     return results.First();
@@ -62,7 +62,7 @@ namespace DAL
             {
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
                 var query = @"SELECT * FROM Account WHERE username = @user AND password = @password";
-                List<BO.Account> results = cnx.Query<BO.Account>(query, new { user = usernameParam, password = passwordParam });
+                List<BO.Account> results = cnx.Query<BO.Account>(query, new { user = usernameParam, password = passwordParam }).ToList<BO.Account>();
 
                 if (results.Count > 0)
                     return results.First();
