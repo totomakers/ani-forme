@@ -37,19 +37,7 @@ namespace DAL.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("8080")]
-        public string Port {
-            get {
-                return ((string)(this["Port"]));
-            }
-            set {
-                this["Port"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("database")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ani_forme")]
         public string Database {
             get {
                 return ((string)(this["Database"]));
@@ -61,7 +49,7 @@ namespace DAL.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("username")]
+        [global::System.Configuration.DefaultSettingValueAttribute("sa")]
         public string Username {
             get {
                 return ((string)(this["Username"]));
@@ -73,7 +61,7 @@ namespace DAL.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("password")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Pa$$w0rd")]
         public string Password {
             get {
                 return ((string)(this["Password"]));

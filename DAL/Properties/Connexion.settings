@@ -5,17 +5,14 @@
     <Setting Name="Server" Type="System.String" Scope="User">
       <Value Profile="(Default)">localhost</Value>
     </Setting>
-    <Setting Name="Port" Type="System.String" Scope="User">
-      <Value Profile="(Default)">8080</Value>
-    </Setting>
     <Setting Name="Database" Type="System.String" Scope="User">
-      <Value Profile="(Default)">database</Value>
+      <Value Profile="(Default)">ani_forme</Value>
     </Setting>
     <Setting Name="Username" Type="System.String" Scope="User">
-      <Value Profile="(Default)">username</Value>
+      <Value Profile="(Default)">sa</Value>
     </Setting>
     <Setting Name="Password" Type="System.String" Scope="User">
-      <Value Profile="(Default)">password</Value>
+      <Value Profile="(Default)">Pa$$w0rd</Value>
     </Setting>
   </Settings>
 </SettingsFile>

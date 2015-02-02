@@ -9,7 +9,7 @@ namespace DAL
 {
     public class SqlConnexion
     {
-        public const String ConnexionString = "server={0};port={1};database={2};Integrated Security=false;user={3};password={4}";
+        public const String ConnexionString = "server={0};database={1};Integrated Security=false;user={2};password={3}";
 
         public static SqlConnection OpenConnexion()
         {
@@ -17,7 +17,6 @@ namespace DAL
             {
                 String cnxStr = String.Format(ConnexionString,
                                               Properties.Connexion.Default.Server,
-                                              Properties.Connexion.Default.Port,
                                               Properties.Connexion.Default.Database,
                                               Properties.Connexion.Default.Username,
                                               Properties.Connexion.Default.Password);
