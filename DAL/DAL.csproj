@@ -46,6 +46,8 @@
       <DependentUpon>Connexion.settings</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Lang.cs" />
+    <Compile Include="SqlConnexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlMapper.cs" />
   </ItemGroup>
