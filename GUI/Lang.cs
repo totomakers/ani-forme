@@ -21,6 +21,9 @@ namespace GUI
         public static String FORM_LOGIN_TITLE = "Connection";
         public static String FORM_LOGIN_LIB_USERNAME = "Nom d'utilisateur";
         public static String FORM_LOGIN_LIB_PASSWORD = "Mot de passe";
+        public static String FORM_LOGIN_BTN_LOGIN = "Valider";
+        public static String FORM_LOGIN_LOGIN_FAIL_TITLE = "Erreur";
+        public static String FORM_LOGIN_LOGIN_FAIL_TEXT = "La combinaison est invalide";
     }
 }
 

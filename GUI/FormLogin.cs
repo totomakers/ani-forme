@@ -19,11 +19,59 @@ namespace GUI
 
         /// <summary>
         /// Méthodes pour traduire l'application
-        /// Doit être implanter dans toutes les forms
+        /// Doit être implenté dans toutes les forms
         /// </summary>
         private void I18N()
         {
             this.Text = GUI.Lang.FORM_DEFAULT_TITLE + " : " + GUI.Lang.FORM_LOGIN_TITLE;
+            this.labelUsername.Text = GUI.Lang.FORM_LOGIN_LIB_USERNAME;
+            this.labelPassword.Text = GUI.Lang.FORM_LOGIN_LIB_PASSWORD;
+            this.buttonLogin.Text = GUI.Lang.FORM_LOGIN_BTN_LOGIN;
+        }
+
+        private void TryLogin()
+        {
+            //Succefull login
+            if (1 == 1)
+            {
+                this.Hide();
+                FormMain mainForm = new FormMain();
+                mainForm.Show();
+                mainForm.Disposed += MainFormClosed;
+            }
+            else
+            {
+                MessageBox.Show(GUI.Lang.FORM_LOGIN_LOGIN_FAIL_TITLE, 
+                                GUI.Lang.FORM_LOGIN_LOGIN_FAIL_TEXT,
+                                MessageBoxButtons.OK, 
+                                MessageBoxIcon.Error);
+            }
+        }
+
+        private void MainFormClosed(object sender, EventArgs arg)
+        {
+            this.Close();
+        }
+
+        //====================
+        //EVENTS =============
+        //====================
+
+        private void buttonLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(sender.Equals(this.buttonLogin)) //buttonLogin
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {  
+                    //@TODO doit appeler la méthode de validation du formulaire
+                    TryLogin();
+                }
+            }
+        }
+
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            TryLogin();
         }
     }
 }
