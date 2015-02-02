@@ -16,6 +16,7 @@ namespace GUI
     {
         public FormLogin()
         {
+            //BLL.AccountMgr.jeuxEssai();
             InitializeComponent();
             I18N();
         }

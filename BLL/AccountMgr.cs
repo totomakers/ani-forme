@@ -24,5 +24,13 @@ namespace BLL
         {
             get { return (loggedAccount != null); }
         }
+
+        public static void jeuxEssai()
+        {
+            BO.Account account = new BO.Account();
+            account.Username = "test";
+            account.PasswordSHA1 = BO.Account.getSHA1Password("test","test");
+            DAL.Account.CreateAccount(account);
+        }
     }
 }

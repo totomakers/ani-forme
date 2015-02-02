@@ -137,7 +137,7 @@ namespace DAL
 
                 if (results.Count > 0)
                 {
-                    query = @"UPDATE Account SET is_onlie=1 WHERE id = @id";
+                    query = @"UPDATE Account SET is_online=1 WHERE id = @id";
                     cnx.Query(query, new { id = results.First().Id });
                     return results.First();
                 }
