@@ -10,14 +10,19 @@ namespace DAL
 {
     class Account
     {
-        private static SqlConnection cnx = DAL.SqlConnexion.OpenConnection();
-
-
+        /// <summary>
+        /// Retourne l'ensemble des comptes
+        /// </summary>
+        /// <returns></returns>
         public static List<BO.Account> GetAccounts()
         {
             try
             {
-                return cnx.Query<BO.Account>("SELECT * FROM Account;").ToList<BO.Account>();
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                List<BO.Account> results = cnx.Query<BO.Account>(@"SELECT * FROM Account").ToList<BO.Account>();
+                SqlConnexion.CloseConnexion(cnx);
+
+                return results;
             }
             catch(Exception e)
             {
@@ -25,12 +30,24 @@ namespace DAL
             }
         }
 
+        /// <summary>
+        /// Retourne le compte représenté par l'id
+        /// Retourne un objet null sinon
+        /// </summary>
+        /// <param name="idParam"></param>
+        /// <returns></returns>
         public static BO.Account GetAccount(int idParam)
         {
             try
             {
-                var sql = @"SELECT * FROM Account WHERE id = @id";
-                return cnx.Query<BO.Account>(sql, new { id = idParam }).First();
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                var query = @"SELECT * FROM Account WHERE id = @id";
+                List<BO.Account> results = cnx.Query<BO.Account>(query, new { id = idParam });
+
+                if (results.Count > 0)
+                    return results.First();
+
+                return null;
             }
             catch (Exception e)
             {
@@ -38,36 +55,24 @@ namespace DAL
             }
         }
 
-        public static bool CreateAccount(int idParam)
-        {
-            try
-            {
-                var sql = @"SELECT * FROM Account WHERE id = @id";
-
-                return true;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
 
         public static BO.Account Login(String usernameParam, String passwordParam)
         {
             try
             {
-                var sql = @"SELECT * FROM Account WHERE username = @user";
-                BO.Account account = cnx.Query<BO.Account>(sql, new { user = usernameParam }).First();
-                if (BO.Utils.HelperSHA1.ValidateSHA1HashData(passwordParam, account.PasswordSHA1))
-                    return account;
-                else
-                    return null;
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                var query = @"SELECT * FROM Account WHERE username = @user AND password = @password";
+                List<BO.Account> results = cnx.Query<BO.Account>(query, new { user = usernameParam, password = passwordParam });
+
+                if (results.Count > 0)
+                    return results.First();
+
+                return null;
             }
             catch (Exception e)
             {
                 throw e;
             }
         }
-
     }
 }

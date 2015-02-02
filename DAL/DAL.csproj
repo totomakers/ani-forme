@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
-    <Compile Include="Connexion.Designer.cs">
+    <Compile Include="Properties\Connexion.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Connexion.settings</DependentUpon>
@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Connexion.settings">
+    <None Include="Properties\Connexion.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Connexion.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

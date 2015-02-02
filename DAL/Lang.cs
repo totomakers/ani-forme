@@ -8,6 +8,11 @@ namespace DAL
 {
     class Lang
     {
-        public static String EXP_OPEN_CONN_FAIL = "Impossible d'ouvrir la connection a la bdd : {1}";
+        //==================
+        //Exceptions =======
+        //==================
+
+        public static String EXP_OPEN_CONN_FAIL = "Impossible d'ouvrir la connection a la bdd : {0}";
+        public static String EXP_CLOSE_CONN_FAIL = "Impossible de fermer la connection : {0}";
     }
 }

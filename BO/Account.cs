@@ -32,9 +32,8 @@ namespace BO
         public String PasswordSHA1
         {
             get;
-            set; //@warning ne pas appeler uniquement pour l'orm
+            set; //@WARNING ne pas appeler uniquement pour l'orm
         }
-
         #endregion
 
         #region Methodes
@@ -48,7 +47,6 @@ namespace BO
             String finalString = Username.ToUpper() + ':' + password.ToUpper();
             PasswordSHA1 = BO.Utils.HelperSHA1.GetSHA1HashData(finalString);
         }
-
         #endregion
     }
 }

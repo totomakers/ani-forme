@@ -9,21 +9,20 @@ namespace DAL
 {
     public class SqlConnexion
     {
-        private static String server = "localhost";
-        private static String port = "5432";
-        private static String db = "GestionLogin";
-        private static String user = "sa";
-        private static String pwd = "Pa$$w0rd";
+        public const String ConnexionString = "server={0};port={1};database={2};Integrated Security=false;user={3};password={4}";
 
-        public const string ConnectionString = "server=" + server + ";port=" + port + ";database=" + db + ";Integrated Security=false;user=" + user + ";password=" + pwd;
-
-        public static SqlConnection OpenConnection()
+        public static SqlConnection OpenConnexion()
         {
             try
-            {
-                var connection = new SqlConnection(ConnectionString);
-                connection.Open();
-                return connection;
+            {    
+                var connexion = new SqlConnection(String.Format(ConnexionString, 
+                                                  Properties.Connexion.Default.Server,
+                                                  Properties.Connexion.Default.Port,
+                                                  Properties.Connexion.Default.Database,
+                                                  Properties.Connexion.Default.Username,
+                                                  Properties.Connexion.Default.Password));
+                connexion.Open();
+                return connexion;
             }
             catch(Exception e)
             {
@@ -31,7 +30,7 @@ namespace DAL
             }
         }
 
-        public static Boolean CloseConnection(SqlConnection cnx)
+        public static Boolean CloseConnexion(SqlConnection cnx)
         {
             try
             {
@@ -40,7 +39,7 @@ namespace DAL
             }
             catch (Exception e)
             {
-                throw new Exception("Impossible de fermer la connexion : " + e.Message);
+                throw new Exception(String.Format(DAL.Lang.EXP_CLOSE_CONN_FAIL, e.Message));
             }
         }
     }
