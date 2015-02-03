@@ -127,16 +127,17 @@ namespace GUI
                 // récupere la forme du bouton
                 KeyValuePair<int, String> subFormItr = mdiSubForm.First(x => x.Key == sender.GetHashCode());
 
-                bool createInstance = false;
+                bool createInstance = true;
                 Form myForm = null;
                 Type FormType = Type.GetType(subFormItr.Value);
 
                 if (uniqueInstanceSubForm.Exists(x => x == sender.GetHashCode()))
                 {
                     if (this.MdiChildren.Count(x => x.GetType() == FormType) > 0) //déjà un
+                    {
                         myForm = this.MdiChildren.First(x => x.GetType() == FormType);
-                    else//create new
-                        createInstance = true;
+                        createInstance = false;
+                    } 
                 }
                 
                 if(createInstance) // doit en creer un nouveau
