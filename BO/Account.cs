@@ -21,6 +21,13 @@ namespace BO
         }
         #endregion
 
+        #region Methodes
+        public override string ToString()
+        {
+            return Username;
+        }
+        #endregion
+
         #region Getter/Setter
 
         /// <summary>

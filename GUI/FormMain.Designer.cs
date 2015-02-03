@@ -98,6 +98,8 @@
             // 
             // toolStripTop
             // 
+            this.toolStripTop.AllowMerge = false;
+            this.toolStripTop.CanOverflow = false;
             this.toolStripTop.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStripTop.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStripTop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -108,8 +110,9 @@
             this.toolStripTop.Name = "toolStripTop";
             this.toolStripTop.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStripTop.Size = new System.Drawing.Size(838, 39);
+            this.toolStripTop.Stretch = true;
             this.toolStripTop.TabIndex = 0;
-            this.toolStripTop.Text = "toolStrip1";
+            this.toolStripTop.Text = "toolStripTop";
             // 
             // toolStripDropDownButtonVeterinary
             // 
@@ -126,7 +129,7 @@
             // 
             this.agendaToolStripMenuItem.Name = "agendaToolStripMenuItem";
             this.agendaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.agendaToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.agendaToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.agendaToolStripMenuItem.Text = "Agenda";
             this.agendaToolStripMenuItem.Click += new System.EventHandler(this.ClickOpenSubForm);
             // 

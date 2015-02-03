@@ -15,7 +15,7 @@ namespace DAL
         /// Retourne l'ensemble des comptes
         /// </summary>
         /// <returns>List de BO.Account</returns>
-        public static List<BO.Account> GetAccounts()
+        public static List<BO.Account> GetAll()
         {
             try
             {
@@ -37,7 +37,7 @@ namespace DAL
         /// </summary>
         /// <param name="idParam"></param>
         /// <returns></returns>
-        public static BO.Account GetAccount(int idParam)
+        public static BO.Account Get(int idParam)
         {
             try
             {
@@ -63,7 +63,7 @@ namespace DAL
         /// </summary>
         /// <param name="account"></param>
         /// <returns>Vrai si l'insertion a reussi, faux sinon</returns>
-        public static bool CreateAccount(BO.Account account)
+        public static bool Create(BO.Account account)
         {
             try
             {
@@ -84,7 +84,7 @@ namespace DAL
         /// </summary>
         /// <param name="account"></param>
         /// <returns>vrai si reussite, faux sinon</returns>
-        public static bool DeleteAccount(BO.Account account)
+        public static bool Delete(BO.Account account)
         {
             try
             {
@@ -107,7 +107,7 @@ namespace DAL
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public static bool UpdateAccount(BO.Account account, String username, String password)
+        public static bool Update(BO.Account account, String username, String password)
         {
             try
             {

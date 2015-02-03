@@ -13,6 +13,9 @@ namespace GUI
         //=========================
 
         public static String FORM_DEFAULT_TITLE = "Ani'Forme";
+        public static String FORM_DEFAULT_ADD = "Ajouter";
+        public static String FORM_DEFAULT_DELETE = "Supprimer";
+        public static String FORM_DEFAULT_RESET = "Réinitialiser";
 
         //=========================
         //FormLogin
@@ -47,6 +50,13 @@ namespace GUI
         public static String FORM_MAIN_TOOLSTRIP_PARAMS = "Paramètres";
         public static String FORM_MAIN_MENUITEM_VETERINARY = "Vétérinaires";
         public static String FORM_MAIN_MENUITEM_UPDATECOST = "Mise à jour barème de tarification";      
+   
+        //===========================
+        //SubFormVeterinary 
+        //===========================
+
+        public static String SUBFORM_VETERINARY_TITLE = "Vétérinaire";
+
     }
 }
 

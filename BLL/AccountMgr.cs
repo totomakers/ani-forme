@@ -50,7 +50,7 @@ namespace BLL
             BO.Account account = new BO.Account();
             account.Username = "test";
             account.PasswordSHA1 = BO.Account.getSHA1Password("test","test");
-            DAL.Account.CreateAccount(account);
+            DAL.Account.Create(account);
         }
     }
 }

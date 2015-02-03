@@ -46,9 +46,10 @@
       <DependentUpon>Connexion.settings</DependentUpon>
     </Compile>
     <Compile Include="Lang.cs" />
-    <Compile Include="SqlConnexion.cs" />
+    <Compile Include="Shared\SqlConnexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqlMapper.cs" />
+    <Compile Include="Shared\SqlMapper.cs" />
+    <Compile Include="Veterinaires.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BO\BO.csproj">
