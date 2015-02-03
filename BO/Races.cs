@@ -20,12 +20,12 @@ namespace BO
         #endregion
 
         #region Getter/Setter
-        private String Race
+        public String Race
         {
             get { return race; }
             set { race = value; }
         }
-        private String Espece
+        public String Espece
         {
             get { return espece; }
             set { espece = value; }

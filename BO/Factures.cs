@@ -25,37 +25,37 @@ namespace BO
         #endregion
 
         #region Getter/Setter
-        private Guid NumFacture
+        public Guid NumFacture
         {
             get { return numFacture; }
             set { numFacture = value; }
         }
-        private DateTime DateFacture
+        public DateTime DateFacture
         {
             get { return dateFacture; }
             set { dateFacture = value; }
         }
-        private BO.Clients Client
+        public BO.Clients Client
         {
             get { return client; }
             set { client = value; }
         }
-        private float TotalFacture
+        public float TotalFacture
         {
             get { return totalFacture; }
             set { totalFacture = value; }
         }
-        private Byte Archive
+        public Byte Archive
         {
             get { return archive; }
             set { archive = value; }
         }
-        private Int16 Etat
+        public Int16 Etat
         {
             get { return etat; }
             set { etat = value; }
         }
-        private DateTime RappelEnvoye
+        public DateTime RappelEnvoye
         {
             get { return rappelEnvoye; }
             set { rappelEnvoye = value; }

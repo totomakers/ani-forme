@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    class LignesFactures
+    public class LignesFactures
     {
         #region Attribute
         private BO.Factures facture;
@@ -23,27 +23,27 @@ namespace BO
         #endregion
 
         #region Getter/Setter
-        private BO.Factures Facture
+        public BO.Factures Facture
         {
             get { return facture; }
             set { facture = value; }
         }
-        private Guid NumLigne
+        public Guid NumLigne
         {
             get { return numLigne; }
             set { numLigne = value; }
         }
-        private BO.Baremes Bareme
+        public BO.Baremes Bareme
         {
             get { return bareme; }
             set { bareme = value; }
         }
-        private float Prix
+        public float Prix
         {
             get { return prix; }
             set { prix = value; }
         }
-        private Byte Archive
+        public Byte Archive
         {
             get { return archive; }
             set { archive = value; }

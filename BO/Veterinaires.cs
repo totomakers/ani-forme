@@ -11,8 +11,8 @@ namespace BO
         #region Attribute
         private Guid codeVeto;
         private String nomVeto;
-        private String motPasse;
         private Byte archive;
+        private BO.Account compte;
         #endregion
 
         #region Constructor
@@ -22,25 +22,25 @@ namespace BO
         #endregion
 
         #region Getter/Setter
-        private Guid CodeVeto
+        public Guid CodeVeto
         {
             get { return codeVeto; }
             set { codeVeto = value; }
         }
-        private String NomVeto
+        public String NomVeto
         {
             get { return nomVeto; }
             set { nomVeto = value; }
         }
-        private String MotPasse
-        {
-            get { return motPasse; }
-            set { motPasse = value; }
-        }
-        private Byte Archive
+        public Byte Archive
         {
             get { return archive; }
             set { archive = value; }
+        }
+        public BO.Account Compte
+        {
+            get { return compte; }
+            set { compte = value; }
         }
         #endregion
     }

@@ -23,27 +23,27 @@ namespace BO
         #endregion
 
         #region Getter/Setter
-        private Guid CodeVaccin
+        public Guid CodeVaccin
         {
             get { return codeVaccin; }
             set { codeVaccin = value; }
         }
-        private String NomVaccin
+        public String NomVaccin
         {
             get { return nomVaccin; }
             set { nomVaccin = value; }
         }
-        private Int32 QuantiteStock
+        public Int32 QuantiteStock
         {
             get { return quantiteStock; }
             set { quantiteStock = value; }
         }
-        private Int32 PeriodeValidite
+        public Int32 PeriodeValidite
         {
             get { return periodeValidite; }
             set { periodeValidite = value; }
         }
-        private Byte Archive
+        public Byte Archive
         {
             get { return archive; }
             set { archive = value; }

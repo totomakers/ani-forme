@@ -24,32 +24,32 @@ namespace BO
         #endregion
 
         #region Getter/Setter
-        private BO.Consultations Consultation
+        public BO.Consultations Consultation
         {
             get { return consultation; }
             set { consultation = value; }
         }
-        private Guid NumLigne
+        public Guid NumLigne
         {
             get { return numLigne; }
             set { numLigne = value; }
         }
-        private BO.Baremes Barem
+        public BO.Baremes Barem
         {
             get { return barem; }
             set { barem = value; }
         }
-        private float Prix
+        public float Prix
         {
             get { return prix; }
             set { prix = value; }
         }
-        private Byte RappelEnvoye
+        public Byte RappelEnvoye
         {
             get { return rappelEnvoye; }
             set { rappelEnvoye = value; }
         }
-        private Byte Archive
+        public Byte Archive
         {
             get { return archive; }
             set { archive = value; }

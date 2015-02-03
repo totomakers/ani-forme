@@ -26,42 +26,42 @@ namespace BO
         #endregion
 
         #region Getter/Setter
-        private Guid CodeConsultation
+        public Guid CodeConsultation
         {
             get { return codeConsultation; }
             set { codeConsultation = value; }
         }
-        private DateTime DateConsultation
+        public DateTime DateConsultation
         {
             get { return dateConsultation; }
             set { dateConsultation = value; }
         }
-        private BO.Veterinaires Veterinaire
+        public BO.Veterinaires Veterinaire
         {
             get { return veterinaire; }
             set { veterinaire = value; }
         }
-        private BO.Animaux Animal
+        public BO.Animaux Animal
         {
             get { return animal; }
             set { animal = value; }
         }
-        private String Commentaire
+        public String Commentaire
         {
             get { return commentaire; }
             set { commentaire = value; }
         }
-        private Int16 Etat
+        public Int16 Etat
         {
             get { return etat; }
             set { etat = value; }
         }
-        private BO.Factures Facture
+        public BO.Factures Facture
         {
             get { return facture; }
             set { facture = value; }
         }
-        private Byte Archive
+        public Byte Archive
         {
             get { return archive; }
             set { archive = value; }
