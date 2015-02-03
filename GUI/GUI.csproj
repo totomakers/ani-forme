@@ -44,11 +44,53 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SubFormAgenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubFormAgenda.Designer.cs">
+      <DependentUpon>SubFormAgenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubFormFolderCustomerAnimal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubFormFolderCustomerAnimal.Designer.cs">
+      <DependentUpon>SubFormFolderCustomerAnimal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubFormMedicalFolder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubFormMedicalFolder.Designer.cs">
+      <DependentUpon>SubFormMedicalFolder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubFormReminders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubFormReminders.Designer.cs">
+      <DependentUpon>SubFormReminders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubFormTakeRdv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubFormTakeRdv.Designer.cs">
+      <DependentUpon>SubFormTakeRdv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubFormListPrice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubFormListPrice.Designer.cs">
+      <DependentUpon>SubFormListPrice.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubFormUpdateStockVaccin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubFormUpdateStockVaccin.Designer.cs">
+      <DependentUpon>SubFormUpdateStockVaccin.cs</DependentUpon>
     </Compile>
     <Compile Include="SubFormVeterinary.cs">
       <SubType>Form</SubType>

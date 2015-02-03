@@ -46,7 +46,7 @@ namespace GUI
         //PARAMS
         public static String FORM_MAIN_TOOLSTRIP_PARAMS = "Paramètres";
         public static String FORM_MAIN_MENUITEM_VETERINARY = "Vétérinaires";
-        public static String FORM_MAIN_MENUITEM_UPDATECOST = "Mise à jour barem de tarification";      
+        public static String FORM_MAIN_MENUITEM_UPDATECOST = "Mise à jour barème de tarification";      
     }
 }
 

@@ -58,6 +58,7 @@ namespace GUI
             this.toolStripDropDownButtonParams.Text = GUI.Lang.FORM_MAIN_TOOLSTRIP_PARAMS;
             this.veterinariToolStripMenuItem.Text = GUI.Lang.FORM_MAIN_MENUITEM_VETERINARY;
             this.updateStockVaccinToolStripMenuItem.Text = GUI.Lang.FORM_MAIN_MENUITEM_UPDATECOST;
+            this.listPriceToolStripMenuItem.Text = GUI.Lang.FORM_MAIN_MENUITEM_UPDATECOST;
         }
 
         //===========================
@@ -71,11 +72,46 @@ namespace GUI
         {
             //Ajoute ici toutes les sous fenetres
             mdiSubForm = new Dictionary<int, String>();
+
+            //Secrétariat
+            mdiSubForm[this.takeRdvToolStripMenuItem.GetHashCode()] = "GUI.SubFormTakeRdv";
+            mdiSubForm[this.toolStripButtonRdv.GetHashCode()] = "GUI.SubFormTakeRdv";
+            
+            mdiSubForm[this.folderCustomerAnimalToolStripMenuItem.GetHashCode()] = "GUI.SubFormFolderCustomerAnimal";
+            mdiSubForm[this.toolStripButtonCustomerAnimal.GetHashCode()] = "GUI.SubFormFolderCustomerAnimal";
+
+            mdiSubForm[this.remindersToolStripMenuItem.GetHashCode()] = "GUI.SubFormReminders";
+            mdiSubForm[this.toolStripButtonReminders.GetHashCode()] = "GUI.SubFormReminders";
+
+            mdiSubForm[this.updateStockVaccinToolStripMenuItem.GetHashCode()] = "GUI.SubFormUpdateStockVaccin";
+
+            //Vétérinaires
+            mdiSubForm[this.agendaToolStripMenuItem.GetHashCode()] = "GUI.SubFormAgenda";
+            mdiSubForm[this.toolStripButtonAgenda.GetHashCode()] = "GUI.SubFormAgenda";
+
+            mdiSubForm[this.medicalFolderToolStripMenuItem.GetHashCode()] = "GUI.SubFormMedicalFolder";
+            mdiSubForm[this.toolStripButtonMedicalFolder.GetHashCode()] = "GUI.SubFormMedicalFolder";
+            
+            //Paramètres
             mdiSubForm[this.veterinariToolStripMenuItem.GetHashCode()] = "GUI.SubFormVeterinary";
-        
-            //Limite a une seule instance de la feneètre liée
+            mdiSubForm[this.listPriceToolStripMenuItem.GetHashCode()] = "GUI.SubFormListPrice";
+            
+            //Limite a une seule instance de la fenètre liée
             uniqueInstanceSubForm = new List<int>();
+            
+            //Secrétariat
+            uniqueInstanceSubForm.Add(this.takeRdvToolStripMenuItem.GetHashCode());
+            uniqueInstanceSubForm.Add(this.folderCustomerAnimalToolStripMenuItem.GetHashCode());
+            uniqueInstanceSubForm.Add(this.remindersToolStripMenuItem.GetHashCode());
+            uniqueInstanceSubForm.Add(this.updateStockVaccinToolStripMenuItem.GetHashCode());
+            
+            //Vétérinaires
+            uniqueInstanceSubForm.Add(this.agendaToolStripMenuItem.GetHashCode());
+            uniqueInstanceSubForm.Add(this.medicalFolderToolStripMenuItem.GetHashCode());
+            
+            //Paramètres
             uniqueInstanceSubForm.Add(this.veterinariToolStripMenuItem.GetHashCode());
+            uniqueInstanceSubForm.Add(this.listPriceToolStripMenuItem.GetHashCode());
         }
 
        

@@ -40,7 +40,7 @@
             this.medicalFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButtonParams = new System.Windows.Forms.ToolStripDropDownButton();
             this.veterinariToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listPriceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripRight = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonRdv = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCustomerAnimal = new System.Windows.Forms.ToolStripButton();
@@ -133,8 +133,8 @@
             // medicalFolderToolStripMenuItem
             // 
             this.medicalFolderToolStripMenuItem.Name = "medicalFolderToolStripMenuItem";
-            this.medicalFolderToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.medicalFolderToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.medicalFolderToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.medicalFolderToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.medicalFolderToolStripMenuItem.Text = "MedicalFolder";
             this.medicalFolderToolStripMenuItem.Click += new System.EventHandler(this.ClickOpenSubForm);
             // 
@@ -142,7 +142,7 @@
             // 
             this.toolStripDropDownButtonParams.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.veterinariToolStripMenuItem,
-            this.updateToolStripMenuItem});
+            this.listPriceToolStripMenuItem});
             this.toolStripDropDownButtonParams.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonParams.Image")));
             this.toolStripDropDownButtonParams.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButtonParams.Name = "toolStripDropDownButtonParams";
@@ -157,13 +157,13 @@
             this.veterinariToolStripMenuItem.Text = "Veterinary";
             this.veterinariToolStripMenuItem.Click += new System.EventHandler(this.ClickOpenSubForm);
             // 
-            // updateToolStripMenuItem
+            // listPriceToolStripMenuItem
             // 
-            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.updateToolStripMenuItem.Text = "UpdateCostBarem";
-            this.updateToolStripMenuItem.Click += new System.EventHandler(this.ClickOpenSubForm);
+            this.listPriceToolStripMenuItem.Name = "listPriceToolStripMenuItem";
+            this.listPriceToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
+            this.listPriceToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.listPriceToolStripMenuItem.Text = "UpdateCostBarem";
+            this.listPriceToolStripMenuItem.Click += new System.EventHandler(this.ClickOpenSubForm);
             // 
             // toolStripRight
             // 
@@ -277,7 +277,7 @@
         private System.Windows.Forms.ToolStripMenuItem medicalFolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonParams;
         private System.Windows.Forms.ToolStripMenuItem veterinariToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listPriceToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStripRight;
         private System.Windows.Forms.ToolStripButton toolStripButtonRdv;
         private System.Windows.Forms.ToolStripButton toolStripButtonCustomerAnimal;
