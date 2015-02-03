@@ -49,5 +49,12 @@ namespace BO
             set { archive = value; }
         }
         #endregion
+
+        #region Methode
+        public override string ToString()
+        {
+            return NomVaccin;
+        }
+        #endregion
     }
 }

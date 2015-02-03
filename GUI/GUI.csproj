@@ -113,6 +113,9 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SubFormListPrice.resx">
+      <DependentUpon>SubFormListPrice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SubFormVeterinary.resx">
       <DependentUpon>SubFormVeterinary.cs</DependentUpon>
     </EmbeddedResource>
