@@ -45,6 +45,8 @@ namespace DAL
                 var query = @"SELECT * FROM Account WHERE id = @id";
                 List<BO.Account> results = cnx.Query<BO.Account>(query, new { id = idParam }).ToList<BO.Account>();
 
+                SqlConnexion.CloseConnexion(cnx);
+
                 if (results.Count > 0)
                     return results.First();
 
@@ -68,7 +70,7 @@ namespace DAL
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
                 int output = cnx.Execute("ajout_account", new { username = account.Username, password = account.PasswordSHA1 }, 
                                         commandType: CommandType.StoredProcedure);
-                cnx.Close();
+                SqlConnexion.CloseConnexion(cnx);
                 return (output > 0);
             }
             catch (Exception e)
@@ -89,7 +91,7 @@ namespace DAL
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
                 var query = @"DELETE FROM Account WHERE id = @id";
                 int rowNb = cnx.Execute(query, new { id = account.Id });
-
+                SqlConnexion.CloseConnexion(cnx);
                 return (rowNb > 0);
             }
             catch (Exception e)
@@ -112,7 +114,7 @@ namespace DAL
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
                 var query = @"UPDATE Account SET username=@user, password=@pwd WHERE id=@id";
                 int rowNb = cnx.Execute(query, new { id = account.Id, user=username, pwd=password });
-
+                SqlConnexion.CloseConnexion(cnx);
                 return (rowNb > 0);
             }
             catch (Exception e)
@@ -139,9 +141,11 @@ namespace DAL
                 {
                     query = @"UPDATE Account SET is_online=1 WHERE id = @id";
                     cnx.Query(query, new { id = results.First().Id });
+                    SqlConnexion.CloseConnexion(cnx);
                     return results.First();
                 }
 
+                SqlConnexion.CloseConnexion(cnx);
                 return null;
             }
             catch (Exception e)
@@ -162,7 +166,7 @@ namespace DAL
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
                 var query = @"UPDATE Account SET is_onlie=0 WHERE id = @id";
                 int rowNb = cnx.Execute(query, new { id = account.Id });
-
+                SqlConnexion.CloseConnexion(cnx);
                 return (rowNb > 0);
             }
             catch (Exception e)

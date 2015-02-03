@@ -33,6 +33,10 @@ namespace GUI
             this.buttonLogin.Text = GUI.Lang.FORM_LOGIN_BTN_LOGIN;
         }
 
+        //===================
+        //METHODES ==========
+        //===================
+
         private void TryLogin()
         {
             String username = this.textBoxUsername.Text;

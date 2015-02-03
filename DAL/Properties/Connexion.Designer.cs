@@ -25,18 +25,6 @@ namespace DAL.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("localhost")]
-        public string Server {
-            get {
-                return ((string)(this["Server"]));
-            }
-            set {
-                this["Server"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("ani_forme")]
         public string Database {
             get {
@@ -68,6 +56,18 @@ namespace DAL.Properties {
             }
             set {
                 this["Password"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10.21.200.29")]
+        public string Server {
+            get {
+                return ((string)(this["Server"]));
+            }
+            set {
+                this["Server"] = value;
             }
         }
     }

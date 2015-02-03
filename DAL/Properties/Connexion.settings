@@ -2,9 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DAL.Properties" GeneratedClassName="Connexion">
   <Profiles />
   <Settings>
-    <Setting Name="Server" Type="System.String" Scope="User">
-      <Value Profile="(Default)">localhost</Value>
-    </Setting>
     <Setting Name="Database" Type="System.String" Scope="User">
       <Value Profile="(Default)">ani_forme</Value>
     </Setting>
@@ -13,6 +10,9 @@
     </Setting>
     <Setting Name="Password" Type="System.String" Scope="User">
       <Value Profile="(Default)">Pa$$w0rd</Value>
+    </Setting>
+    <Setting Name="Server" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10.21.200.29</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -50,6 +50,12 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubFormVeterinary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubFormVeterinary.Designer.cs">
+      <DependentUpon>SubFormVeterinary.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lang.cs" />
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
@@ -65,14 +71,18 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SubFormVeterinary.resx">
+      <DependentUpon>SubFormVeterinary.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
@@ -94,6 +104,9 @@
       <Project>{5f34b5dc-84e9-4e1c-be77-9021c07347bd}</Project>
       <Name>BO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

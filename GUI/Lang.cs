@@ -24,6 +24,29 @@ namespace GUI
         public static String FORM_LOGIN_BTN_LOGIN = "Valider";
         public static String FORM_LOGIN_LOGIN_FAIL_TITLE = "Erreur";
         public static String FORM_LOGIN_LOGIN_FAIL_TEXT = "La combinaison est invalide";
+
+        //==========================
+        //FormMain 
+        //===========================
+
+        public static String FORM_MAIN_TITLE = "Clinique vétérinaire";
+
+        //SECRETARIAT
+        public static String FORM_MAIN_TOOLSTRIP_SECRETARIAT = "Secrétariat";
+        public static String FORM_MAIN_MENUITEM_TAKE_APPOINTEMENT = "Prendre rendez-vous";
+        public static String FORM_MAIN_MENUITEM_FOLDER_CUSTOMER_ANIMAL = "Dossier client/animaux";
+        public static String FORM_MAIN_MENUITEM_REMINDERS = "Relances";
+        public static String FORM_MAIN_MENUITEM_UPDATE_STOCK_VACCIN = "Mise à jour du stock de vaccin";
+    
+        //VETERINARY
+        public static String FORM_MAIN_TOOLSTRIP_VETERINARY = "Vétérinaire";
+        public static String FORM_MAIN_MENUITEM_AGENDA = "Agenda";
+        public static String FORM_MAIN_MENUITEM_MEDICAL_FOLDER = "Dossier médical";
+
+        //PARAMS
+        public static String FORM_MAIN_TOOLSTRIP_PARAMS = "Paramètres";
+        public static String FORM_MAIN_MENUITEM_VETERINARY = "Vétérinaires";
+        public static String FORM_MAIN_MENUITEM_UPDATECOST = "Mise à jour barem de tarification";      
     }
 }
 
