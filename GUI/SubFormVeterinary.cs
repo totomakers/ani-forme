@@ -31,5 +31,21 @@ namespace GUI
             this.buttonReset.Text = GUI.Lang.FORM_DEFAULT_RESET;
 
         }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            BO.Veterinaires veto = (BO.Veterinaires) this.dataGridViewVeterinary.CurrentRow.DataBoundItem;
+            if(veto != null)
+            {
+                if (BLL.VeterinairesMgr.Delete(veto))
+                {
+                    MessageBox.Show(String.Format("Le compte de {0} a été archivé !", veto.NomVeto), "Compte archivé", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+
+            this.dataGridViewVeterinary.DataSource = null;
+            this.dataGridViewVeterinary.DataSource = BLL.VeterinairesMgr.GetAll(false);
+
+        }
     }
 }

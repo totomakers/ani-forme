@@ -19,5 +19,10 @@ namespace BLL
         {
             return DAL.Veterinaires.GetAll(false);
         }
+
+        public static bool Delete(BO.Veterinaires veto)
+        {
+            return DAL.Veterinaires.Archive(veto, true);
+        }
     }
 }

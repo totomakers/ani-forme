@@ -53,5 +53,26 @@ namespace DAL
                 throw e;
             }
         }
+
+        /// <summary>
+        /// Déactive un vétérinaire
+        /// </summary>
+        /// <param name="veto"></param>
+        /// <returns></returns>
+        public static bool Archive(BO.Veterinaires veto, bool archived)
+        {
+            try
+            {
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                var query = @"UPDATE Veterinaires SET Archive=@archive WHERE CodeVeto = @codeVeto";
+                int rowNb = cnx.Execute(query, new { codeVeto = veto.CodeVeto, archive = (archived) ? 1 : 0 });
+                SqlConnexion.CloseConnexion(cnx);
+                return (rowNb > 0);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }
