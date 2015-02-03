@@ -9,7 +9,7 @@ namespace BO
     public class Agenda
     {
         #region Attribute
-        private BO.Vaterinaires veterinaire;
+        private BO.Veterinaires veterinaire;
         private DateTime dateRdv;
         private BO.Animaux animal;
         #endregion
@@ -25,7 +25,7 @@ namespace BO
         /// <summary>
         /// Identifiant du compte
         /// </summary>
-        public Guid Veterinaire
+        public BO.Veterinaires Veterinaires
         {
             get { return veterinaire; }
             set { veterinaire = value; }
