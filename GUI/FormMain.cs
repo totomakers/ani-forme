@@ -140,6 +140,7 @@ namespace GUI
                         myForm = this.MdiChildren.First(x => x.GetType() == FormType);
                         createInstance = false;
                     } 
+                    
                 }
                 
                 if(createInstance) // doit en creer un nouveau
@@ -149,6 +150,7 @@ namespace GUI
                 }
 
                 myForm.Show(); //afficher
+                myForm.BringToFront();
             }
             catch (Exception /*ex*/)
             {
