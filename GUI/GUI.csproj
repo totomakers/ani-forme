@@ -44,6 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dialog\DialogAddVeterinary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\DialogAddVeterinary.Designer.cs">
+      <DependentUpon>DialogAddVeterinary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\DialogResetVeterinary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\DialogResetVeterinary.Designer.cs">
+      <DependentUpon>DialogResetVeterinary.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubFormAgenda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +119,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Dialog\DialogAddVeterinary.resx">
+      <DependentUpon>DialogAddVeterinary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\DialogResetVeterinary.resx">
+      <DependentUpon>DialogResetVeterinary.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,7 +169,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Dialog\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

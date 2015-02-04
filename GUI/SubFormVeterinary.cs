@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using BO;
+using GUI.Dialog;
 
 namespace GUI
 {
@@ -39,13 +40,30 @@ namespace GUI
             {
                 if (BLL.VeterinairesMgr.Delete(veto))
                 {
-                    MessageBox.Show(String.Format("Le compte de {0} a été archivé !", veto.NomVeto), "Compte archivé", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(
+                        String.Format(GUI.Lang.SUBFORM_VETERINARY_SUCCEFULL_ARCHIVE, veto.NomVeto), 
+                        GUI.Lang.SUBFORM_VETERINARY_TITLE_SUCCEFULL_ARCHIVE, 
+                        MessageBoxButtons.OK, 
+                        MessageBoxIcon.Information
+                        );
                 }
             }
 
             this.dataGridViewVeterinary.DataSource = null;
             this.dataGridViewVeterinary.DataSource = BLL.VeterinairesMgr.GetAll(false);
 
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            DialogAddVeterinary dialog = new DialogAddVeterinary();
+            dialog.ShowDialog();
+        }
+
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            DialogResetVeterinary dialog = new DialogResetVeterinary();
+            dialog.ShowDialog();
         }
     }
 }

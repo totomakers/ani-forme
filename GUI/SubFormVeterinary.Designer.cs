@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubFormVeterinary));
             this.panelMain = new System.Windows.Forms.Panel();
-            this.buttonAdd = new System.Windows.Forms.Button();
-            this.buttonDelete = new System.Windows.Forms.Button();
-            this.buttonReset = new System.Windows.Forms.Button();
             this.dataGridViewVeterinary = new System.Windows.Forms.DataGridView();
+            this.buttonReset = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
             this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVeterinary)).BeginInit();
             this.SuspendLayout();
@@ -51,41 +51,6 @@
             this.panelMain.Size = new System.Drawing.Size(525, 379);
             this.panelMain.TabIndex = 0;
             // 
-            // buttonAdd
-            // 
-            this.buttonAdd.AutoEllipsis = true;
-            this.buttonAdd.AutoSize = true;
-            this.buttonAdd.Location = new System.Drawing.Point(6, 6);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(87, 23);
-            this.buttonAdd.TabIndex = 0;
-            this.buttonAdd.Text = "buttonAdd";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            // 
-            // buttonDelete
-            // 
-            this.buttonDelete.AutoEllipsis = true;
-            this.buttonDelete.AutoSize = true;
-            this.buttonDelete.Location = new System.Drawing.Point(99, 6);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(93, 23);
-            this.buttonDelete.TabIndex = 1;
-            this.buttonDelete.Text = "buttonDelete";
-            this.buttonDelete.UseVisualStyleBackColor = true;
-            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
-            // 
-            // buttonReset
-            // 
-            this.buttonReset.AllowDrop = true;
-            this.buttonReset.AutoEllipsis = true;
-            this.buttonReset.AutoSize = true;
-            this.buttonReset.Location = new System.Drawing.Point(198, 6);
-            this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(75, 23);
-            this.buttonReset.TabIndex = 2;
-            this.buttonReset.Text = "buttonReset";
-            this.buttonReset.UseVisualStyleBackColor = true;
-            // 
             // dataGridViewVeterinary
             // 
             this.dataGridViewVeterinary.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -100,6 +65,40 @@
             this.dataGridViewVeterinary.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewVeterinary.Size = new System.Drawing.Size(514, 338);
             this.dataGridViewVeterinary.TabIndex = 3;
+            // 
+            // buttonReset
+            // 
+            this.buttonReset.AllowDrop = true;
+            this.buttonReset.AutoSize = true;
+            this.buttonReset.Location = new System.Drawing.Point(198, 6);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(75, 23);
+            this.buttonReset.TabIndex = 2;
+            this.buttonReset.Text = "buttonReset";
+            this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.AutoSize = true;
+            this.buttonDelete.Location = new System.Drawing.Point(99, 6);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(93, 23);
+            this.buttonDelete.TabIndex = 1;
+            this.buttonDelete.Text = "buttonDelete";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.AutoSize = true;
+            this.buttonAdd.Location = new System.Drawing.Point(6, 6);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(87, 23);
+            this.buttonAdd.TabIndex = 0;
+            this.buttonAdd.Text = "buttonAdd";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // SubFormVeterinary
             // 

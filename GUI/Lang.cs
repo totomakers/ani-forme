@@ -56,6 +56,8 @@ namespace GUI
         //===========================
 
         public static String SUBFORM_VETERINARY_TITLE = "Vétérinaire";
+        public static String SUBFORM_VETERINARY_TITLE_SUCCEFULL_ARCHIVE = "Compte archivé";
+        public static String SUBFORM_VETERINARY_SUCCEFULL_ARCHIVE = "Le compte de {0} a été archivé !";
 
         //==========================
         //SubFormListPrice 
