@@ -19,11 +19,12 @@ namespace GUI
         {
             InitializeComponent();
             I18N();
-
-            // lien de la dataGridView
-            this.dataGridViewVeterinary.DataSource = BLL.VeterinairesMgr.GetAll(false);
+            Reload();           
         }
 
+        /// <summary>
+        /// Traduction 
+        /// </summary>
         private void I18N()
         {
             this.Text = GUI.Lang.SUBFORM_VETERINARY_TITLE;
@@ -31,6 +32,22 @@ namespace GUI
             this.buttonDelete.Text = GUI.Lang.FORM_DEFAULT_DELETE;
             this.buttonReset.Text = GUI.Lang.FORM_DEFAULT_RESET;
 
+        }
+
+        private void Reload()
+        {
+            // lien de la dataGridView
+            this.dataGridViewVeterinary.DataSource = BLL.VeterinairesMgr.GetAll(false);
+        }
+
+        #region Events
+        //===========================
+        //EVENTS
+        //===========================
+
+        private void OnDialogClose(object sender, EventArgs e)
+        {
+            Reload();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -56,14 +73,20 @@ namespace GUI
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            DialogAddVeterinary dialog = new DialogAddVeterinary();
+            DialogVeterinaryAdd dialog = new DialogVeterinaryAdd();
+            dialog.FormClosed += OnDialogClose;
             dialog.ShowDialog();
+
         }
 
         private void buttonReset_Click(object sender, EventArgs e)
         {
-            DialogResetVeterinary dialog = new DialogResetVeterinary();
+            BO.Veterinaires veto = (BO.Veterinaires)this.dataGridViewVeterinary.CurrentRow.DataBoundItem;
+            DialogVeterinaryReset dialog = new DialogVeterinaryReset(veto.Account);
+            dialog.FormClosed += OnDialogClose;
             dialog.ShowDialog();
         }
+
+        #endregion
     }
 }

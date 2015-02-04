@@ -30,12 +30,13 @@ namespace GUI
             this.Text = GUI.Lang.FORM_DEFAULT_TITLE + " : " + GUI.Lang.FORM_LOGIN_TITLE;
             this.labelUsername.Text = GUI.Lang.FORM_LOGIN_LIB_USERNAME;
             this.labelPassword.Text = GUI.Lang.FORM_LOGIN_LIB_PASSWORD;
-            this.buttonLogin.Text = GUI.Lang.FORM_LOGIN_BTN_LOGIN;
+            this.buttonLogin.Text = GUI.Lang.FORM_DEFAULT_VALIDATE;
         }
 
-        //===================
-        //METHODES ==========
-        //===================
+        #region Methodes
+        //===========================
+        //METHODES
+        //===========================
 
         private void TryLogin()
         {
@@ -53,7 +54,7 @@ namespace GUI
             else
             {
                 MessageBox.Show(GUI.Lang.FORM_LOGIN_LOGIN_FAIL_TEXT, 
-                                GUI.Lang.FORM_LOGIN_LOGIN_FAIL_TITLE,   
+                                GUI.Lang.FORM_DEFAULT_ERROR_TITLE,   
                                 MessageBoxButtons.OK, 
                                 MessageBoxIcon.Error);
             }
@@ -63,10 +64,12 @@ namespace GUI
         {
             this.Close();
         }
+        #endregion
 
-        //====================
-        //EVENTS =============
-        //====================
+        #region Events
+        //===========================
+        //EVENTS 
+        //===========================
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
@@ -78,5 +81,6 @@ namespace GUI
             if (e.KeyChar == (char)Keys.Enter)
                 TryLogin();
         }
+        #endregion
     }
 }

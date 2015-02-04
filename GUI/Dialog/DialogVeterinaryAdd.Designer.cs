@@ -1,6 +1,6 @@
 ﻿namespace GUI.Dialog
 {
-    partial class DialogAddVeterinary
+    partial class DialogVeterinaryAdd
     {
         /// <summary>
         /// Required designer variable.
@@ -46,13 +46,14 @@
             this.buttonAdd.TabIndex = 0;
             this.buttonAdd.Text = "buttonAdd";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // labelName
             // 
             this.labelName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(13, 13);
+            this.labelName.Location = new System.Drawing.Point(2, 13);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(57, 13);
             this.labelName.TabIndex = 1;
@@ -63,7 +64,7 @@
             this.labelUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelUsername.AutoSize = true;
-            this.labelUsername.Location = new System.Drawing.Point(13, 37);
+            this.labelUsername.Location = new System.Drawing.Point(2, 37);
             this.labelUsername.Name = "labelUsername";
             this.labelUsername.Size = new System.Drawing.Size(77, 13);
             this.labelUsername.TabIndex = 2;
@@ -74,7 +75,7 @@
             this.labelPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelPassword.AutoSize = true;
-            this.labelPassword.Location = new System.Drawing.Point(13, 61);
+            this.labelPassword.Location = new System.Drawing.Point(2, 61);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(75, 13);
             this.labelPassword.TabIndex = 3;
@@ -83,27 +84,33 @@
             // textBoxName
             // 
             this.textBoxName.Location = new System.Drawing.Point(99, 10);
+            this.textBoxName.MaxLength = 30;
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(163, 20);
             this.textBoxName.TabIndex = 4;
+            this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
             // 
             // textBoxUsername
             // 
             this.textBoxUsername.Location = new System.Drawing.Point(99, 34);
+            this.textBoxUsername.MaxLength = 50;
             this.textBoxUsername.Multiline = true;
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(163, 20);
             this.textBoxUsername.TabIndex = 5;
+            this.textBoxUsername.TextChanged += new System.EventHandler(this.textBoxUsername_TextChanged);
             // 
             // textBoxPassword
             // 
             this.textBoxPassword.Location = new System.Drawing.Point(99, 58);
+            this.textBoxPassword.MaxLength = 50;
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(163, 20);
             this.textBoxPassword.TabIndex = 6;
             this.textBoxPassword.UseSystemPasswordChar = true;
+            this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
             // 
-            // DialogAddVeterinary
+            // DialogVeterinaryAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -118,8 +125,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "DialogAddVeterinary";
-            this.Text = "DialogAddVeterinary";
+            this.Name = "DialogVeterinaryAdd";
+            this.Text = "DialogVeterinaryAdd";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -30,7 +30,7 @@ namespace GUI
         {
             this.Text = GUI.Lang.FORM_DEFAULT_TITLE + " : " + GUI.Lang.FORM_MAIN_TITLE;
 
-            if (BLL.AccountMgr.isLogin)
+            if (BLL.AccountMgr.isLogged)
             {
                 this.Text += " (connecté en tant que " + BLL.AccountMgr.loggedAccount.Username + ")";
             }
@@ -60,6 +60,8 @@ namespace GUI
             this.updateStockVaccinToolStripMenuItem.Text = GUI.Lang.FORM_MAIN_MENUITEM_UPDATECOST;
             this.listPriceToolStripMenuItem.Text = GUI.Lang.FORM_MAIN_MENUITEM_UPDATECOST;
         }
+
+        #region Methodes
 
         //===========================
         //METHODES ==================
@@ -154,5 +156,7 @@ namespace GUI
                 MessageBox.Show(String.Format(msg, sender.ToString())); 
             }
         }
+
+        #endregion
     }
 }

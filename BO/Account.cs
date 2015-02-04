@@ -44,7 +44,7 @@ namespace BO
         /// </summary>
         public String Username
         {
-            get { return username; }
+            get { return username.ToUpper(); }
             set { username = value; }
         }
 
@@ -78,7 +78,7 @@ namespace BO
         /// <returns></returns>
         public static String getSHA1Password(String username, String password)
         {
-            String finalString = username.ToUpper() + ':' + password.ToUpper();
+            String finalString = username.ToUpper() + ':' + password;
             return BO.Utils.HelperSHA1.GetSHA1HashData(finalString);
         }
         #endregion

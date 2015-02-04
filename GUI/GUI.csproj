@@ -44,17 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dialog\DialogAddVeterinary.cs">
+    <Compile Include="Dialog\DialogVeterinaryAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialog\DialogAddVeterinary.Designer.cs">
-      <DependentUpon>DialogAddVeterinary.cs</DependentUpon>
+    <Compile Include="Dialog\DialogVeterinaryAdd.Designer.cs">
+      <DependentUpon>DialogVeterinaryAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dialog\DialogResetVeterinary.cs">
+    <Compile Include="Dialog\DialogVeterinaryReset.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialog\DialogResetVeterinary.Designer.cs">
-      <DependentUpon>DialogResetVeterinary.cs</DependentUpon>
+    <Compile Include="Dialog\DialogVeterinaryReset.Designer.cs">
+      <DependentUpon>DialogVeterinaryReset.cs</DependentUpon>
     </Compile>
     <Compile Include="SubFormAgenda.cs">
       <SubType>Form</SubType>
@@ -119,11 +119,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Dialog\DialogAddVeterinary.resx">
-      <DependentUpon>DialogAddVeterinary.cs</DependentUpon>
+    <EmbeddedResource Include="Dialog\DialogVeterinaryAdd.resx">
+      <DependentUpon>DialogVeterinaryAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialog\DialogResetVeterinary.resx">
-      <DependentUpon>DialogResetVeterinary.cs</DependentUpon>
+    <EmbeddedResource Include="Dialog\DialogVeterinaryReset.resx">
+      <DependentUpon>DialogVeterinaryReset.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>

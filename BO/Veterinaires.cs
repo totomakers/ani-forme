@@ -9,14 +9,13 @@ namespace BO
 {
     public class Veterinaires
     {
-        #region Attribute
+        #region Attributes
         private Guid codeVeto;
         private String nomVeto;
-        private Byte archive;
+        private Boolean archive;
 
         private Int32 accountId;
         private BO.Account account;
-
         #endregion
 
         #region Constructor
@@ -26,7 +25,6 @@ namespace BO
         #endregion
 
         #region Getter/Setter
-
         [Browsable(false)]
         public Guid CodeVeto
         {
@@ -42,14 +40,14 @@ namespace BO
         }
 
         [Browsable(false)]
-        public Byte Archive
+        public Boolean Archive
         {
             get { return archive; }
             set { archive = value; }
         }
 
         [Browsable(false)]
-        public Int32 IdAccount
+        public Int32 AccountId
         {
             get { return accountId; }
             set { accountId = value; }

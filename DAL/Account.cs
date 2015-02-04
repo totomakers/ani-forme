@@ -59,6 +59,33 @@ namespace DAL
         }
 
         /// <summary>
+        /// Retourne le compte représenté par l'username
+        /// Retourne un objet null sinon
+        /// </summary>
+        /// <param name="usernameParam"></param>
+        /// <returns></returns>
+        public static BO.Account Get(string usernameParam)
+        {
+            try
+            {
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                var query = @"SELECT * FROM Account WHERE username = @username";
+                List<BO.Account> results = cnx.Query<BO.Account>(query, new { username = usernameParam.ToUpper() }).ToList<BO.Account>();
+
+                SqlConnexion.CloseConnexion(cnx);
+
+                if (results.Count > 0)
+                    return results.First();
+
+                return null;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        /// <summary>
         /// Creer en base le compte passer en parametre
         /// </summary>
         /// <param name="account"></param>
@@ -101,19 +128,16 @@ namespace DAL
         }
 
         /// <summary>
-        /// Modifie le compte passé en paramètre avec le nom d'utilisateur et le mot de passe passés en paramètre
+        /// Modifie le compte passé en paramètre
         /// </summary>
-        /// <param name="account"></param>
-        /// <param name="username"></param>
-        /// <param name="password"></param>
         /// <returns></returns>
-        public static bool Update(BO.Account account, String username, String password)
+        public static bool Update(BO.Account account)
         {
             try
             {
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
                 var query = @"UPDATE Account SET username=@user, password=@pwd WHERE id=@id";
-                int rowNb = cnx.Execute(query, new { id = account.Id, user=username, pwd=password });
+                int rowNb = cnx.Execute(query, new { id = account.Id, user=account.Username, pwd=account.PasswordSHA1 });
                 SqlConnexion.CloseConnexion(cnx);
                 return (rowNb > 0);
             }
@@ -135,7 +159,7 @@ namespace DAL
             {
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
                 var query = @"SELECT * FROM Account WHERE username = @user AND password = @password";
-                List<BO.Account> results = cnx.Query<BO.Account>(query, new { user = usernameParam, password = passwordParam }).ToList<BO.Account>();
+                List<BO.Account> results = cnx.Query<BO.Account>(query, new { user = usernameParam.ToUpper(), password = passwordParam }).ToList<BO.Account>();
 
                 if (results.Count > 0)
                 {

@@ -16,6 +16,9 @@ namespace GUI
         public static String FORM_DEFAULT_ADD = "Ajouter";
         public static String FORM_DEFAULT_DELETE = "Supprimer";
         public static String FORM_DEFAULT_RESET = "Réinitialiser";
+        public static String FORM_DEFAULT_VALIDATE = "Valider";
+        public static String FORM_DEFAULT_CONFIRM = "Confirmer";
+        public static String FORM_DEFAULT_ERROR_TITLE = "Erreur";
 
         //=========================
         //FormLogin
@@ -24,8 +27,6 @@ namespace GUI
         public static String FORM_LOGIN_TITLE = "Connection";
         public static String FORM_LOGIN_LIB_USERNAME = "Nom d'utilisateur";
         public static String FORM_LOGIN_LIB_PASSWORD = "Mot de passe";
-        public static String FORM_LOGIN_BTN_LOGIN = "Valider";
-        public static String FORM_LOGIN_LOGIN_FAIL_TITLE = "Erreur";
         public static String FORM_LOGIN_LOGIN_FAIL_TEXT = "La combinaison est invalide";
 
         //==========================
@@ -58,6 +59,17 @@ namespace GUI
         public static String SUBFORM_VETERINARY_TITLE = "Vétérinaire";
         public static String SUBFORM_VETERINARY_TITLE_SUCCEFULL_ARCHIVE = "Compte archivé";
         public static String SUBFORM_VETERINARY_SUCCEFULL_ARCHIVE = "Le compte de {0} a été archivé !";
+
+        //DialogAddVeterinary
+        public static String DIALOG_VETERINARY_ADD_TITLE = "Ajout d'un vétérinaire";
+        public static String DIALOG_VETERINARY_ADD_LIB_NAME = "Nom";
+        public static String DIALOG_VETERINARY_ADD_LIB_USERNAME = "Nom d'utilisateur";
+        public static String DIALOG_VETERINARY_ADD_LIB_PASSWORD = "Mot de passe";
+       
+        //DialogResetVeterinary
+        public static String DIALOG_VETERINARY_RESET_TITLE = "Réinitialiser mot de passe";
+        public static String DIALOG_VETERINARY_RESET_PASSWORD = "Nouveau mot de passe";
+        public static String DIALOG_VETERINARY_RESET_CONFIRM_PASSWORD = "Confirmation du mdp";
 
         //==========================
         //SubFormListPrice 

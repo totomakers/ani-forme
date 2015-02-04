@@ -1,6 +1,6 @@
 ﻿namespace GUI.Dialog
 {
-    partial class DialogResetVeterinary
+    partial class DialogVeterinaryReset
     {
         /// <summary>
         /// Required designer variable.
@@ -28,43 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelPassword = new System.Windows.Forms.Label();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.textBoxConfirmPassword = new System.Windows.Forms.TextBox();
             this.labelConfirmPassword = new System.Windows.Forms.Label();
             this.buttonValidate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // labelPassword
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.labelPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(2, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "labelPassword";
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.Location = new System.Drawing.Point(2, 11);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(75, 13);
+            this.labelPassword.TabIndex = 0;
+            this.labelPassword.Text = "labelPassword";
             // 
             // textBoxPassword
             // 
             this.textBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPassword.Location = new System.Drawing.Point(115, 8);
+            this.textBoxPassword.Location = new System.Drawing.Point(135, 8);
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(186, 20);
+            this.textBoxPassword.Size = new System.Drawing.Size(166, 20);
             this.textBoxPassword.TabIndex = 1;
             this.textBoxPassword.UseSystemPasswordChar = true;
+            this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
             // 
             // textBoxConfirmPassword
             // 
             this.textBoxConfirmPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxConfirmPassword.Location = new System.Drawing.Point(115, 34);
+            this.textBoxConfirmPassword.Location = new System.Drawing.Point(135, 34);
             this.textBoxConfirmPassword.Name = "textBoxConfirmPassword";
-            this.textBoxConfirmPassword.Size = new System.Drawing.Size(185, 20);
+            this.textBoxConfirmPassword.Size = new System.Drawing.Size(165, 20);
             this.textBoxConfirmPassword.TabIndex = 2;
             this.textBoxConfirmPassword.UseSystemPasswordChar = true;
+            this.textBoxConfirmPassword.TextChanged += new System.EventHandler(this.textBoxConfirmPassword_TextChanged);
             // 
             // labelConfirmPassword
             // 
@@ -86,8 +88,9 @@
             this.buttonValidate.TabIndex = 4;
             this.buttonValidate.Text = "buttonConfirm";
             this.buttonValidate.UseVisualStyleBackColor = true;
+            this.buttonValidate.Click += new System.EventHandler(this.buttonValidate_Click);
             // 
-            // DialogResetVeterinary
+            // DialogVeterinaryReset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -96,10 +99,10 @@
             this.Controls.Add(this.labelConfirmPassword);
             this.Controls.Add(this.textBoxConfirmPassword);
             this.Controls.Add(this.textBoxPassword);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelPassword);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "DialogResetVeterinary";
-            this.Text = "DialogResetVeterinary";
+            this.Name = "DialogVeterinaryReset";
+            this.Text = "DialogVeterinaryReset";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -107,7 +110,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.TextBox textBoxConfirmPassword;
         private System.Windows.Forms.Label labelConfirmPassword;

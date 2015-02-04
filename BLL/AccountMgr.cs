@@ -27,9 +27,29 @@ namespace BLL
         }
 
         /// <summary>
+        /// Vérifie l'existance d'un compte par son username
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        public static bool isLogin(String username)
+        {
+            return (DAL.Account.Get(username) != null);
+        }
+
+        /// <summary>
+        /// Vérifie l'existance d'un compte par son id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static bool isLogin(Int32 id)
+        {
+            return (DAL.Account.Get(id) != null);
+        }
+
+        /// <summary>
         /// Permet de savoir si on est connecté
         /// </summary>
-        public static bool isLogin
+        public static bool isLogged
         {
             get { return (loggedAccount != null); }
         }
@@ -51,6 +71,28 @@ namespace BLL
             account.Username = "test";
             account.PasswordSHA1 = BO.Account.getSHA1Password("test","test");
             DAL.Account.Create(account);
+        }
+
+        /// <summary>
+        /// Création d'un compte
+        /// Retourne le même compte avec son id en base de donnée
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns></returns>
+        public static BO.Account Create(BO.Account account)
+        {
+            DAL.Account.Create(account);
+            return DAL.Account.Get(account.Username);
+        }
+
+        public static bool Update(BO.Account account)
+        {
+            if (!isLogin(account.Id))
+            {
+                throw new Exception("Ce compte n'existe pas !");
+            }
+
+            return DAL.Account.Update(account);
         }
     }
 }

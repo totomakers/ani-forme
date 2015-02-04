@@ -19,7 +19,7 @@ namespace DAL
         {
             try
             {
-                var query = @"SELECT * FROM  Veterinaires v left join Account a on a.id = v.IdAccount Order By v.CodeVeto";
+                var query = @"SELECT * FROM  Veterinaires v left join Account a on a.id = v.AccountId Order By v.CodeVeto";
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
                 List<BO.Veterinaires> results = cnx.Query<BO.Veterinaires, BO.Account, BO.Veterinaires>(query, (veto, account) => { veto.Account = account; return veto; }).ToList<BO.Veterinaires>();
                 SqlConnexion.CloseConnexion(cnx);
@@ -41,7 +41,7 @@ namespace DAL
         {
             try
             {
-                var query = @"SELECT * FROM  Veterinaires v left join Account a on a.id = v.IdAccount Order By v.CodeVeto";
+                var query = @"SELECT * FROM  Veterinaires v left join Account a on a.id = v.AccountId Order By v.CodeVeto";
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
                 List<BO.Veterinaires> results = cnx.Query<BO.Veterinaires, BO.Account, BO.Veterinaires>(query, (veto, account) => { veto.Account = account; return veto; }).ToList<BO.Veterinaires>();
                 SqlConnexion.CloseConnexion(cnx);
@@ -73,6 +73,17 @@ namespace DAL
             {
                 throw e;
             }
+        }
+
+        /// <summary>
+        /// Creer un nouveau vétérinaire et le retourne avec son identifiant
+        /// </summary>
+        /// <param name="veterinaires"></param>
+        /// <returns></returns>
+        public static BO.Veterinaires Create(BO.Veterinaires veterinaires)
+        {
+            //@TODO
+            return veterinaires;
         }
     }
 }
