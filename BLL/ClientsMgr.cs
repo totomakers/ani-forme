@@ -27,6 +27,15 @@ namespace BLL
             return DAL.Clients.GetAll(false);
         }
 
+
+        public static List<BO.Clients> GetAll(bool archived, string name)
+        {
+            if (!String.IsNullOrWhiteSpace(name))
+                return DAL.Clients.GetAll(archived, name);
+            else
+                return DAL.Clients.GetAll(archived);
+        }
+
         /// <summary>
         /// Archive le client passé en paramètre
         /// </summary>

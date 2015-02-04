@@ -51,6 +51,7 @@
     <Compile Include="Shared\SqlConnexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\SqlMapper.cs" />
+    <Compile Include="Shared\Utils.cs" />
     <Compile Include="Veterinaires.cs" />
     <Compile Include="Vaccins.cs" />
   </ItemGroup>

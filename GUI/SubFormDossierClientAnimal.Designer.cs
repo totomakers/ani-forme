@@ -36,7 +36,6 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
-            this.panelNav = new System.Windows.Forms.Panel();
             this.labelCode = new System.Windows.Forms.Label();
             this.textBoxCode = new System.Windows.Forms.TextBox();
             this.textBoxFirstName = new System.Windows.Forms.TextBox();
@@ -54,13 +53,13 @@
             this.buttonAddAni = new System.Windows.Forms.Button();
             this.buttonDeleteAni = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panelNav.SuspendLayout();
+            this.checkBoxSearch = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAnimals)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonFirst
             // 
-            this.buttonFirst.Location = new System.Drawing.Point(3, 13);
+            this.buttonFirst.Location = new System.Drawing.Point(13, 12);
             this.buttonFirst.Name = "buttonFirst";
             this.buttonFirst.Size = new System.Drawing.Size(75, 30);
             this.buttonFirst.TabIndex = 0;
@@ -70,7 +69,7 @@
             // 
             // buttonPrev
             // 
-            this.buttonPrev.Location = new System.Drawing.Point(83, 13);
+            this.buttonPrev.Location = new System.Drawing.Point(93, 12);
             this.buttonPrev.Name = "buttonPrev";
             this.buttonPrev.Size = new System.Drawing.Size(75, 30);
             this.buttonPrev.TabIndex = 1;
@@ -80,7 +79,7 @@
             // 
             // buttonNext
             // 
-            this.buttonNext.Location = new System.Drawing.Point(164, 13);
+            this.buttonNext.Location = new System.Drawing.Point(174, 12);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(75, 30);
             this.buttonNext.TabIndex = 2;
@@ -90,7 +89,7 @@
             // 
             // buttonLast
             // 
-            this.buttonLast.Location = new System.Drawing.Point(245, 13);
+            this.buttonLast.Location = new System.Drawing.Point(255, 12);
             this.buttonLast.Name = "buttonLast";
             this.buttonLast.Size = new System.Drawing.Size(75, 31);
             this.buttonLast.TabIndex = 3;
@@ -101,7 +100,7 @@
             // buttonAdd
             // 
             this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAdd.Location = new System.Drawing.Point(519, 18);
+            this.buttonAdd.Location = new System.Drawing.Point(419, 40);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(116, 20);
             this.buttonAdd.TabIndex = 4;
@@ -121,25 +120,13 @@
             // textBoxSearch
             // 
             this.textBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSearch.Location = new System.Drawing.Point(641, 19);
+            this.textBoxSearch.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.textBoxSearch.Location = new System.Drawing.Point(541, 40);
+            this.textBoxSearch.MaxLength = 50;
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(138, 20);
             this.textBoxSearch.TabIndex = 6;
-            // 
-            // panelNav
-            // 
-            this.panelNav.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelNav.Controls.Add(this.buttonFirst);
-            this.panelNav.Controls.Add(this.buttonPrev);
-            this.panelNav.Controls.Add(this.textBoxSearch);
-            this.panelNav.Controls.Add(this.buttonNext);
-            this.panelNav.Controls.Add(this.buttonAdd);
-            this.panelNav.Controls.Add(this.buttonLast);
-            this.panelNav.Location = new System.Drawing.Point(2, 0);
-            this.panelNav.Name = "panelNav";
-            this.panelNav.Size = new System.Drawing.Size(782, 60);
-            this.panelNav.TabIndex = 8;
+            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
             // 
             // labelCode
             // 
@@ -297,15 +284,38 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(0, 0);
             this.tableLayoutPanel1.TabIndex = 24;
             // 
-            // SubFormFolderCustomerAnimal
+            // checkBoxSearch
+            // 
+            this.checkBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxSearch.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxSearch.Checked = true;
+            this.checkBoxSearch.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxSearch.Cursor = System.Windows.Forms.Cursors.Default;
+            this.checkBoxSearch.Location = new System.Drawing.Point(685, 40);
+            this.checkBoxSearch.Name = "checkBoxSearch";
+            this.checkBoxSearch.Size = new System.Drawing.Size(99, 20);
+            this.checkBoxSearch.TabIndex = 25;
+            this.checkBoxSearch.Text = "checkBoxSearch";
+            this.checkBoxSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.checkBoxSearch.UseVisualStyleBackColor = true;
+            this.checkBoxSearch.CheckedChanged += new System.EventHandler(this.checkBoxSearch_CheckedChanged);
+            // 
+            // SubFormDossierClientAnimal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(796, 458);
+            this.Controls.Add(this.checkBoxSearch);
+            this.Controls.Add(this.buttonFirst);
+            this.Controls.Add(this.buttonPrev);
+            this.Controls.Add(this.buttonNext);
             this.Controls.Add(this.textBoxCode);
+            this.Controls.Add(this.buttonLast);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.labelCode);
             this.Controls.Add(this.buttonDeleteAni);
+            this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.buttonAddAni);
             this.Controls.Add(this.dataGridViewAnimals);
             this.Controls.Add(this.buttonDelete);
@@ -320,14 +330,11 @@
             this.Controls.Add(this.labelLastName);
             this.Controls.Add(this.textBoxFirstName);
             this.Controls.Add(this.labelFirstName);
-            this.Controls.Add(this.panelNav);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(804, 485);
-            this.Name = "SubFormFolderCustomerAnimal";
+            this.Name = "SubFormDossierClientAnimal";
             this.Text = "SubFormFolderCustomerAnimal";
-            this.panelNav.ResumeLayout(false);
-            this.panelNav.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAnimals)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -343,7 +350,6 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.TextBox textBoxSearch;
-        private System.Windows.Forms.Panel panelNav;
         private System.Windows.Forms.Label labelCode;
         private System.Windows.Forms.TextBox textBoxCode;
         private System.Windows.Forms.TextBox textBoxFirstName;
@@ -361,6 +367,7 @@
         private System.Windows.Forms.Button buttonAddAni;
         private System.Windows.Forms.Button buttonDeleteAni;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.CheckBox checkBoxSearch;
 
     }
 }

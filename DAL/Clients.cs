@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL.Dapper;
+using DAL.Shared;
 
 namespace DAL
 {
@@ -51,6 +52,16 @@ namespace DAL
             {
                 throw e;
             }
+        }
+
+        public static List<BO.Clients> GetAll(bool archived, string name = "")
+        {
+            var query = String.Format(@"SELECT * FROM  Clients c WHERE c.Archive = @archive and NomClient LIKE (@name) ORDER BY c.CodeClient");
+            SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+            List<BO.Clients> results = cnx.Query<BO.Clients>(query, new { archive = archived, name = '%'+name+'%' }).ToList<BO.Clients>();
+            SqlConnexion.CloseConnexion(cnx);
+
+            return results;
         }
 
         /// <summary>

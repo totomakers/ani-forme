@@ -104,7 +104,7 @@ namespace GUI
         public static String SUBFORM_FOLDERCUSTANI_DELETE_ANI = "Supprimer animal";
         public static String SUBFORM_FOLDERCUSTANI_TITLE_SUCCEFULL_ARCHIVE = "Client archivé";
         public static String SUBFORM_FOLDERCUSTANI_SUCCEFULL_ARCHIVE = "Le client {0} a été archivé !";
-
+        public static String SUBFORM_FOLDERCUSTANI_SEARCH = "Flitrer";
     }
 }
 

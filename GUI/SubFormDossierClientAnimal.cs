@@ -14,6 +14,7 @@ namespace GUI
 {
     public partial class SubFormDossierClientAnimal : Form
     {
+        private String filtreName = "";
         private List<BO.Clients> clientsList = new List<Clients>();
         private Int32 index;
         private BO.Clients currentClient = null;
@@ -66,6 +67,8 @@ namespace GUI
                 this.textBoxFirstName.Text = currentClient.NomClient;
                 this.textBoxLastName.Text = currentClient.PrenomClient;
                 this.textBoxPostalCode.Text = currentClient.CodePostal;
+
+                this.checkBoxSearch.Text = GUI.Lang.SUBFORM_FOLDERCUSTANI_SEARCH;
             }
         }
 
@@ -90,15 +93,18 @@ namespace GUI
         /// </summary>
         private void InitializeClientsList()
         {
-            clientsList = ClientsMgr.GetAll(false);
+            if (checkBoxSearch.Checked)
+                clientsList = ClientsMgr.GetAll(false, textBoxSearch.Text);
+            else
+                clientsList = ClientsMgr.GetAll(false);
             //this.dataGridViewAnimals.DataSource = 
 
             if (clientsList.Count == 0)
                 StatutNavigation(false);
             else
             {
-                StatutNavigation(true);
                 this.CurrentIndex = 0;
+                StatutNavigation(true);
             }
             
         }
@@ -117,16 +123,28 @@ namespace GUI
             this.buttonPrev.Enabled = enable;
             this.buttonDelete.Enabled = enable;
 
-            if (index + 1 == clientsList.Count)
+            if (index + 1 >= clientsList.Count)
             {
                 this.buttonLast.Enabled = false;
                 this.buttonNext.Enabled = false;
             }
-            else if (index == 0)
+            
+            if (index == 0)
             {
                 this.buttonPrev.Enabled = false;
                 this.buttonFirst.Enabled = false;
             }
+        }
+
+        private void SetNewPosition(int oldPosition)
+        {
+            //Récupration ancienne position
+            if (oldPosition >= clientsList.Count - 1)   //on été au dernier on va donc au nouveau dernier
+                this.CurrentIndex = clientsList.Count - 1;
+            else if (oldPosition > 0 && oldPosition < clientsList.Count) //Au milieu de quelque chose
+                this.CurrentIndex = oldPosition;
+            else
+                this.CurrentIndex = 0;
         }
 
         private void buttonFirst_Click(object sender, EventArgs e)
@@ -165,11 +183,26 @@ namespace GUI
             }
 
             InitializeClientsList();
-            //Récupration ancienne position
-            if (prevIndex >= clientsList.Count - 1)   //on été au dernier on va donc au nouveau dernier
-                this.CurrentIndex = clientsList.Count - 1;
-            else if (prevIndex > 0) //Au milieu de quelque chose
-                this.CurrentIndex = prevIndex;
+            SetNewPosition(prevIndex);
+        }
+
+        private void checkBoxSearch_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxSearch.Checked)
+            {
+                filtreName = this.textBoxSearch.Text;
+            }
+
+            Int32 prevIndex = index;
+            InitializeClientsList();
+            SetNewPosition(prevIndex);
+        }
+
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            Int32 prevIndex = index;
+            InitializeClientsList();
+            SetNewPosition(prevIndex); 
         }
     }
 }
