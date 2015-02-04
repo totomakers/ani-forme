@@ -109,7 +109,7 @@
             this.toolStripTop.Location = new System.Drawing.Point(0, 0);
             this.toolStripTop.Name = "toolStripTop";
             this.toolStripTop.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStripTop.Size = new System.Drawing.Size(838, 39);
+            this.toolStripTop.Size = new System.Drawing.Size(1042, 39);
             this.toolStripTop.Stretch = true;
             this.toolStripTop.TabIndex = 0;
             this.toolStripTop.Text = "toolStripTop";
@@ -182,11 +182,11 @@
             this.toolStripButtonAgenda,
             this.toolStripButtonMedicalFolder});
             this.toolStripRight.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
-            this.toolStripRight.Location = new System.Drawing.Point(677, 39);
+            this.toolStripRight.Location = new System.Drawing.Point(881, 39);
             this.toolStripRight.Name = "toolStripRight";
             this.toolStripRight.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStripRight.ShowItemToolTips = false;
-            this.toolStripRight.Size = new System.Drawing.Size(161, 481);
+            this.toolStripRight.Size = new System.Drawing.Size(161, 507);
             this.toolStripRight.Stretch = true;
             this.toolStripRight.TabIndex = 2;
             this.toolStripRight.Text = "toolStripRight";
@@ -251,7 +251,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(838, 520);
+            this.ClientSize = new System.Drawing.Size(1042, 546);
             this.Controls.Add(this.toolStripRight);
             this.Controls.Add(this.toolStripTop);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -259,6 +259,7 @@
             this.KeyPreview = true;
             this.Name = "FormMain";
             this.Text = "FormMain";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.toolStripTop.ResumeLayout(false);
             this.toolStripTop.PerformLayout();
             this.toolStripRight.ResumeLayout(false);
