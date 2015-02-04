@@ -56,7 +56,6 @@ namespace GUI
         //===========================
 
         public static String SUBFORM_VETERINARY_TITLE = "Vétérinaire";
-        public static String FORM_MAIN_MENUITEM_UPDATECOST = "Mise à jour barème de tarification";
 
         //==========================
         //SubFormListPrice 
