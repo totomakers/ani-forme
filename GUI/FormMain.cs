@@ -57,7 +57,6 @@ namespace GUI
             //PARAMS
             this.toolStripDropDownButtonParams.Text = GUI.Lang.FORM_MAIN_TOOLSTRIP_PARAMS;
             this.veterinariToolStripMenuItem.Text = GUI.Lang.FORM_MAIN_MENUITEM_VETERINARY;
-            this.updateStockVaccinToolStripMenuItem.Text = GUI.Lang.FORM_MAIN_MENUITEM_UPDATECOST;
             this.listPriceToolStripMenuItem.Text = GUI.Lang.FORM_MAIN_MENUITEM_UPDATECOST;
         }
 
