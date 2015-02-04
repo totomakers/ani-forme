@@ -1,0 +1,26 @@
+<?xml version="1.0" standalone="yes"?>
+<DocumentElement>
+	<Baremes>
+		<CodeGroupement>103</CodeGroupement>
+		<DateVigueur>30/07/07</DateVigueur>
+		<TypeActe>VACC</TypeActe>
+		<Libelle>Vaccination DT </Libelle>
+		<TarifFixe>11.5000</TarifFixe>
+	</Baremes>
+	<Baremes>
+		<CodeGroupement>314</CodeGroupement>
+		<DateVigueur>30/07/07</DateVigueur>
+		<TypeActe>CHIR</TypeActe>
+		<Libelle>Grande radio </Libelle>
+		<TarifFixe>20.0000</TarifFixe>
+	</Baremes>
+	<Baremes>
+		<CodeGroupement>403</CodeGroupement>
+		<DateVigueur>30/07/07</DateVigueur>
+		<TypeActe>TATO</TypeActe>
+		<Libelle>Tatouage </Libelle>
+		<TarifFixe>0.0000</TarifFixe>
+		<TarifMini>16.5000</TarifMini>
+		<TarifMaxi>22.0000</TarifMaxi>
+	</Baremes>
+</DocumentElement>

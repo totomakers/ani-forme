@@ -57,7 +57,7 @@ namespace DAL
                     tfixe = bareme.TarifFixe,
                     tmini = bareme.TarifMini,
                     tmaxi = bareme.TarifMaxi,
-                    nomvaccin = bareme.Vaccin.CodeVaccin.ToString()
+                    nomvaccin = bareme.VaccinId.ToString()
                 },
                                         commandType: CommandType.StoredProcedure);
                 SqlConnexion.CloseConnexion(cnx);
@@ -92,6 +92,22 @@ namespace DAL
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
                 var query = @"UPDATE Baremes SET Archive=0 WHERE CodeGroupement = @code AND DateVigueure like('%' + @date + '%')";
                 int rowNb = cnx.Execute(query, new { code = bareme.CodeGroupement, date = bareme.DateVigueur });
+                SqlConnexion.CloseConnexion(cnx);
+                return (rowNb > 0);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static bool Flush()
+        {
+            try
+            {
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                var query = @"DELETE FROM Baremes";
+                int rowNb = cnx.Execute(query);
                 SqlConnexion.CloseConnexion(cnx);
                 return (rowNb > 0);
             }

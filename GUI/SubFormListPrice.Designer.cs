@@ -35,6 +35,7 @@
             this.labelTarifFixe = new System.Windows.Forms.Label();
             this.textBoxTarifFixe = new System.Windows.Forms.TextBox();
             this.buttonModify = new System.Windows.Forms.Button();
+            this.buttonImportXml = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListPrice)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,6 +96,7 @@
             // 
             // buttonModify
             // 
+            this.buttonModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonModify.Location = new System.Drawing.Point(415, 284);
             this.buttonModify.Name = "buttonModify";
             this.buttonModify.Size = new System.Drawing.Size(75, 23);
@@ -103,11 +105,23 @@
             this.buttonModify.UseVisualStyleBackColor = true;
             this.buttonModify.Click += new System.EventHandler(this.buttonModify_Click);
             // 
+            // buttonImportXml
+            // 
+            this.buttonImportXml.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonImportXml.Location = new System.Drawing.Point(606, 284);
+            this.buttonImportXml.Name = "buttonImportXml";
+            this.buttonImportXml.Size = new System.Drawing.Size(75, 23);
+            this.buttonImportXml.TabIndex = 8;
+            this.buttonImportXml.Text = "buttonImport";
+            this.buttonImportXml.UseVisualStyleBackColor = true;
+            this.buttonImportXml.Click += new System.EventHandler(this.buttonImportXml_Click);
+            // 
             // SubFormListPrice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(694, 351);
+            this.Controls.Add(this.buttonImportXml);
             this.Controls.Add(this.buttonModify);
             this.Controls.Add(this.labelTarifFixe);
             this.Controls.Add(this.textBoxTarifFixe);
@@ -132,5 +146,6 @@
         private System.Windows.Forms.Label labelTarifFixe;
         private System.Windows.Forms.TextBox textBoxTarifFixe;
         private System.Windows.Forms.Button buttonModify;
+        private System.Windows.Forms.Button buttonImportXml;
     }
 }

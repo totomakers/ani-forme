@@ -78,6 +78,7 @@ namespace GUI
         public static String SUB_FORM_LIST_PRICE_LABEL_LIBELLE = "Libellé";
         public static String SUB_FORM_LIST_PRICE_LABEL_TARIF_FIXE = "Tarif";
         public static String SUB_FORM_LIST_PRICE_BTN_MODIFY = "Modifier";
+        public static String SUB_FORM_LIST_PRICE_BTN_IMPORT = "Import XML";
     }
 }
 

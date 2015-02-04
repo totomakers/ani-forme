@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Xml;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace GUI
 {
@@ -27,6 +30,7 @@ namespace GUI
             this.labelLibelle.Text = GUI.Lang.SUB_FORM_LIST_PRICE_LABEL_LIBELLE;
             this.labelTarifFixe.Text = GUI.Lang.SUB_FORM_LIST_PRICE_LABEL_TARIF_FIXE;
             this.buttonModify.Text = GUI.Lang.SUB_FORM_LIST_PRICE_BTN_MODIFY;
+            this.buttonImportXml.Text = GUI.Lang.SUB_FORM_LIST_PRICE_BTN_IMPORT;
 
         }
 
@@ -52,6 +56,16 @@ namespace GUI
             BLL.ListPriceMgr.CreateBareme(dataGridViewListPrice.SelectedCells[0].OwningRow.Cells[0].FormattedValue.ToString(),
                                           dataGridViewListPrice.SelectedCells[0].OwningRow.Cells[1].FormattedValue.ToString(),
                                           this.textBoxTarifFixe.Text);
+            this.Update_Data();
+        }
+
+        private void buttonImportXml_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                BLL.ListPriceMgr.ImportXml(openFileDialog1.FileName);
+            }
             this.Update_Data();
         }
         
