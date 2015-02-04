@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class SubFormMedicalFolder
+    partial class SubFormDossierMedical
     {
         /// <summary>
         /// Required designer variable.

@@ -12,7 +12,7 @@ namespace DAL
     public class Vaccins
     {
 
-        public static List<BO.Vaccins> GetVaccins()
+        public static List<BO.Vaccins> GetAll()
         {
             try
             {
@@ -28,7 +28,7 @@ namespace DAL
             }
         }
 
-        public static BO.Vaccins GetVaccin(Guid idParam)
+        public static BO.Vaccins Get(Guid idParam)
         {
             try
             {

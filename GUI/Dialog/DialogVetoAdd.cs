@@ -12,9 +12,9 @@ using BO;
 
 namespace GUI.Dialog
 {
-    public partial class DialogVeterinaryAdd : Form
+    public partial class DialogVetoAdd : Form
     {
-        public DialogVeterinaryAdd()
+        public DialogVetoAdd()
         {
             InitializeComponent();
             I18N();

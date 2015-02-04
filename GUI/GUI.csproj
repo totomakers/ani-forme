@@ -44,17 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dialog\DialogVeterinaryAdd.cs">
+    <Compile Include="Dialog\DialogVetoAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialog\DialogVeterinaryAdd.Designer.cs">
-      <DependentUpon>DialogVeterinaryAdd.cs</DependentUpon>
+    <Compile Include="Dialog\DialogVetoAdd.Designer.cs">
+      <DependentUpon>DialogVetoAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dialog\DialogVeterinaryReset.cs">
+    <Compile Include="Dialog\DialogVetoReset.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialog\DialogVeterinaryReset.Designer.cs">
-      <DependentUpon>DialogVeterinaryReset.cs</DependentUpon>
+    <Compile Include="Dialog\DialogVetoReset.Designer.cs">
+      <DependentUpon>DialogVetoReset.cs</DependentUpon>
     </Compile>
     <Compile Include="SubFormAgenda.cs">
       <SubType>Form</SubType>
@@ -62,35 +62,35 @@
     <Compile Include="SubFormAgenda.Designer.cs">
       <DependentUpon>SubFormAgenda.cs</DependentUpon>
     </Compile>
-    <Compile Include="SubFormFolderCustomerAnimal.cs">
+    <Compile Include="SubFormDossierClientAnimal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SubFormFolderCustomerAnimal.Designer.cs">
-      <DependentUpon>SubFormFolderCustomerAnimal.cs</DependentUpon>
+    <Compile Include="SubFormDossierClientAnimal.Designer.cs">
+      <DependentUpon>SubFormDossierClientAnimal.cs</DependentUpon>
     </Compile>
-    <Compile Include="SubFormMedicalFolder.cs">
+    <Compile Include="SubFormDossierMedical.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SubFormMedicalFolder.Designer.cs">
-      <DependentUpon>SubFormMedicalFolder.cs</DependentUpon>
+    <Compile Include="SubFormDossierMedical.Designer.cs">
+      <DependentUpon>SubFormDossierMedical.cs</DependentUpon>
     </Compile>
-    <Compile Include="SubFormReminders.cs">
+    <Compile Include="SubFormRelances.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SubFormReminders.Designer.cs">
-      <DependentUpon>SubFormReminders.cs</DependentUpon>
+    <Compile Include="SubFormRelances.Designer.cs">
+      <DependentUpon>SubFormRelances.cs</DependentUpon>
     </Compile>
-    <Compile Include="SubFormTakeRdv.cs">
+    <Compile Include="SubFormPrendreRdv.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SubFormTakeRdv.Designer.cs">
-      <DependentUpon>SubFormTakeRdv.cs</DependentUpon>
+    <Compile Include="SubFormPrendreRdv.Designer.cs">
+      <DependentUpon>SubFormPrendreRdv.cs</DependentUpon>
     </Compile>
-    <Compile Include="SubFormListPrice.cs">
+    <Compile Include="SubFormBaremes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SubFormListPrice.Designer.cs">
-      <DependentUpon>SubFormListPrice.cs</DependentUpon>
+    <Compile Include="SubFormBaremes.Designer.cs">
+      <DependentUpon>SubFormBaremes.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
@@ -98,17 +98,17 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="SubFormUpdateStockVaccin.cs">
+    <Compile Include="SubFormMiseAJourStockVaccins.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SubFormUpdateStockVaccin.Designer.cs">
-      <DependentUpon>SubFormUpdateStockVaccin.cs</DependentUpon>
+    <Compile Include="SubFormMiseAJourStockVaccins.Designer.cs">
+      <DependentUpon>SubFormMiseAJourStockVaccins.cs</DependentUpon>
     </Compile>
-    <Compile Include="SubFormVeterinary.cs">
+    <Compile Include="SubFormVeto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SubFormVeterinary.Designer.cs">
-      <DependentUpon>SubFormVeterinary.cs</DependentUpon>
+    <Compile Include="SubFormVeto.Designer.cs">
+      <DependentUpon>SubFormVeto.cs</DependentUpon>
     </Compile>
     <Compile Include="Lang.cs" />
     <Compile Include="FormLogin.cs">
@@ -119,11 +119,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Dialog\DialogVeterinaryAdd.resx">
-      <DependentUpon>DialogVeterinaryAdd.cs</DependentUpon>
+    <EmbeddedResource Include="Dialog\DialogVetoAdd.resx">
+      <DependentUpon>DialogVetoAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialog\DialogVeterinaryReset.resx">
-      <DependentUpon>DialogVeterinaryReset.cs</DependentUpon>
+    <EmbeddedResource Include="Dialog\DialogVetoReset.resx">
+      <DependentUpon>DialogVetoReset.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
@@ -131,11 +131,14 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SubFormListPrice.resx">
-      <DependentUpon>SubFormListPrice.cs</DependentUpon>
+    <EmbeddedResource Include="SubFormDossierClientAnimal.resx">
+      <DependentUpon>SubFormDossierClientAnimal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SubFormVeterinary.resx">
-      <DependentUpon>SubFormVeterinary.cs</DependentUpon>
+    <EmbeddedResource Include="SubFormBaremes.resx">
+      <DependentUpon>SubFormBaremes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubFormVeto.resx">
+      <DependentUpon>SubFormVeto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class SubFormMedicalFolder : Form
+    public partial class SubFormRelances : Form
     {
-        public SubFormMedicalFolder()
+        public SubFormRelances()
         {
             InitializeComponent();
         }

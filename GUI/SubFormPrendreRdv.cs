@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class SubFormTakeRdv : Form
+    public partial class SubFormPrendreRdv : Form
     {
-        public SubFormTakeRdv()
+        public SubFormPrendreRdv()
         {
             InitializeComponent();
         }

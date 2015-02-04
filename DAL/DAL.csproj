@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Account.cs" />
     <Compile Include="Baremes.cs" />
+    <Compile Include="Clients.cs" />
     <Compile Include="Properties\Connexion.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>

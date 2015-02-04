@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class SubFormTakeRdv
+    partial class SubFormPrendreRdv
     {
         /// <summary>
         /// Required designer variable.

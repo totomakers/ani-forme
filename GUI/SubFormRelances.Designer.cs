@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class SubFormUpdateStockVaccin
+    partial class SubFormRelances
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "SubFormUpdateStockVaccin";
+            this.Text = "SubFormReminders";
         }
 
         #endregion

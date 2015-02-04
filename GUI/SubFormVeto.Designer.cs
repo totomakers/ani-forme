@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class SubFormVeterinary
+    partial class SubFormVeto
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubFormVeterinary));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubFormVeto));
             this.panelMain = new System.Windows.Forms.Panel();
             this.dataGridViewVeterinary = new System.Windows.Forms.DataGridView();
             this.buttonReset = new System.Windows.Forms.Button();

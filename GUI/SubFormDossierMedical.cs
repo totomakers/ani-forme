@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class SubFormUpdateStockVaccin : Form
+    public partial class SubFormDossierMedical : Form
     {
-        public SubFormUpdateStockVaccin()
+        public SubFormDossierMedical()
         {
             InitializeComponent();
         }

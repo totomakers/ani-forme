@@ -1,6 +1,6 @@
 ﻿namespace GUI.Dialog
 {
-    partial class DialogVeterinaryAdd
+    partial class DialogVetoAdd
     {
         /// <summary>
         /// Required designer variable.

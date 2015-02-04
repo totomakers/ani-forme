@@ -1,6 +1,6 @@
 ﻿namespace GUI.Dialog
 {
-    partial class DialogVeterinaryReset
+    partial class DialogVetoReset
     {
         /// <summary>
         /// Required designer variable.

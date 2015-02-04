@@ -7,13 +7,13 @@ using System.Xml.Linq;
 
 namespace BLL
 {
-    public class ListPriceMgr
+    public class BaremesMgr
     {
         /// <summary>
         /// Retourne l'ensemble des barèmes
         /// </summary>
         /// <returns></returns>
-        public static List<BO.Baremes> GetBaremes()
+        public static List<BO.Baremes> GetAll()
         {
             List<BO.Baremes> list = DAL.Baremes.GetBaremes();
             return list;

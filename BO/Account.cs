@@ -29,19 +29,12 @@ namespace BO
         #endregion
 
         #region Getter/Setter
-
-        /// <summary>
-        /// Identifiant du compte
-        /// </summary>
         public Int32 Id
         {
             get { return id; }
             set { id = value; }
         }
 
-        /// <summary>
-        /// Getter/setter du nom d'utilisateur
-        /// </summary>
         public String Username
         {
             get { return username.ToUpper(); }

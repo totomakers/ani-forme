@@ -49,7 +49,7 @@ namespace GUI
             this.remindersToolStripMenuItem.Text = GUI.Lang.FORM_MAIN_MENUITEM_REMINDERS;
             this.updateStockVaccinToolStripMenuItem.Text = GUI.Lang.FORM_MAIN_MENUITEM_UPDATE_STOCK_VACCIN;
 
-            //VETERINARY
+            //VETO
             this.toolStripDropDownButtonVeterinary.Text = GUI.Lang.FORM_MAIN_TOOLSTRIP_VETERINARY;
             this.agendaToolStripMenuItem.Text = GUI.Lang.FORM_MAIN_MENUITEM_AGENDA;
             this.medicalFolderToolStripMenuItem.Text = GUI.Lang.FORM_MAIN_MENUITEM_MEDICAL_FOLDER;
@@ -76,27 +76,27 @@ namespace GUI
             mdiSubForm = new Dictionary<int, String>();
 
             //Secrétariat
-            mdiSubForm[this.takeRdvToolStripMenuItem.GetHashCode()] = "GUI.SubFormTakeRdv";
-            mdiSubForm[this.toolStripButtonRdv.GetHashCode()] = "GUI.SubFormTakeRdv";
+            mdiSubForm[this.takeRdvToolStripMenuItem.GetHashCode()] = "GUI.SubFormPrendreRdv";
+            mdiSubForm[this.toolStripButtonRdv.GetHashCode()] = "GUI.SubFormPrendreRdv";
             
-            mdiSubForm[this.folderCustomerAnimalToolStripMenuItem.GetHashCode()] = "GUI.SubFormFolderCustomerAnimal";
-            mdiSubForm[this.toolStripButtonCustomerAnimal.GetHashCode()] = "GUI.SubFormFolderCustomerAnimal";
+            mdiSubForm[this.folderCustomerAnimalToolStripMenuItem.GetHashCode()] = "GUI.SubFormDossierClientAnimal";
+            mdiSubForm[this.toolStripButtonCustomerAnimal.GetHashCode()] = "GUI.SubFormDossierClientAnimal";
 
-            mdiSubForm[this.remindersToolStripMenuItem.GetHashCode()] = "GUI.SubFormReminders";
-            mdiSubForm[this.toolStripButtonReminders.GetHashCode()] = "GUI.SubFormReminders";
+            mdiSubForm[this.remindersToolStripMenuItem.GetHashCode()] = "GUI.SubFormRelances";
+            mdiSubForm[this.toolStripButtonReminders.GetHashCode()] = "GUI.SubFormRelances";
 
-            mdiSubForm[this.updateStockVaccinToolStripMenuItem.GetHashCode()] = "GUI.SubFormUpdateStockVaccin";
+            mdiSubForm[this.updateStockVaccinToolStripMenuItem.GetHashCode()] = "GUI.SubFormMiseAJourStockVaccins";
 
             //Vétérinaires
             mdiSubForm[this.agendaToolStripMenuItem.GetHashCode()] = "GUI.SubFormAgenda";
             mdiSubForm[this.toolStripButtonAgenda.GetHashCode()] = "GUI.SubFormAgenda";
 
-            mdiSubForm[this.medicalFolderToolStripMenuItem.GetHashCode()] = "GUI.SubFormMedicalFolder";
-            mdiSubForm[this.toolStripButtonMedicalFolder.GetHashCode()] = "GUI.SubFormMedicalFolder";
+            mdiSubForm[this.medicalFolderToolStripMenuItem.GetHashCode()] = "GUI.SubFormDossierMedical";
+            mdiSubForm[this.toolStripButtonMedicalFolder.GetHashCode()] = "GUI.SubFormDossierMedical";
             
             //Paramètres
-            mdiSubForm[this.veterinariToolStripMenuItem.GetHashCode()] = "GUI.SubFormVeterinary";
-            mdiSubForm[this.listPriceToolStripMenuItem.GetHashCode()] = "GUI.SubFormListPrice";
+            mdiSubForm[this.veterinariToolStripMenuItem.GetHashCode()] = "GUI.SubFormVeto";
+            mdiSubForm[this.listPriceToolStripMenuItem.GetHashCode()] = "GUI.SubFormBaremes";
             
             //Limite a une seule instance de la fenètre liée
             uniqueInstanceSubForm = new List<int>();
@@ -152,8 +152,9 @@ namespace GUI
                 myForm.Show(); //afficher
                 myForm.BringToFront();
             }
-            catch (Exception /*ex*/)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 String msg = "L'objet {0} est liée a l'événement ClickOpenSubForm mais n'a pas de Form dans InitializeSubForm!";
                 MessageBox.Show(String.Format(msg, sender.ToString())); 
             }

@@ -13,12 +13,19 @@ namespace GUI
         //=========================
 
         public static String FORM_DEFAULT_TITLE = "Ani'Forme";
+
         public static String FORM_DEFAULT_ADD = "Ajouter";
         public static String FORM_DEFAULT_DELETE = "Supprimer";
         public static String FORM_DEFAULT_RESET = "Réinitialiser";
         public static String FORM_DEFAULT_VALIDATE = "Valider";
         public static String FORM_DEFAULT_CONFIRM = "Confirmer";
+
         public static String FORM_DEFAULT_ERROR_TITLE = "Erreur";
+
+        public static String FORM_DEFAULT_FIRST = "<< Premier";
+        public static String FORM_DEFAULT_LAST = "Dernier >>";
+        public static String FORM_DEFAULT_PREV = "< Précédent";
+        public static String FORM_DEFAULT_NEXT = "Suivant >";
 
         //=========================
         //FormLogin
@@ -29,7 +36,7 @@ namespace GUI
         public static String FORM_LOGIN_LIB_PASSWORD = "Mot de passe";
         public static String FORM_LOGIN_LOGIN_FAIL_TEXT = "La combinaison est invalide";
 
-        //==========================
+        //===========================
         //FormMain 
         //===========================
 
@@ -71,14 +78,33 @@ namespace GUI
         public static String DIALOG_VETERINARY_RESET_PASSWORD = "Nouveau mot de passe";
         public static String DIALOG_VETERINARY_RESET_CONFIRM_PASSWORD = "Confirmation du mdp";
 
-        //==========================
+        //===========================
         //SubFormListPrice 
         //===========================
-        public static String SUB_FORM_LIST_PRICE_TITLE = "Barème";
-        public static String SUB_FORM_LIST_PRICE_LABEL_LIBELLE = "Libellé";
-        public static String SUB_FORM_LIST_PRICE_LABEL_TARIF_FIXE = "Tarif";
-        public static String SUB_FORM_LIST_PRICE_BTN_MODIFY = "Modifier";
-        public static String SUB_FORM_LIST_PRICE_BTN_IMPORT = "Import XML";
+        public static String SUBFORM_LIST_PRICE_TITLE = "Barème";
+        public static String SUBFORM_LIST_PRICE_LIB_LIBELLE = "Libellé";
+        public static String SUBFORM_LIST_PRICE_LIB_TARIF_FIXE = "Tarif";
+        public static String SUBFORM_LIST_PRICE_BTN_MODIFY = "Modifier";
+        public static String SUBFORM_LIST_PRICE_BTN_IMPORT = "Import XML";
+
+        //============================
+        //SubFormFolderCustomerAnimal
+        //============================
+        public static String SUBFORM_FOLDERCUSTANI_TITLE = "Clients";
+        public static String SUBFORM_FOLDERCUSTANI_LIB_CODE = "Code";
+        public static String SUBFORM_FOLDERCUSTANI_LIB_FIRSTNAME = "Nom";
+        public static String SUBFORM_FOLDERCUSTANI_LIB_LASTNAME = "Prénom";
+        public static String SUBFORM_FOLDERCUSTANI_LIB_ADRESSE = "Addresse";
+        public static String SUBFORM_FOLDERCUSTANI_LIB_POSTALCODE = "Code Postal";
+        public static String SUBFORM_FOLDERCUSTANI_LIB_CITY = "Ville";
+
+        public static String SUBFORM_FOLDERCUSTANI_ADD_CUST = "Ajouter un client";
+        public static String SUBFORM_FOLDERCUSTANI_DEL_CUST = "Supprimer le client";
+        public static String SUBFORM_FOLDERCUSTANI_ADD_ANI = "Ajouter animal";
+        public static String SUBFORM_FOLDERCUSTANI_DELETE_ANI = "Supprimer animal";
+        public static String SUBFORM_FOLDERCUSTANI_TITLE_SUCCEFULL_ARCHIVE = "Client archivé";
+        public static String SUBFORM_FOLDERCUSTANI_SUCCEFULL_ARCHIVE = "Le client {0} a été archivé !";
+
     }
 }
 

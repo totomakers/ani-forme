@@ -256,6 +256,7 @@
             this.Controls.Add(this.toolStripTop);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
+            this.KeyPreview = true;
             this.Name = "FormMain";
             this.Text = "FormMain";
             this.toolStripTop.ResumeLayout(false);

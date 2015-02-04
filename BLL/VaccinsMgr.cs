@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class VaccineMgr
+    public class VaccinsMgr
     {
         /// <summary>
         /// Retourne l'ensemble des vaccins
         /// </summary>
         /// <returns></returns>
-        public static List<BO.Vaccins> GetVaccins()
+        public static List<BO.Vaccins> GetAll()
         {
-            return DAL.Vaccins.GetVaccins();
+            return DAL.Vaccins.GetAll();
         }
     }
 }

@@ -13,9 +13,9 @@ using GUI.Dialog;
 
 namespace GUI
 {
-    public partial class SubFormVeterinary : Form
+    public partial class SubFormVeto : Form
     {
-        public SubFormVeterinary()
+        public SubFormVeto()
         {
             InitializeComponent();
             I18N();
@@ -73,7 +73,7 @@ namespace GUI
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            DialogVeterinaryAdd dialog = new DialogVeterinaryAdd();
+            DialogVetoAdd dialog = new DialogVetoAdd();
             dialog.FormClosed += OnDialogClose;
             dialog.ShowDialog();
 
@@ -82,7 +82,7 @@ namespace GUI
         private void buttonReset_Click(object sender, EventArgs e)
         {
             BO.Veterinaires veto = (BO.Veterinaires)this.dataGridViewVeterinary.CurrentRow.DataBoundItem;
-            DialogVeterinaryReset dialog = new DialogVeterinaryReset(veto.Account);
+            DialogVetoReset dialog = new DialogVetoReset(veto.Account);
             dialog.FormClosed += OnDialogClose;
             dialog.ShowDialog();
         }

@@ -12,11 +12,11 @@ using BLL;
 
 namespace GUI.Dialog
 {
-    public partial class DialogVeterinaryReset : Form
+    public partial class DialogVetoReset : Form
     {
         private BO.Account account;
 
-        public DialogVeterinaryReset(BO.Account account)
+        public DialogVetoReset(BO.Account account)
         {
             InitializeComponent();
             I18N();

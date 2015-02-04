@@ -106,6 +106,7 @@ namespace BO
         {
             var numberFormatInfo = new NumberFormatInfo();
             numberFormatInfo.NumberDecimalSeparator = ".";
+            //@TODO Déplacer str dans une class
             switch (attribute)
             {
                 case "CodeGroupement" :

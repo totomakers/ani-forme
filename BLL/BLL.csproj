@@ -40,10 +40,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountMgr.cs" />
-    <Compile Include="ListPriceMgr.cs" />
+    <Compile Include="AnimauxMgr.cs" />
+    <Compile Include="ClientsMgr.cs" />
+    <Compile Include="BaremesMgr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VeterinairesMgr.cs" />
-    <Compile Include="VaccineMgr.cs" />
+    <Compile Include="VaccinsMgr.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BO\BO.csproj">

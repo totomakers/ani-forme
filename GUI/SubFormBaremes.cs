@@ -13,9 +13,9 @@ using System.Xml.Linq;
 
 namespace GUI
 {
-    public partial class SubFormListPrice : Form
+    public partial class SubFormBaremes : Form
     {
-        public SubFormListPrice()
+        public SubFormBaremes()
         {
             InitializeComponent();
             I18N();
@@ -26,11 +26,11 @@ namespace GUI
         /// </summary>
         private void I18N()
         {
-            this.Text = GUI.Lang.SUB_FORM_LIST_PRICE_TITLE;
-            this.labelLibelle.Text = GUI.Lang.SUB_FORM_LIST_PRICE_LABEL_LIBELLE;
-            this.labelTarifFixe.Text = GUI.Lang.SUB_FORM_LIST_PRICE_LABEL_TARIF_FIXE;
-            this.buttonModify.Text = GUI.Lang.SUB_FORM_LIST_PRICE_BTN_MODIFY;
-            this.buttonImportXml.Text = GUI.Lang.SUB_FORM_LIST_PRICE_BTN_IMPORT;
+            this.Text = GUI.Lang.SUBFORM_LIST_PRICE_TITLE;
+            this.labelLibelle.Text = GUI.Lang.SUBFORM_LIST_PRICE_LIB_LIBELLE;
+            this.labelTarifFixe.Text = GUI.Lang.SUBFORM_LIST_PRICE_LIB_TARIF_FIXE;
+            this.buttonModify.Text = GUI.Lang.SUBFORM_LIST_PRICE_BTN_MODIFY;
+            this.buttonImportXml.Text = GUI.Lang.SUBFORM_LIST_PRICE_BTN_IMPORT;
 
         }
 
@@ -42,7 +42,7 @@ namespace GUI
 
         private void Update_Data()
         {
-            this.dataGridViewListPrice.DataSource = BLL.ListPriceMgr.GetBaremes();
+            this.dataGridViewListPrice.DataSource = BLL.BaremesMgr.GetAll();
         }
 
         private void dataGridViewListPrice_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -53,7 +53,7 @@ namespace GUI
 
         private void buttonModify_Click(object sender, EventArgs e)
         {
-            BLL.ListPriceMgr.CreateBareme(dataGridViewListPrice.SelectedCells[0].OwningRow.Cells[0].FormattedValue.ToString(),
+            BLL.BaremesMgr.CreateBareme(dataGridViewListPrice.SelectedCells[0].OwningRow.Cells[0].FormattedValue.ToString(),
                                           dataGridViewListPrice.SelectedCells[0].OwningRow.Cells[1].FormattedValue.ToString(),
                                           this.textBoxTarifFixe.Text);
             this.Update_Data();
@@ -64,7 +64,7 @@ namespace GUI
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                BLL.ListPriceMgr.ImportXml(openFileDialog1.FileName);
+                BLL.BaremesMgr.ImportXml(openFileDialog1.FileName);
             }
             this.Update_Data();
         }
