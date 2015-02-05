@@ -60,5 +60,12 @@ namespace BO
             set { account = value; }
         }
         #endregion
+
+        #region Methodes
+        public override string ToString()
+        {
+            return NomVeto;
+        }
+        #endregion
     }
 }

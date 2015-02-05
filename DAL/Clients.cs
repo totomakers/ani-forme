@@ -91,6 +91,22 @@ namespace DAL
             }
         }
 
+        public static BO.Clients Get(Guid id)
+        {
+            try
+            {
+                var query = @"SELECT * FROM  Clients c WHERE CodeClient = @code";
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                BO.Clients results = cnx.Query<BO.Clients>(query, new { code = id }).ToList<BO.Clients>()[0];
+                SqlConnexion.CloseConnexion(cnx);
+
+                return results;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
 
         public static BO.Clients Create(BO.Clients client)
         {

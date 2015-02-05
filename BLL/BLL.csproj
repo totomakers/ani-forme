@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountMgr.cs" />
+    <Compile Include="AgendaMgr.cs" />
     <Compile Include="AnimauxMgr.cs" />
     <Compile Include="ClientsMgr.cs" />
     <Compile Include="BaremesMgr.cs" />

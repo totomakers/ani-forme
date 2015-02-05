@@ -108,6 +108,10 @@ namespace BO
         {
             return NomClient + " " + PrenomClient;
         }
+        public override string ToString()
+        {
+            return getFullName();
+        }
         #endregion
     }
 }
