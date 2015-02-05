@@ -106,6 +106,19 @@ namespace GUI
         public static String SUBFORM_FOLDERCUSTANI_TITLE_SUCCEFULL_ARCHIVE = "Client archivé";
         public static String SUBFORM_FOLDERCUSTANI_SUCCEFULL_ARCHIVE = "Le client {0} a été archivé !";
         public static String SUBFORM_FOLDERCUSTANI_SEARCH = "Flitrer";
+
+        //============================
+        //SubFormPrendreRdv
+        //============================
+        public static String SUBFORM_PRENDRERDV_TITLE = "Prise de rendez-vous";
+        public static String SUBFORM_PRENDRERDV_GB_CLIENT = "Client";
+        public static String SUBFORM_PRENDRERDV_GB_VETO = "Vétérinaires";
+        public static String SUBFORM_PRENDRERDV_GB_DATE = "Date";
+        public static String SUBFORM_PRENDRERDV_BTN_SUBMIT = "Valider";
+        public static String SUBFORM_PRENDRERDV_BTN_DELETE = "Supprimer";
+        public static String SUBFORM_PRENDRERDV_BTN_CANCEL = "Annuler";
+
+        
     }
 }
 

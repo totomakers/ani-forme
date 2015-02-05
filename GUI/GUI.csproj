@@ -142,6 +142,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubFormMiseAJourStockVaccins.resx">
       <DependentUpon>SubFormMiseAJourStockVaccins.cs</DependentUpon>
+    <EmbeddedResource Include="SubFormPrendreRdv.resx">
+      <DependentUpon>SubFormPrendreRdv.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubFormVeto.resx">
       <DependentUpon>SubFormVeto.cs</DependentUpon>

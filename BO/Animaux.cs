@@ -100,5 +100,12 @@ namespace BO
             set { archive = value; }
         }
         #endregion
+
+        #region Methodes
+        public override string ToString()
+        {
+            return NomAnimal;
+        }
+        #endregion
     }
 }

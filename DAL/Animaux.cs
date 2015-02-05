@@ -53,7 +53,7 @@ namespace DAL
                 String query = @"SELECT * FROM Animaux a
                                  LEFT JOIN Clients c ON a.CodeClient = c.CodeClient
                                  LEFT JOIN Races r ON a.Race = r.Race AND a.Espece = r.Espece
-                                 WHERE Archive = @archive
+                                 WHERE a.Archive = @archive
                                  ORDER BY a.CodeAnimal";
 
                 List<BO.Animaux> results = cnx.Query<BO.Animaux, BO.Clients, BO.Races, BO.Animaux>(query,
@@ -86,7 +86,7 @@ namespace DAL
                                  LEFT JOIN Clients c ON a.CodeClient = c.CodeClient
                                  LEFT JOIN Races r ON a.Race = r.Race AND a.Espece = r.Espece
                                  WHERE a.CodeClient = @codeClient  
-                                 AND Archive = @archive
+                                 AND a.Archive = @archive
                                  ORDER BY a.CodeAnimal";
 
                 List<BO.Animaux> results = cnx.Query<BO.Animaux, BO.Clients, BO.Races, BO.Animaux>(query,
