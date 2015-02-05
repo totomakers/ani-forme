@@ -15,15 +15,25 @@ namespace GUI
         public SubFormPrendreRdv()
         {
             InitializeComponent();
-            //I18N();
+            I18N();
         }
 
+        public void I18N()
+        {
+            this.Text = GUI.Lang.SUBFORM_PRENDRERDV_TITLE;
+            this.buttonCancel.Text = GUI.Lang.SUBFORM_PRENDRERDV_BTN_CANCEL;
+            this.buttonDelete.Text = GUI.Lang.SUBFORM_PRENDRERDV_BTN_DELETE;
+            this.buttonSubmit.Text = GUI.Lang.SUBFORM_PRENDRERDV_BTN_SUBMIT;
+            this.groupBoxClient.Text = GUI.Lang.SUBFORM_PRENDRERDV_GB_CLIENT;
+            this.groupBoxDate.Text = GUI.Lang.SUBFORM_PRENDRERDV_GB_DATE;
+            this.groupBoxVeto.Text = GUI.Lang.SUBFORM_PRENDRERDV_GB_VETO;
+        }
+        
         private void SubFormPrendreRdv_Load(object sender, EventArgs e)
         {
-
             UpdateContent();
         }
-
+        
         private void numericUpDownMin_ValueChanged(object sender, EventArgs e)
         {
             if (this.numericUpDownMin.Value == 60)
@@ -42,7 +52,9 @@ namespace GUI
 
         private void buttonAddClient_Click(object sender, EventArgs e)
         {
-            //TODO Ouverture de la subform client en mode ajout
+            SubFormDossierClientAnimal frm = new SubFormDossierClientAnimal();
+            frm.CreateMode = true;
+            frm.ShowDialog();
         }
 
         private void buttonAddAnimal_Click(object sender, EventArgs e)
@@ -86,7 +98,7 @@ namespace GUI
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void comboBoxClient_SelectedIndexChanged(object sender, EventArgs e)
@@ -100,6 +112,21 @@ namespace GUI
             this.comboBoxClient.DataSource = BLL.ClientsMgr.GetAll();
             this.comboBoxVeterianire.DataSource = BLL.VeterinairesMgr.GetAll();
             this.dataGridViewAgenda.DataSource = BLL.AgendaMgr.GetAll();
+        }
+
+        private void buttonUrgence_Click(object sender, EventArgs e)
+        {
+            BO.Veterinaires veto = (BO.Veterinaires)this.comboBoxVeterianire.SelectedItem;
+            BO.Animaux animal = (BO.Animaux)this.comboBoxAnimal.SelectedItem;
+            DateTime date = DateTime.Now;
+
+            BO.Agenda agenda = new BO.Agenda();
+            agenda.Veterinaires = veto;
+            agenda.DateRdv = date;
+            agenda.Animal = animal;
+
+            BLL.AgendaMgr.Add(agenda);
+            UpdateContent();
         }
     }
 }
