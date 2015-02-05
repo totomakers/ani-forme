@@ -54,6 +54,8 @@
             this.buttonDeleteAni = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.checkBoxSearch = new System.Windows.Forms.CheckBox();
+            this.buttonValidateAddCli = new System.Windows.Forms.Button();
+            this.buttonCancelAddCli = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAnimals)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,12 +102,13 @@
             // buttonAdd
             // 
             this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAdd.Location = new System.Drawing.Point(419, 40);
+            this.buttonAdd.Location = new System.Drawing.Point(523, 40);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(116, 20);
             this.buttonAdd.TabIndex = 4;
             this.buttonAdd.Text = "buttonAdd";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonDelete
             // 
@@ -121,7 +124,7 @@
             // 
             this.textBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSearch.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.textBoxSearch.Location = new System.Drawing.Point(541, 40);
+            this.textBoxSearch.Location = new System.Drawing.Point(645, 40);
             this.textBoxSearch.MaxLength = 50;
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(138, 20);
@@ -153,6 +156,7 @@
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(224, 20);
             this.textBoxFirstName.TabIndex = 12;
+            this.textBoxFirstName.TextChanged += new System.EventHandler(this.doCheck);
             // 
             // labelFirstName
             // 
@@ -170,6 +174,7 @@
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(224, 20);
             this.textBoxLastName.TabIndex = 14;
+            this.textBoxLastName.TextChanged += new System.EventHandler(this.doCheck);
             // 
             // labelLastName
             // 
@@ -187,6 +192,7 @@
             this.textBoxAdresse.Name = "textBoxAdresse";
             this.textBoxAdresse.Size = new System.Drawing.Size(224, 20);
             this.textBoxAdresse.TabIndex = 16;
+            this.textBoxAdresse.TextChanged += new System.EventHandler(this.doCheck);
             // 
             // labelAdresse
             // 
@@ -204,6 +210,7 @@
             this.textBoxPostalCode.Name = "textBoxPostalCode";
             this.textBoxPostalCode.Size = new System.Drawing.Size(223, 20);
             this.textBoxPostalCode.TabIndex = 18;
+            this.textBoxPostalCode.TextChanged += new System.EventHandler(this.doCheck);
             // 
             // labelPostalCode
             // 
@@ -221,6 +228,7 @@
             this.textBoxCity.Name = "textBoxCity";
             this.textBoxCity.Size = new System.Drawing.Size(223, 20);
             this.textBoxCity.TabIndex = 20;
+            this.textBoxCity.TextChanged += new System.EventHandler(this.doCheck);
             // 
             // labelCity
             // 
@@ -237,22 +245,28 @@
             this.textBoxAdresse2.Name = "textBoxAdresse2";
             this.textBoxAdresse2.Size = new System.Drawing.Size(224, 20);
             this.textBoxAdresse2.TabIndex = 21;
+            this.textBoxAdresse2.TextChanged += new System.EventHandler(this.doCheck);
             // 
             // dataGridViewAnimals
             // 
+            this.dataGridViewAnimals.AllowUserToAddRows = false;
+            this.dataGridViewAnimals.AllowUserToDeleteRows = false;
             this.dataGridViewAnimals.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewAnimals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAnimals.Location = new System.Drawing.Point(245, 66);
             this.dataGridViewAnimals.Name = "dataGridViewAnimals";
-            this.dataGridViewAnimals.Size = new System.Drawing.Size(539, 354);
+            this.dataGridViewAnimals.ReadOnly = true;
+            this.dataGridViewAnimals.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGridViewAnimals.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewAnimals.Size = new System.Drawing.Size(643, 354);
             this.dataGridViewAnimals.TabIndex = 22;
             // 
             // buttonAddAni
             // 
             this.buttonAddAni.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAddAni.Location = new System.Drawing.Point(581, 426);
+            this.buttonAddAni.Location = new System.Drawing.Point(685, 426);
             this.buttonAddAni.Name = "buttonAddAni";
             this.buttonAddAni.Size = new System.Drawing.Size(97, 23);
             this.buttonAddAni.TabIndex = 8;
@@ -262,7 +276,7 @@
             // buttonDeleteAni
             // 
             this.buttonDeleteAni.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDeleteAni.Location = new System.Drawing.Point(684, 426);
+            this.buttonDeleteAni.Location = new System.Drawing.Point(788, 426);
             this.buttonDeleteAni.Name = "buttonDeleteAni";
             this.buttonDeleteAni.Size = new System.Drawing.Size(100, 23);
             this.buttonDeleteAni.TabIndex = 23;
@@ -291,7 +305,7 @@
             this.checkBoxSearch.Checked = true;
             this.checkBoxSearch.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxSearch.Cursor = System.Windows.Forms.Cursors.Default;
-            this.checkBoxSearch.Location = new System.Drawing.Point(685, 40);
+            this.checkBoxSearch.Location = new System.Drawing.Point(789, 40);
             this.checkBoxSearch.Name = "checkBoxSearch";
             this.checkBoxSearch.Size = new System.Drawing.Size(99, 20);
             this.checkBoxSearch.TabIndex = 25;
@@ -300,11 +314,35 @@
             this.checkBoxSearch.UseVisualStyleBackColor = true;
             this.checkBoxSearch.CheckedChanged += new System.EventHandler(this.checkBoxSearch_CheckedChanged);
             // 
+            // buttonValidateAddCli
+            // 
+            this.buttonValidateAddCli.Location = new System.Drawing.Point(139, 357);
+            this.buttonValidateAddCli.Name = "buttonValidateAddCli";
+            this.buttonValidateAddCli.Size = new System.Drawing.Size(100, 23);
+            this.buttonValidateAddCli.TabIndex = 26;
+            this.buttonValidateAddCli.Text = "buttonValidateAddCli";
+            this.buttonValidateAddCli.UseVisualStyleBackColor = true;
+            this.buttonValidateAddCli.Visible = false;
+            this.buttonValidateAddCli.Click += new System.EventHandler(this.buttonValidateAddCli_Click);
+            // 
+            // buttonCancelAddCli
+            // 
+            this.buttonCancelAddCli.Location = new System.Drawing.Point(17, 357);
+            this.buttonCancelAddCli.Name = "buttonCancelAddCli";
+            this.buttonCancelAddCli.Size = new System.Drawing.Size(100, 23);
+            this.buttonCancelAddCli.TabIndex = 27;
+            this.buttonCancelAddCli.Text = "buttonCancelAddCli";
+            this.buttonCancelAddCli.UseVisualStyleBackColor = true;
+            this.buttonCancelAddCli.Visible = false;
+            this.buttonCancelAddCli.Click += new System.EventHandler(this.buttonCancelAddCli_Click);
+            // 
             // SubFormDossierClientAnimal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(796, 458);
+            this.ClientSize = new System.Drawing.Size(900, 458);
+            this.Controls.Add(this.buttonCancelAddCli);
+            this.Controls.Add(this.buttonValidateAddCli);
             this.Controls.Add(this.checkBoxSearch);
             this.Controls.Add(this.buttonFirst);
             this.Controls.Add(this.buttonPrev);
@@ -368,6 +406,8 @@
         private System.Windows.Forms.Button buttonDeleteAni;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.CheckBox checkBoxSearch;
+        private System.Windows.Forms.Button buttonValidateAddCli;
+        private System.Windows.Forms.Button buttonCancelAddCli;
 
     }
 }

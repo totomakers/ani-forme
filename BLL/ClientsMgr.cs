@@ -45,5 +45,10 @@ namespace BLL
         {
             return DAL.Clients.Archive(client, true);
         }
+
+        public static BO.Clients Create(BO.Clients client)
+        {
+            return DAL.Clients.Create(client);
+        }
     }
 }

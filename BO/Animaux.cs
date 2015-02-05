@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,9 @@ namespace BO
         private String nomAnimal;
         private Char sexe;
         private String couleur;
-        private BO.Races race;
+        private String race;
+        private String espece;
+        private BO.Races raceEntity;
         private BO.Clients client;
         private String tatouage;
         private String antecedent;
@@ -27,12 +30,14 @@ namespace BO
         #endregion
 
         #region Getter/Setter
+        [DisplayName("Code")]
         public Guid CodeAnimal
         {
             get { return codeAnimal; }
             set { codeAnimal=value; }
         }
 
+        [DisplayName("Nom")]
         public String NomAnimal
         {
             get { return nomAnimal; }
@@ -51,10 +56,23 @@ namespace BO
             set { couleur = value; }
         }
 
-        public BO.Races Race
+        public String Race
         {
             get { return race; }
             set { race = value; }
+        }
+
+        public String Espece
+        {
+            get { return espece; }
+            set { espece = value; }
+        }
+
+        [Browsable(false)]
+        public BO.Races RaceEntity
+        {
+            get { return raceEntity; }
+            set { raceEntity = value; }
         }
 
         public BO.Clients Client
@@ -75,6 +93,7 @@ namespace BO
             set { antecedent = value; }
         }
 
+        [Browsable(false)]
         public Boolean Archive
         {
             get { return archive; }

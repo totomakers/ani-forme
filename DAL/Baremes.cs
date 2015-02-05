@@ -69,6 +69,7 @@ namespace DAL
             }
         }
 
+        //@TODO : Faire une seule fonction avec @archived en params
         public static bool ArchiveBareme(BO.Baremes bareme)
         {
             try

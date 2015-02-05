@@ -63,17 +63,6 @@ namespace BLL
         }
 
         /// <summary>
-        /// Création d'un utilisateur de test
-        /// </summary>
-        public static void jeuxEssai()
-        {
-            BO.Account account = new BO.Account();
-            account.Username = "test";
-            account.PasswordSHA1 = BO.Account.getSHA1Password("test","test");
-            DAL.Account.Create(account);
-        }
-
-        /// <summary>
         /// Création d'un compte
         /// Retourne le même compte avec son id en base de donnée
         /// </summary>

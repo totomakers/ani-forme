@@ -21,13 +21,6 @@ namespace BO
         }
         #endregion
 
-        #region Methodes
-        public override string ToString()
-        {
-            return Username;
-        }
-        #endregion
-
         #region Getter/Setter
         public Int32 Id
         {
@@ -53,6 +46,14 @@ namespace BO
         #endregion
 
         #region Methodes
+        /// <summary>
+        /// Surcharge de la méthode ToString
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return Username;
+        }
 
         /// <summary>
         /// Permet de définir le nouveau mot de passe pour l'utilisateur

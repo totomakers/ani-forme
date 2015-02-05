@@ -97,6 +97,7 @@ namespace GUI
             mdiSubForm[this.veterinariToolStripMenuItem.GetHashCode()] = "GUI.SubFormVeto";
             mdiSubForm[this.listPriceToolStripMenuItem.GetHashCode()] = "GUI.SubFormBaremes";
             
+            //===========================
             //Limite a une seule instance de la fenètre liée
             uniqueInstanceSubForm = new List<int>();
             
@@ -105,6 +106,7 @@ namespace GUI
             uniqueInstanceSubForm.Add(this.folderCustomerAnimalToolStripMenuItem.GetHashCode());
             uniqueInstanceSubForm.Add(this.remindersToolStripMenuItem.GetHashCode());
             uniqueInstanceSubForm.Add(this.updateStockVaccinToolStripMenuItem.GetHashCode());
+            uniqueInstanceSubForm.Add(this.toolStripButtonCustomerAnimal.GetHashCode());
             
             //Vétérinaires
             uniqueInstanceSubForm.Add(this.agendaToolStripMenuItem.GetHashCode());

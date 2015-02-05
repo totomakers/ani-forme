@@ -86,17 +86,7 @@ namespace GUI.Dialog
         //EVENTS ===========
         //==================
 
-        private void textBoxName_TextChanged(object sender, EventArgs e)
-        {
-            CheckTextBox();
-        }
-
-        private void textBoxUsername_TextChanged(object sender, EventArgs e)
-        {
-            CheckTextBox();
-        }
-
-        private void textBoxPassword_TextChanged(object sender, EventArgs e)
+        private void doCheck(object sender, EventArgs e)
         {
             CheckTextBox();
         }

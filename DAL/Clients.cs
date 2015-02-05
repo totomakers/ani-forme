@@ -54,6 +54,12 @@ namespace DAL
             }
         }
 
+        /// <summary>
+        /// Retourne tout les clients dont le nom est %name% archivé ou non
+        /// </summary>
+        /// <param name="archived"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static List<BO.Clients> GetAll(bool archived, string name = "")
         {
             var query = String.Format(@"SELECT * FROM  Clients c WHERE c.Archive = @archive and NomClient LIKE (@name) ORDER BY c.CodeClient");
@@ -83,6 +89,12 @@ namespace DAL
             {
                 throw e;
             }
+        }
+
+
+        public static BO.Clients Create(BO.Clients client)
+        {
+            return null;
         }
     }
 }

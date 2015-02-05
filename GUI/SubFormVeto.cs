@@ -52,6 +52,9 @@ namespace GUI
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
+            if (this.dataGridViewVeterinary.CurrentRow == null)
+                return;
+
             BO.Veterinaires veto = (BO.Veterinaires) this.dataGridViewVeterinary.CurrentRow.DataBoundItem;
             if(veto != null)
             {
@@ -81,6 +84,9 @@ namespace GUI
 
         private void buttonReset_Click(object sender, EventArgs e)
         {
+            if (this.dataGridViewVeterinary.CurrentRow == null)
+                return;
+
             BO.Veterinaires veto = (BO.Veterinaires)this.dataGridViewVeterinary.CurrentRow.DataBoundItem;
             DialogVetoReset dialog = new DialogVetoReset(veto.Account);
             dialog.FormClosed += OnDialogClose;

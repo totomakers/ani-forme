@@ -19,6 +19,7 @@ namespace GUI
         public static String FORM_DEFAULT_RESET = "Réinitialiser";
         public static String FORM_DEFAULT_VALIDATE = "Valider";
         public static String FORM_DEFAULT_CONFIRM = "Confirmer";
+        public static String FORM_DEFAULT_CANCEL = "Annuler";
 
         public static String FORM_DEFAULT_ERROR_TITLE = "Erreur";
 

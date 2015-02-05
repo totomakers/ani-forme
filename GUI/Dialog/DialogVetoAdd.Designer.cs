@@ -88,7 +88,7 @@
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(163, 20);
             this.textBoxName.TabIndex = 4;
-            this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
+            this.textBoxName.TextChanged += new System.EventHandler(this.doCheck);
             // 
             // textBoxUsername
             // 
@@ -98,7 +98,7 @@
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(163, 20);
             this.textBoxUsername.TabIndex = 5;
-            this.textBoxUsername.TextChanged += new System.EventHandler(this.textBoxUsername_TextChanged);
+            this.textBoxUsername.TextChanged += new System.EventHandler(this.doCheck);
             // 
             // textBoxPassword
             // 
@@ -108,7 +108,7 @@
             this.textBoxPassword.Size = new System.Drawing.Size(163, 20);
             this.textBoxPassword.TabIndex = 6;
             this.textBoxPassword.UseSystemPasswordChar = true;
-            this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
+            this.textBoxPassword.TextChanged += new System.EventHandler(this.doCheck);
             // 
             // DialogVeterinaryAdd
             // 

@@ -55,7 +55,7 @@
             this.textBoxPassword.Size = new System.Drawing.Size(166, 20);
             this.textBoxPassword.TabIndex = 1;
             this.textBoxPassword.UseSystemPasswordChar = true;
-            this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
+            this.textBoxPassword.TextChanged += new System.EventHandler(this.doCheck);
             // 
             // textBoxConfirmPassword
             // 
@@ -66,7 +66,7 @@
             this.textBoxConfirmPassword.Size = new System.Drawing.Size(165, 20);
             this.textBoxConfirmPassword.TabIndex = 2;
             this.textBoxConfirmPassword.UseSystemPasswordChar = true;
-            this.textBoxConfirmPassword.TextChanged += new System.EventHandler(this.textBoxConfirmPassword_TextChanged);
+            this.textBoxConfirmPassword.TextChanged += new System.EventHandler(this.doCheck);
             // 
             // labelConfirmPassword
             // 
