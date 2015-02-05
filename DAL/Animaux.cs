@@ -135,5 +135,26 @@ namespace DAL
                 throw e;
             }
         }
+
+
+        /// <summary>
+        /// Archive l'animal séléctionner
+        /// </summary>
+        /// <param name="animal"></param>
+        /// <returns></returns>
+        public static bool Archive(BO.Animaux animal)
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// Archive tout les animaux du client qui n'ont aucune facture 
+        /// </summary>
+        /// <param name="cli"></param>
+        /// <returns></returns>
+        public static bool ArchiveAllByClient(BO.Clients cli)
+        {
+            return false;
+        }
     }
 }

@@ -363,12 +363,20 @@ namespace GUI
             Int32 prevIndex = index;
 
             //Archivage du client en cours
-            if (BLL.ClientsMgr.Delete(currentClient))
+            try
             {
+                BLL.ClientsMgr.Delete(currentClient);  
                 MessageBox.Show(String.Format(GUI.Lang.SUBFORM_FOLDERCUSTANI_SUCCEFULL_ARCHIVE, currentClient.getFullName()), 
                                 GUI.Lang.SUBFORM_FOLDERCUSTANI_TITLE_SUCCEFULL_ARCHIVE, 
                                 MessageBoxButtons.OK, 
                                 MessageBoxIcon.Information);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message,
+                                GUI.Lang.FORM_DEFAULT_ERROR_TITLE,
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             }
 
             InitializeClientsList();

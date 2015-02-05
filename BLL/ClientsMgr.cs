@@ -41,11 +41,34 @@ namespace BLL
         /// </summary>
         /// <param name="client"></param>
         /// <returns></returns>
-        public static bool Delete(BO.Clients client)
+        public static void Delete(BO.Clients client)
         {
-            return DAL.Clients.Archive(client, true);
+            //Vérification client
+            Int32 factureImpayee = DAL.Factures.CountFactureByClient(client) - DAL.Factures.CountFactureEtatByClient(client, DAL.FactureEtat.PAYEE);
+            if (factureImpayee > 0)
+            {
+                throw new Exception(String.Format("Ce client a {0} facture impayée ! Il ne peut pas être supprimé", factureImpayee));
+            }
+
+            //Vérification animaux
+
+
+            //Archivage du client
+            try
+            {
+                DAL.Clients.Archive(client, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
+        /// <summary>
+        /// Creer le client passé en paramètre
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
         public static BO.Clients Create(BO.Clients client)
         {
             return DAL.Clients.Create(client);
