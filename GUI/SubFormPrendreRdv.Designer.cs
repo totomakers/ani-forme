@@ -118,18 +118,38 @@
             // numericUpDownMin
             // 
             this.numericUpDownMin.Location = new System.Drawing.Point(79, 64);
+            this.numericUpDownMin.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.numericUpDownMin.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
             this.numericUpDownMin.Name = "numericUpDownMin";
             this.numericUpDownMin.Size = new System.Drawing.Size(39, 20);
             this.numericUpDownMin.TabIndex = 12;
-            this.numericUpDownMin.ValueChanged += new System.EventHandler(this.numericUpDownMin_ValueChanged);
+            this.numericUpDownMin.ValueChanged += new System.EventHandler(this.UpAndDownCircle);
             // 
             // numericUpDownHeure
             // 
             this.numericUpDownHeure.Location = new System.Drawing.Point(6, 64);
+            this.numericUpDownHeure.Maximum = new decimal(new int[] {
+            24,
+            0,
+            0,
+            0});
+            this.numericUpDownHeure.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
             this.numericUpDownHeure.Name = "numericUpDownHeure";
             this.numericUpDownHeure.Size = new System.Drawing.Size(39, 20);
             this.numericUpDownHeure.TabIndex = 11;
-            this.numericUpDownHeure.ValueChanged += new System.EventHandler(this.numericUpDownHeure_ValueChanged);
+            this.numericUpDownHeure.ValueChanged += new System.EventHandler(this.UpAndDownCircle);
             // 
             // label1
             // 

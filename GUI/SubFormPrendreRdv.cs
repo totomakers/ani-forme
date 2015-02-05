@@ -33,21 +33,15 @@ namespace GUI
         {
             UpdateContent();
         }
-        
-        private void numericUpDownMin_ValueChanged(object sender, EventArgs e)
-        {
-            if (this.numericUpDownMin.Value == 60)
-                this.numericUpDownMin.Value = 0;
-            if (this.numericUpDownMin.Value == -1)
-                this.numericUpDownMin.Value = 59;
-        }
 
-        private void numericUpDownHeure_ValueChanged(object sender, EventArgs e)
+        private void UpAndDownCircle(object sender, EventArgs e)
         {
-            if (this.numericUpDownMin.Value == 24)
-                this.numericUpDownMin.Value = 0;
-            if (this.numericUpDownMin.Value == -1)
-                this.numericUpDownMin.Value = 23;
+            NumericUpDown num = (NumericUpDown)sender;
+
+            if (num.Value == num.Maximum)
+                num.Value = num.Minimum+1;
+            else if (num.Value == num.Minimum)
+                num.Value = num.Maximum-1;
         }
 
         private void buttonAddClient_Click(object sender, EventArgs e)
