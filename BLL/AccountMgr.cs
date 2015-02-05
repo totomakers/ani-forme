@@ -74,6 +74,11 @@ namespace BLL
             return DAL.Account.Get(account.Username);
         }
 
+        /// <summary>
+        /// Met a jour le compte passé en paramètre
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns></returns>
         public static bool Update(BO.Account account)
         {
             if (!isLogin(account.Id))

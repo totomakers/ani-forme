@@ -91,7 +91,11 @@ namespace DAL
             }
         }
 
-
+        /// <summary>
+        /// Creation d'un client
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
         public static BO.Clients Create(BO.Clients client)
         {
             return null;

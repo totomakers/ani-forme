@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BO;
+using BLL;
 
 namespace GUI
 {
@@ -15,6 +17,15 @@ namespace GUI
         public SubFormDossierMedical()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Construction d'un dossier médical avec un animal en param
+        /// Déactive la recherche
+        /// </summary>
+        /// <param name="animal"></param>
+        public SubFormDossierMedical(BO.Animaux animal)
+        {
         }
     }
 }

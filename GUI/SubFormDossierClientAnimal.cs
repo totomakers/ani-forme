@@ -432,12 +432,31 @@ namespace GUI
                 this.CurrentIndex = this.clientsList.IndexOf(finalCli);
         }
 
-        //Events textchaned on textBox
+        private void buttonDeleteAni_Click(object sender, EventArgs e)
+        {
+            if (this.dataGridViewAnimals.CurrentRow != null)
+            {
+                Animaux animal = (Animaux)this.dataGridViewAnimals.CurrentRow.DataBoundItem;
+                try
+                {
+                    AnimauxMgr.Delete(animal);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message,
+                                GUI.Lang.FORM_DEFAULT_ERROR_TITLE,
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                }
+            }
+        }
+
         private void doCheck(object sender, EventArgs e)
         {
             CheckTextBox();
         }
         #endregion
+
 
     }
 }

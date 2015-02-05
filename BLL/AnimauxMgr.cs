@@ -47,5 +47,29 @@ namespace BLL
         {
             return DAL.Animaux.GetAllByClient(client, archived);
         }
+
+        /// <summary>
+        /// Archive tout les animaux du clients passé en params
+        /// </summary>
+        /// <param name="client"></param>
+        public static void DeleteAllByClient(BO.Clients client)
+        {
+            //if()
+            throw new Exception(String.Format("Impossible d'archivé les animaux de {0}, certains on des consultations non payée", client.getFullName()));
+            
+            DAL.Animaux.ArchiveAllByClient(client);
+        }
+
+        /// <summary>
+        /// Archive l'animal passé en params
+        /// </summary>
+        /// <param name="animal"></param>
+        public static void Delete(BO.Animaux animal)
+        {
+            //if(DAL.Animaux.CountConsulation(animal, 
+                throw new Exception(String.Format("L'animal {0} a une consultation non payée", animal.NomAnimal));
+
+            DAL.Animaux.Archive(animal);
+        }
     }
 }

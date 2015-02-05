@@ -282,6 +282,7 @@
             this.buttonDeleteAni.TabIndex = 23;
             this.buttonDeleteAni.Text = "buttonDeleteAni";
             this.buttonDeleteAni.UseVisualStyleBackColor = true;
+            this.buttonDeleteAni.Click += new System.EventHandler(this.buttonDeleteAni_Click);
             // 
             // tableLayoutPanel1
             // 

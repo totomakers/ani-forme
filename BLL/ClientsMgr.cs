@@ -27,7 +27,12 @@ namespace BLL
             return DAL.Clients.GetAll(false);
         }
 
-
+        /// <summary>
+        /// Retourne l'ensemble des clients archivé ou non avec le params name dans leur nom
+        /// </summary>
+        /// <param name="archived"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static List<BO.Clients> GetAll(bool archived, string name)
         {
             if (!String.IsNullOrWhiteSpace(name))
@@ -44,24 +49,16 @@ namespace BLL
         public static void Delete(BO.Clients client)
         {
             //Vérification client
+            //Toutes les factures doivent être payé pour archiver le client
+            //@TODO faire un mgr de facture...
             Int32 factureImpayee = DAL.Factures.CountFactureByClient(client) - DAL.Factures.CountFactureEtatByClient(client, DAL.FactureEtat.PAYEE);
             if (factureImpayee > 0)
             {
                 throw new Exception(String.Format("Ce client a {0} facture impayée ! Il ne peut pas être supprimé", factureImpayee));
             }
 
-            //Vérification animaux
-
-
-            //Archivage du client
-            try
-            {
-                DAL.Clients.Archive(client, true);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            BLL.AnimauxMgr.DeleteAllByClient(client);
+            DAL.Clients.Archive(client, true);
         }
 
         /// <summary>

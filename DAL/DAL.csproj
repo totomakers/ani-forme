@@ -43,6 +43,7 @@
     <Compile Include="Animaux.cs" />
     <Compile Include="Baremes.cs" />
     <Compile Include="Clients.cs" />
+    <Compile Include="Consultations.cs" />
     <Compile Include="Factures.cs" />
     <Compile Include="Properties\Connexion.Designer.cs">
       <AutoGen>True</AutoGen>

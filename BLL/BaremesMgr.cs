@@ -39,6 +39,10 @@ namespace BLL
             }
         }
 
+        /// <summary>
+        /// Importe le xml dans barème
+        /// </summary>
+        /// <param name="path"></param>
         public static void ImportXml(string path)
         {
             XDocument doc = XDocument.Load(path);
