@@ -111,6 +111,7 @@
             this.MaximizeBox = false;
             this.Name = "FormLogin";
             this.Text = "FormLogin";
+            this.Load += new System.EventHandler(this.FormLogin_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FormLogin_KeyPress);
             this.panelLogin.ResumeLayout(false);
             this.panelLogin.PerformLayout();
