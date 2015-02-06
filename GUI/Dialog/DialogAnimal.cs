@@ -220,7 +220,7 @@ namespace GUI.Dialog
             this.textBoxColor.Text = animalEdited.Couleur;
             this.textBoxName.Text = animalEdited.NomAnimal;
             this.textBoxTatoo.Text = animalEdited.Tatouage;
-            this.comboBoxSexe.SelectedIndex = ((List<Char>)this.comboBoxSexe.DataSource).First(x => x == animalEdited.Sexe);
+            this.comboBoxSexe.SelectedIndex = ((List<Char>)this.comboBoxSexe.DataSource).IndexOf(animalEdited.Sexe, 0);
             //@TODO ajout race et espece
         }
 
