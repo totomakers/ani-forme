@@ -16,8 +16,7 @@ namespace BLL
         public static bool Add(BO.Agenda agenda)
         {
             if (agenda.Animal == null || agenda.Veterinaires == null)
-                throw new Exception("Vous devez selectionner un animal et un vétérinaire !");
-
+                throw new Exception(Lang.AGENDA_ANIMAL_AND_VETO_REQUIRED);
 
             if (DAL.Agenda.Verif(agenda))
                 return DAL.Agenda.Create(agenda);
@@ -27,6 +26,7 @@ namespace BLL
 
         public static bool Delete(BO.Agenda agenda)
         {
+
             return DAL.Agenda.Delete(agenda);
         }
 

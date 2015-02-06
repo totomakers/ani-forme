@@ -116,7 +116,7 @@
             this.buttonImportXml.UseVisualStyleBackColor = true;
             this.buttonImportXml.Click += new System.EventHandler(this.buttonImportXml_Click);
             // 
-            // SubFormListPrice
+            // SubFormBaremes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -129,7 +129,7 @@
             this.Controls.Add(this.textBoxLibelle);
             this.Controls.Add(this.dataGridViewListPrice);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "SubFormListPrice";
+            this.Name = "SubFormBaremes";
             this.Text = "SubFormListPrice";
             this.Load += new System.EventHandler(this.SubFormListPrice_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListPrice)).EndInit();
@@ -140,12 +140,12 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridViewListPrice;
         private System.Windows.Forms.Label labelLibelle;
         private System.Windows.Forms.TextBox textBoxLibelle;
         private System.Windows.Forms.Label labelTarifFixe;
         private System.Windows.Forms.TextBox textBoxTarifFixe;
         private System.Windows.Forms.Button buttonModify;
         private System.Windows.Forms.Button buttonImportXml;
+        private System.Windows.Forms.DataGridView dataGridViewListPrice;
     }
 }

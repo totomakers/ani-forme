@@ -22,28 +22,19 @@ namespace BO
 
         #region Getter/Setter
 
-        /// <summary>
-        /// Identifiant du compte
-        /// </summary>
         public BO.Veterinaires Veterinaires
         {
             get { return veterinaire; }
             set { veterinaire = value; }
         }
 
-        /// <summary>
-        /// Getter/setter du nom d'utilisateur
-        /// </summary>
+
         public DateTime DateRdv
         {
             get { return dateRdv; }
             set { dateRdv = value; }
         }
 
-        /// <summary>
-        /// Getter/Setter du mot de passe encode en SHA1
-        /// avec la salt suivant : USERNAME:PASSWORD
-        /// </summary>
         public Animaux Animal
         {
             get { return animal; }

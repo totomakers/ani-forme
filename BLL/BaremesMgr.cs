@@ -25,6 +25,7 @@ namespace BLL
         /// <param name="code"></param>
         /// <param name="date"></param>
         /// <param name="newTarif"></param>
+        /// @TODO passer un barem..
         public static void CreateBareme(String code, String date, String newTarif)
         {
             BO.Baremes bareme = DAL.Baremes.GetBareme(code, date);

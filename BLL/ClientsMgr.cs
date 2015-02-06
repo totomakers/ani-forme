@@ -48,13 +48,18 @@ namespace BLL
         /// <returns></returns>
         public static void Delete(BO.Clients client)
         {
+            //Vérification du guid
+            if (client.CodeClient == default(Guid))
+                throw new Exception(Lang.CLIENTS_CANT_DELETE_WITHOUT_GUID);
+
+
             //Vérification client
             //Toutes les factures doivent être payé pour archiver le client
             //@TODO faire un mgr de facture...
             Int32 factureImpayee = DAL.Factures.CountFactureByClient(client) - DAL.Factures.CountFactureEtatByClient(client, DAL.FactureEtat.PAYEE);
             if (factureImpayee > 0)
             {
-                throw new Exception(String.Format("Ce client a {0} facture impayée ! Il ne peut pas être supprimé", factureImpayee));
+                throw new Exception(String.Format(Lang.CLIENTS_CANT_DELETE_HAVE_NOT_PAID_FACTURE, factureImpayee));
             }
 
             BLL.AnimauxMgr.DeleteAllByClient(client);

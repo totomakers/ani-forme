@@ -82,9 +82,7 @@ namespace BLL
         public static bool Update(BO.Account account)
         {
             if (!isLogin(account.Id))
-            {
-                throw new Exception("Ce compte n'existe pas !");
-            }
+                throw new Exception(Lang.ACCOUNT_NOT_EXIST);
 
             return DAL.Account.Update(account);
         }

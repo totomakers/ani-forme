@@ -174,6 +174,26 @@ namespace GUI
             BO.Clients client = (BO.Clients)this.comboBoxClient.SelectedItem;
             this.comboBoxAnimal.DataSource = BLL.AnimauxMgr.GetAllByClient(client, false);
         }
+
+        private void dataGridViewAgenda_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            /*
+            DataGridViewCell cell = dataGridViewAgenda.CurrentRow.Cells["Urgence"];
+            if (cell != null)
+            {
+                if(sender == cell)
+                {
+                    if ((Boolean)cell.Value == true)
+                    {
+                        dataGridViewAgenda.CurrentRow.DefaultCellStyle.BackColor = Color.OrangeRed;
+                    }
+                }
+            }
+            */
+        }
+
         #endregion
+
+        
     }
 }

@@ -68,6 +68,7 @@
             this.buttonValidate.TabIndex = 1;
             this.buttonValidate.Text = "buttonValidate";
             this.buttonValidate.UseVisualStyleBackColor = true;
+            this.buttonValidate.Click += new System.EventHandler(this.buttonValidate_Click);
             // 
             // buttonCancel
             // 
@@ -83,7 +84,7 @@
             // labelCustomer
             // 
             this.labelCustomer.AutoSize = true;
-            this.labelCustomer.Location = new System.Drawing.Point(-2, 74);
+            this.labelCustomer.Location = new System.Drawing.Point(-2, 67);
             this.labelCustomer.Name = "labelCustomer";
             this.labelCustomer.Size = new System.Drawing.Size(73, 13);
             this.labelCustomer.TabIndex = 3;
@@ -94,15 +95,16 @@
             this.comboBoxCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxCustomer.FormattingEnabled = true;
-            this.comboBoxCustomer.Location = new System.Drawing.Point(1, 90);
+            this.comboBoxCustomer.Location = new System.Drawing.Point(1, 83);
             this.comboBoxCustomer.Name = "comboBoxCustomer";
             this.comboBoxCustomer.Size = new System.Drawing.Size(453, 21);
             this.comboBoxCustomer.TabIndex = 4;
+            this.comboBoxCustomer.TextChanged += new System.EventHandler(this.EventCheckBox);
             // 
             // labelCode
             // 
             this.labelCode.AutoSize = true;
-            this.labelCode.Location = new System.Drawing.Point(-2, 139);
+            this.labelCode.Location = new System.Drawing.Point(-2, 132);
             this.labelCode.Name = "labelCode";
             this.labelCode.Size = new System.Drawing.Size(54, 13);
             this.labelCode.TabIndex = 5;
@@ -111,7 +113,7 @@
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(-2, 164);
+            this.labelName.Location = new System.Drawing.Point(-2, 157);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(57, 13);
             this.labelName.TabIndex = 6;
@@ -120,7 +122,7 @@
             // labelColor
             // 
             this.labelColor.AutoSize = true;
-            this.labelColor.Location = new System.Drawing.Point(-2, 191);
+            this.labelColor.Location = new System.Drawing.Point(-2, 184);
             this.labelColor.Name = "labelColor";
             this.labelColor.Size = new System.Drawing.Size(53, 13);
             this.labelColor.TabIndex = 7;
@@ -129,7 +131,7 @@
             // labelTatoo
             // 
             this.labelTatoo.AutoSize = true;
-            this.labelTatoo.Location = new System.Drawing.Point(-2, 243);
+            this.labelTatoo.Location = new System.Drawing.Point(-2, 236);
             this.labelTatoo.Name = "labelTatoo";
             this.labelTatoo.Size = new System.Drawing.Size(57, 13);
             this.labelTatoo.TabIndex = 8;
@@ -138,7 +140,7 @@
             // labelEspece
             // 
             this.labelEspece.AutoSize = true;
-            this.labelEspece.Location = new System.Drawing.Point(-2, 214);
+            this.labelEspece.Location = new System.Drawing.Point(-2, 207);
             this.labelEspece.Name = "labelEspece";
             this.labelEspece.Size = new System.Drawing.Size(65, 13);
             this.labelEspece.TabIndex = 9;
@@ -147,15 +149,17 @@
             // comboBoxEspece
             // 
             this.comboBoxEspece.FormattingEnabled = true;
-            this.comboBoxEspece.Location = new System.Drawing.Point(68, 211);
+            this.comboBoxEspece.Location = new System.Drawing.Point(68, 204);
             this.comboBoxEspece.Name = "comboBoxEspece";
             this.comboBoxEspece.Size = new System.Drawing.Size(134, 21);
             this.comboBoxEspece.TabIndex = 10;
+            this.comboBoxEspece.SelectedIndexChanged += new System.EventHandler(this.comboBoxEspece_SelectedIndexChanged);
+            this.comboBoxEspece.TextChanged += new System.EventHandler(this.EventCheckBox);
             // 
             // labelRace
             // 
             this.labelRace.AutoSize = true;
-            this.labelRace.Location = new System.Drawing.Point(208, 214);
+            this.labelRace.Location = new System.Drawing.Point(208, 207);
             this.labelRace.Name = "labelRace";
             this.labelRace.Size = new System.Drawing.Size(55, 13);
             this.labelRace.TabIndex = 11;
@@ -166,50 +170,58 @@
             this.comboBoxRace.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxRace.FormattingEnabled = true;
-            this.comboBoxRace.Location = new System.Drawing.Point(269, 211);
+            this.comboBoxRace.Location = new System.Drawing.Point(269, 204);
             this.comboBoxRace.Name = "comboBoxRace";
             this.comboBoxRace.Size = new System.Drawing.Size(189, 21);
             this.comboBoxRace.TabIndex = 12;
+            this.comboBoxRace.TextChanged += new System.EventHandler(this.EventCheckBox);
             // 
             // textBoxCode
             // 
-            this.textBoxCode.Location = new System.Drawing.Point(67, 136);
+            this.textBoxCode.Enabled = false;
+            this.textBoxCode.Location = new System.Drawing.Point(67, 129);
             this.textBoxCode.Name = "textBoxCode";
+            this.textBoxCode.ReadOnly = true;
             this.textBoxCode.Size = new System.Drawing.Size(136, 20);
             this.textBoxCode.TabIndex = 13;
+            this.textBoxCode.TextChanged += new System.EventHandler(this.EventCheckBox);
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(67, 161);
+            this.textBoxName.Location = new System.Drawing.Point(67, 154);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(136, 20);
             this.textBoxName.TabIndex = 14;
+            this.textBoxName.TextChanged += new System.EventHandler(this.EventCheckBox);
             // 
             // textBoxColor
             // 
-            this.textBoxColor.Location = new System.Drawing.Point(67, 185);
+            this.textBoxColor.Location = new System.Drawing.Point(67, 178);
             this.textBoxColor.Name = "textBoxColor";
             this.textBoxColor.Size = new System.Drawing.Size(135, 20);
             this.textBoxColor.TabIndex = 15;
+            this.textBoxColor.TextChanged += new System.EventHandler(this.EventCheckBox);
             // 
             // textBoxTatoo
             // 
             this.textBoxTatoo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxTatoo.Location = new System.Drawing.Point(68, 243);
+            this.textBoxTatoo.Location = new System.Drawing.Point(68, 236);
             this.textBoxTatoo.Name = "textBoxTatoo";
             this.textBoxTatoo.Size = new System.Drawing.Size(391, 20);
             this.textBoxTatoo.TabIndex = 16;
+            this.textBoxTatoo.TextChanged += new System.EventHandler(this.EventCheckBox);
             // 
             // comboBoxSexe
             // 
             this.comboBoxSexe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSexe.FormattingEnabled = true;
-            this.comboBoxSexe.Location = new System.Drawing.Point(269, 160);
+            this.comboBoxSexe.Location = new System.Drawing.Point(269, 153);
             this.comboBoxSexe.Name = "comboBoxSexe";
             this.comboBoxSexe.Size = new System.Drawing.Size(186, 21);
             this.comboBoxSexe.TabIndex = 17;
+            this.comboBoxSexe.TextChanged += new System.EventHandler(this.EventCheckBox);
             // 
             // DialogAnimal
             // 

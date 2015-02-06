@@ -22,6 +22,7 @@ namespace GUI.Dialog
         private DialogAnimalMode mode = DialogAnimalMode.CREATE;
         private BO.Animaux animalEdited = null;
         private BO.Clients clientEdited = null;
+        private List<BO.Clients> clientsList = new List<BO.Clients>();
 
         /// <summary>
         /// Mode ajout de la fenètre
@@ -29,6 +30,7 @@ namespace GUI.Dialog
         public DialogAnimal(BO.Clients client = null)
         {
             InitializeComponent();
+            UpdateContent();
             CreateMode(client);
             I18N(); //Appeler en dernier
         }
@@ -40,6 +42,7 @@ namespace GUI.Dialog
         public DialogAnimal(BO.Animaux animal)
         {
             InitializeComponent();
+            UpdateContent();
             EditMode(animal);
             I18N(); //Appeler en dernier
         }
@@ -83,6 +86,100 @@ namespace GUI.Dialog
             this.labelTatoo.Text = GUI.Lang.DIALOG_ANIMAL_LIB_TATOO;   
         }
 
+
+        /// <summary>
+        /// Vérifie l'ensemble des textbox de la fenêtre
+        /// </summary>
+        private void CheckBox()
+        {
+            bool canValidate = true;
+
+            //=========================
+            //Nom requis
+            if (this.textBoxName.TextLength == 0)
+            {
+                this.textBoxName.BackColor = Color.Red;
+                canValidate = false;
+            }
+            else
+                this.textBoxName.BackColor = Color.LightGreen;
+
+            //=========================
+            //Client requis
+            if (comboBoxCustomer.SelectedItem == null)
+            {
+                this.comboBoxSexe.BackColor = Color.Red;
+                canValidate = false;
+            }
+            else
+            {
+                this.comboBoxSexe.BackColor = Color.LightGreen;
+            }
+
+            //=========================
+            //Sexe requis
+            if (comboBoxSexe.SelectedItem == null)
+            {
+                this.comboBoxSexe.BackColor = Color.Red;
+                canValidate = false;
+            }
+            else
+            {
+                this.comboBoxSexe.BackColor = Color.LightGreen;
+            }
+
+            //=========================
+            //Espece
+            if (comboBoxEspece.SelectedItem == null)
+            {
+                this.comboBoxEspece.BackColor = Color.Red;
+                canValidate = false;
+            }
+            else
+            {
+                this.comboBoxEspece.BackColor = Color.LightGreen;
+            }
+
+            //Race
+            if (comboBoxRace.SelectedItem == null)
+            {
+                this.comboBoxRace.BackColor = Color.Red;
+                canValidate = false;
+            }
+            else
+            {
+                this.comboBoxRace.BackColor = Color.LightGreen;
+            }
+
+            //=========================
+            //Couleur requis
+            if (this.textBoxColor.TextLength == 0)
+            {
+                this.textBoxColor.BackColor = Color.Red;
+                canValidate = false;
+            }
+            else
+                this.textBoxColor.BackColor = Color.LightGreen;
+
+            //=========================
+            //Tatoo non requis
+            this.textBoxTatoo.BackColor = Color.LightGreen;
+
+            //=========================
+            //Activation du bouton
+            this.buttonValidate.Enabled = canValidate;
+        }
+
+        /// <summary>
+        /// Charge les clients, les races and co
+        /// </summary>
+        private void UpdateContent()
+        {
+            clientsList = BLL.ClientsMgr.GetAll(false);
+            this.comboBoxCustomer.DataSource = clientsList;
+            this.comboBoxSexe.DataSource = BLL.AnimauxMgr.getSexe();
+        }
+
         /// <summary>
         /// Permet de passer en mode création
         /// </summary>
@@ -92,12 +189,19 @@ namespace GUI.Dialog
 
             if (client != null)
             {
+                clientEdited = clientsList.Find(x => x.CodeClient == client.CodeClient);
+
+                //@TODO message d'erreur, ce cas n'est pas censer se produire
+                if (clientEdited == null)
+                {
+                    this.Close();
+                }
+
+
+                this.comboBoxCustomer.SelectedItem = clientEdited;
                 mode = DialogAnimalMode.CLIENT;
-                clientEdited = client;
-                //@TODO précharger la textbox et la déactivé
                 this.comboBoxCustomer.Enabled = false;
             }
-
 
             this.buttonMedicalFolder.Enabled = false; //dans le mode création le bouton create n'existe pas
 
@@ -111,11 +215,22 @@ namespace GUI.Dialog
         {
             mode = DialogAnimalMode.ANIMAL;
             animalEdited = animal;
+
+            this.textBoxCode.Text = animalEdited.CodeAnimal.ToString();
+            this.textBoxColor.Text = animalEdited.Couleur;
+            this.textBoxName.Text = animalEdited.NomAnimal;
+            this.textBoxTatoo.Text = animalEdited.Tatouage;
+            this.comboBoxSexe.SelectedIndex = ((List<Char>)this.comboBoxSexe.DataSource).First(x => x == animalEdited.Sexe);
+            //@TODO ajout race et espece
         }
 
         #endregion
 
         #region Evenements
+        //========================
+        //EVENEMENTS =============
+        //========================
+
         private void buttonMedicalFolder_Click(object sender, EventArgs e)
         {
             if (animalEdited != null)
@@ -129,7 +244,65 @@ namespace GUI.Dialog
         {
            this.Close();
         }
+
+        private void buttonValidate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                BO.Animaux finalAnimal = animalEdited;
+
+                switch (mode)
+                {
+                    case DialogAnimalMode.CREATE:
+                    case DialogAnimalMode.CLIENT:
+                       finalAnimal = BLL.AnimauxMgr.Create(
+                            new BO.Animaux
+                            {
+                                Sexe = (char)comboBoxSexe.SelectedItem,
+                                Client = (BO.Clients)comboBoxCustomer.SelectedItem,
+                                Couleur = textBoxColor.Text,
+                                NomAnimal = textBoxName.Text,
+                                Tatouage = textBoxTatoo.Text,
+                                Espece = (String)comboBoxEspece.SelectedItem,
+                                Race = (String)comboBoxRace.SelectedItem,
+                            });
+
+                        UpdateContent(); //reload data
+                        EditMode(finalAnimal); //Mode edition de cet animal
+                        I18N(); //rafraichis la trad
+                        break;
+
+                    case DialogAnimalMode.ANIMAL:
+                        animalEdited.Sexe = (char)comboBoxSexe.SelectedItem;
+                        animalEdited.Client = (BO.Clients)comboBoxCustomer.SelectedItem;
+                        animalEdited.Couleur = textBoxColor.Text;
+                        animalEdited.NomAnimal = textBoxName.Text;
+                        animalEdited.Tatouage = textBoxTatoo.Text;
+                        animalEdited.Espece = (String)comboBoxEspece.SelectedItem;
+                        animalEdited.Race = (String)comboBoxRace.SelectedItem;
+                        BLL.AnimauxMgr.Update(animalEdited);
+                        break;
+                }
+
+                UpdateContent(); //reload data
+                EditMode(finalAnimal); //Mode edition de cet animal
+                I18N(); //rafraichis la trad
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void EventCheckBox(object sender, EventArgs e)
+        {
+            CheckBox();
+        }
         #endregion
 
+        private void comboBoxEspece_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxRace.SelectedItem = null; //si l'espece est selectionner on vide la race
+        }
     }
 }

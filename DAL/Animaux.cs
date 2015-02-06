@@ -157,5 +157,24 @@ namespace DAL
 
             return false;
         }
+
+        /// <summary>
+        /// Creer l'animal passé en params
+        /// Et le retourne avec son GUID
+        /// </summary>
+        /// <param name="animal"></param>
+        public static BO.Animaux Create(BO.Animaux animal)
+        {
+            return null;
+        }
+
+        /// <summary>
+        /// Met a jour l'animal passé en params
+        /// </summary>
+        /// <param name="animal"></param>
+        public static bool Update(BO.Animaux animal)
+        {
+            return false;
+        }
     }
 }
