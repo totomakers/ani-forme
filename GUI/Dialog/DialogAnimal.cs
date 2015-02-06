@@ -266,10 +266,6 @@ namespace GUI.Dialog
                                 Espece = (String)comboBoxEspece.SelectedItem,
                                 Race = (String)comboBoxRace.SelectedItem,
                             });
-
-                        UpdateContent(); //reload data
-                        EditMode(finalAnimal); //Mode edition de cet animal
-                        I18N(); //rafraichis la trad
                         break;
 
                     case DialogAnimalMode.ANIMAL:
