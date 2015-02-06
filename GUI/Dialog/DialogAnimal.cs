@@ -290,7 +290,10 @@ namespace GUI.Dialog
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message,
+                                GUI.Lang.FORM_DEFAULT_ERROR_TITLE,
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             }
         }
 
