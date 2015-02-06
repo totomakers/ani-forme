@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GUI.Dialog;
 
 namespace GUI
 {
@@ -28,6 +29,18 @@ namespace GUI
             this.groupBoxDate.Text = GUI.Lang.SUBFORM_PRENDRERDV_GB_DATE;
             this.groupBoxVeto.Text = GUI.Lang.SUBFORM_PRENDRERDV_GB_VETO;
         }
+
+        public void UpdateContent()
+        {
+            this.comboBoxClient.DataSource = BLL.ClientsMgr.GetAll();
+            this.comboBoxVeterianire.DataSource = BLL.VeterinairesMgr.GetAll();
+            this.dataGridViewAgenda.DataSource = BLL.AgendaMgr.GetAll();
+        }
+	
+        #region Evenements
+        //====================
+        //EVENEMENTS =========
+        //====================
         
         private void SubFormPrendreRdv_Load(object sender, EventArgs e)
         {
@@ -53,7 +66,14 @@ namespace GUI
 
         private void buttonAddAnimal_Click(object sender, EventArgs e)
         {
-            //TODO Ouverture de la subform Animaux en mode ajout avec le client id en parametre
+            BO.Clients client = (BO.Clients)this.comboBoxClient.SelectedItem;
+
+            if (client != null)
+            {
+                GUI.Dialog.DialogAnimal dialog = new DialogAnimal(client);
+                dialog.ShowDialog();
+                dialog.Disposed += UpdateContentEvent;
+            }
         }
 
         private void comboBoxVeterianire_SelectedIndexChanged(object sender, EventArgs e)
@@ -74,13 +94,24 @@ namespace GUI
                 (int)this.numericUpDownMin.Value,
                 0);
 
+
             BO.Agenda agenda = new BO.Agenda();
             agenda.Veterinaires = veto;
             agenda.DateRdv = date;
             agenda.Animal = animal;
 
-            BLL.AgendaMgr.Add(agenda);
-            UpdateContent();
+            try
+            {
+                BLL.AgendaMgr.Add(agenda);
+                UpdateContent();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,
+                               GUI.Lang.FORM_DEFAULT_ERROR_TITLE,
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Error);
+            }
         }
 
         private void buttonUrgence_Click(object sender, EventArgs e)
@@ -107,7 +138,16 @@ namespace GUI
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             BO.Agenda agenda = (BO.Agenda)this.dataGridViewAgenda.SelectedCells[0].OwningRow.DataBoundItem;
-            BLL.AgendaMgr.Delete(agenda);
+
+            if (agenda != null)
+            {
+                BLL.AgendaMgr.Delete(agenda);
+                UpdateContent();
+            }
+        }
+
+        private void UpdateContentEvent(object sender, EventArgs e)
+        {
             UpdateContent();
         }
 
@@ -121,13 +161,32 @@ namespace GUI
             BO.Clients client = (BO.Clients)this.comboBoxClient.SelectedItem;
             this.comboBoxAnimal.DataSource = BLL.AnimauxMgr.GetAllByClient(client, false);
         }
-
-        public void UpdateContent()
+		
+        private void buttonUrgence_Click(object sender, EventArgs e)
         {
-            this.comboBoxClient.DataSource = BLL.ClientsMgr.GetAll();
-            this.comboBoxVeterianire.DataSource = BLL.VeterinairesMgr.GetAll();
-            this.dataGridViewAgenda.DataSource = BLL.AgendaMgr.GetAll();
+            BO.Veterinaires veto = (BO.Veterinaires)this.comboBoxVeterianire.SelectedItem;
+            BO.Animaux animal = (BO.Animaux)this.comboBoxAnimal.SelectedItem;
+            DateTime date = DateTime.Now;
+
+            BO.Agenda agenda = new BO.Agenda();
+            agenda.Veterinaires = veto;
+            agenda.DateRdv = date;
+            agenda.Animal = animal;
+
+            try
+            {
+                BLL.AgendaMgr.Add(agenda);
+                UpdateContent();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,
+                               GUI.Lang.FORM_DEFAULT_ERROR_TITLE,
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Error);
+            }     
         }
 
+        #endregion
     }
 }

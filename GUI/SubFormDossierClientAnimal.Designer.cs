@@ -56,6 +56,7 @@
             this.checkBoxSearch = new System.Windows.Forms.CheckBox();
             this.buttonValidateAddCli = new System.Windows.Forms.Button();
             this.buttonCancelAddCli = new System.Windows.Forms.Button();
+            this.buttonEditAni = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAnimals)).BeginInit();
             this.SuspendLayout();
             // 
@@ -266,17 +267,18 @@
             // buttonAddAni
             // 
             this.buttonAddAni.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAddAni.Location = new System.Drawing.Point(685, 426);
+            this.buttonAddAni.Location = new System.Drawing.Point(580, 426);
             this.buttonAddAni.Name = "buttonAddAni";
             this.buttonAddAni.Size = new System.Drawing.Size(97, 23);
             this.buttonAddAni.TabIndex = 8;
             this.buttonAddAni.Text = "buttonAddAni";
             this.buttonAddAni.UseVisualStyleBackColor = true;
+            this.buttonAddAni.Click += new System.EventHandler(this.buttonAddAni_Click);
             // 
             // buttonDeleteAni
             // 
             this.buttonDeleteAni.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDeleteAni.Location = new System.Drawing.Point(788, 426);
+            this.buttonDeleteAni.Location = new System.Drawing.Point(683, 426);
             this.buttonDeleteAni.Name = "buttonDeleteAni";
             this.buttonDeleteAni.Size = new System.Drawing.Size(100, 23);
             this.buttonDeleteAni.TabIndex = 23;
@@ -337,11 +339,23 @@
             this.buttonCancelAddCli.Visible = false;
             this.buttonCancelAddCli.Click += new System.EventHandler(this.buttonCancelAddCli_Click);
             // 
+            // buttonEditAni
+            // 
+            this.buttonEditAni.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonEditAni.Location = new System.Drawing.Point(789, 426);
+            this.buttonEditAni.Name = "buttonEditAni";
+            this.buttonEditAni.Size = new System.Drawing.Size(97, 23);
+            this.buttonEditAni.TabIndex = 28;
+            this.buttonEditAni.Text = "buttonEditAni";
+            this.buttonEditAni.UseVisualStyleBackColor = true;
+            this.buttonEditAni.Click += new System.EventHandler(this.buttonEditAni_Click);
+            // 
             // SubFormDossierClientAnimal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 458);
+            this.Controls.Add(this.buttonEditAni);
             this.Controls.Add(this.buttonCancelAddCli);
             this.Controls.Add(this.buttonValidateAddCli);
             this.Controls.Add(this.checkBoxSearch);
@@ -409,6 +423,7 @@
         private System.Windows.Forms.CheckBox checkBoxSearch;
         private System.Windows.Forms.Button buttonValidateAddCli;
         private System.Windows.Forms.Button buttonCancelAddCli;
+        private System.Windows.Forms.Button buttonEditAni;
 
     }
 }

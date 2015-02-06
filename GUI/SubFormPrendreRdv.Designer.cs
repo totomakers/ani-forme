@@ -270,6 +270,7 @@
             this.Controls.Add(this.buttonSubmit);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.dataGridViewAgenda);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SubFormPrendreRdv";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.SubFormPrendreRdv_Load);

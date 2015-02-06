@@ -102,6 +102,7 @@ namespace GUI
         public static String SUBFORM_FOLDERCUSTANI_ADD_CUST = "Ajouter un client";
         public static String SUBFORM_FOLDERCUSTANI_DEL_CUST = "Supprimer le client";
         public static String SUBFORM_FOLDERCUSTANI_ADD_ANI = "Ajouter animal";
+        public static String SUBFORM_FOLDERCUSTANI_EDIT_ANI = "Editer animal";
         public static String SUBFORM_FOLDERCUSTANI_DELETE_ANI = "Supprimer animal";
         public static String SUBFORM_FOLDERCUSTANI_TITLE_SUCCEFULL_ARCHIVE = "Client archivé";
         public static String SUBFORM_FOLDERCUSTANI_SUCCEFULL_ARCHIVE = "Le client {0} a été archivé !";

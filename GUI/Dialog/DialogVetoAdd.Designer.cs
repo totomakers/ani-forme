@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DialogVetoAdd));
             this.buttonAdd = new System.Windows.Forms.Button();
             this.labelName = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
@@ -110,7 +111,7 @@
             this.textBoxPassword.UseSystemPasswordChar = true;
             this.textBoxPassword.TextChanged += new System.EventHandler(this.doCheck);
             // 
-            // DialogVeterinaryAdd
+            // DialogVetoAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -123,9 +124,10 @@
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.buttonAdd);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "DialogVeterinaryAdd";
+            this.Name = "DialogVetoAdd";
             this.Text = "DialogVeterinaryAdd";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BO;
 using BLL;
+using GUI.Dialog;
 using System.Text.RegularExpressions;
 
 namespace GUI
@@ -30,8 +31,6 @@ namespace GUI
             LoadClient();
         }
 
-        #region Methodes
-
         /// <summary>
         /// Traduction de la fenetre
         /// </summary>
@@ -49,6 +48,7 @@ namespace GUI
             this.buttonDelete.Text = GUI.Lang.SUBFORM_FOLDERCUSTANI_DEL_CUST;
 
             this.buttonAddAni.Text = GUI.Lang.SUBFORM_FOLDERCUSTANI_ADD_ANI;
+            this.buttonEditAni.Text = GUI.Lang.SUBFORM_FOLDERCUSTANI_EDIT_ANI;
             this.buttonDeleteAni.Text = GUI.Lang.SUBFORM_FOLDERCUSTANI_DELETE_ANI;
 
             this.buttonFirst.Text = GUI.Lang.FORM_DEFAULT_FIRST;
@@ -59,6 +59,11 @@ namespace GUI
             this.buttonCancelAddCli.Text = GUI.Lang.FORM_DEFAULT_CANCEL;
             this.buttonValidateAddCli.Text = GUI.Lang.FORM_DEFAULT_VALIDATE;
         }
+
+        #region Methodes
+        //==================
+        //METHODES =========
+        //==================
 
         /// <summary>
         /// Vérifie les checkbox, uniquement en mode création sinon, ne fais rien
@@ -141,6 +146,7 @@ namespace GUI
 
                 //Déactive les boutons pour animaux
                 this.buttonAddAni.Enabled = !createMode;
+                this.buttonEditAni.Enabled = !createMode;
                 this.buttonDeleteAni.Enabled = !createMode;
 
                 //Déactive la navigation
@@ -214,6 +220,7 @@ namespace GUI
                 this.textBoxPostalCode.Enabled = false;
 
                 this.buttonAddAni.Enabled = false;
+                this.buttonEditAni.Enabled = false;
                 this.buttonDeleteAni.Enabled = false;
             }
             //Un client
@@ -242,21 +249,33 @@ namespace GUI
 
                 this.checkBoxSearch.Text = GUI.Lang.SUBFORM_FOLDERCUSTANI_SEARCH;
 
-                //==============
-                //Animaux =======
-                this.dataGridViewAnimals.DataSource = BLL.AnimauxMgr.GetAllByClient(currentClient); //load animals list
-                this.buttonAddAni.Enabled = true;
-                this.buttonDeleteAni.Enabled = true;
-                //===============
+                LoadAnimaux(); //charge les animaux
             }
+        }
+
+        /// <summary>
+        /// Charge les animaux
+        /// </summary>
+        private void LoadAnimaux()
+        {
+            //==============
+            //Animaux =======
+            this.dataGridViewAnimals.DataSource = BLL.AnimauxMgr.GetAllByClient(currentClient); //load animals list
+            this.buttonAddAni.Enabled = true;
+            this.buttonEditAni.Enabled = true;
+            this.buttonDeleteAni.Enabled = true;
+            //===============
         }
         #endregion
 
         #region Navigation
         //====================
-        //Navigation =========
+        //NAVIGATION =========
         //====================
 
+        /// <summary>
+        /// Retourne la position actuel dans la liste
+        /// </summary>
         private Int32 CurrentIndex
         {
             get { return index; }
@@ -317,12 +336,16 @@ namespace GUI
             }
         }
 
+        /// <summary>
+        /// Définis la nouvelle position a partir de l'ancienne
+        /// </summary>
+        /// <param name="oldPosition"></param>
         private void SetNewPosition(int oldPosition)
         {
             if (oldPosition == -1) //On avait rien on ne fais donc rien
                 return;
 
-            if (oldPosition >= clientsList.Count - 1)   //on été au dernier on va donc au nouveau dernier
+            if (oldPosition >= clientsList.Count - 1)   //on était au dernier on va donc au nouveau dernier
                 this.CurrentIndex = clientsList.Count - 1;
             else if (oldPosition > 0 && oldPosition < clientsList.Count) //Au milieu de quelque chose
                 this.CurrentIndex = oldPosition;
@@ -353,25 +376,35 @@ namespace GUI
         //======================================
         #endregion
 
-        #region Events
+        #region Evenements
         //====================
-        //EVENTS
+        //EVENEMENTS =========
         //====================
+
+        private void UpdateContentEvent(object sender, EventArgs e)
+        {
+            LoadAnimaux();
+        }
+
+        private void doCheck(object sender, EventArgs e)
+        {
+            CheckTextBox();
+        }
+
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             Int32 prevIndex = index;
 
-            //Archivage du client en cours
             try
             {
-                BLL.ClientsMgr.Delete(currentClient);  
-                MessageBox.Show(String.Format(GUI.Lang.SUBFORM_FOLDERCUSTANI_SUCCEFULL_ARCHIVE, currentClient.getFullName()), 
-                                GUI.Lang.SUBFORM_FOLDERCUSTANI_TITLE_SUCCEFULL_ARCHIVE, 
-                                MessageBoxButtons.OK, 
+                BLL.ClientsMgr.Delete(currentClient);
+                MessageBox.Show(String.Format(GUI.Lang.SUBFORM_FOLDERCUSTANI_SUCCEFULL_ARCHIVE, currentClient.getFullName()),
+                                GUI.Lang.SUBFORM_FOLDERCUSTANI_TITLE_SUCCEFULL_ARCHIVE,
+                                MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message,
                                 GUI.Lang.FORM_DEFAULT_ERROR_TITLE,
@@ -423,7 +456,7 @@ namespace GUI
                                         PrenomClient = this.textBoxLastName.Text,
                                         Ville = this.textBoxCity.Text };
 
-            Clients finalCli = BLL.ClientsMgr.Create(cli); //Contient le client avec l'id
+            Clients finalCli = BLL.ClientsMgr.Create(cli); //Client avec l'id
 
 
             this.CreateMode = false;
@@ -440,6 +473,7 @@ namespace GUI
                 try
                 {
                     AnimauxMgr.Delete(animal);
+                    LoadAnimaux();
                 }
                 catch (Exception ex)
                 {
@@ -451,12 +485,27 @@ namespace GUI
             }
         }
 
-        private void doCheck(object sender, EventArgs e)
+        private void buttonEditAni_Click(object sender, EventArgs e)
         {
-            CheckTextBox();
+            Animaux animal = (Animaux)this.dataGridViewAnimals.CurrentRow.DataBoundItem;
+
+            if(animal != null)
+            {
+                DialogAnimal DialogAnimal = new GUI.Dialog.DialogAnimal(animal);
+                DialogAnimal.ShowDialog();
+                DialogAnimal.Disposed += UpdateContentEvent;
+            }
+        }
+
+        private void buttonAddAni_Click(object sender, EventArgs e)
+        {
+            if (currentClient == null)
+                return;
+
+            DialogAnimal DialogAnimal = new GUI.Dialog.DialogAnimal(currentClient);
+            DialogAnimal.ShowDialog();
+            DialogAnimal.Disposed += UpdateContentEvent;
         }
         #endregion
-
-
     }
 }

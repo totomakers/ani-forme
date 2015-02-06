@@ -44,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dialog\DialogAnimal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\DialogAnimal.Designer.cs">
+      <DependentUpon>DialogAnimal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialog\DialogVetoAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Dialog\DialogAnimal.resx">
+      <DependentUpon>DialogAnimal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialog\DialogVetoAdd.resx">
       <DependentUpon>DialogVetoAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -142,7 +151,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubFormMiseAJourStockVaccins.resx">
       <DependentUpon>SubFormMiseAJourStockVaccins.cs</DependentUpon>
-    </EmbeddedResource> 
+    </EmbeddedResource>
     <EmbeddedResource Include="SubFormPrendreRdv.resx">
       <DependentUpon>SubFormPrendreRdv.cs</DependentUpon>
     </EmbeddedResource>
