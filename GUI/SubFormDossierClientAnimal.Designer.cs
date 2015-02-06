@@ -145,6 +145,7 @@
             // 
             // textBoxCode
             // 
+            this.textBoxCode.Enabled = false;
             this.textBoxCode.Location = new System.Drawing.Point(17, 82);
             this.textBoxCode.Name = "textBoxCode";
             this.textBoxCode.ReadOnly = true;
