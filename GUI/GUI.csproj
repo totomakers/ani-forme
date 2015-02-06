@@ -140,6 +140,9 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SubFormAgenda.resx">
+      <DependentUpon>SubFormAgenda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SubFormDossierClientAnimal.resx">
       <DependentUpon>SubFormDossierClientAnimal.cs</DependentUpon>
     </EmbeddedResource>

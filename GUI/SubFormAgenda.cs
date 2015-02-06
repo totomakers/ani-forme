@@ -15,6 +15,56 @@ namespace GUI
         public SubFormAgenda()
         {
             InitializeComponent();
+            I18N();
+
+            this.comboBoxVeto.DataSource = BLL.VeterinairesMgr.GetAll(false);
+            this.comboBoxVeto.SelectedItem = ((List<BO.Veterinaires>)this.comboBoxVeto.DataSource).First(x => x.AccountId == BLL.AccountMgr.loggedAccount.Id);
+
+            UpdateContent();
+        }
+
+        private void I18N()
+        {
+            this.Text = GUI.Lang.SUBFORM_AGENDA_TITLE;
+            this.labelDate.Text = GUI.Lang.SUBFORM_AGENDA_LABEL_DATE;
+            this.labelVeto.Text = GUI.Lang.SUBFORM_AGENDA_LABEL_VETO;
+            this.buttonDossierMedical.Text = GUI.Lang.SUBFORM_AGENDA_BTN_DOSSIER;
+            this.groupBoxVeto.Text = GUI.Lang.SUBFORM_AGENDA_GB_VETO;
+            
+        }
+
+        private void UpdateContent()
+        {
+            BO.Veterinaires veto = (BO.Veterinaires)this.comboBoxVeto.SelectedItem;
+            DateTime date = this.dateTimePickerDate.Value;
+            this.dataGridViewAgenda.DataSource = BLL.AgendaMgr.GetAll(veto, date);
+        }
+
+        private void comboBoxVeto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateContent();
+        }
+
+        private void dateTimePickerDate_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateContent();
+        }
+
+        private void buttonDossierMedical_Click(object sender, EventArgs e)
+        {
+            BO.Animaux animal = null;
+            
+            if(this.dataGridViewAgenda.SelectedCells.Count > 0)
+                animal = ((BO.Agenda)this.dataGridViewAgenda.SelectedCells[0].OwningRow.DataBoundItem).Animal;
+            
+            SubFormDossierMedical frm;
+            
+            if (animal != null)
+                frm = new SubFormDossierMedical(animal);
+            else
+                frm = new SubFormDossierMedical();
+
+            frm.Show();
         }
     }
 }

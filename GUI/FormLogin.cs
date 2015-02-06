@@ -82,10 +82,14 @@ namespace GUI
         }
         #endregion
 
+
         private void FormLogin_Load(object sender, EventArgs e)
         {
+#if DEBUG
             this.textBoxPassword.Text = "test";
             this.textBoxUsername.Text = "test";
+#endif       
         }
+
     }
 }

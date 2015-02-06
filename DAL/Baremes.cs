@@ -69,30 +69,19 @@ namespace DAL
             }
         }
 
-        //@TODO : Faire une seule fonction avec @archived en params
-        public static bool ArchiveBareme(BO.Baremes bareme)
+        /// <summary>
+        /// Archive ou desarchive un bareme
+        /// </summary>
+        /// <param name="bareme"></param>
+        /// <param name="archiveParam"></param>
+        /// <returns></returns>
+        public static bool Archive(BO.Baremes bareme, bool archiveParam)
         {
             try
             {
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
-                var query = @"UPDATE Baremes SET Archive=1 WHERE CodeGroupement = @code AND DateVigueur like('%' + @date + '%')";
-                int rowNb = cnx.Execute(query, new { code = bareme.CodeGroupement, date = bareme.DateVigueur });
-                SqlConnexion.CloseConnexion(cnx);
-                return (rowNb > 0);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public static bool DesarchiveBareme(BO.Baremes bareme)
-        {
-            try
-            {
-                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
-                var query = @"UPDATE Baremes SET Archive=0 WHERE CodeGroupement = @code AND DateVigueure like('%' + @date + '%')";
-                int rowNb = cnx.Execute(query, new { code = bareme.CodeGroupement, date = bareme.DateVigueur });
+                var query = @"UPDATE Baremes SET Archive=@archive WHERE CodeGroupement = @code AND DateVigueur like('%' + @date + '%')";
+                int rowNb = cnx.Execute(query, new { archive = (archiveParam) ? 1 : 0, code = bareme.CodeGroupement, date = bareme.DateVigueur });
                 SqlConnexion.CloseConnexion(cnx);
                 return (rowNb > 0);
             }

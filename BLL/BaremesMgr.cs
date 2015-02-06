@@ -29,13 +29,13 @@ namespace BLL
         public static void CreateBareme(String code, String date, String newTarif)
         {
             BO.Baremes bareme = DAL.Baremes.GetBareme(code, date);
-            if (DAL.Baremes.ArchiveBareme(bareme))
+            if (DAL.Baremes.Archive(bareme, true))
             {
                 bareme.DateVigueur = DateTime.Now.ToString("dd/MM/yy");
                 bareme.TarifFixe = Decimal.Parse(newTarif);
                 if (!DAL.Baremes.CreateBareme(bareme))
                 {
-                    DAL.Baremes.DesarchiveBareme(bareme);
+                    DAL.Baremes.Archive(bareme, false);
                 }
             }
         }

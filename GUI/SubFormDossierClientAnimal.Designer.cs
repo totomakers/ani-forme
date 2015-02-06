@@ -423,8 +423,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.CheckBox checkBoxSearch;
         private System.Windows.Forms.Button buttonValidateAddCli;
-        private System.Windows.Forms.Button buttonCancelAddCli;
         private System.Windows.Forms.Button buttonEditAni;
+        public System.Windows.Forms.Button buttonCancelAddCli;
 
     }
 }

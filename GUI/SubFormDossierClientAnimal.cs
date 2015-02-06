@@ -506,6 +506,11 @@ namespace GUI
             DialogAnimal.ShowDialog();
             DialogAnimal.Disposed += UpdateContentEvent;
         }
+
+        public void OnCancelClicked(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         #endregion
     }
 }

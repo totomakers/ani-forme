@@ -136,6 +136,14 @@ namespace GUI
         public static String DIALOG_ANIMAL_LIB_RACE = "Race";
         public static String DIALOG_ANIMAL_LIB_TATOO = "Tatouage";
 
+        //============================
+        //SubFormAgenda
+        //============================
+        public static String SUBFORM_AGENDA_TITLE = "Agenda";
+        public static String SUBFORM_AGENDA_LABEL_DATE = "Le ";
+        public static String SUBFORM_AGENDA_LABEL_VETO = "Vétérinaire :";
+        public static String SUBFORM_AGENDA_BTN_DOSSIER = "Dossier Médical";
+        public static String SUBFORM_AGENDA_GB_VETO = "De :";
         
     }
 }

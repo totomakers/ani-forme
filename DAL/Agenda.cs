@@ -16,15 +16,77 @@ namespace DAL
             try
             {
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
-                String query = @"SELECT * FROM Agendas ag
-                                 LEFT JOIN Veterinaires v ON ag.CodeVeto = v.CodeVeto
-                                 LEFT JOIN Animaux an ON ag.CodeAnimal = an.CodeAnimal
-                                 ORDER BY ag.DateRdv";
+                String query;
+                List<BO.Agenda> results;
+                if (veto == null)
+                {
+                    query = @"SELECT * FROM Agendas ag
+                            LEFT JOIN Veterinaires v ON ag.CodeVeto = v.CodeVeto
+                            LEFT JOIN Animaux an ON ag.CodeAnimal = an.CodeAnimal
+                            ORDER BY ag.DateRdv";
+                    results = cnx.Query<BO.Agenda, BO.Veterinaires, BO.Animaux, BO.Agenda>(query,
+                                               (agenda, veterinaire, animal) => { agenda.Animal = animal; agenda.Veterinaires = veterinaire; return agenda; },
+                                               splitOn: "CodeVeto,CodeAnimal")
+                                               .ToList<BO.Agenda>();
+                }
+                else
+                {
+                    query = @"SELECT * FROM Agendas ag
+                            LEFT JOIN Veterinaires v ON ag.CodeVeto = v.CodeVeto
+                            LEFT JOIN Animaux an ON ag.CodeAnimal = an.CodeAnimal
+                            WHERE  ag.CodeVeto = @codeVeto
+                            ORDER BY ag.DateRdv";
+                    results = cnx.Query<BO.Agenda, BO.Veterinaires, BO.Animaux, BO.Agenda>(query,
+                                              (agenda, veterinaire, animal) => { agenda.Animal = animal; agenda.Veterinaires = veterinaire; return agenda; },
+                                              new { codeVeto = veto.CodeVeto },
+                                              splitOn: "CodeVeto,CodeAnimal")
+                                              .ToList<BO.Agenda>();
+                }
 
-                List<BO.Agenda> results = cnx.Query<BO.Agenda, BO.Veterinaires, BO.Animaux, BO.Agenda>(query,
-                                           (agenda, veterinaire, animal) => { agenda.Animal = animal; agenda.Veterinaires = veterinaire; return agenda; },
-                                           splitOn: "CodeVeto,CodeAnimal")
-                                           .ToList<BO.Agenda>();
+                SqlConnexion.CloseConnexion(cnx);
+                return results;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        
+        public static List<BO.Agenda> GetAll(BO.Veterinaires veto, DateTime date)
+        {
+            try
+            {
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                String query;
+                List<BO.Agenda> results;
+                date = new DateTime(date.Year, date.Month, date.Day);
+                if (veto == null)
+                {
+                    query = @"SELECT * FROM Agendas ag
+                            LEFT JOIN Veterinaires v ON ag.CodeVeto = v.CodeVeto
+                            LEFT JOIN Animaux an ON ag.CodeAnimal = an.CodeAnimal
+                            WHERE DateRdv BETWEEN cast(@dateRdv as SmallDateTime) AND cast(@dateRdv as SmallDateTime)+1
+                            ORDER BY ag.DateRdv";
+                    results = cnx.Query<BO.Agenda, BO.Veterinaires, BO.Animaux, BO.Agenda>(query,
+                                               (agenda, veterinaire, animal) => { agenda.Animal = animal; agenda.Veterinaires = veterinaire; return agenda; },
+                                               new { dateRdv = date },
+                                               splitOn: "CodeVeto,CodeAnimal")
+                                               .ToList<BO.Agenda>();
+                }
+                else
+                {
+                    query = @"SELECT * FROM Agendas ag
+                            LEFT JOIN Veterinaires v ON ag.CodeVeto = v.CodeVeto
+                            LEFT JOIN Animaux an ON ag.CodeAnimal = an.CodeAnimal
+                            WHERE  ag.CodeVeto = @codeVeto
+                            AND DateRdv BETWEEN cast(@dateRdv as SmallDateTime) AND cast(@dateRdv as SmallDateTime)+1
+                            ORDER BY ag.DateRdv";
+                    results = cnx.Query<BO.Agenda, BO.Veterinaires, BO.Animaux, BO.Agenda>(query,
+                                              (agenda, veterinaire, animal) => { agenda.Animal = animal; agenda.Veterinaires = veterinaire; return agenda; },
+                                              new { codeVeto = veto.CodeVeto, dateRdv = date },
+                                              splitOn: "CodeVeto,CodeAnimal")
+                                              .ToList<BO.Agenda>();
+                }
 
                 SqlConnexion.CloseConnexion(cnx);
                 return results;

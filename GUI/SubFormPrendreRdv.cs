@@ -32,9 +32,11 @@ namespace GUI
 
         public void UpdateContent()
         {
-            this.comboBoxClient.DataSource = BLL.ClientsMgr.GetAll();
-            this.comboBoxVeterianire.DataSource = BLL.VeterinairesMgr.GetAll();
-            this.dataGridViewAgenda.DataSource = BLL.AgendaMgr.GetAll();
+            this.comboBoxClient.DataSource = BLL.ClientsMgr.GetAll(false);
+            this.comboBoxVeterianire.DataSource = BLL.VeterinairesMgr.GetAll(false);
+
+            BO.Veterinaires veto = (BO.Veterinaires)this.comboBoxVeterianire.SelectedItem;
+            this.dataGridViewAgenda.DataSource = BLL.AgendaMgr.GetAll(veto, this.dateTimePicker1.Value);
         }
 	
         #region Evenements
@@ -42,6 +44,7 @@ namespace GUI
         //EVENEMENTS =========
         //====================
         
+		
         private void SubFormPrendreRdv_Load(object sender, EventArgs e)
         {
             UpdateContent();
@@ -64,6 +67,7 @@ namespace GUI
         {
             SubFormDossierClientAnimal frm = new SubFormDossierClientAnimal();
             frm.CreateMode = true;
+            frm.buttonCancelAddCli.Click += frm.OnCancelClicked;
             frm.ShowDialog();
         }
 
@@ -192,8 +196,11 @@ namespace GUI
             */
         }
 
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateContent();
+        }
         #endregion
 
-        
     }
 }

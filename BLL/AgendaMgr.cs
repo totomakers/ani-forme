@@ -13,6 +13,11 @@ namespace BLL
             return DAL.Agenda.GetAll(veto);
         }
 
+        public static List<BO.Agenda> GetAll(BO.Veterinaires veto, DateTime date)
+        {
+            return DAL.Agenda.GetAll(veto, date);
+        }
+
         public static bool Add(BO.Agenda agenda)
         {
             if (agenda.Animal == null || agenda.Veterinaires == null)

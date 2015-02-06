@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BO;
 using DAL.Dapper;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace DAL
 {
@@ -55,6 +56,59 @@ namespace DAL
         }
 
         /// <summary>
+        /// Recupere le veterinaire dont l'id est passé en parametre
+        /// </summary>
+        /// <param name="idParam"></param>
+        /// <returns></returns>
+        public static BO.Veterinaires Get(Guid idParam)
+        {
+            try
+            {
+                var query = @"SELECT * 
+                                FROM  Veterinaires v 
+                                LEFT JOIN Account a ON a.id = v.AccountId 
+                                WHERE CodeVeto = @codeVeto";
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                List<BO.Veterinaires> results = cnx.Query<BO.Veterinaires, BO.Account, BO.Veterinaires>(query, (veto, account) => { veto.Account = account; return veto; }, new { codeVeto = idParam }).ToList<BO.Veterinaires>();
+                SqlConnexion.CloseConnexion(cnx);
+
+                return results.First();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        /// <summary>
+        /// Recupere le veterinaire dont l'idAccount est passé en parametre
+        /// </summary>
+        /// <param name="idParam"></param>
+        /// <returns></returns>
+        public static BO.Veterinaires GetByAccount(int idParam)
+        {
+            try
+            {
+                var query = @"SELECT * 
+                                FROM  Veterinaires v 
+                                LEFT JOIN Account a ON a.id = v.AccountId 
+                                WHERE AccountId = @codeAccount";
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                List<BO.Veterinaires> results = cnx.Query<BO.Veterinaires, BO.Account, BO.Veterinaires>(query, 
+                                                                                                        (veto, account) => { veto.Account = account; return veto; }, 
+                                                                                                        new { codeAccount = idParam }
+                                                                                                        ).ToList<BO.Veterinaires>();
+                SqlConnexion.CloseConnexion(cnx);
+
+                return results.First();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        /// <summary>
         /// Déactive un vétérinaire
         /// </summary>
         /// <param name="veto"></param>
@@ -82,8 +136,24 @@ namespace DAL
         /// <returns></returns>
         public static BO.Veterinaires Create(BO.Veterinaires vetoParams)
         {
-            //@TODO
-            return vetoParams;
+            try
+            {
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                Guid temp = cnx.ExecuteScalar<Guid>(  "EXEC ajout_veterinaire @nomveto, @archive, @account",
+                                        new { 
+	                                            nomveto = vetoParams.NomVeto,
+	                                            archive = (vetoParams.Archive) ? 1 : 0,
+	                                            account = vetoParams.AccountId
+                                        });
+                vetoParams.CodeVeto = temp;
+                SqlConnexion.CloseConnexion(cnx);
+
+                return vetoParams;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }

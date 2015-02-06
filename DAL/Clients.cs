@@ -115,7 +115,32 @@ namespace DAL
         /// <returns></returns>
         public static BO.Clients Create(BO.Clients client)
         {
-            return null;
+            try
+            {
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                Guid temp = cnx.ExecuteScalar<Guid>("EXEC ajout_client @nom, @prenom, @add, @add2, @cp, @ville, @tel, @ass, @mail, @arch",
+                                        new
+                                        {
+                                            nom = client.NomClient,
+	                                        prenom = client.PrenomClient,
+	                                        add = client.Adresse1,
+	                                        add2 = client.Adresse2,
+	                                        cp = client.CodePostal,
+	                                        ville = client.Ville,
+	                                        tel = client.NumTel,
+	                                        ass = client.Assurance,
+	                                        mail = client.Email,
+	                                        arch = 0
+                                        });
+                client.CodeClient = temp;
+                SqlConnexion.CloseConnexion(cnx);
+
+                return client;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }
