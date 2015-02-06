@@ -131,8 +131,18 @@ namespace GUI
             agenda.DateRdv = date;
             agenda.Animal = animal;
 
-            BLL.AgendaMgr.Add(agenda);
-            UpdateContent();
+            try
+            {
+                BLL.AgendaMgr.Add(agenda);
+                UpdateContent();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,
+                               GUI.Lang.FORM_DEFAULT_ERROR_TITLE,
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Error);
+            }     
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -161,32 +171,6 @@ namespace GUI
             BO.Clients client = (BO.Clients)this.comboBoxClient.SelectedItem;
             this.comboBoxAnimal.DataSource = BLL.AnimauxMgr.GetAllByClient(client, false);
         }
-		
-        private void buttonUrgence_Click(object sender, EventArgs e)
-        {
-            BO.Veterinaires veto = (BO.Veterinaires)this.comboBoxVeterianire.SelectedItem;
-            BO.Animaux animal = (BO.Animaux)this.comboBoxAnimal.SelectedItem;
-            DateTime date = DateTime.Now;
-
-            BO.Agenda agenda = new BO.Agenda();
-            agenda.Veterinaires = veto;
-            agenda.DateRdv = date;
-            agenda.Animal = animal;
-
-            try
-            {
-                BLL.AgendaMgr.Add(agenda);
-                UpdateContent();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message,
-                               GUI.Lang.FORM_DEFAULT_ERROR_TITLE,
-                               MessageBoxButtons.OK,
-                               MessageBoxIcon.Error);
-            }     
-        }
-
         #endregion
     }
 }
