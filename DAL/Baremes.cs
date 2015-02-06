@@ -57,7 +57,7 @@ namespace DAL
                     tfixe = bareme.TarifFixe,
                     tmini = bareme.TarifMini,
                     tmaxi = bareme.TarifMaxi,
-                    nomvaccin = bareme.VaccinId.ToString()
+                    nomvaccin = bareme.Vaccin.NomVaccin
                 },
                                         commandType: CommandType.StoredProcedure);
                 SqlConnexion.CloseConnexion(cnx);

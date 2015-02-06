@@ -83,6 +83,27 @@ namespace GUI
             UpdateContent();
         }
 
+        private void buttonUrgence_Click(object sender, EventArgs e)
+        {
+            BO.Veterinaires veto = (BO.Veterinaires)this.comboBoxVeterianire.SelectedItem;
+            BO.Animaux animal = (BO.Animaux)this.comboBoxAnimal.SelectedItem;
+            DateTime date = new DateTime(
+                 DateTime.Now.Year,
+                 DateTime.Now.Month,
+                 DateTime.Now.Day,
+                 DateTime.Now.Hour,
+                 DateTime.Now.Minute,
+                 0);
+
+            BO.Agenda agenda = new BO.Agenda();
+            agenda.Veterinaires = veto;
+            agenda.DateRdv = date;
+            agenda.Animal = animal;
+
+            BLL.AgendaMgr.Add(agenda);
+            UpdateContent();
+        }
+
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             BO.Agenda agenda = (BO.Agenda)this.dataGridViewAgenda.SelectedCells[0].OwningRow.DataBoundItem;
@@ -108,19 +129,5 @@ namespace GUI
             this.dataGridViewAgenda.DataSource = BLL.AgendaMgr.GetAll();
         }
 
-        private void buttonUrgence_Click(object sender, EventArgs e)
-        {
-            BO.Veterinaires veto = (BO.Veterinaires)this.comboBoxVeterianire.SelectedItem;
-            BO.Animaux animal = (BO.Animaux)this.comboBoxAnimal.SelectedItem;
-            DateTime date = DateTime.Now;
-
-            BO.Agenda agenda = new BO.Agenda();
-            agenda.Veterinaires = veto;
-            agenda.DateRdv = date;
-            agenda.Animal = animal;
-
-            BLL.AgendaMgr.Add(agenda);
-            UpdateContent();
-        }
     }
 }
