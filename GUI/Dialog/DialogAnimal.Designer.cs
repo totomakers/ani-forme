@@ -34,7 +34,7 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.labelCustomer = new System.Windows.Forms.Label();
             this.comboBoxCustomer = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelCode = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
             this.labelColor = new System.Windows.Forms.Label();
             this.labelTatoo = new System.Windows.Forms.Label();
@@ -57,6 +57,7 @@
             this.buttonMedicalFolder.TabIndex = 0;
             this.buttonMedicalFolder.Text = "buttonMedicalFolder";
             this.buttonMedicalFolder.UseVisualStyleBackColor = true;
+            this.buttonMedicalFolder.Click += new System.EventHandler(this.buttonMedicalFolder_Click);
             // 
             // buttonValidate
             // 
@@ -77,6 +78,7 @@
             this.buttonCancel.TabIndex = 2;
             this.buttonCancel.Text = "buttonCancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // labelCustomer
             // 
@@ -97,14 +99,14 @@
             this.comboBoxCustomer.Size = new System.Drawing.Size(453, 21);
             this.comboBoxCustomer.TabIndex = 4;
             // 
-            // label1
+            // labelCode
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(-2, 139);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "labelCode";
+            this.labelCode.AutoSize = true;
+            this.labelCode.Location = new System.Drawing.Point(-2, 139);
+            this.labelCode.Name = "labelCode";
+            this.labelCode.Size = new System.Drawing.Size(54, 13);
+            this.labelCode.TabIndex = 5;
+            this.labelCode.Text = "labelCode";
             // 
             // labelName
             // 
@@ -226,7 +228,7 @@
             this.Controls.Add(this.labelTatoo);
             this.Controls.Add(this.labelColor);
             this.Controls.Add(this.labelName);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelCode);
             this.Controls.Add(this.comboBoxCustomer);
             this.Controls.Add(this.labelCustomer);
             this.Controls.Add(this.buttonCancel);
@@ -247,7 +249,7 @@
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Label labelCustomer;
         private System.Windows.Forms.ComboBox comboBoxCustomer;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelCode;
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.Label labelColor;
         private System.Windows.Forms.Label labelTatoo;

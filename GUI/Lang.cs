@@ -119,6 +119,23 @@ namespace GUI
         public static String SUBFORM_PRENDRERDV_BTN_DELETE = "Supprimer";
         public static String SUBFORM_PRENDRERDV_BTN_CANCEL = "Annuler";
 
+        //============================
+        //DialogAnimal
+        //============================
+        public static String DIALOG_ANIMAL_TITLE = "Animaux";
+        public static String DIALOG_ANIMAL_TITLE_ADD_CLIENT = "Ajout pour le client {0}";
+        public static String DIALOG_ANIMAL_TITLE_EDIT_ANIMAL = "Edition de {0}";
+        public static String DIALOG_ANIMAL_TITLE_CREATE = "Ajout d'un nouvel animal";
+
+        public static String DIALOG_ANIMAL_MEDICAL_FOLDER = "Dossier médical";
+        public static String DIALOG_ANIMAL_LIB_CUSTOMER = "Client";
+        public static String DIALOG_ANIMAL_LIB_CODE = "Code";
+        public static String DIALOG_ANIMAL_LIB_NAME = "Nom";
+        public static String DIALOG_ANIMAL_LIB_COLOR = "Couleur";
+        public static String DIALOG_ANIMAL_LIB_ESPECE = "Espece";
+        public static String DIALOG_ANIMAL_LIB_RACE = "Race";
+        public static String DIALOG_ANIMAL_LIB_TATOO = "Tatouage";
+
         
     }
 }

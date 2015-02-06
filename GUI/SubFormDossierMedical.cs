@@ -14,6 +14,9 @@ namespace GUI
 {
     public partial class SubFormDossierMedical : Form
     {
+        /// <summary>
+        /// Construction d'un dossier médical avec navigation
+        /// </summary>
         public SubFormDossierMedical()
         {
             InitializeComponent();
@@ -26,6 +29,7 @@ namespace GUI
         /// <param name="animal"></param>
         public SubFormDossierMedical(BO.Animaux animal)
         {
+            InitializeComponent();
         }
     }
 }
