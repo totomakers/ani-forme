@@ -45,6 +45,9 @@ namespace GUI
         private void SubFormPrendreRdv_Load(object sender, EventArgs e)
         {
             UpdateContent();
+            this.numericUpDownHeure.Value = DateTime.Now.Hour;
+            this.numericUpDownMin.Value= DateTime.Now.Minute;
+
         }
 
         private void UpAndDownCircle(object sender, EventArgs e)
