@@ -34,14 +34,15 @@ namespace BLL
         /// <param name="code"></param>
         /// <param name="date"></param>
         /// <param name="newTarif"></param>
-        /// @TODO passer un barem..
-        public static void CreateBareme(String code, String date, String newTarif)
+        public static void CreateBareme(BO.Baremes baremeParam, String newTarifFixe, String newTarifMini, String newTarifMaxi)
         {
-            BO.Baremes bareme = DAL.Baremes.GetBareme(code, date);
+            BO.Baremes bareme = DAL.Baremes.GetBareme(baremeParam.CodeGroupement, baremeParam.DateVigueur);
             if (DAL.Baremes.Archive(bareme, true))
             {
                 bareme.DateVigueur = DateTime.Now.ToString("dd/MM/yy");
-                bareme.TarifFixe = Decimal.Parse(newTarif);
+                bareme.TarifFixe = Decimal.Parse(newTarifFixe);
+                bareme.TarifMaxi = Decimal.Parse(newTarifMaxi);
+                bareme.TarifMini = Decimal.Parse(newTarifMini);
                 if (!DAL.Baremes.CreateBareme(bareme))
                 {
                     DAL.Baremes.Archive(bareme, false);

@@ -95,10 +95,12 @@ namespace BLL
             if (client.CodeClient == default(Guid))
                 throw new Exception(Lang.ANIMAUX_CANT_DELETE_ANI_CUST_WITHOUT_GUID);
 
-            //@TODO ajouter la méthode pour compter le nombre de consultation non payé
-            //if()
-            throw new Exception(String.Format(Lang.ANIMAUX_CANT_ARCHIVE_CONSULT_NOT_PAID, client.getFullName()));
-            
+            List<BO.Animaux> animaux = DAL.Animaux.GetAllByClient(client);
+            foreach (BO.Animaux animal in animaux)
+            {
+                if (DAL.Consultations.GetNonPayed(animal) > 0)
+                    throw new Exception(String.Format(Lang.ANIMAUX_CANT_ARCHIVE_CONSULT_NOT_PAID, client.getFullName()));
+            }
             DAL.Animaux.ArchiveAllByClient(client);
         }
 
@@ -135,9 +137,9 @@ namespace BLL
             if (animal.CodeAnimal == default(Guid))
                 throw new Exception(Lang.ANIMAUX_CANT_DELETE_WITHOUT_GUID);
 
-            //@TODO Ajout une méthode pour conter le nombre de consultation non payé
-            //if(DAL.Animaux.CountConsulation(animal, 
+            if (DAL.Consultations.GetNonPayed(animal) > 0) 
                 throw new Exception(String.Format(Lang.ANIMAUX_CANT_ARCHIVE_CONSULT_NOT_PAID, animal.NomAnimal));
+            
 
             DAL.Animaux.Archive(animal);
         }

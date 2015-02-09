@@ -167,6 +167,9 @@
     <EmbeddedResource Include="SubFormPrendreRdv.resx">
       <DependentUpon>SubFormPrendreRdv.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SubFormRelances.resx">
+      <DependentUpon>SubFormRelances.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SubFormVeto.resx">
       <DependentUpon>SubFormVeto.cs</DependentUpon>
     </EmbeddedResource>

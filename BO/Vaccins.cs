@@ -10,7 +10,7 @@ namespace BO
     public class Vaccins
     {
         #region Atribute
-        private Guid codeVaccin;
+        private Guid? codeVaccin;
         private String nomVaccin;
         private Int32 quantiteStock;
         private Int32 periodeValidite;
@@ -24,7 +24,7 @@ namespace BO
         #endregion
 
         #region Getter/Setter
-        public Guid CodeVaccin
+        public Guid? CodeVaccin
         {
             get { return codeVaccin; }
             set { codeVaccin = value; }

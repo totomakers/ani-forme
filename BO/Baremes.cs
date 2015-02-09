@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -72,7 +73,7 @@ namespace BO
             set { tarifMini = value; }
         }
 
-        [DisplayName("Tarif Max")]
+        [DisplayName("Tarif Maxi")]
         public Decimal TarifMaxi
         {
             get { return tarifMaxi; }
@@ -106,7 +107,6 @@ namespace BO
         {
             var numberFormatInfo = new NumberFormatInfo();
             numberFormatInfo.NumberDecimalSeparator = ".";
-            //@TODO Déplacer str dans une class
             switch (attribute)
             {
                 case "CodeGroupement" :

@@ -64,13 +64,16 @@ namespace GUI
         {
             this.textBoxLibelle.Text = dataGridViewListPrice.Rows[e.RowIndex].Cells[3].FormattedValue.ToString();
             this.textBoxTarifFixe.Text = dataGridViewListPrice.Rows[e.RowIndex].Cells[4].FormattedValue.ToString();
+            this.textBoxTarifMini.Text = dataGridViewListPrice.Rows[e.RowIndex].Cells[5].FormattedValue.ToString();
+            this.textBoxTarifMaxi.Text = dataGridViewListPrice.Rows[e.RowIndex].Cells[6].FormattedValue.ToString();
         }
 
         private void buttonModify_Click(object sender, EventArgs e)
         {
-            BLL.BaremesMgr.CreateBareme(dataGridViewListPrice.SelectedCells[0].OwningRow.Cells[0].FormattedValue.ToString(),
-                                          dataGridViewListPrice.SelectedCells[0].OwningRow.Cells[1].FormattedValue.ToString(),
-                                          this.textBoxTarifFixe.Text);
+            BO.Baremes bareme = new BO.Baremes();
+            bareme.CodeGroupement = dataGridViewListPrice.SelectedCells[0].OwningRow.Cells[0].FormattedValue.ToString();
+            bareme.DateVigueur = dataGridViewListPrice.SelectedCells[0].OwningRow.Cells[1].FormattedValue.ToString();
+            BLL.BaremesMgr.CreateBareme(bareme, this.textBoxTarifFixe.Text, this.textBoxTarifMini.Text,this.textBoxTarifMaxi.Text);
             this.Update_Data();
         }
 

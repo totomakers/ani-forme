@@ -38,6 +38,10 @@
             this.buttonImportXml = new System.Windows.Forms.Button();
             this.comboBoxFiltre = new System.Windows.Forms.ComboBox();
             this.labelFiltre = new System.Windows.Forms.Label();
+            this.labelTarifMaxi = new System.Windows.Forms.Label();
+            this.textBoxTarifMaxi = new System.Windows.Forms.TextBox();
+            this.labelTarifMini = new System.Windows.Forms.Label();
+            this.textBoxTarifMini = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListPrice)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,7 +55,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewListPrice.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewListPrice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewListPrice.Location = new System.Drawing.Point(12, 30);
+            this.dataGridViewListPrice.Location = new System.Drawing.Point(12, 27);
             this.dataGridViewListPrice.Name = "dataGridViewListPrice";
             this.dataGridViewListPrice.ReadOnly = true;
             this.dataGridViewListPrice.RowHeadersWidth = 25;
@@ -99,7 +103,7 @@
             // buttonModify
             // 
             this.buttonModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonModify.Location = new System.Drawing.Point(199, 335);
+            this.buttonModify.Location = new System.Drawing.Point(386, 334);
             this.buttonModify.Name = "buttonModify";
             this.buttonModify.Size = new System.Drawing.Size(75, 20);
             this.buttonModify.TabIndex = 7;
@@ -136,11 +140,51 @@
             this.labelFiltre.Text = "labelfiltre";
             this.labelFiltre.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // labelTarifMaxi
+            // 
+            this.labelTarifMaxi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelTarifMaxi.Location = new System.Drawing.Point(199, 335);
+            this.labelTarifMaxi.Name = "labelTarifMaxi";
+            this.labelTarifMaxi.Size = new System.Drawing.Size(75, 20);
+            this.labelTarifMaxi.TabIndex = 14;
+            this.labelTarifMaxi.Text = "labelTarifMaxi";
+            this.labelTarifMaxi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // textBoxTarifMaxi
+            // 
+            this.textBoxTarifMaxi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBoxTarifMaxi.Location = new System.Drawing.Point(280, 335);
+            this.textBoxTarifMaxi.Name = "textBoxTarifMaxi";
+            this.textBoxTarifMaxi.Size = new System.Drawing.Size(100, 20);
+            this.textBoxTarifMaxi.TabIndex = 13;
+            // 
+            // labelTarifMini
+            // 
+            this.labelTarifMini.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelTarifMini.Location = new System.Drawing.Point(199, 309);
+            this.labelTarifMini.Name = "labelTarifMini";
+            this.labelTarifMini.Size = new System.Drawing.Size(75, 20);
+            this.labelTarifMini.TabIndex = 12;
+            this.labelTarifMini.Text = "labelTarifMini";
+            this.labelTarifMini.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // textBoxTarifMini
+            // 
+            this.textBoxTarifMini.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBoxTarifMini.Location = new System.Drawing.Point(280, 309);
+            this.textBoxTarifMini.Name = "textBoxTarifMini";
+            this.textBoxTarifMini.Size = new System.Drawing.Size(100, 20);
+            this.textBoxTarifMini.TabIndex = 11;
+            // 
             // SubFormBaremes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(696, 360);
+            this.Controls.Add(this.labelTarifMaxi);
+            this.Controls.Add(this.textBoxTarifMaxi);
+            this.Controls.Add(this.labelTarifMini);
+            this.Controls.Add(this.textBoxTarifMini);
             this.Controls.Add(this.labelFiltre);
             this.Controls.Add(this.comboBoxFiltre);
             this.Controls.Add(this.buttonImportXml);
@@ -171,5 +215,9 @@
         private System.Windows.Forms.DataGridView dataGridViewListPrice;
         private System.Windows.Forms.ComboBox comboBoxFiltre;
         private System.Windows.Forms.Label labelFiltre;
+        private System.Windows.Forms.Label labelTarifMaxi;
+        private System.Windows.Forms.TextBox textBoxTarifMaxi;
+        private System.Windows.Forms.Label labelTarifMini;
+        private System.Windows.Forms.TextBox textBoxTarifMini;
     }
 }

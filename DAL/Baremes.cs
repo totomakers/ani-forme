@@ -75,26 +75,86 @@ namespace DAL
             }
         }
 
-        public static bool CreateBareme(BO.Baremes bareme)
+        public static Boolean Exist(string codeParam, string dateParam)
         {
-            //@TODO : Correction crash liée a la date... :D
             try
             {
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
-                int output = cnx.Execute("ajout_bareme", new
-                {
-                    codegroupement = bareme.CodeGroupement,
-                    datevigueur = bareme.DateVigueur,
-                    typeacte = bareme.TypeActe,
-                    libelle = bareme.Libelle,
-                    tfixe = bareme.TarifFixe,
-                    tmini = bareme.TarifMini,
-                    tmaxi = bareme.TarifMaxi,
-                    nomvaccin = (bareme.Vaccin == null) ? "" : bareme.Vaccin.NomVaccin
-                },
-                                        commandType: CommandType.StoredProcedure);
+                String query = String.Format(@"SELECT count(*) FROM Baremes b WHERE b.CodeGroupement = {0} AND b.DateVigueur LIKE ('%{1}%')", codeParam, dateParam);
+                int result = cnx.Query<int>(query).Single<int>();
                 SqlConnexion.CloseConnexion(cnx);
-                return (output > 0);
+                return (result>0);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static bool CreateBareme(BO.Baremes bareme)
+        {
+            
+            try
+            {
+                if (Exist(bareme.CodeGroupement, bareme.DateVigueur))
+                {
+                    return DAL.Baremes.Update(bareme);
+                }
+                else
+                {
+                    SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                    int output = cnx.Execute("ajout_bareme", new
+                    {
+                        codegroupement = bareme.CodeGroupement,
+                        datevigueur = bareme.DateVigueur,
+                        typeacte = bareme.TypeActe,
+                        libelle = bareme.Libelle,
+                        tfixe = bareme.TarifFixe,
+                        tmini = bareme.TarifMini,
+                        tmaxi = bareme.TarifMaxi,
+                        nomvaccin = (bareme.Vaccin == null) ? "" : bareme.Vaccin.NomVaccin
+                    },
+                                            commandType: CommandType.StoredProcedure);
+                    SqlConnexion.CloseConnexion(cnx);
+                    return (output > 0);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static bool Update(BO.Baremes bareme)
+        {
+            try
+            {
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                var query = @"UPDATE Baremes 
+                            SET 
+	                        TypeActe = @typeacte,
+	                        Libelle = @libelle,
+	                        TarifFixe = @tfixe,
+	                        TarifMini = @tmini,
+	                        TarifMaxi = @tmaxi,
+	                        CodeVaccin = @codevaccin,
+                            Archive = @archive
+                            WHERE CodeGroupement = @codegroupement
+                            AND DateVigueur = @datevigueur";
+
+                int rowNb = cnx.Execute(query, new{
+                                                    codegroupement = bareme.CodeGroupement,
+                                                    datevigueur = bareme.DateVigueur,
+                                                    typeacte = bareme.TypeActe,
+                                                    libelle = bareme.Libelle,
+                                                    tfixe = bareme.TarifFixe,
+                                                    tmini = bareme.TarifMini,
+                                                    tmaxi = bareme.TarifMaxi,
+                                                    codevaccin = (bareme.Vaccin == null) ? null : bareme.Vaccin.CodeVaccin,
+                                                    archive=bareme.Archive
+                                                  });
+                SqlConnexion.CloseConnexion(cnx);
+                return (rowNb > 0);
             }
             catch (Exception e)
             {
@@ -129,7 +189,7 @@ namespace DAL
             try
             {
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
-                var query = @"DELETE FROM Baremes";
+                var query = @"UPDATE Baremes SET Archive=1";
                 int rowNb = cnx.Execute(query);
                 SqlConnexion.CloseConnexion(cnx);
                 return (rowNb > 0);
