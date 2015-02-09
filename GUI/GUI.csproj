@@ -50,6 +50,12 @@
     <Compile Include="Dialog\DialogAnimal.Designer.cs">
       <DependentUpon>DialogAnimal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialog\DialogConsultation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\DialogConsultation.Designer.cs">
+      <DependentUpon>DialogConsultation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialog\DialogVetoAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Dialog\DialogAnimal.resx">
       <DependentUpon>DialogAnimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\DialogConsultation.resx">
+      <DependentUpon>DialogConsultation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog\DialogVetoAdd.resx">
       <DependentUpon>DialogVetoAdd.cs</DependentUpon>

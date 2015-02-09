@@ -100,6 +100,7 @@
             this.dataGridViewAgenda.Name = "dataGridViewAgenda";
             this.dataGridViewAgenda.Size = new System.Drawing.Size(343, 200);
             this.dataGridViewAgenda.TabIndex = 1;
+            this.dataGridViewAgenda.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAgenda_CellDoubleClick);
             // 
             // buttonDossierMedical
             // 

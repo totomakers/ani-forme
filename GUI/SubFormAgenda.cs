@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GUI.Dialog;
 
 namespace GUI
 {
@@ -65,6 +66,18 @@ namespace GUI
                 frm = new SubFormDossierMedical();
 
             frm.Show();
+        }
+
+        private void dataGridViewAgenda_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            BO.Animaux animal = null;
+
+            if (this.dataGridViewAgenda.SelectedCells.Count > 0)
+            {
+               BO.Agenda agenda = (BO.Agenda)this.dataGridViewAgenda.SelectedCells[0].OwningRow.DataBoundItem;
+               DialogConsultation consultation = new DialogConsultation(agenda);
+               consultation.Show();
+            }
         }
     }
 }

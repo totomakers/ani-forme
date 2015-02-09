@@ -152,6 +152,39 @@ namespace GUI
         public static String SUBFORM_AGENDA_BTN_DOSSIER = "Dossier Médical";
         public static String SUBFORM_AGENDA_GB_VETO = "De :";
 
+        //Dialog Consultation
+        public static String DIALOG_CONSULTATION_TITLE = "Consultation du {0} pour {1}";
+        public static String DIALOG_CONSULATION_ADD_ACTE = "Ajouter acte";
+        public static String DIALOG_CONSULATION_DELETE_ACTE = "Supprimer acte";
+        public static String DIALOG_CONSULATION_DELETE_CONSULTATION = "Supprimer la consultation";
+        public static String DIALOG_CONSULATION_MEDICAL_FOLDER = "Dossier médical";
+        public static String DIALOG_CONSULTATION_SAVE = "Sauvegarder la consultation/acte";
+        public static String DIALOG_CONSULATION_VALIDATE = "Valider la consultation";
+
+        public static String DIALOG_CONSULTATION_ACTE_DATE = "Date";
+        public static String DIALOG_CONSULTATION_ACTE_LIBELLE = "Libelle";
+        public static String DIALOG_CONSULTATION_ACTE_PRIX = "Prix";
+        public static String DIALOG_CONSULTATION_ACTE_TOTAL = "Prix total";
+        public static String DIALOG_CONSULTATION_ACTE_TYPE = "Type";
+        public static String DIALOG_CONSULTATION_ACTE_VETO = "Vétérinaire";
+
+        public static String DIALOG_CONSULTATION_ACTE_MAX = "Max";
+        public static String DIALOG_CONSULTATION_ACTE_MIN = "Min";
+
+        public static String DIALOG_CONSULTATION_ANI_CODE = "Code";
+        public static String DIALOG_CONSULTATION_ANI_COLOR = "Couleur";
+        public static String DIALOG_CONSULTATION_ANI_ESPECE = "Espéce";
+        public static String DIALOG_CONSULTATION_ANI_NAME = "Nom";
+        public static String DIALOG_CONSULTATION_ANI_RACE = "Race";
+        public static String DIALOG_CONSULTATION_ANI_SEXE = "Sexe";
+        public static String DIALOG_CONSULTATION_ANI_TATOO = "Tatouage";
+
+        public static String DIALOG_CONSULTATION_COMMENT = "Commentaire";
+
+        public static String DIALOG_CONSULTATION_GROUPBOX_ACTES = "Actes";
+        public static String DIALOG_CONSULTATION_GROUPBOX_ANIMAL = "Animal";
+        public static String DIALOG_CONSULATION_GROUPBOX_TARIF = "Tarif";
+
         //============================
         //SubFormMajVaccin
         //============================
@@ -167,6 +200,7 @@ namespace GUI
 
         public static String SUBFORM_DOSSIER_MEDICAL_TITLE = "Dossier médical de {0}";
         public static String SUBFORM_DOSSIER_MEDICAL_TITLE_2 = "Dossie médical";
+
     }
 }
 
