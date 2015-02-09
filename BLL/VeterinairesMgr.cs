@@ -29,6 +29,11 @@ namespace BLL
             return DAL.Veterinaires.GetAll(false);
         }
 
+        /// <summary>
+        /// Retourne le vétérinaires ayant le compte lié en params
+        /// </summary>
+        /// <param name="idParam"></param>
+        /// <returns></returns>
         public static BO.Veterinaires GetByAccount(int idParam)
         {
             return DAL.Veterinaires.GetByAccount(idParam);

@@ -237,6 +237,7 @@ namespace DAL
         /// <returns></returns>
         public static bool Archive(BO.Animaux animal)
         {
+            //@TODO ecrire cette méthode
             return false;
         }
 
@@ -247,7 +248,7 @@ namespace DAL
         /// <returns></returns>
         public static bool ArchiveAllByClient(BO.Clients cli)
         {
-
+            //@TODO Ecrire la méthode
             return false;
         }
 
@@ -258,6 +259,7 @@ namespace DAL
         /// <param name="animal"></param>
         public static BO.Animaux Create(BO.Animaux animal)
         {
+            //@TODO Ecrire la méthode
             return null;
         }
 
@@ -267,6 +269,7 @@ namespace DAL
         /// <param name="animal"></param>
         public static bool Update(BO.Animaux animal)
         {
+            //@TODO Ecrire la méthode
             return false;
         }
     }

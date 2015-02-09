@@ -10,6 +10,10 @@ namespace DAL
 {
     public class Fournisseurs
     {
+        /// <summary>
+        /// Retournes une liste de fournisseurs
+        /// </summary>
+        /// <returns></returns>
         public static List<BO.Fournisseurs> GetAll()
         {
             List<BO.Fournisseurs> result = new List<BO.Fournisseurs>();
@@ -27,12 +31,14 @@ namespace DAL
             {
                 throw e;
             }
-            finally
-            {
-            }
+
             return result;
         }
 
+        /// <summary>
+        /// Met a jour le fournisseur
+        /// </summary>
+        /// <returns></returns>
         public static bool Update()
         {
             return true;

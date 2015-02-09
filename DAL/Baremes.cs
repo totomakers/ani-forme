@@ -77,6 +77,7 @@ namespace DAL
 
         public static bool CreateBareme(BO.Baremes bareme)
         {
+            //@TODO : Correction crash liée a la date... :D
             try
             {
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();

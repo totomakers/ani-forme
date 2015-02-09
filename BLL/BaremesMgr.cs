@@ -19,6 +19,10 @@ namespace BLL
             return list;
         }
 
+        /// <summary>
+        /// Retourne la liste des types d'actes
+        /// </summary>
+        /// <returns></returns>
         public static List<String> GetTypeActe()
         {
             return DAL.Baremes.GetTypeActe();

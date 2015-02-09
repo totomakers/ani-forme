@@ -17,6 +17,12 @@ namespace BLL
             return DAL.Vaccins.GetAll();
         }
 
+        /// <summary>
+        /// Met a jour le vaccin passé en params
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="Qte"></param>
+        /// <returns></returns>
         public static bool Update(String code, String Qte)
         {
             BO.Vaccins vacc = DAL.Vaccins.Get(Guid.Parse(code));

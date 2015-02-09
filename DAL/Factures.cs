@@ -27,7 +27,7 @@ namespace DAL
         }
 
         /// <summary>
-        /// Retourne le nombre de facture d'un client avec cet etat
+        /// Retourne le nombre de facture d'un client avec cet état
         /// </summary>
         /// <param name="client"></param>
         /// <param name="etat"></param>

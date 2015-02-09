@@ -8,6 +8,10 @@ namespace BLL
 {
     public class FournisseurMgr
     {
+        /// <summary>
+        /// Retourne tout les fournisseurs
+        /// </summary>
+        /// <returns></returns>
         public static List<BO.Fournisseurs> GetAll()
         {
             return DAL.Fournisseurs.GetAll();

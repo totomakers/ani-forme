@@ -275,12 +275,12 @@ namespace GUI.Dialog
                         animalEdited.Tatouage = textBoxTatoo.Text;
                         animalEdited.Espece = (String)comboBoxEspece.SelectedItem;
                         animalEdited.Race = (String)comboBoxRace.SelectedItem;
-                        BLL.AnimauxMgr.Update(animalEdited);
+                        if (!BLL.AnimauxMgr.Update(animalEdited))
+                            throw new Exception("L'animal n'a pas pu être mis à jour");
                         break;
                 }
 
                 MessageBox.Show(String.Format(Lang.DIALOG_ANIMAL_CREATE_UPDATE_SUCCEFULL, finalAnimal.NomAnimal), Lang.FORM_DEFAULT_CREATE_UPDATE_TITLE, MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 UpdateContent(); //reload data
                 EditMode(finalAnimal); //Mode edition de cet animal
                 I18N(); //rafraichis la trad

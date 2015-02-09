@@ -91,13 +91,18 @@ namespace DAL
             }
         }
 
+        /// <summary>
+        /// Retourne le client liée au Guid
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 		public static BO.Clients Get(Guid id)
         {
             try
             {
                 var query = @"SELECT * FROM  Clients c WHERE CodeClient = @code";
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
-                BO.Clients results = cnx.Query<BO.Clients>(query, new { code = id }).ToList<BO.Clients>()[0];
+                BO.Clients results = cnx.Query<BO.Clients>(query, new { code = id }).ToList<BO.Clients>().First();
                 SqlConnexion.CloseConnexion(cnx);
 
                 return results;
