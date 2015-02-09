@@ -87,6 +87,8 @@ namespace GUI
         public static String SUBFORM_LIST_PRICE_LIB_TARIF_FIXE = "Tarif";
         public static String SUBFORM_LIST_PRICE_BTN_MODIFY = "Modifier";
         public static String SUBFORM_LIST_PRICE_BTN_IMPORT = "Import XML";
+        public static String SUBFORM_LIST_PRICE_LABEL_FILTRE = "Type Acte";
+        public static String SUBFORM_LIST_PRICE_EMPTY_FILTRE = "";
 
         //============================
         //SubFormFolderCustomerAnimal

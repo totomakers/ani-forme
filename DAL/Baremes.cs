@@ -11,13 +11,29 @@ namespace DAL
 {
     public class Baremes
     {
-        public static List<BO.Baremes> GetBaremes()
+        public static List<BO.Baremes> GetBaremes(String Type)
         {
             try
             {
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
-                String query = @"SELECT * FROM Baremes b LEFT JOIN Vaccins v ON b.CodeVaccin = v.CodeVaccin WHERE b.archive = 0 ORDER BY b.CodeGroupement";
-                List<BO.Baremes> results = cnx.Query<BO.Baremes, BO.Vaccins, BO.Baremes>(query, (bareme, vaccin) => { bareme.Vaccin = vaccin; return bareme; }, splitOn:"CodeVaccin").ToList<BO.Baremes>();
+                List<BO.Baremes> results = null;
+                if (String.IsNullOrEmpty(Type))
+                {
+                    String query = @"SELECT * FROM Baremes b 
+                                LEFT JOIN Vaccins v ON b.CodeVaccin = v.CodeVaccin 
+                                WHERE b.archive = 0 
+                                ORDER BY b.CodeGroupement";
+                    results = cnx.Query<BO.Baremes, BO.Vaccins, BO.Baremes>(query, (bareme, vaccin) => { bareme.Vaccin = vaccin; return bareme; }, splitOn: "CodeVaccin").ToList<BO.Baremes>();
+                }
+                else
+                {
+                    String query = @"SELECT * FROM Baremes b 
+                                LEFT JOIN Vaccins v ON b.CodeVaccin = v.CodeVaccin 
+                                WHERE b.archive = 0 
+                                AND TypeActe LIKE ('%' + @type + '%')
+                                ORDER BY b.CodeGroupement";
+                    results = cnx.Query<BO.Baremes, BO.Vaccins, BO.Baremes>(query, (bareme, vaccin) => { bareme.Vaccin = vaccin; return bareme; }, new { type = Type }, splitOn: "CodeVaccin").ToList<BO.Baremes>();
+                }
                 SqlConnexion.CloseConnexion(cnx);
                 return results;
             }
@@ -36,6 +52,22 @@ namespace DAL
                 List<BO.Baremes> results = cnx.Query<BO.Baremes, BO.Vaccins, BO.Baremes>(query, (bareme, vaccin) => { bareme.Vaccin = vaccin; return bareme; }, splitOn: "CodeVaccin").ToList<BO.Baremes>();
                 SqlConnexion.CloseConnexion(cnx);
                 return results.First();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static List<String> GetTypeActe()
+        {
+            try
+            {
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                String query = @"Select distinct TypeActe FROM Baremes";
+                List<String> results = cnx.Query<String>(query).ToList<String>();
+                SqlConnexion.CloseConnexion(cnx);
+                return results;
             }
             catch (Exception e)
             {

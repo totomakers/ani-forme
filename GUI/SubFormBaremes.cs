@@ -19,6 +19,7 @@ namespace GUI
         {
             InitializeComponent();
             I18N();
+            Load_Data();
         }
 
         /// <summary>
@@ -31,7 +32,7 @@ namespace GUI
             this.labelTarifFixe.Text = GUI.Lang.SUBFORM_LIST_PRICE_LIB_TARIF_FIXE;
             this.buttonModify.Text = GUI.Lang.SUBFORM_LIST_PRICE_BTN_MODIFY;
             this.buttonImportXml.Text = GUI.Lang.SUBFORM_LIST_PRICE_BTN_IMPORT;
-
+            this.labelFiltre.Text = GUI.Lang.SUBFORM_LIST_PRICE_LABEL_FILTRE;
         }
 
         private void SubFormListPrice_Load(object sender, EventArgs e)
@@ -40,10 +41,24 @@ namespace GUI
             this.dataGridViewListPrice.AutoResizeRows();
         }
 
-        private void Update_Data()
+        private void Update_Data(String Type = "")
         {
-            this.dataGridViewListPrice.DataSource = BLL.BaremesMgr.GetAll();
+            this.dataGridViewListPrice.DataSource = BLL.BaremesMgr.GetAll(Type);
         }
+
+        private void Load_Data()
+        {
+            this.dataGridViewListPrice.DataSource = BLL.BaremesMgr.GetAll("");
+            List<String> list = new List<string>();
+            list.Add(GUI.Lang.SUBFORM_LIST_PRICE_EMPTY_FILTRE);
+            foreach (String item in BLL.BaremesMgr.GetTypeActe())
+            {
+                list.Add(item);
+            }
+            this.comboBoxFiltre.DataSource = list;
+        }
+
+        
 
         private void dataGridViewListPrice_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -67,6 +82,11 @@ namespace GUI
                 BLL.BaremesMgr.ImportXml(openFileDialog1.FileName);
             }
             this.Update_Data();
+        }
+
+        private void comboBoxFiltre_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.Update_Data(this.comboBoxFiltre.SelectedItem.ToString());
         }
         
     }

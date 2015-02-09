@@ -36,6 +36,8 @@
             this.textBoxTarifFixe = new System.Windows.Forms.TextBox();
             this.buttonModify = new System.Windows.Forms.Button();
             this.buttonImportXml = new System.Windows.Forms.Button();
+            this.comboBoxFiltre = new System.Windows.Forms.ComboBox();
+            this.labelFiltre = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListPrice)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,23 +51,23 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewListPrice.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewListPrice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewListPrice.Location = new System.Drawing.Point(12, 12);
+            this.dataGridViewListPrice.Location = new System.Drawing.Point(12, 30);
             this.dataGridViewListPrice.Name = "dataGridViewListPrice";
             this.dataGridViewListPrice.ReadOnly = true;
             this.dataGridViewListPrice.RowHeadersWidth = 25;
-            this.dataGridViewListPrice.Size = new System.Drawing.Size(672, 291);
+            this.dataGridViewListPrice.Size = new System.Drawing.Size(672, 273);
             this.dataGridViewListPrice.TabIndex = 0;
             this.dataGridViewListPrice.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewListPrice_RowEnter);
             // 
             // labelLibelle
             // 
             this.labelLibelle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelLibelle.AutoSize = true;
-            this.labelLibelle.Location = new System.Drawing.Point(12, 312);
+            this.labelLibelle.Location = new System.Drawing.Point(12, 309);
             this.labelLibelle.Name = "labelLibelle";
-            this.labelLibelle.Size = new System.Drawing.Size(59, 13);
+            this.labelLibelle.Size = new System.Drawing.Size(75, 20);
             this.labelLibelle.TabIndex = 4;
             this.labelLibelle.Text = "labelLibelle";
+            this.labelLibelle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // textBoxLibelle
             // 
@@ -79,12 +81,12 @@
             // labelTarifFixe
             // 
             this.labelTarifFixe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelTarifFixe.AutoSize = true;
-            this.labelTarifFixe.Location = new System.Drawing.Point(12, 338);
+            this.labelTarifFixe.Location = new System.Drawing.Point(12, 335);
             this.labelTarifFixe.Name = "labelTarifFixe";
-            this.labelTarifFixe.Size = new System.Drawing.Size(69, 13);
+            this.labelTarifFixe.Size = new System.Drawing.Size(75, 20);
             this.labelTarifFixe.TabIndex = 6;
             this.labelTarifFixe.Text = "labelTarifFixe";
+            this.labelTarifFixe.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // textBoxTarifFixe
             // 
@@ -99,7 +101,7 @@
             this.buttonModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonModify.Location = new System.Drawing.Point(199, 335);
             this.buttonModify.Name = "buttonModify";
-            this.buttonModify.Size = new System.Drawing.Size(75, 21);
+            this.buttonModify.Size = new System.Drawing.Size(75, 20);
             this.buttonModify.TabIndex = 7;
             this.buttonModify.Text = "buttonModify";
             this.buttonModify.UseVisualStyleBackColor = true;
@@ -108,19 +110,39 @@
             // buttonImportXml
             // 
             this.buttonImportXml.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonImportXml.Location = new System.Drawing.Point(609, 334);
+            this.buttonImportXml.Location = new System.Drawing.Point(609, 335);
             this.buttonImportXml.Name = "buttonImportXml";
-            this.buttonImportXml.Size = new System.Drawing.Size(75, 22);
+            this.buttonImportXml.Size = new System.Drawing.Size(75, 20);
             this.buttonImportXml.TabIndex = 8;
             this.buttonImportXml.Text = "buttonImport";
             this.buttonImportXml.UseVisualStyleBackColor = true;
             this.buttonImportXml.Click += new System.EventHandler(this.buttonImportXml_Click);
+            // 
+            // comboBoxFiltre
+            // 
+            this.comboBoxFiltre.FormattingEnabled = true;
+            this.comboBoxFiltre.Location = new System.Drawing.Point(93, 3);
+            this.comboBoxFiltre.Name = "comboBoxFiltre";
+            this.comboBoxFiltre.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxFiltre.TabIndex = 9;
+            this.comboBoxFiltre.SelectedIndexChanged += new System.EventHandler(this.comboBoxFiltre_SelectedIndexChanged);
+            // 
+            // labelFiltre
+            // 
+            this.labelFiltre.Location = new System.Drawing.Point(12, 3);
+            this.labelFiltre.Name = "labelFiltre";
+            this.labelFiltre.Size = new System.Drawing.Size(75, 21);
+            this.labelFiltre.TabIndex = 10;
+            this.labelFiltre.Text = "labelfiltre";
+            this.labelFiltre.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // SubFormBaremes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(696, 360);
+            this.Controls.Add(this.labelFiltre);
+            this.Controls.Add(this.comboBoxFiltre);
             this.Controls.Add(this.buttonImportXml);
             this.Controls.Add(this.buttonModify);
             this.Controls.Add(this.labelTarifFixe);
@@ -147,5 +169,7 @@
         private System.Windows.Forms.Button buttonModify;
         private System.Windows.Forms.Button buttonImportXml;
         private System.Windows.Forms.DataGridView dataGridViewListPrice;
+        private System.Windows.Forms.ComboBox comboBoxFiltre;
+        private System.Windows.Forms.Label labelFiltre;
     }
 }

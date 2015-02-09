@@ -13,10 +13,15 @@ namespace BLL
         /// Retourne l'ensemble des barèmes
         /// </summary>
         /// <returns></returns>
-        public static List<BO.Baremes> GetAll()
+        public static List<BO.Baremes> GetAll(String Type)
         {
-            List<BO.Baremes> list = DAL.Baremes.GetBaremes();
+            List<BO.Baremes> list = DAL.Baremes.GetBaremes(Type);
             return list;
+        }
+
+        public static List<String> GetTypeActe()
+        {
+            return DAL.Baremes.GetTypeActe();
         }
 
         /// <summary>
