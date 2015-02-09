@@ -77,7 +77,7 @@ namespace BO
         public BO.Clients Client
         {
             get { return client; }
-            set { client = value; }
+            set { client = value; codeClient = value.CodeClient; }
         }
 
         public String Tatouage

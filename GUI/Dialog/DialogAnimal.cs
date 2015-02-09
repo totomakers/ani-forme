@@ -177,6 +177,7 @@ namespace GUI.Dialog
             clientsList = BLL.ClientsMgr.GetAll(false);
             this.comboBoxCustomer.DataSource = clientsList;
             this.comboBoxSexe.DataSource = BLL.AnimauxMgr.getSexe();
+            this.comboBoxEspece.DataSource = BLL.RacesMgr.GetAllEspeces();
         }
 
         /// <summary>
@@ -217,7 +218,9 @@ namespace GUI.Dialog
             this.textBoxName.Text = animalEdited.NomAnimal;
             this.textBoxTatoo.Text = animalEdited.Tatouage;
             this.comboBoxSexe.SelectedIndex = ((List<Char>)this.comboBoxSexe.DataSource).IndexOf(animalEdited.Sexe, 0);
-            //@TODO ajout race et espece
+            this.comboBoxEspece.SelectedIndex = ((List<String>)this.comboBoxEspece.DataSource).IndexOf(animalEdited.Espece, 0);
+            this.comboBoxRace.SelectedIndex = ((List<String>)this.comboBoxRace.DataSource).IndexOf(animalEdited.Race, 0);
+
         }
 
         #endregion
@@ -276,6 +279,8 @@ namespace GUI.Dialog
                         break;
                 }
 
+                MessageBox.Show(String.Format(Lang.DIALOG_ANIMAL_CREATE_UPDATE_SUCCEFULL, finalAnimal.NomAnimal), Lang.FORM_DEFAULT_CREATE_UPDATE_TITLE, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 UpdateContent(); //reload data
                 EditMode(finalAnimal); //Mode edition de cet animal
                 I18N(); //rafraichis la trad
@@ -293,11 +298,16 @@ namespace GUI.Dialog
         {
             CheckBox();
         }
-        #endregion
+
 
         private void comboBoxEspece_SelectedIndexChanged(object sender, EventArgs e)
         {
-            comboBoxRace.SelectedItem = null; //si l'espece est selectionner on vide la race
+            this.comboBoxRace.DataSource = BLL.RacesMgr.GetAllRacesByEspece(this.comboBoxEspece.Text);
         }
+        #endregion
+
+
+
+
     }
 }

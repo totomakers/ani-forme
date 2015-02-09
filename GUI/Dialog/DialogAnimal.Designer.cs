@@ -62,7 +62,7 @@
             // buttonValidate
             // 
             this.buttonValidate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonValidate.Location = new System.Drawing.Point(284, 12);
+            this.buttonValidate.Location = new System.Drawing.Point(281, 12);
             this.buttonValidate.Name = "buttonValidate";
             this.buttonValidate.Size = new System.Drawing.Size(86, 42);
             this.buttonValidate.TabIndex = 1;
@@ -73,7 +73,7 @@
             // buttonCancel
             // 
             this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCancel.Location = new System.Drawing.Point(376, 12);
+            this.buttonCancel.Location = new System.Drawing.Point(373, 12);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(82, 42);
             this.buttonCancel.TabIndex = 2;
@@ -97,7 +97,7 @@
             this.comboBoxCustomer.FormattingEnabled = true;
             this.comboBoxCustomer.Location = new System.Drawing.Point(1, 83);
             this.comboBoxCustomer.Name = "comboBoxCustomer";
-            this.comboBoxCustomer.Size = new System.Drawing.Size(453, 21);
+            this.comboBoxCustomer.Size = new System.Drawing.Size(450, 21);
             this.comboBoxCustomer.TabIndex = 4;
             this.comboBoxCustomer.TextChanged += new System.EventHandler(this.EventCheckBox);
             // 
@@ -149,21 +149,21 @@
             // comboBoxEspece
             // 
             this.comboBoxEspece.FormattingEnabled = true;
-            this.comboBoxEspece.Location = new System.Drawing.Point(68, 204);
+            this.comboBoxEspece.Location = new System.Drawing.Point(67, 204);
             this.comboBoxEspece.Name = "comboBoxEspece";
-            this.comboBoxEspece.Size = new System.Drawing.Size(134, 21);
+            this.comboBoxEspece.Size = new System.Drawing.Size(135, 21);
             this.comboBoxEspece.TabIndex = 10;
             this.comboBoxEspece.SelectedIndexChanged += new System.EventHandler(this.comboBoxEspece_SelectedIndexChanged);
             this.comboBoxEspece.TextChanged += new System.EventHandler(this.EventCheckBox);
             // 
             // labelRace
             // 
-            this.labelRace.AutoSize = true;
             this.labelRace.Location = new System.Drawing.Point(208, 207);
             this.labelRace.Name = "labelRace";
             this.labelRace.Size = new System.Drawing.Size(55, 13);
             this.labelRace.TabIndex = 11;
             this.labelRace.Text = "labelRace";
+            this.labelRace.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // comboBoxRace
             // 
@@ -172,7 +172,7 @@
             this.comboBoxRace.FormattingEnabled = true;
             this.comboBoxRace.Location = new System.Drawing.Point(269, 204);
             this.comboBoxRace.Name = "comboBoxRace";
-            this.comboBoxRace.Size = new System.Drawing.Size(189, 21);
+            this.comboBoxRace.Size = new System.Drawing.Size(182, 21);
             this.comboBoxRace.TabIndex = 12;
             this.comboBoxRace.TextChanged += new System.EventHandler(this.EventCheckBox);
             // 
@@ -208,7 +208,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxTatoo.Location = new System.Drawing.Point(68, 236);
             this.textBoxTatoo.Name = "textBoxTatoo";
-            this.textBoxTatoo.Size = new System.Drawing.Size(391, 20);
+            this.textBoxTatoo.Size = new System.Drawing.Size(388, 20);
             this.textBoxTatoo.TabIndex = 16;
             this.textBoxTatoo.TextChanged += new System.EventHandler(this.EventCheckBox);
             // 
@@ -219,7 +219,7 @@
             this.comboBoxSexe.FormattingEnabled = true;
             this.comboBoxSexe.Location = new System.Drawing.Point(269, 153);
             this.comboBoxSexe.Name = "comboBoxSexe";
-            this.comboBoxSexe.Size = new System.Drawing.Size(186, 21);
+            this.comboBoxSexe.Size = new System.Drawing.Size(183, 21);
             this.comboBoxSexe.TabIndex = 17;
             this.comboBoxSexe.TextChanged += new System.EventHandler(this.EventCheckBox);
             // 
@@ -227,7 +227,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(458, 265);
+            this.ClientSize = new System.Drawing.Size(455, 265);
             this.Controls.Add(this.comboBoxSexe);
             this.Controls.Add(this.textBoxTatoo);
             this.Controls.Add(this.textBoxColor);
@@ -257,7 +257,6 @@
         #endregion
 
         private System.Windows.Forms.Button buttonMedicalFolder;
-        private System.Windows.Forms.Button buttonValidate;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Label labelCustomer;
         private System.Windows.Forms.ComboBox comboBoxCustomer;
@@ -274,5 +273,6 @@
         private System.Windows.Forms.TextBox textBoxColor;
         private System.Windows.Forms.TextBox textBoxTatoo;
         private System.Windows.Forms.ComboBox comboBoxSexe;
+        public System.Windows.Forms.Button buttonValidate;
     }
 }

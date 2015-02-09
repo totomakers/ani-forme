@@ -11,6 +11,7 @@ namespace BO
         #region Attribute
         private BO.Veterinaires veterinaire;
         private DateTime dateRdv;
+        private Guid codeAnimal;
         private BO.Animaux animal;
         #endregion
 
@@ -33,6 +34,12 @@ namespace BO
         {
             get { return dateRdv; }
             set { dateRdv = value; }
+        }
+
+        public Guid CodeAnimal
+        {
+            get { return codeAnimal; }
+            set { codeAnimal = value; }
         }
 
         public Animaux Animal

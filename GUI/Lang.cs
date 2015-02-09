@@ -28,6 +28,9 @@ namespace GUI
         public static String FORM_DEFAULT_PREV = "< Précédent";
         public static String FORM_DEFAULT_NEXT = "Suivant >";
 
+        public static String FORM_DEFAULT_CREATE_UPDATE_TITLE = "Mise à jour/Création";
+
+
         //=========================
         //FormLogin
         //=========================
@@ -137,6 +140,8 @@ namespace GUI
         public static String DIALOG_ANIMAL_LIB_ESPECE = "Espece";
         public static String DIALOG_ANIMAL_LIB_RACE = "Race";
         public static String DIALOG_ANIMAL_LIB_TATOO = "Tatouage";
+
+        public static String DIALOG_ANIMAL_CREATE_UPDATE_SUCCEFULL = "L'animal {0} à été mise a jour/crée avec succès";
 
         //============================
         //SubFormAgenda
