@@ -85,7 +85,7 @@
             this.dataGridViewAgenda.RowHeadersWidth = 25;
             this.dataGridViewAgenda.Size = new System.Drawing.Size(483, 327);
             this.dataGridViewAgenda.TabIndex = 4;
-            this.dataGridViewAgenda.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewAgenda_CellFormatting);
+            this.dataGridViewAgenda.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridViewAgenda_RowsAdded);
             // 
             // buttonAddAnimal
             // 

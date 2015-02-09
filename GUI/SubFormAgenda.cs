@@ -38,6 +38,9 @@ namespace GUI
             BO.Veterinaires veto = (BO.Veterinaires)this.comboBoxVeto.SelectedItem;
             DateTime date = this.dateTimePickerDate.Value;
             this.dataGridViewAgenda.DataSource = BLL.AgendaMgr.GetAll(veto, date);
+
+            this.dataGridViewAgenda.Columns["CodeAnimal"].Visible = false;
+            this.dataGridViewAgenda.Columns["Urgence"].Visible = false;
         }
 
         private void comboBoxVeto_SelectedIndexChanged(object sender, EventArgs e)
@@ -59,6 +62,35 @@ namespace GUI
             
             SubFormDossierMedical frm;
             
+            if (animal != null)
+                frm = new SubFormDossierMedical(animal);
+            else
+                frm = new SubFormDossierMedical();
+
+            frm.Show();
+        }
+
+        private void dataGridViewAgenda_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            int i = 0;
+            for (i = e.RowIndex; i < (e.RowCount + e.RowIndex); i++)
+            {
+                Boolean test = ((BO.Agenda)(this.dataGridViewAgenda.Rows[i].DataBoundItem)).Urgence;
+                if (test)
+                    this.dataGridViewAgenda.Rows[i].DefaultCellStyle.BackColor = Color.Red;
+                else
+                    this.dataGridViewAgenda.Rows[i].DefaultCellStyle.BackColor = Color.White;
+            }
+        }
+
+        private void dataGridViewAgenda_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            BO.Animaux animal = null;
+            if (this.dataGridViewAgenda.SelectedCells.Count > 0)
+                animal = ((BO.Agenda)this.dataGridViewAgenda.SelectedCells[0].OwningRow.DataBoundItem).Animal;
+
+            SubFormDossierMedical frm;
+
             if (animal != null)
                 frm = new SubFormDossierMedical(animal);
             else

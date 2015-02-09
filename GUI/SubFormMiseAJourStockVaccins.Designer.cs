@@ -53,6 +53,7 @@
             this.dataGridViewVaccin.Size = new System.Drawing.Size(486, 196);
             this.dataGridViewVaccin.TabIndex = 0;
             this.dataGridViewVaccin.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewVaccin_RowEnter);
+            this.dataGridViewVaccin.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridViewVaccin_RowsAdded);
             // 
             // labelNomVaccin
             // 
