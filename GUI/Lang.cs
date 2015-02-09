@@ -144,7 +144,16 @@ namespace GUI
         public static String SUBFORM_AGENDA_LABEL_VETO = "Vétérinaire :";
         public static String SUBFORM_AGENDA_BTN_DOSSIER = "Dossier Médical";
         public static String SUBFORM_AGENDA_GB_VETO = "De :";
-        
+
+        //============================
+        //SubFormMajVaccin
+        //============================
+        public static String SUBFORM_MAJVACCIN_TITLE = "Mise à jour des vaccins";
+        public static String SUBFORM_MAJVACCIN_LABEL_NOM = "Nom : ";
+        public static String SUBFORM_MAJVACCIN_LABEL_QTE = "Quantité : ";
+        public static String SUBFORM_MAJVACCIN_LABEL_FOURNISSEUR = "Fournisseur : ";
+        public static String SUBFORM_MAJVACCIN_BUTTON_MODIFY = "Modifier";
+
     }
 }
 

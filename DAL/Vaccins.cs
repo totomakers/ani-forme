@@ -33,10 +33,13 @@ namespace DAL
             try
             {
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
-                BO.Vaccins results = (BO.Vaccins)cnx.Query(@"SELECT * FROM Vaccins WHERE id=@id", new { id = idParam });
+                List<BO.Vaccins> results = cnx.Query<BO.Vaccins>(@"SELECT * FROM Vaccins WHERE CodeVaccin=@code", new { code = idParam }).ToList<BO.Vaccins>();
                 SqlConnexion.CloseConnexion(cnx);
 
-                return results;
+                if (results.Count > 0)
+                    return results.First();
+                else
+                    return null;
             }
             catch (Exception e)
             {
@@ -44,5 +47,20 @@ namespace DAL
             }
         }
 
+        public static bool Update(BO.Vaccins vac)
+        {
+            try
+            {
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                var query = @"UPDATE Vaccins SET QuantiteStock=@qte WHERE CodeVaccin=@code";
+                int rowNb = cnx.Execute(query, new { code = vac.CodeVaccin, qte = vac.QuantiteStock });
+                SqlConnexion.CloseConnexion(cnx);
+                return (rowNb > 0);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

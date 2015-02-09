@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,6 +47,12 @@
     <Compile Include="Clients.cs" />
     <Compile Include="Consultations.cs" />
     <Compile Include="Factures.cs" />
+    <Compile Include="Fournisseurs.cs" />
+    <Compile Include="Properties\Fournisseurs.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Fournisseurs.settings</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Connexion.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -67,6 +74,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Properties\Fournisseurs.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Fournisseurs.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Properties\Connexion.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Connexion.Designer.cs</LastGenOutput>

@@ -16,5 +16,17 @@ namespace BLL
         {
             return DAL.Vaccins.GetAll();
         }
+
+        public static bool Update(String code, String Qte)
+        {
+            BO.Vaccins vacc = DAL.Vaccins.Get(Guid.Parse(code));
+            if (vacc.QuantiteStock < int.Parse(Qte))
+            {
+                vacc.QuantiteStock = int.Parse(Qte);
+                return DAL.Vaccins.Update(vacc);
+            }
+            else
+                return false;
+        }
     }
 }

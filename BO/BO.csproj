@@ -48,6 +48,7 @@
     <Compile Include="Clients.cs" />
     <Compile Include="Consultations.cs" />
     <Compile Include="Factures.cs" />
+    <Compile Include="Fournisseurs.cs" />
     <Compile Include="LignesConsultations.cs" />
     <Compile Include="LignesFactures.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
