@@ -34,7 +34,6 @@ namespace GUI
             this.dataGridViewVaccin.Columns[0].Visible = false;
             
             this.comboBoxFrounisseur.DataSource = BLL.FournisseurMgr.GetAll();
-
         }
 
 
@@ -55,6 +54,19 @@ namespace GUI
         public void UpdateContent()
         {
             this.dataGridViewVaccin.DataSource = BLL.VaccinsMgr.GetAll();
+        }
+
+        private void dataGridViewVaccin_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            int i = 0;
+            for (i = e.RowIndex; i < (e.RowCount + e.RowIndex); i++)
+            {
+                Int32 temp = ((BO.Vaccins)(this.dataGridViewVaccin.Rows[i].DataBoundItem)).QuantiteStock;
+                if (temp == 0)
+                    this.dataGridViewVaccin.Rows[i].DefaultCellStyle.BackColor = Color.OrangeRed;
+                else
+                    this.dataGridViewVaccin.Rows[i].DefaultCellStyle.BackColor = Color.White;
+            }
         }
         #endregion
     }

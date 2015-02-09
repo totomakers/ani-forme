@@ -105,6 +105,7 @@ namespace GUI
             agenda.Veterinaires = veto;
             agenda.DateRdv = date;
             agenda.Animal = animal;
+            agenda.Urgence = false;
 
             try
             {
@@ -136,6 +137,7 @@ namespace GUI
             agenda.Veterinaires = veto;
             agenda.DateRdv = date;
             agenda.Animal = animal;
+            agenda.Urgence = true;
 
             try
             {
@@ -178,28 +180,23 @@ namespace GUI
             this.comboBoxAnimal.DataSource = BLL.AnimauxMgr.GetAllByClient(client, false);
         }
 
-        private void dataGridViewAgenda_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            /*
-            DataGridViewCell cell = dataGridViewAgenda.CurrentRow.Cells["Urgence"];
-            if (cell != null)
-            {
-                if(sender == cell)
-                {
-                    if ((Boolean)cell.Value == true)
-                    {
-                        dataGridViewAgenda.CurrentRow.DefaultCellStyle.BackColor = Color.OrangeRed;
-                    }
-                }
-            }
-            */
-        }
-
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             UpdateContent();
         }
+        
+        private void dataGridViewAgenda_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            int i = 0;
+            for (i = e.RowIndex; i < (e.RowCount + e.RowIndex); i++)
+            {
+                Boolean test = ((BO.Agenda)(this.dataGridViewAgenda.Rows[i].DataBoundItem)).Urgence;
+                if (test)
+                    this.dataGridViewAgenda.Rows[i].DefaultCellStyle.BackColor = Color.Red;
+                else
+                    this.dataGridViewAgenda.Rows[i].DefaultCellStyle.BackColor = Color.White;
+            }
+        }
         #endregion
-
     }
 }

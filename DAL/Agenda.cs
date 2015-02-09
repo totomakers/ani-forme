@@ -65,12 +65,13 @@ namespace DAL
                     query = @"SELECT * FROM Agendas ag
                             LEFT JOIN Veterinaires v ON ag.CodeVeto = v.CodeVeto
                             LEFT JOIN Animaux an ON ag.CodeAnimal = an.CodeAnimal
+                            LEFT JOIN Clients c ON an.CodeClient = c.CodeClient
                             WHERE DateRdv BETWEEN cast(@dateRdv as SmallDateTime) AND cast(@dateRdv as SmallDateTime)+1
                             ORDER BY ag.DateRdv";
-                    results = cnx.Query<BO.Agenda, BO.Veterinaires, BO.Animaux, BO.Agenda>(query,
-                                               (agenda, veterinaire, animal) => { agenda.Animal = animal; agenda.Veterinaires = veterinaire; return agenda; },
+                    results = cnx.Query<BO.Agenda, BO.Veterinaires, BO.Animaux, BO.Clients, BO.Agenda>(query,
+                                               (agenda, veterinaire, animal, client) => { animal.Client = client; agenda.Animal = animal; agenda.Veterinaires = veterinaire; return agenda; },
                                                new { dateRdv = date },
-                                               splitOn: "CodeVeto,CodeAnimal")
+                                               splitOn: "CodeVeto,CodeAnimal,CodeClient")
                                                .ToList<BO.Agenda>();
                 }
                 else
@@ -78,13 +79,14 @@ namespace DAL
                     query = @"SELECT * FROM Agendas ag
                             LEFT JOIN Veterinaires v ON ag.CodeVeto = v.CodeVeto
                             LEFT JOIN Animaux an ON ag.CodeAnimal = an.CodeAnimal
+                            LEFT JOIN Clients c ON an.CodeClient = c.CodeClient
                             WHERE  ag.CodeVeto = @codeVeto
                             AND DateRdv BETWEEN cast(@dateRdv as SmallDateTime) AND cast(@dateRdv as SmallDateTime)+1
                             ORDER BY ag.DateRdv";
-                    results = cnx.Query<BO.Agenda, BO.Veterinaires, BO.Animaux, BO.Agenda>(query,
-                                              (agenda, veterinaire, animal) => { agenda.Animal = animal; agenda.Veterinaires = veterinaire; return agenda; },
+                    results = cnx.Query<BO.Agenda, BO.Veterinaires, BO.Animaux, BO.Clients, BO.Agenda>(query,
+                                              (agenda, veterinaire, animal, client) => { animal.Client = client;  agenda.Animal = animal; agenda.Veterinaires = veterinaire; return agenda; },
                                               new { codeVeto = veto.CodeVeto, dateRdv = date },
-                                              splitOn: "CodeVeto,CodeAnimal")
+                                              splitOn: "CodeVeto,CodeAnimal,CodeClient")
                                               .ToList<BO.Agenda>();
                 }
 
@@ -132,7 +134,8 @@ namespace DAL
 	                                            prenomclient = DAL.Clients.Get(agenda.Animal.Client.CodeClient).PrenomClient,
 	                                            nomanimal = agenda.Animal.NomAnimal,
 	                                            nomveto = agenda.Veterinaires.NomVeto,
-	                                            daterdv = agenda.DateRdv
+	                                            daterdv = agenda.DateRdv,
+                                                urgence = (agenda.Urgence) ? 1 : 0
                                             }, 
                                             commandType: CommandType.StoredProcedure);
                 SqlConnexion.CloseConnexion(cnx);

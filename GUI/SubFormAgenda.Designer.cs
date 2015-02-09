@@ -98,9 +98,11 @@
             this.dataGridViewAgenda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAgenda.Location = new System.Drawing.Point(11, 68);
             this.dataGridViewAgenda.Name = "dataGridViewAgenda";
+            this.dataGridViewAgenda.ReadOnly = true;
             this.dataGridViewAgenda.Size = new System.Drawing.Size(343, 200);
             this.dataGridViewAgenda.TabIndex = 1;
             this.dataGridViewAgenda.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAgenda_CellDoubleClick);
+            this.dataGridViewAgenda.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridViewAgenda_RowsAdded);
             // 
             // buttonDossierMedical
             // 
