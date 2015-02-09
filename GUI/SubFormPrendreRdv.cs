@@ -44,7 +44,6 @@ namespace GUI
         //EVENEMENTS =========
         //====================
         
-		
         private void SubFormPrendreRdv_Load(object sender, EventArgs e)
         {
             UpdateContent();

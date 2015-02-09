@@ -22,11 +22,10 @@ namespace DAL
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
                 String query = @"SELECT * FROM Animaux a
                                  LEFT JOIN Clients c ON a.CodeClient = c.CodeClient
-                                 LEFT JOIN Races r ON a.Race = r.Race AND a.Espece = r.Espece
                                  ORDER BY a.CodeAnimal";
 
-                List<BO.Animaux> results = cnx.Query<BO.Animaux, BO.Clients, BO.Races, BO.Animaux>(query,
-                                           (animaux, client, race) => { animaux.RaceEntity = race; animaux.Client = client; return animaux; },
+                List<BO.Animaux> results = cnx.Query<BO.Animaux, BO.Clients, BO.Animaux>(query,
+                                           (animaux, client) => { animaux.Client = client; return animaux; },
                                            splitOn: "CodeClient")
                                            .ToList<BO.Animaux>();
 
@@ -52,12 +51,11 @@ namespace DAL
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
                 String query = @"SELECT * FROM Animaux a
                                  LEFT JOIN Clients c ON a.CodeClient = c.CodeClient
-                                 LEFT JOIN Races r ON a.Race = r.Race AND a.Espece = r.Espece
                                  WHERE a.Archive = @archive
                                  ORDER BY a.CodeAnimal";
 
-                List<BO.Animaux> results = cnx.Query<BO.Animaux, BO.Clients, BO.Races, BO.Animaux>(query,
-                                           (animaux, client, race) => { animaux.RaceEntity = race; animaux.Client = client; return animaux; },
+                List<BO.Animaux> results = cnx.Query<BO.Animaux, BO.Clients, BO.Animaux>(query,
+                                           (animaux, client) => { animaux.Client = client; return animaux; },
                                            param: new { archive = archived },
                                            splitOn: "CodeClient")
                                            .ToList<BO.Animaux>();
@@ -84,13 +82,12 @@ namespace DAL
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
                 String query = @"SELECT * FROM Animaux a
                                  LEFT JOIN Clients c ON a.CodeClient = c.CodeClient
-                                 LEFT JOIN Races r ON a.Race = r.Race AND a.Espece = r.Espece
                                  WHERE a.CodeClient = @codeClient  
                                  AND a.Archive = @archive
                                  ORDER BY a.CodeAnimal";
 
-                List<BO.Animaux> results = cnx.Query<BO.Animaux, BO.Clients, BO.Races, BO.Animaux>(query,
-                                           (animaux, client, race) => { animaux.RaceEntity = race; animaux.Client = client; return animaux; }, 
+                List<BO.Animaux> results = cnx.Query<BO.Animaux, BO.Clients, BO.Animaux>(query,
+                                           (animaux, client) => { animaux.Client = client; return animaux; }, 
                                            param: new { archive = archived, codeClient = cli.CodeClient },
                                            splitOn: "CodeClient")
                                            .ToList<BO.Animaux>();
@@ -117,13 +114,109 @@ namespace DAL
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
                 String query = @"SELECT * FROM Animaux a
                                  LEFT JOIN Clients c ON a.CodeClient = c.CodeClient
-                                 LEFT JOIN Races r ON a.Race = r.Race AND a.Espece = r.Espece
                                  WHERE a.CodeClient = @codeClient  
                                  ORDER BY a.CodeAnimal";
 
-                List<BO.Animaux> results = cnx.Query<BO.Animaux, BO.Clients, BO.Races, BO.Animaux>(query,
-                                           (animaux, client, race) => { animaux.RaceEntity = race; animaux.Client = client; return animaux; },
+                List<BO.Animaux> results = cnx.Query<BO.Animaux, BO.Clients, BO.Animaux>(query,
+                                           (animaux, client) => { animaux.Client = client; return animaux; },
                                            param: new { codeClient = cli.CodeClient },
+                                           splitOn: "CodeClient")
+                                           .ToList<BO.Animaux>();
+
+                SqlConnexion.CloseConnexion(cnx);
+                return results;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        /// <summary>
+        /// Retourne tout les animaux avec le nom comme %value%
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="archived"></param>
+        /// <returns></returns>
+        public static List<BO.Animaux> GetAllByNomAnimalArchive(String value, bool archived)
+        {
+            try
+            {
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                String query = @"SELECT * FROM Animaux a
+                                 LEFT JOIN Clients c ON a.CodeClient = c.CodeClient
+                                 WHERE a.Archive = @archive
+                                 AND a.NomAnimal LIKE (@value)
+                                 ORDER BY a.CodeAnimal";
+
+                List<BO.Animaux> results = cnx.Query<BO.Animaux, BO.Clients, BO.Animaux>(query,
+                                           (animaux, client) => { animaux.Client = client; return animaux; },
+                                           param: new { value = '%' + value + '%', archive = archived },
+                                           splitOn: "CodeClient")
+                                           .ToList<BO.Animaux>();
+
+                SqlConnexion.CloseConnexion(cnx);
+                return results;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        /// <summary>
+        /// Retourne tout les animaux avec le client ayant comme nom %value%
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="archived"></param>
+        /// <returns></returns>
+        public static List<BO.Animaux> GetAllByNomClientArchive(String value, bool archived)
+        {
+            try
+            {
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                String query = @"SELECT * FROM Animaux a
+                                 LEFT JOIN Clients c ON a.CodeClient = c.CodeClient
+                                 WHERE a.Archive = @archive
+                                 AND c.NomClient LIKE (@value)
+                                 ORDER BY a.CodeAnimal";
+
+                List<BO.Animaux> results = cnx.Query<BO.Animaux, BO.Clients, BO.Animaux>(query,
+                                           (animaux, client) => { animaux.Client = client; return animaux; },
+                                           param: new { value = '%' + value + '%', archive = archived },
+                                           splitOn: "CodeClient")
+                                           .ToList<BO.Animaux>();
+
+                SqlConnexion.CloseConnexion(cnx);
+                return results;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+
+        /// <summary>
+        /// Retourne tout les animaux avec le tatouage comme value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="archived"></param>
+        /// <returns></returns>
+        public static List<BO.Animaux> GetAllByTatooArchive(String value, bool archived)
+        {
+            try
+            {
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                String query = @"SELECT * FROM Animaux a
+                                 LEFT JOIN Clients c ON a.CodeClient = c.CodeClient
+                                 WHERE a.Archive = @archive
+                                 AND a.Tatouage LIKE (@value)
+                                 ORDER BY a.CodeAnimal";
+
+                List<BO.Animaux> results = cnx.Query<BO.Animaux, BO.Clients, BO.Animaux>(query,
+                                           (animaux, client) => { animaux.Client = client; return animaux; },
+                                           param: new { value = '%' + value + '%', archive = archived },
                                            splitOn: "CodeClient")
                                            .ToList<BO.Animaux>();
 

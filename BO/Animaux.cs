@@ -16,7 +16,7 @@ namespace BO
         private String couleur;
         private String race;
         private String espece;
-        private BO.Races raceEntity;
+        private Guid codeClient;
         private BO.Clients client;
         private String tatouage;
         private String antecedent;
@@ -68,11 +68,10 @@ namespace BO
             set { espece = value; }
         }
 
-        [Browsable(false)]
-        public BO.Races RaceEntity
+        public Guid CodeClient
         {
-            get { return raceEntity; }
-            set { raceEntity = value; }
+            get { return codeClient; }
+            set { codeClient = value; }
         }
 
         public BO.Clients Client

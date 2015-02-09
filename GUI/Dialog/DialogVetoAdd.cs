@@ -21,10 +21,6 @@ namespace GUI.Dialog
             CheckTextBox();
         }
 
-        //==================
-        //METHODES =========
-        //==================
-
         private void I18N()
         {
             this.Text = GUI.Lang.DIALOG_VETERINARY_ADD_TITLE;
@@ -33,6 +29,11 @@ namespace GUI.Dialog
             this.labelUsername.Text = GUI.Lang.DIALOG_VETERINARY_ADD_LIB_USERNAME;
             this.buttonAdd.Text = GUI.Lang.FORM_DEFAULT_ADD;
         }
+
+        #region Methodes
+        //==================
+        //METHODES =========
+        //==================
 
         private void CheckTextBox()
         {
@@ -81,7 +82,9 @@ namespace GUI.Dialog
 
             this.buttonAdd.Enabled = canValidate;
         }
+        #endregion
 
+        #region Evenements
         //==================
         //EVENTS ===========
         //==================
@@ -100,5 +103,7 @@ namespace GUI.Dialog
             VeterinairesMgr.Create(new Veterinaires() { AccountId = newAccount.Id, Archive = false, NomVeto = this.textBoxName.Text });
             this.Close();
         }
+
+        #endregion
     }
 }

@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubFormDossierMedical));
+            this.richTextBoxAnimal = new System.Windows.Forms.RichTextBox();
             this.buttonFirst = new System.Windows.Forms.Button();
             this.buttonPrev = new System.Windows.Forms.Button();
             this.buttonNext = new System.Windows.Forms.Button();
@@ -37,17 +38,17 @@
             this.comboBoxSearchType = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // richTextBox1
+            // richTextBoxAnimal
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.richTextBoxAnimal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.Location = new System.Drawing.Point(1, 69);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(480, 416);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.richTextBoxAnimal.Location = new System.Drawing.Point(1, 69);
+            this.richTextBoxAnimal.Name = "richTextBoxAnimal";
+            this.richTextBoxAnimal.ReadOnly = true;
+            this.richTextBoxAnimal.Size = new System.Drawing.Size(480, 416);
+            this.richTextBoxAnimal.TabIndex = 0;
+            this.richTextBoxAnimal.Text = "";
             // 
             // buttonFirst
             // 
@@ -57,6 +58,7 @@
             this.buttonFirst.TabIndex = 4;
             this.buttonFirst.Text = "buttonFirst";
             this.buttonFirst.UseVisualStyleBackColor = true;
+            this.buttonFirst.Click += new System.EventHandler(this.buttonFirst_Click);
             // 
             // buttonPrev
             // 
@@ -66,6 +68,7 @@
             this.buttonPrev.TabIndex = 5;
             this.buttonPrev.Text = "buttonPrev";
             this.buttonPrev.UseVisualStyleBackColor = true;
+            this.buttonPrev.Click += new System.EventHandler(this.buttonPrev_Click);
             // 
             // buttonNext
             // 
@@ -75,6 +78,7 @@
             this.buttonNext.TabIndex = 6;
             this.buttonNext.Text = "buttonNext";
             this.buttonNext.UseVisualStyleBackColor = true;
+            this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
             // 
             // buttonLast
             // 
@@ -84,6 +88,7 @@
             this.buttonLast.TabIndex = 7;
             this.buttonLast.Text = "buttonLast";
             this.buttonLast.UseVisualStyleBackColor = true;
+            this.buttonLast.Click += new System.EventHandler(this.buttonLast_Click);
             // 
             // textBoxSearch
             // 
@@ -91,14 +96,21 @@
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(192, 20);
             this.textBoxSearch.TabIndex = 8;
+            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
             // 
             // comboBoxSearchType
             // 
             this.comboBoxSearchType.FormattingEnabled = true;
+            this.comboBoxSearchType.Items.AddRange(new object[] {
+            "Pas de filtre",
+            "Nom",
+            "Nom client",
+            "Tatouage"});
             this.comboBoxSearchType.Location = new System.Drawing.Point(1, 42);
             this.comboBoxSearchType.Name = "comboBoxSearchType";
             this.comboBoxSearchType.Size = new System.Drawing.Size(121, 21);
             this.comboBoxSearchType.TabIndex = 9;
+            this.comboBoxSearchType.SelectedIndexChanged += new System.EventHandler(this.comboBoxSearchType_SelectedIndexChanged);
             // 
             // SubFormDossierMedical
             // 
@@ -111,7 +123,8 @@
             this.Controls.Add(this.buttonPrev);
             this.Controls.Add(this.buttonNext);
             this.Controls.Add(this.buttonLast);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.richTextBoxAnimal);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SubFormDossierMedical";
             this.Text = "SubFormMedicalFolder";
             this.ResumeLayout(false);
@@ -121,7 +134,7 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBoxAnimal;
         private System.Windows.Forms.Button buttonFirst;
         private System.Windows.Forms.Button buttonPrev;
         private System.Windows.Forms.Button buttonNext;

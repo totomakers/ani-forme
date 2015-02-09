@@ -36,7 +36,6 @@ namespace GUI
 
         private void Reload()
         {
-            // lien de la dataGridView
             this.dataGridViewVeterinary.DataSource = BLL.VeterinairesMgr.GetAll(false);
         }
 
@@ -71,7 +70,6 @@ namespace GUI
 
             this.dataGridViewVeterinary.DataSource = null;
             this.dataGridViewVeterinary.DataSource = BLL.VeterinairesMgr.GetAll(false);
-
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -79,7 +77,6 @@ namespace GUI
             DialogVetoAdd dialog = new DialogVetoAdd();
             dialog.FormClosed += OnDialogClose;
             dialog.ShowDialog();
-
         }
 
         private void buttonReset_Click(object sender, EventArgs e)

@@ -264,6 +264,7 @@
             this.dataGridViewAnimals.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewAnimals.Size = new System.Drawing.Size(643, 354);
             this.dataGridViewAnimals.TabIndex = 22;
+            this.dataGridViewAnimals.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAnimals_CellDoubleClick);
             // 
             // buttonAddAni
             // 

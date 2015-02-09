@@ -32,7 +32,7 @@ namespace GUI.Dialog
             InitializeComponent();
             UpdateContent();
             CreateMode(client);
-            I18N(); //Appeler en dernier
+            I18N(); ///!\ DOIT TOUJOURS ETRE APPELER EN DERNIER /!\
         }
 
         /// <summary>
@@ -44,14 +44,8 @@ namespace GUI.Dialog
             InitializeComponent();
             UpdateContent();
             EditMode(animal);
-            I18N(); //Appeler en dernier
+            I18N(); ///!\ DOIT TOUJOURS ETRE APPELER EN DERNIER /!\
         }
-
-        #region Methodes
-
-        //================
-        //METHODES =======
-        //================
 
         private void I18N()
         {
@@ -83,10 +77,15 @@ namespace GUI.Dialog
             this.labelEspece.Text = GUI.Lang.DIALOG_ANIMAL_LIB_ESPECE;
             this.labelName.Text = GUI.Lang.DIALOG_ANIMAL_LIB_NAME;
             this.labelRace.Text = GUI.Lang.DIALOG_ANIMAL_LIB_RACE;
-            this.labelTatoo.Text = GUI.Lang.DIALOG_ANIMAL_LIB_TATOO;   
+            this.labelTatoo.Text = GUI.Lang.DIALOG_ANIMAL_LIB_TATOO;
         }
+        
+        #region Methodes
 
-
+        //================
+        //METHODES =======
+        //================
+   
         /// <summary>
         /// Vérifie l'ensemble des textbox de la fenêtre
         /// </summary>
@@ -191,19 +190,16 @@ namespace GUI.Dialog
             {
                 clientEdited = clientsList.Find(x => x.CodeClient == client.CodeClient);
 
-                //@TODO message d'erreur, ce cas n'est pas censer se produire
+                //@TODO Message d'erreur
                 if (clientEdited == null)
-                {
                     this.Close();
-                }
-
 
                 this.comboBoxCustomer.SelectedItem = clientEdited;
                 mode = DialogAnimalMode.CLIENT;
                 this.comboBoxCustomer.Enabled = false;
             }
 
-            this.buttonMedicalFolder.Enabled = false; //dans le mode création le bouton create n'existe pas
+            this.buttonMedicalFolder.Enabled = false; //Mode création pas de bouton de liaison
 
         }
 

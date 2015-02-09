@@ -137,20 +137,20 @@ namespace GUI
             {
                 createMode = value;
 
-                //Activation/Déactivation tableau
+                // Activation/Déactivation tableau
                 this.dataGridViewAnimals.Enabled = !createMode;
 
-                //Déactivation de la recherche
+                // Activation/Déactivation de la recherche
                 this.checkBoxSearch.Enabled = !createMode;
                 this.textBoxSearch.Enabled = !createMode;
 
-                //Déactive les boutons pour animaux
+                // Activation/Déactivation des boutons pour animaux
                 this.buttonAddAni.Enabled = !createMode;
                 this.buttonEditAni.Enabled = !createMode;
                 this.buttonDeleteAni.Enabled = !createMode;
 
-                //Déactive la navigation
-                this.StatutNavigation(!createMode);
+                // Activation/Déactivation de la navigation
+                this.SetStatutNavigation(!createMode);
                 this.buttonAdd.Enabled = !createMode;
 
                 this.buttonCancelAddCli.Visible = createMode;
@@ -159,7 +159,7 @@ namespace GUI
 
                 if (createMode)
                 {
-                    //Active les textesbox
+                    // Active les textbox
                     this.textBoxAdresse.Enabled = true;
                     this.textBoxAdresse2.Enabled = true;
                     this.textBoxCity.Enabled = true;
@@ -168,7 +168,7 @@ namespace GUI
                     this.textBoxLastName.Enabled = true;
                     this.textBoxPostalCode.Enabled = true;
 
-                    //Vide les textesbox
+                    // Vide les textbox
                     this.textBoxAdresse.Text = "";
                     this.textBoxAdresse2.Text = "";
                     this.textBoxCity.Text = "";
@@ -177,31 +177,31 @@ namespace GUI
                     this.textBoxLastName.Text = "";
                     this.textBoxPostalCode.Text = "";
 
-                    //Vide le tableau
+                    // Vide le tableau
                     this.dataGridViewAnimals.DataSource = null;
                 }
                 else
                 {
-                    //Recharge les clients
+                    // Recharge les clients
                     InitializeClientsList();
                     LoadClient();
                 }
 
-                CheckTextBox(); //Redraw textbox
+                CheckTextBox(); //Actualise les textbox
             }
         }
 
-        //Chargement d'un client
+        // Chargement d'un client
         private void LoadClient()
         {
-            //Pas de client
+            //Liste vide
             if (index == -1)
             {
-                //Vide le tableau des animaux
+                // Vide le tableau des animaux
                 this.dataGridViewAnimals.DataSource = null;
                 this.dataGridViewAnimals.Enabled = false;
 
-                //Vide les textbox
+                // Vide les textbox
                 this.textBoxAdresse.Text = "";
                 this.textBoxAdresse2.Text = "";
                 this.textBoxCity.Text = "";
@@ -210,7 +210,7 @@ namespace GUI
                 this.textBoxLastName.Text = "";
                 this.textBoxPostalCode.Text = "";
 
-                //Déactive les texbox
+                // Déactive les textbox
                 this.textBoxAdresse.Enabled = false;
                 this.textBoxAdresse2.Enabled = false;
                 this.textBoxCity.Enabled = false;
@@ -223,7 +223,7 @@ namespace GUI
                 this.buttonEditAni.Enabled = false;
                 this.buttonDeleteAni.Enabled = false;
             }
-            //Un client
+            // Liste non vide
             else if (index < clientsList.Count)
             {
                 currentClient = clientsList[index];
@@ -254,7 +254,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Charge les animaux
+        /// Charge les animaux liée au client chargé
         /// </summary>
         private void LoadAnimaux()
         {
@@ -285,14 +285,14 @@ namespace GUI
                 LoadClient();
 
                 if (index >= 0)
-                    StatutNavigation(true);
+                    SetStatutNavigation(true);
                 else
-                    StatutNavigation(false);
+                    SetStatutNavigation(false);
             }
         }
 
         /// <summary>
-        /// Initialize the client list
+        /// Initialise la liste des clients pour la navigation
         /// </summary>
         private void InitializeClientsList()
         {
@@ -311,7 +311,7 @@ namespace GUI
         /// Active/déactive la navigation
         /// </summary>
         /// <param name="enable"></param>
-        private void StatutNavigation(bool enable)
+        private void SetStatutNavigation(bool enable)
         {
             this.buttonFirst.Enabled = enable;
             this.buttonLast.Enabled = enable;
@@ -447,7 +447,6 @@ namespace GUI
 
         private void buttonValidateAddCli_Click(object sender, EventArgs e)
         {
-            //Creation de l'objet client
             Clients cli = new Clients { Adresse1 = this.textBoxAdresse.Text, 
                                         Adresse2 = this.textBoxAdresse2.Text,
                                         Archive = false,
@@ -457,9 +456,8 @@ namespace GUI
                                         Ville = this.textBoxCity.Text };
 
             Clients finalCli = BLL.ClientsMgr.Create(cli); //Client avec l'id
+            this.CreateMode = false; //On quitte le mode création
 
-
-            this.CreateMode = false;
             //Change l'index a la position du nouveau client
             if (finalCli != null && (finalCli = this.clientsList.First(x => x.CodeClient == finalCli.CodeClient)) != null)
                 this.CurrentIndex = this.clientsList.IndexOf(finalCli);
@@ -497,6 +495,18 @@ namespace GUI
             }
         }
 
+        private void dataGridViewAnimals_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Animaux animal = (Animaux)this.dataGridViewAnimals.CurrentRow.DataBoundItem;
+
+            if (animal != null)
+            {
+                DialogAnimal DialogAnimal = new GUI.Dialog.DialogAnimal(animal);
+                DialogAnimal.ShowDialog();
+                DialogAnimal.Disposed += UpdateContentEvent;
+            }
+        }
+
         private void buttonAddAni_Click(object sender, EventArgs e)
         {
             if (currentClient == null)
@@ -512,5 +522,7 @@ namespace GUI
             this.Close();
         }
         #endregion
+
+       
     }
 }

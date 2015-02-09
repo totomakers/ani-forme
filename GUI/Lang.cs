@@ -154,6 +154,12 @@ namespace GUI
         public static String SUBFORM_MAJVACCIN_LABEL_FOURNISSEUR = "Fournisseur : ";
         public static String SUBFORM_MAJVACCIN_BUTTON_MODIFY = "Modifier";
 
+        //===========================
+        //SubFormDossierMedical
+        //===========================
+
+        public static String SUBFORM_DOSSIER_MEDICAL_TITLE = "Dossier médical de {0}";
+        public static String SUBFORM_DOSSIER_MEDICAL_TITLE_2 = "Dossie médical";
     }
 }
 

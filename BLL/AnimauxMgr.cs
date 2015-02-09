@@ -6,10 +6,23 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
+    /// <summary>
+    /// Tout les sexes possible pour un animal
+    /// </summary>
     public class AnimauxSexe
     {
         public static Char MALE = 'M';
         public static Char FEMELLE = 'F';
+    }
+
+    /// <summary>
+    /// Tout les critères de recherche possible
+    /// </summary>
+    public enum AnimauxRechercheCritere
+    {
+        NOM_CLIENT,
+        NOM,
+        TATOO
     }
 
     public class AnimauxMgr
@@ -86,6 +99,30 @@ namespace BLL
             throw new Exception(String.Format(Lang.ANIMAUX_CANT_ARCHIVE_CONSULT_NOT_PAID, client.getFullName()));
             
             DAL.Animaux.ArchiveAllByClient(client);
+        }
+
+        /// <summary>
+        /// Retourne tout les animaux archivé ou non avec un like sur la colonne du critere
+        /// </summary>
+        /// <param name="critere"></param>
+        /// <param name="value"></param>
+        /// <param name="archived"></param>
+        public static List<BO.Animaux> GetAllByColumnLikeValue(AnimauxRechercheCritere critere, String value, bool archived)
+        {
+            switch (critere)
+            {
+                case AnimauxRechercheCritere.NOM:
+                    return DAL.Animaux.GetAllByNomAnimalArchive(value, archived);
+
+                case AnimauxRechercheCritere.NOM_CLIENT:
+                    return DAL.Animaux.GetAllByNomClientArchive(value, archived);
+
+                case AnimauxRechercheCritere.TATOO:
+                    return DAL.Animaux.GetAllByTatooArchive(value, archived);
+
+                default:
+                    throw new Exception("W00T ?");
+            }
         }
 
         /// <summary>
