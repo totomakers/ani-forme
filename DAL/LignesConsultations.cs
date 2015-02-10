@@ -17,7 +17,7 @@ namespace DAL
         /// <returns></returns>
         public static List<BO.LignesConsultations> GetAll(Guid codeConsultation)
         {
-            var query = String.Format(@"SELECT * FROM  LignesConsultation lc
+            var query = String.Format(@"SELECT * FROM  LignesConsultations lc
                                         WHERE lc.CodeConsultation = @codeConsultation 
                                         ORDER BY lc.NumLigne");
 
@@ -35,7 +35,7 @@ namespace DAL
         /// <returns></returns>
         public static bool Delete(BO.LignesConsultations ligneConsultation)
         {
-            var query = @"DELETE FROM ignesConsultation lc
+            var query = @"DELETE FROM ignesConsultations lc
                         WHERE lc.CodeConsultation = @codeConsultation 
                         AND lc.NumLigne = @numLigne";
 

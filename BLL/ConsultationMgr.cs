@@ -37,6 +37,22 @@ namespace BLL
         }
 
         /// <summary>
+        /// Sauvegarde/Met à jour la consultation en base de donnée
+        /// </summary>
+        /// <param name="consultation"></param>
+        /// <returns></returns>
+        public static BO.Consultations Save(BO.Consultations consultation)
+        {
+            if (consultation.CodeConsultation == default(Guid))
+                return BLL.ConsultationMgr.Create(consultation);
+            else
+            {
+                BLL.ConsultationMgr.Update(consultation);
+                return consultation;
+            }
+        }
+
+        /// <summary>
         /// Creer la consultation et retourne l'objet nouvelle crée (Guid définis)
         /// </summary>
         /// <param name="consultation"></param>

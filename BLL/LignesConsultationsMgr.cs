@@ -18,7 +18,6 @@ namespace BLL
             return DAL.LignesConsultations.GetAll(codeConsultation);
         }
 
-
         /// <summary>
         /// Creer la ligne de consultation passé en params
         /// </summary>
@@ -35,6 +34,30 @@ namespace BLL
             return DAL.LignesConsultations.Create(lignesConsultations);
         }
 
+
+        /// <summary>
+        /// Creer toutes les lignes consultations
+        /// </summary>
+        /// <param name="lignesConsultations"></param>
+        /// <param name="codeConsultation"></param>
+        /// <returns></returns>
+        public static List<BO.LignesConsultations> CreateAll(List<BO.LignesConsultations> lignesConsultations, Guid codeConsultation)
+        {
+            for (Int32 i = 0; i < lignesConsultations.Count; i++)
+            {
+                BO.LignesConsultations ligne = lignesConsultations[i];
+
+                if (ligne.NumLigne == null)
+                {
+                    if (ligne.Consultation == null || ligne.Consultation.CodeConsultation != codeConsultation)
+                        ligne.Consultation = ConsultationMgr.Get(codeConsultation);
+
+                    lignesConsultations[i] = BLL.LignesConsultationsMgr.Create(ligne);
+                }
+            }
+
+            return lignesConsultations;
+        }
 
         /// <summary>
         /// Supprime la ligne consultation passé en param

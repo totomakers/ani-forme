@@ -89,10 +89,9 @@ namespace GUI.Dialog
 
             //Pas connecté en tant que vétérinaires, il est donc impossible de saisir la consultation
             vetoLogged = BLL.VeterinairesMgr.GetByAccount(BLL.AccountMgr.loggedAccount.Id);
-            if ( vetoLogged == null)
+            if (vetoLogged == null)
                 this.Close();
                  
-
             //Chargement animal
             this.textBoxAniCode.Text = agenda.Animal.CodeAnimal.ToString();
             this.textBoxAniColor.Text = agenda.Animal.Couleur;
@@ -105,12 +104,17 @@ namespace GUI.Dialog
             //Chargement véto connecté
             this.textBoxActeVeto.Text = vetoLogged.NomVeto;
 
-    
-            consultation = BLL.ConsultationMgr.Get(agenda.DateRdv, agenda.Animal);
-
-            if (consultation == null)
+            try
             {
-                //Initialise une consultation vide
+                consultation = BLL.ConsultationMgr.Get(agenda.DateRdv, agenda.Animal);
+
+                if (consultation.Etat >= (short)BLL.ConsultationsEtat.SAISI_VETO_TERMINER_ET_FACTURE_POSSIBLE)
+                    this.ReadOnly = true;
+
+                lignesConsultation = BLL.LignesConsultationsMgr.GetAll(consultation.CodeConsultation); //Récupere tout les actes de la consultation
+            }
+            catch (Exception) //la consultation n'existe pas
+            {
                 consultation = new BO.Consultations
                 {
                     Animal = agenda.Animal,
@@ -122,15 +126,7 @@ namespace GUI.Dialog
                     Archive = 0
                 };
             }
-            else
-            {
-                if (consultation.Etat >= (short)BLL.ConsultationsEtat.SAISI_VETO_TERMINER_ET_FACTURE_POSSIBLE)
-                    this.ReadOnly = true;
 
-                lignesConsultation = BLL.LignesConsultationsMgr.GetAll(consultation.CodeConsultation); //Récupere tout les actes de la consultation
-            }
-
-            //Lie la liste au dataGridview
             this.dataGridViewActe.DataSource = lignesConsultation;
         }
 
@@ -187,55 +183,40 @@ namespace GUI.Dialog
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            //Sauvegarde la consultation en base si pas fais
-            if (consultation.CodeConsultation == null)
-                consultation = BLL.ConsultationMgr.Create(consultation);
-            else //Sinon la met a jour
-                BLL.ConsultationMgr.Update(consultation); //Changement du commentaire...
-            
-            //Sauve l'ensemble des actes
-            for(Int32 i = 0; i < lignesConsultation.Count; i++)
-            {
-                BO.LignesConsultations ligne = lignesConsultation[i];
+            consultation = BLL.ConsultationMgr.Save(consultation);
 
-                //L'acte n'a pas été enregistré
-                if(ligne.NumLigne == null)
-                {
-                     //Pas de consultation ou consultation différnete
-                    if (ligne.Consultation == null || ligne.Consultation.CodeConsultation != consultation.CodeConsultation)
-                        ligne.Consultation = consultation;
+            if (consultation == null)
+                return; 
 
-                    lignesConsultation[i] = BLL.LignesConsultationsMgr.Create(ligne);
-                }
-            }
+            lignesConsultation = BLL.LignesConsultationsMgr.CreateAll(lignesConsultation, consultation.CodeConsultation);    
         }
 
         
         private void buttonValidate_Click(object sender, EventArgs e)
         {
-            //Valide la consultation (passage a l'etat 1 de la consultation)
-            BLL.ConsultationMgr.Validate(consultation);
-
-            //@TODO doit mettre le stock de vaccin a jour...
-
-            this.ReadOnly = true;  //Rend la form non modifiable
+            BLL.ConsultationMgr.Validate(consultation);  //@TODO doit mettre le stock de vaccin a jour...
+            this.ReadOnly = true;
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            //Supprime la consultation et tout les actes
+            //Supprime les lignes de la consultation
             foreach (BO.LignesConsultations ligne in lignesConsultation)
             {
-                //Supprime de la bdd, les autres sont des temporaires donc non sauvegardé
                 if(ligne.NumLigne != null)
                     BLL.LignesConsultationsMgr.Delete(ligne);
             }
 
-            //Supprime de la bdd
+            //Supprime la consultation
             if(consultation.CodeConsultation != null)
                 BLL.ConsultationMgr.Delete(consultation);
 
-            //@TODO message box
+
+            MessageBox.Show("Consultation supprimé", 
+                            "La consultation a été supprimé avec succés",
+                            MessageBoxButtons.OK, 
+                            MessageBoxIcon.Information);
+
             this.Close();
         }
 

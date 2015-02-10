@@ -39,7 +39,7 @@ namespace DAL
         {
             try
             {
-                var query = @"SELECT * FROM Consultation c WHERE CodeConsultation = @code";
+                var query = @"SELECT * FROM Consultations c WHERE CodeConsultation = @code";
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
                 BO.Consultations results = cnx.Query<BO.Consultations>(query, new { code = id }).ToList<BO.Consultations>().First();
                 SqlConnexion.CloseConnexion(cnx);
@@ -56,7 +56,7 @@ namespace DAL
         {
             try
             {
-                var query = @"SELECT * FROM Consultation c WHERE CodeAnimal = @animal AND DateConsultation = @date";
+                var query = @"SELECT * FROM Consultations c WHERE CodeAnimal = @animal AND DateConsultation = @date";
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
                 BO.Consultations results = cnx.Query<BO.Consultations>(query, new { animal = animal.CodeAnimal, date = dateConsultation }).ToList<BO.Consultations>().First();
                 SqlConnexion.CloseConnexion(cnx);
