@@ -36,18 +36,23 @@ namespace BLL
         /// <param name="newTarif"></param>
         public static void CreateBareme(BO.Baremes baremeParam, String newTarifFixe, String newTarifMini, String newTarifMaxi)
         {
-            BO.Baremes bareme = DAL.Baremes.GetBareme(baremeParam.CodeGroupement, baremeParam.DateVigueur);
-            if (DAL.Baremes.Archive(bareme, true))
+            if (Decimal.Parse(newTarifMini) < Decimal.Parse(newTarifMaxi))
             {
-                bareme.DateVigueur = DateTime.Now.ToString("dd/MM/yy");
-                bareme.TarifFixe = Decimal.Parse(newTarifFixe);
-                bareme.TarifMaxi = Decimal.Parse(newTarifMaxi);
-                bareme.TarifMini = Decimal.Parse(newTarifMini);
-                if (!DAL.Baremes.CreateBareme(bareme))
+                BO.Baremes bareme = DAL.Baremes.GetBareme(baremeParam.CodeGroupement, baremeParam.DateVigueur);
+                if (DAL.Baremes.Archive(bareme, true))
                 {
-                    DAL.Baremes.Archive(bareme, false);
+                    bareme.DateVigueur = DateTime.Now.ToString("dd/MM/yy");
+                    bareme.TarifFixe = Decimal.Parse(newTarifFixe);
+                    bareme.TarifMaxi = Decimal.Parse(newTarifMaxi);
+                    bareme.TarifMini = Decimal.Parse(newTarifMini);
+                    if (!DAL.Baremes.CreateBareme(bareme))
+                    {
+                        DAL.Baremes.Archive(bareme, false);
+                    }
                 }
             }
+            else
+                throw new Exception(BLL.Lang.BAREMES_PROBLEME_TARIF);
         }
 
         /// <summary>
@@ -71,5 +76,7 @@ namespace BLL
                 DAL.Baremes.CreateBareme(bar);
             }
         }
+
+
     }
 }
