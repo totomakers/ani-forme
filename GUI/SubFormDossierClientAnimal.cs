@@ -261,7 +261,7 @@ namespace GUI
             //==============
             //Animaux =======
             this.dataGridViewAnimals.DataSource = null;
-            this.dataGridViewAnimals.DataSource = BLL.AnimauxMgr.GetAllByClient(currentClient); //load animals list
+            this.dataGridViewAnimals.DataSource = BLL.AnimauxMgr.GetAllByClient(currentClient, false); //load animals list
             this.buttonAddAni.Enabled = true;
             this.buttonEditAni.Enabled = true;
             this.buttonDeleteAni.Enabled = true;
@@ -486,15 +486,18 @@ namespace GUI
 
         private void buttonEditAni_Click(object sender, EventArgs e)
         {
-            Animaux animal = (Animaux)this.dataGridViewAnimals.CurrentRow.DataBoundItem;
-
-            if(animal != null)
+            if (this.dataGridViewAnimals.CurrentRow != null)
             {
-                DialogAnimal DialogAnimal = new GUI.Dialog.DialogAnimal(animal);
-                DialogAnimal.Disposed += UpdateContentEvent;
-                DialogAnimal.buttonValidate.Click += UpdateContentEvent;
-                DialogAnimal.ShowDialog();
-            }
+                Animaux animal = (Animaux)this.dataGridViewAnimals.CurrentRow.DataBoundItem;
+
+                if (animal != null)
+                {
+                    DialogAnimal DialogAnimal = new GUI.Dialog.DialogAnimal(animal);
+                    DialogAnimal.Disposed += UpdateContentEvent;
+                    DialogAnimal.buttonValidate.Click += UpdateContentEvent;
+                    DialogAnimal.ShowDialog();
+                }
+            }      
         }
 
         private void dataGridViewAnimals_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

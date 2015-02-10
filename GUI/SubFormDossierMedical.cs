@@ -116,6 +116,15 @@ namespace GUI
             finalStringRTF = finalStringRTF.Replace("#proprioName", currentAnimal.Client.getFullName());
 
             //Bouclie ici avec le remplacement des valeurs
+            /*
+            foreach (BO.Consultations consultation in ConsultationMgr.GetAllByAnimal(currentAnimal))
+            {
+                finalStringRTF += @"\b #consultationDate - #consultationVete\b0\par";
+
+                finalStringRTF = finalStringRTF.Replace("#consultationDate", consultation.DateConsultation.ToShortDateString());
+                finalStringRTF = finalStringRTF.Replace("#proprioName", consultation.Veterinaire.NomVeto);
+            }
+            */
 
             finalStringRTF += @"}";
 

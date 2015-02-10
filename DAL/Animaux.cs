@@ -323,8 +323,9 @@ namespace DAL
 	                                        couleur = animal.Couleur,
 	                                        espece = animal.Espece,
 	                                        race = animal.Race,
-	                                        archive = 0
+	                                        archive = false
                                         });
+
                 animal.CodeAnimal = temp;
                 SqlConnexion.CloseConnexion(cnx);
 
