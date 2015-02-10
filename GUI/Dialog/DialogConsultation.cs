@@ -127,7 +127,7 @@ namespace GUI.Dialog
                 if (consultation.Etat >= (short)BLL.ConsultationsEtat.SAISI_VETO_TERMINER_ET_FACTURE_POSSIBLE)
                     this.ReadOnly = true;
 
-                lignesConsultation = BLL.LignesConsultations.GetAll(consultation.CodeConsultation); //Récupere tout les actes de la consultation
+                lignesConsultation = BLL.LignesConsultationsMgr.GetAll(consultation.CodeConsultation); //Récupere tout les actes de la consultation
             }
 
             //Lie la liste au dataGridview
@@ -205,7 +205,7 @@ namespace GUI.Dialog
                     if (ligne.Consultation == null || ligne.Consultation.CodeConsultation != consultation.CodeConsultation)
                         ligne.Consultation = consultation;
 
-                    lignesConsultation[i] = BLL.LignesConsultations.Create(ligne);
+                    lignesConsultation[i] = BLL.LignesConsultationsMgr.Create(ligne);
                 }
             }
         }
@@ -228,7 +228,7 @@ namespace GUI.Dialog
             {
                 //Supprime de la bdd, les autres sont des temporaires donc non sauvegardé
                 if(ligne.NumLigne != null)
-                    BLL.LignesConsultations.Delete(ligne);
+                    BLL.LignesConsultationsMgr.Delete(ligne);
             }
 
             //Supprime de la bdd
@@ -260,7 +260,7 @@ namespace GUI.Dialog
 
                 //Supprime la ligne dela BDD
                 if (ligne.NumLigne != default(Guid))
-                    BLL.LignesConsultations.Delete(ligne);
+                    BLL.LignesConsultationsMgr.Delete(ligne);
 
                 this.lignesConsultation.RemoveAt(this.dataGridViewActe.CurrentRow.Index);
             }

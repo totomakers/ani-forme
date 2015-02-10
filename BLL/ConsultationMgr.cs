@@ -22,7 +22,7 @@ namespace BLL
         /// <returns></returns>
         public static BO.Consultations Get(Guid codeConsultation)
         {
-            return null; //@TODO : Méthode get par guid
+            return DAL.Consultations.Get(codeConsultation);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace BLL
         /// <returns></returns>
         public static BO.Consultations Get(DateTime dateConsultation, BO.Animaux animal)
         {
-            return null; //@TODO : Méthode get
+            return DAL.Consultations.Get(dateConsultation, animal);
         }
 
         /// <summary>
