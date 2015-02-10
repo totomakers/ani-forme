@@ -75,5 +75,37 @@ namespace DAL
                 throw e;
             }
         }
+
+        /// <summary>
+        /// Retourne la liste des animaux a relancer
+        /// </summary>
+        /// <returns></returns>
+        public static List<BO.LignesConsultations> GetAllRappel()
+        {
+            try
+            {
+                /*SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                String query = @"SELECT * 
+                                FROM Animaux a
+                                INNER JOIN Consultations c on c.CodeAnimal = a.CodeAnimal
+                                INNER JOIN LignesConsultations lc on lc.CodeConsultation = c.CodeConsultation
+                                INNER JOIN Baremes b on lc.CodeGroupement = b.CodeGroupement AND lc.DateVigueur = b.DateVigueur
+                                INNER JOIN Vaccins v on b.CodeVaccin = v.CodeVaccin
+                                WHERE (c.DateConsultation+v.PeriodeValidite) > (GETDATE()-14)
+                                AND lc.RappelEnvoye = 0;";
+
+                List<BO.LignesConsultations> results = cnx.Query<BO.Animaux, BO.Consultations, BO.LignesConsultations, BO.Baremes, BO.Vaccins ,BO.LignesConsultations>(query,
+                                               (animal, consultation, lignesconsultations, baremes, vaccin) => { consultation.Animal = animal; lignesconsultations.Consultation = consultation; baremes.Vaccin = vaccin; lignesconsultations.Barem = baremes; return lignesconsultations; },
+                                               splitOn: "CodeAnimal,CodeConsultation,CodeVaccin,CodeGroupement,DateVigueur")
+                                               .ToList<BO.LignesConsultations>();
+
+                return results;*/
+                return null;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

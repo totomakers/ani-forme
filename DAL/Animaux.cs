@@ -229,6 +229,31 @@ namespace DAL
             }
         }
 
+        /// <summary>
+        /// Retourne l'animal dont on a passer le guid en param
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        private static BO.Animaux Get(Guid item)
+        {
+            try
+            {
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                String query = @"SELECT * 
+                                FROM Animaux 
+                                WHERE CodeAnimal=@code;";
+
+                BO.Animaux results = cnx.Query<BO.Animaux>(query, new { code = item }).Single<BO.Animaux>();
+
+                SqlConnexion.CloseConnexion(cnx);
+
+                return results;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
 
         /// <summary>
         /// Archive l'animal séléctionner
@@ -349,5 +374,6 @@ namespace DAL
             }
            
         }
+
     }
 }

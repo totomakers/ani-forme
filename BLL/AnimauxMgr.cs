@@ -86,6 +86,7 @@ namespace BLL
             return DAL.Animaux.GetAllByClient(client, archived);
         }
 
+
         /// <summary>
         /// Archive tout les animaux du clients passé en params
         /// </summary>
@@ -171,6 +172,16 @@ namespace BLL
                 throw new Exception(Lang.ANIMAUX_UPDATE_SHOULD_HAVE_CODE);
             
             return DAL.Animaux.Update(animal);
+        }
+
+        public static Boolean Relance()
+        {
+            return true;
+        }
+
+        public static Boolean Relance(BO.Animaux animal)
+        {
+            return true;
         }
     }
 }

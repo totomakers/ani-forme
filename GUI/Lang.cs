@@ -204,6 +204,13 @@ namespace GUI
         public static String SUBFORM_DOSSIER_MEDICAL_TITLE = "Dossier médical de {0}";
         public static String SUBFORM_DOSSIER_MEDICAL_TITLE_2 = "Dossie médical";
 
+        //===========================
+        //SubFormRelance
+        //===========================
+
+        public static String SUBFORM_RELANCE_RELANCE = "Clients relancés";
+        public static String SUBFORM_RELANCE_NORELANCE = "Pas de client relancé";
+
     }
 }
 

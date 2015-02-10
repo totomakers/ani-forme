@@ -78,5 +78,32 @@ namespace BLL
                 throw new Exception(ex.Message);
             }
         }
+
+        /// <summary>
+        /// Retourne tous les animaux qui ont besoin de recevoir un rappel
+        /// </summary>
+        /// <returns></returns>
+        public static List<BO.LignesConsultations> GetAllRappel()
+        {
+            return DAL.LignesConsultations.GetAllRappel();
+        }
+
+        /// <summary>
+        /// Archive tout les animaux du clients passé en params
+        /// </summary>
+        /// <param name="client"></param>
+        public static void DeleteAllByClient(BO.Clients client)
+        {
+            if (client.CodeClient == null)
+                throw new Exception(Lang.ANIMAUX_CANT_DELETE_ANI_CUST_WITHOUT_GUID);
+
+            List<BO.Animaux> animaux = DAL.Animaux.GetAllByClient(client);
+            foreach (BO.Animaux animal in animaux)
+            {
+                if (DAL.Consultations.GetNonPayed(animal) > 0)
+                    throw new Exception(String.Format(Lang.ANIMAUX_CANT_ARCHIVE_CONSULT_NOT_PAID, client.getFullName()));
+            }
+            DAL.Animaux.ArchiveAllByClient(client);
+        }
     }
 }
