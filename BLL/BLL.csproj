@@ -44,8 +44,11 @@
     <Compile Include="AnimauxMgr.cs" />
     <Compile Include="ClientsMgr.cs" />
     <Compile Include="BaremesMgr.cs" />
+    <Compile Include="ConsultationMgr.cs" />
+    <Compile Include="FacturesMgr.cs" />
     <Compile Include="FournisseurMgr.cs" />
     <Compile Include="Lang.cs" />
+    <Compile Include="LignesConsultations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RacesMgr.cs" />
     <Compile Include="VeterinairesMgr.cs" />

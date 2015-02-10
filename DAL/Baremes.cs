@@ -11,6 +11,11 @@ namespace DAL
 {
     public class Baremes
     {
+        /// <summary>
+        /// Retournes tout les barèmes avec le type passé en param
+        /// </summary>
+        /// <param name="Type"></param>
+        /// <returns></returns>
         public static List<BO.Baremes> GetBaremes(String Type)
         {
             try
@@ -43,6 +48,12 @@ namespace DAL
             }
         }
 
+        /// <summary>
+        /// Retourne le barème correspond a la PK
+        /// </summary>
+        /// <param name="codeParam"></param>
+        /// <param name="dateParam"></param>
+        /// <returns></returns>
         public static BO.Baremes GetBareme(string codeParam, string dateParam)
         {
             try
@@ -59,6 +70,10 @@ namespace DAL
             }
         }
 
+        /// <summary>
+        /// Retourne tout les types d'acte possible
+        /// </summary>
+        /// <returns></returns>
         public static List<String> GetTypeActe()
         {
             try
@@ -75,6 +90,12 @@ namespace DAL
             }
         }
 
+        /// <summary>
+        /// Vérifi l'existence du barem passé en param
+        /// </summary>
+        /// <param name="codeParam"></param>
+        /// <param name="dateParam"></param>
+        /// <returns></returns>
         public static Boolean Exist(string codeParam, string dateParam)
         {
             try
@@ -91,6 +112,11 @@ namespace DAL
             }
         }
 
+        /// <summary>
+        /// Création du barème
+        /// </summary>
+        /// <param name="bareme"></param>
+        /// <returns></returns>
         public static bool CreateBareme(BO.Baremes bareme)
         {
             
@@ -125,6 +151,11 @@ namespace DAL
             }
         }
 
+        /// <summary>
+        /// Met à jour le barème passé en params
+        /// </summary>
+        /// <param name="bareme"></param>
+        /// <returns></returns>
         public static bool Update(BO.Baremes bareme)
         {
             try
@@ -184,6 +215,10 @@ namespace DAL
             }
         }
 
+        /// <summary>
+        /// Archive tous les barèmes
+        /// </summary>
+        /// <returns></returns>
         public static bool Flush()
         {
             try

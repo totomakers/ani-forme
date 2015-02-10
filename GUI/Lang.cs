@@ -158,7 +158,7 @@ namespace GUI
         public static String DIALOG_CONSULATION_DELETE_ACTE = "Supprimer acte";
         public static String DIALOG_CONSULATION_DELETE_CONSULTATION = "Supprimer la consultation";
         public static String DIALOG_CONSULATION_MEDICAL_FOLDER = "Dossier médical";
-        public static String DIALOG_CONSULTATION_SAVE = "Sauvegarder la consultation/acte";
+        public static String DIALOG_CONSULTATION_SAVE = "Sauvegarder la consultation";
         public static String DIALOG_CONSULATION_VALIDATE = "Valider la consultation";
 
         public static String DIALOG_CONSULTATION_ACTE_DATE = "Date";

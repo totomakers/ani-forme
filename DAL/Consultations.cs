@@ -9,17 +9,8 @@ using System.Data;
 
 namespace DAL
 {
-    enum ConsultationEtat
-    {
-        EN_COURS_DE_SAISIE,
-        SAISI_VETO_TERMINER,
-        FACTURATION_POSSIBLE,
-        FACTURE_GENEREE
-    }
-
     public class Consultations
     {
-
 
         public static int GetNonPayed(BO.Animaux animal)
         {

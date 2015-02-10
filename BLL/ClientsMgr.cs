@@ -56,7 +56,7 @@ namespace BLL
             //Vérification client
             //Toutes les factures doivent être payé pour archiver le client
             //@TODO faire un mgr de facture...
-            Int32 factureImpayee = DAL.Factures.CountFactureByClient(client) - DAL.Factures.CountFactureEtatByClient(client, DAL.FactureEtat.PAYEE);
+            Int32 factureImpayee = DAL.Factures.CountFactureByClient(client) - DAL.Factures.CountFactureEtatByClient(client, (short)BLL.FacturesEtat.PAYEE);
             if (factureImpayee > 0)
             {
                 throw new Exception(String.Format(Lang.CLIENTS_CANT_DELETE_HAVE_NOT_PAID_FACTURE, factureImpayee));

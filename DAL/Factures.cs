@@ -6,14 +6,6 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-
-    public enum FactureEtat
-    {
-        A_IMPRIMER,
-        IMPRIMEE,
-        PAYEE,
-    }
-
     public class Factures
     {
         /// <summary>
@@ -32,7 +24,7 @@ namespace DAL
         /// <param name="client"></param>
         /// <param name="etat"></param>
         /// <returns></returns>
-        public static Int32 CountFactureEtatByClient(BO.Clients client, FactureEtat etat)
+        public static Int32 CountFactureEtatByClient(BO.Clients client, int etat)
         {
             return 0;
         }
@@ -43,7 +35,7 @@ namespace DAL
         /// <param name="client"></param>
         /// <param name="etat"></param>
         /// <returns></returns>
-        public static List<BO.Factures> GetFactureEtatByClient(BO.Clients client, FactureEtat etat)
+        public static List<BO.Factures> GetFactureEtatByClient(BO.Clients client, int etat)
         {
             return new List<BO.Factures>();
         }
