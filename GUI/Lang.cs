@@ -113,6 +113,7 @@ namespace GUI
         public static String SUBFORM_FOLDERCUSTANI_SUCCEFULL_ARCHIVE = "Le client {0} a été archivé !";
         public static String SUBFORM_FOLDERCUSTANI_SEARCH = "Flitrer";
 
+
         //============================
         //SubFormPrendreRdv
         //============================
@@ -142,6 +143,8 @@ namespace GUI
         public static String DIALOG_ANIMAL_LIB_TATOO = "Tatouage";
 
         public static String DIALOG_ANIMAL_CREATE_UPDATE_SUCCEFULL = "L'animal {0} à été mise a jour/crée avec succès";
+
+        public static String DIALOG_ANIMAL_CLIENT_ERROR = "Impossible de trouver le client.";
 
         //============================
         //SubFormAgenda

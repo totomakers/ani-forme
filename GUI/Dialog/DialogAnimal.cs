@@ -191,10 +191,14 @@ namespace GUI.Dialog
             {
                 clientEdited = clientsList.Find(x => x.CodeClient == client.CodeClient);
 
-                //@TODO Message d'erreur
                 if (clientEdited == null)
+                {                    
                     this.Close();
-
+                    MessageBox.Show(GUI.Lang.DIALOG_ANIMAL_CLIENT_ERROR, 
+                                    GUI.Lang.FORM_DEFAULT_ERROR_TITLE,   
+                                    MessageBoxButtons.OK, 
+                                    MessageBoxIcon.Error);
+                }
                 this.comboBoxCustomer.SelectedItem = clientEdited;
                 mode = DialogAnimalMode.CLIENT;
                 this.comboBoxCustomer.Enabled = false;

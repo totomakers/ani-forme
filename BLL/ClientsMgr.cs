@@ -52,11 +52,9 @@ namespace BLL
             if (client.CodeClient == default(Guid))
                 throw new Exception(Lang.CLIENTS_CANT_DELETE_WITHOUT_GUID);
 
-
             //Vérification client
             //Toutes les factures doivent être payé pour archiver le client
-            //@TODO faire un mgr de facture...
-            Int32 factureImpayee = DAL.Factures.CountFactureByClient(client) - DAL.Factures.CountFactureEtatByClient(client, (short)BLL.FacturesEtat.PAYEE);
+            Int32 factureImpayee = BLL.FacturesMgr.Impayees(client);
             if (factureImpayee > 0)
             {
                 throw new Exception(String.Format(Lang.CLIENTS_CANT_DELETE_HAVE_NOT_PAID_FACTURE, factureImpayee));

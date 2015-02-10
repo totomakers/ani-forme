@@ -13,8 +13,11 @@ namespace BLL
         PAYEE,
     }
 
-
     public class FacturesMgr
     {
+        public static Int32 Impayees(BO.Clients client)
+        {
+            return DAL.Factures.CountFactureByClient(client) - DAL.Factures.CountFactureEtatByClient(client, (short)BLL.FacturesEtat.PAYEE);
+        }
     }
 }
