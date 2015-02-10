@@ -96,8 +96,11 @@ namespace DAL
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-		public static BO.Clients Get(Guid id)
+		public static BO.Clients Get(Guid? id)
         {
+            if (id == null)
+                return null;
+
             try
             {
                 var query = @"SELECT * FROM  Clients c WHERE CodeClient = @code";

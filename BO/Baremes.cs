@@ -19,7 +19,7 @@ namespace BO
         private Decimal tarifFixe;
         private Decimal tarifMini;
         private Decimal tarifMaxi;
-        private Guid vaccinId;
+        private Guid? vaccinId;
         private BO.Vaccins vaccin;
         private Byte archive;
         #endregion
@@ -81,7 +81,7 @@ namespace BO
         }
 
         [Browsable(false)]
-        public Guid VaccinId
+        public Guid? VaccinId
         {
             get { return vaccinId; }
             set { vaccinId = value; }

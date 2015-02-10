@@ -43,7 +43,7 @@ namespace BLL
         /// <returns></returns>
         public static BO.Consultations Save(BO.Consultations consultation)
         {
-            if (consultation.CodeConsultation == default(Guid))
+            if (consultation.CodeConsultation == null)
                 return BLL.ConsultationMgr.Create(consultation);
             else
             {
@@ -69,7 +69,7 @@ namespace BLL
         /// <returns></returns>
         public static bool Update(BO.Consultations consultation)
         {
-            if (consultation.CodeConsultation == default(Guid))
+            if (consultation.CodeConsultation == null)
                 throw new Exception("La consultation doit posséder un Guid pour être mis a jour");
 
             if(consultation.Etat >= (short)BLL.ConsultationsEtat.SAISI_VETO_TERMINER_ET_FACTURE_POSSIBLE)

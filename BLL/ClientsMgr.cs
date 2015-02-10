@@ -49,7 +49,7 @@ namespace BLL
         public static void Delete(BO.Clients client)
         {
             //Vérification du guid
-            if (client.CodeClient == default(Guid))
+            if (client.CodeClient == null)
                 throw new Exception(Lang.CLIENTS_CANT_DELETE_WITHOUT_GUID);
 
             //Vérification client

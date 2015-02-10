@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,11 +12,11 @@ namespace BO
     {
         #region Attribute
         private BO.Consultations consultation;
-        private Guid numLigne;
+        private Guid? numLigne;
         private BO.Baremes barem;
         private float prix;
-        private Byte rappelEnvoye;
-        private Byte archive;
+        private Boolean rappelEnvoye;
+        private Boolean archive;
         #endregion
 
         #region Constructor
@@ -24,16 +26,19 @@ namespace BO
         #endregion
 
         #region Getter/Setter
+        [Browsable(false)]
         public BO.Consultations Consultation
         {
             get { return consultation; }
             set { consultation = value; }
         }
-        public Guid NumLigne
+
+        public Guid? NumLigne
         {
             get { return numLigne; }
             set { numLigne = value; }
         }
+
         public BO.Baremes Barem
         {
             get { return barem; }
@@ -44,12 +49,17 @@ namespace BO
             get { return prix; }
             set { prix = value; }
         }
-        public Byte RappelEnvoye
+
+
+        [Browsable(false)]
+        public Boolean RappelEnvoye
         {
             get { return rappelEnvoye; }
             set { rappelEnvoye = value; }
         }
-        public Byte Archive
+
+        [Browsable(false)]
+        public Boolean Archive
         {
             get { return archive; }
             set { archive = value; }

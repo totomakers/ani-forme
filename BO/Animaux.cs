@@ -10,13 +10,13 @@ namespace BO
     public class Animaux
     {
         #region Attribute
-        private Guid codeAnimal;
+        private Guid? codeAnimal;
         private String nomAnimal;
         private Char sexe;
         private String couleur;
         private String race;
         private String espece;
-        private Guid codeClient;
+        private Guid? codeClient;
         private BO.Clients client;
         private String tatouage;
         private String antecedent;
@@ -31,7 +31,7 @@ namespace BO
 
         #region Getter/Setter
         [DisplayName("Code")]
-        public Guid CodeAnimal
+        public Guid? CodeAnimal
         {
             get { return codeAnimal; }
             set { codeAnimal=value; }
@@ -68,7 +68,7 @@ namespace BO
             set { espece = value; }
         }
 
-        public Guid CodeClient
+        public Guid? CodeClient
         {
             get { return codeClient; }
             set { codeClient = value; }

@@ -118,9 +118,10 @@ namespace DAL
                     codeAnimal = consultation.Animal.CodeAnimal,
                     comm = consultation.Commentaire,
                     etat = consultation.Etat,
-                    facture = consultation.Facture.NumFacture,
-                    archive = (consultation.Archive) ? 1 : 0
+                    facture = (consultation.Facture != null) ? consultation.Facture.NumFacture : null,
+                    archive = consultation.Archive
                 });
+
                 SqlConnexion.CloseConnexion(cnx);
                 return (rowNb > 0);
             }
@@ -157,7 +158,7 @@ namespace DAL
             try
             {
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
-                var query = @"DELETE FROM Consultations WHERE CodeConsulation=@consult";
+                var query = @"DELETE FROM Consultations WHERE CodeConsultation=@consult";
 
                 int rowNb = cnx.Execute(query, new
                 {

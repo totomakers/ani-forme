@@ -9,7 +9,7 @@ namespace BO
     public class Factures
     {
         #region Attribute
-        private Guid numFacture;
+        private Guid? numFacture;
         private DateTime dateFacture;
         private BO.Clients client;
         private float totalFacture;
@@ -25,7 +25,7 @@ namespace BO
         #endregion
 
         #region Getter/Setter
-        public Guid NumFacture
+        public Guid? NumFacture
         {
             get { return numFacture; }
             set { numFacture = value; }

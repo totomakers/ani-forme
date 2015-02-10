@@ -10,7 +10,7 @@ namespace BO
     public class Veterinaires
     {
         #region Attributes
-        private Guid codeVeto;
+        private Guid? codeVeto;
         private String nomVeto;
         private Boolean archive;
 
@@ -26,7 +26,7 @@ namespace BO
 
         #region Getter/Setter
         [Browsable(false)]
-        public Guid CodeVeto
+        public Guid? CodeVeto
         {
             get { return codeVeto; }
             set { codeVeto = value; }

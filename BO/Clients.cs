@@ -9,7 +9,7 @@ namespace BO
     public class Clients
     {
         #region Attribute
-        private Guid codeClient;
+        private Guid? codeClient;
         private String nomClient;
         private String prenomClient;
         private String adresse1;
@@ -30,7 +30,7 @@ namespace BO
         #endregion
 
         #region Getter/Setter
-        public Guid CodeClient
+        public Guid? CodeClient
         {
             get { return codeClient; }
             set { codeClient = value; }

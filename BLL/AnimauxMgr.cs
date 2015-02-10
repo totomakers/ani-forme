@@ -40,7 +40,7 @@ namespace BLL
         /// Retourne l'ensemble des sexe possible
         /// </summary>
         /// <returns></returns>
-        public static List<Char> getSexe()
+        public static List<Char> GetSexe()
         {
             List<Char> sexeList = new List<char>();
             sexeList.Add(AnimauxSexe.MALE);
@@ -66,7 +66,7 @@ namespace BLL
         /// <returns></returns>
         public static List<BO.Animaux> GetAllByClient(BO.Clients client)
         {
-            if (client.CodeClient == default(Guid))
+            if (client.CodeClient == null)
                 throw new Exception(Lang.ANIMAUX_CANT_GET_BY_CLIENT_WITHOUT_GUID);
 
             return DAL.Animaux.GetAllByClient(client);
@@ -80,7 +80,7 @@ namespace BLL
         /// <returns></returns>
         public static List<BO.Animaux> GetAllByClient(BO.Clients client, bool archived)
         {
-            if (client.CodeClient == default(Guid))
+            if (client.CodeClient == null)
                 throw new Exception(Lang.ANIMAUX_CANT_GET_BY_CLIENT_WITHOUT_GUID);
 
             return DAL.Animaux.GetAllByClient(client, archived);
@@ -92,7 +92,7 @@ namespace BLL
         /// <param name="client"></param>
         public static void DeleteAllByClient(BO.Clients client)
         {
-            if (client.CodeClient == default(Guid))
+            if (client.CodeClient == null)
                 throw new Exception(Lang.ANIMAUX_CANT_DELETE_ANI_CUST_WITHOUT_GUID);
 
             List<BO.Animaux> animaux = DAL.Animaux.GetAllByClient(client);
@@ -134,7 +134,7 @@ namespace BLL
         /// <param name="animal"></param>
         public static void Delete(BO.Animaux animal)
         {
-            if (animal.CodeAnimal == default(Guid))
+            if (animal.CodeAnimal == null)
                 throw new Exception(Lang.ANIMAUX_CANT_DELETE_WITHOUT_GUID);
 
             if (DAL.Consultations.GetNonPayed(animal) > 0) 
@@ -167,7 +167,7 @@ namespace BLL
             if(animal.Client == null)
                 throw new Exception(Lang.ANIMAUX_UPDATE_SHOULD_HAVE_CLIENT);
 
-            if (animal.CodeAnimal == default(Guid))
+            if (animal.CodeAnimal == null)
                 throw new Exception(Lang.ANIMAUX_UPDATE_SHOULD_HAVE_CODE);
             
             return DAL.Animaux.Update(animal);

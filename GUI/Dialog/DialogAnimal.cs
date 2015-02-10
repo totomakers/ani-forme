@@ -176,7 +176,7 @@ namespace GUI.Dialog
         {
             clientsList = BLL.ClientsMgr.GetAll(false);
             this.comboBoxCustomer.DataSource = clientsList;
-            this.comboBoxSexe.DataSource = BLL.AnimauxMgr.getSexe();
+            this.comboBoxSexe.DataSource = BLL.AnimauxMgr.GetSexe();
             this.comboBoxEspece.DataSource = BLL.RacesMgr.GetAllEspeces();
         }
 

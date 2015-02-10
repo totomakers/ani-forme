@@ -16,6 +16,7 @@ namespace GUI.Dialog
         private BO.Veterinaires vetoLogged;
         private BO.Consultations consultation;
         private BO.Baremes selectedBarems;
+        private List<BO.Baremes> barems = new List<BO.Baremes>();
         private List<BO.LignesConsultations> lignesConsultation = new List<BO.LignesConsultations>();
         private bool readOnly;
 
@@ -111,7 +112,7 @@ namespace GUI.Dialog
                 if (consultation.Etat >= (short)BLL.ConsultationsEtat.SAISI_VETO_TERMINER_ET_FACTURE_POSSIBLE)
                     this.ReadOnly = true;
 
-                lignesConsultation = BLL.LignesConsultationsMgr.GetAll(consultation.CodeConsultation); //Récupere tout les actes de la consultation
+                lignesConsultation = BLL.LignesConsultationsMgr.GetAll((Guid)consultation.CodeConsultation); //Récupere tout les actes de la consultation
             }
             catch (Exception) //la consultation n'existe pas
             {
@@ -123,11 +124,12 @@ namespace GUI.Dialog
                     Facture = null,
                     DateConsultation = agenda.DateRdv,
                     Veterinaire = vetoLogged,
-                    Archive = 0
+                    Archive = false
                 };
             }
 
             this.dataGridViewActe.DataSource = lignesConsultation;
+            this.comboBoxActeType.DataSource = BLL.BaremesMgr.GetTypeActe();
         }
 
         /// <summary>
@@ -188,7 +190,7 @@ namespace GUI.Dialog
             if (consultation == null)
                 return; 
 
-            lignesConsultation = BLL.LignesConsultationsMgr.CreateAll(lignesConsultation, consultation.CodeConsultation);    
+            lignesConsultation = BLL.LignesConsultationsMgr.CreateAll(lignesConsultation, (Guid)consultation.CodeConsultation);    
         }
 
         
@@ -223,10 +225,16 @@ namespace GUI.Dialog
         private void buttonActeAdd_Click(object sender, EventArgs e)
         {
             if (selectedBarems == null)
-                return; //@TODO message d'erreur, impossible d'ajouter un acte sans barem
+            {
+                MessageBox.Show("Vous devez selectionner un barem pour continuer", 
+                                Lang.FORM_DEFAULT_ERROR_TITLE, 
+                                MessageBoxButtons.OK, 
+                                MessageBoxIcon.Error);
+                return;
+            }
 
             //Ajoute l'acte en cours au dataGridview
-            BO.LignesConsultations ligne = new BO.LignesConsultations { Archive = 0, 
+            BO.LignesConsultations ligne = new BO.LignesConsultations { Archive = false, 
                                                                         Consultation = (consultation != null) ? consultation : null, 
                                                                         Prix = (float)this.numericUpDownActePrix.Value, 
                                                                         Barem = selectedBarems };
@@ -249,11 +257,14 @@ namespace GUI.Dialog
 
         private void comboBoxActeType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RefreshTarif();
+            barems = BLL.BaremesMgr.GetAll(comboBoxActeType.Text);
+            this.comboBoxActeLibelle.DataSource = barems;
+            this.comboBoxActeLibelle.DisplayMember = "Libelle";
         }
 
         private void comboBoxActeLibelle_SelectedIndexChanged(object sender, EventArgs e)
         {
+            selectedBarems = (BO.Baremes)this.comboBoxActeLibelle.SelectedItem;
             RefreshTarif();
         }
 

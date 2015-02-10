@@ -46,7 +46,7 @@ namespace BLL
         /// <returns></returns>
         public static bool Delete(BO.Veterinaires veto)
         {
-            if (veto.CodeVeto == default(Guid))
+            if (veto.CodeVeto == null)
                 throw new Exception(Lang.VETERINAIRES_CANT_DELETE_WITHOUT_GUID);
 
             return DAL.Veterinaires.Archive(veto, true);

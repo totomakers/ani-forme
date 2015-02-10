@@ -10,7 +10,7 @@ namespace BO
     {
         #region Attribute
         private BO.Factures facture;
-        private Guid numLigne;
+        private Guid? numLigne;
         private BO.Baremes bareme;
         private float prix;
         private Byte archive;
@@ -28,21 +28,25 @@ namespace BO
             get { return facture; }
             set { facture = value; }
         }
-        public Guid NumLigne
+
+        public Guid? NumLigne
         {
             get { return numLigne; }
             set { numLigne = value; }
         }
+
         public BO.Baremes Bareme
         {
             get { return bareme; }
             set { bareme = value; }
         }
+
         public float Prix
         {
             get { return prix; }
             set { prix = value; }
         }
+
         public Byte Archive
         {
             get { return archive; }
