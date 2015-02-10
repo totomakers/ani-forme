@@ -205,6 +205,7 @@ namespace GUI.Dialog
         private void buttonValidate_Click(object sender, EventArgs e)
         {
             BLL.ConsultationMgr.Validate(consultation);  //@TODO doit mettre le stock de vaccin a jour...
+            
             this.ReadOnly = true;
         }
 

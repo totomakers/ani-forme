@@ -44,5 +44,10 @@ namespace BLL
         public static String LIGNESCONSULTATION_CANT_CREATE_WITHOUT_BAREM = "Une ligne de consultation ne peut pas être enregistrer si elle n'est pas liée a un barem";
 
         public static String LIGNESCONSULTATION_CANT_DELETE_PK = "Impossible de supprimer une ligne de consultation sans consultation et/ou numéros de ligne";
+
+        //==================
+        //Baremes
+
+        public static String BAREMES_PROBLEME_TARIF = "Impossible que le tarif mini soit plus grand que le maxi!";
     }
 }

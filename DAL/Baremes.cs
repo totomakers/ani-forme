@@ -25,18 +25,18 @@ namespace DAL
                 if (String.IsNullOrEmpty(Type))
                 {
                     String query = @"SELECT * FROM Baremes b 
-                                LEFT JOIN Vaccins v ON b.CodeVaccin = v.CodeVaccin 
-                                WHERE b.archive = 0 
-                                ORDER BY b.CodeGroupement";
+                                    LEFT JOIN Vaccins v ON b.CodeVaccin = v.CodeVaccin 
+                                    WHERE b.archive = 0 
+                                    ORDER BY b.CodeGroupement";
                     results = cnx.Query<BO.Baremes, BO.Vaccins, BO.Baremes>(query, (bareme, vaccin) => { bareme.Vaccin = vaccin; return bareme; }, splitOn: "CodeVaccin").ToList<BO.Baremes>();
                 }
                 else
                 {
                     String query = @"SELECT * FROM Baremes b 
-                                LEFT JOIN Vaccins v ON b.CodeVaccin = v.CodeVaccin 
-                                WHERE b.archive = 0 
-                                AND TypeActe LIKE ('%' + @type + '%')
-                                ORDER BY b.CodeGroupement";
+                                    LEFT JOIN Vaccins v ON b.CodeVaccin = v.CodeVaccin 
+                                    WHERE b.archive = 0 
+                                    AND TypeActe LIKE ('%' + @type + '%')
+                                    ORDER BY b.CodeGroupement";
                     results = cnx.Query<BO.Baremes, BO.Vaccins, BO.Baremes>(query, (bareme, vaccin) => { bareme.Vaccin = vaccin; return bareme; }, new { type = Type }, splitOn: "CodeVaccin").ToList<BO.Baremes>();
                 }
                 SqlConnexion.CloseConnexion(cnx);
