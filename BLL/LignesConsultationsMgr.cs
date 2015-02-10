@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class LignesConsultations
+    public class LignesConsultationsMgr
     {
         /// <summary>
         /// Retournes tout les lignes consultation avec le codeConsultation passé en params
@@ -32,7 +32,7 @@ namespace BLL
             if (lignesConsultations.Barem == null)
                 throw new Exception(Lang.LIGNESCONSULTATION_CANT_CREATE_WITHOUT_BAREM);
 
-            return null; //@TODO : methode create
+            return DAL.LignesConsultations.Create(lignesConsultations);
         }
 
 

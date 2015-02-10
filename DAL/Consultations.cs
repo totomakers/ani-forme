@@ -34,5 +34,41 @@ namespace DAL
                 throw e;
             }
         }
+
+        public static BO.Consultations Get(Guid id)
+        {
+            try
+            {
+                var query = @"SELECT * FROM Consultation c WHERE CodeConsultation = @code";
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                BO.Consultations results = cnx.Query<BO.Consultations>(query, new { code = id }).ToList<BO.Consultations>().First();
+                SqlConnexion.CloseConnexion(cnx);
+
+                return results;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static BO.Consultations Get(DateTime dateConsultation, BO.Animaux animal)
+        {
+            try
+            {
+                var query = @"SELECT * FROM Consultation c WHERE CodeAnimal = @animal AND DateConsultation = @date";
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                BO.Consultations results = cnx.Query<BO.Consultations>(query, new { animal = animal.CodeAnimal, date = dateConsultation }).ToList<BO.Consultations>().First();
+                SqlConnexion.CloseConnexion(cnx);
+
+                return results;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+    
+    
     }
 }
