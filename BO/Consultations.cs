@@ -16,7 +16,7 @@ namespace BO
         private String commentaire;
         private Int16 etat;
         private BO.Factures facture;
-        private Byte archive;
+        private Boolean archive;
         #endregion
 
         #region Constructor
@@ -61,7 +61,7 @@ namespace BO
             get { return facture; }
             set { facture = value; }
         }
-        public Byte Archive
+        public Boolean Archive
         {
             get { return archive; }
             set { archive = value; }

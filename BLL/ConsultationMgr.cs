@@ -59,7 +59,7 @@ namespace BLL
         /// <returns></returns>
         public static BO.Consultations Create(BO.Consultations consultation)
         {
-            return null; //@TODO : Méthode create
+            return DAL.Consultations.Create(consultation);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace BLL
             if(consultation.Etat >= (short)BLL.ConsultationsEtat.SAISI_VETO_TERMINER_ET_FACTURE_POSSIBLE)
                 throw new Exception("La consultation est non modifiable !");
 
-            return false; //@Methode update
+            return DAL.Consultations.Update(consultation);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace BLL
                     return false;
 
 
-                return true; //@TODO : Methode validate
+                return DAL.Consultations.Validate(consultation);
             }
             catch (Exception ex)
             {
@@ -107,7 +107,7 @@ namespace BLL
         /// <returns></returns>
         public static bool Delete(BO.Consultations consultation)
         {
-            return false;
+            return DAL.Consultations.Delete(consultation);
         }
 
     }

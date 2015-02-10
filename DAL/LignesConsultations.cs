@@ -35,7 +35,7 @@ namespace DAL
         /// <returns></returns>
         public static bool Delete(BO.LignesConsultations ligneConsultation)
         {
-            var query = @"DELETE FROM ignesConsultations lc
+            var query = @"DELETE FROM LignesConsultations lc
                         WHERE lc.CodeConsultation = @codeConsultation 
                         AND lc.NumLigne = @numLigne";
 

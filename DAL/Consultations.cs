@@ -68,7 +68,108 @@ namespace DAL
                 throw e;
             }
         }
-    
-    
+
+        public static BO.Consultations Create(BO.Consultations consult)
+        {
+            try
+            {
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                Guid temp = cnx.ExecuteScalar<Guid>("EXEC ajout_consultation @dateconsultation, @codeveto, @cadeanimal, @commentaire, @etat",
+                                        new
+                                        {
+                                            dateconsultation = consult.DateConsultation,
+	                                        codeveto = consult.Veterinaire.CodeVeto,
+	                                        cadeanimal = consult.Animal.CodeAnimal,
+	                                        commentaire = consult.Commentaire,
+	                                        etat = consult.Etat
+                                        });
+                consult.CodeConsultation = temp;
+                SqlConnexion.CloseConnexion(cnx);
+
+                return consult;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static bool Update(BO.Consultations consultation)
+        {
+            try
+            {
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                var query = @"UPDATE Consultations 
+                            SET 
+                            DateConsultation = @date,
+                            CodeVeto = @codeVeto,
+                            CodeAnimal = @codeAnimal,
+                            Commentaire = @comm,
+                            Etat = @etat,
+                            NumFacture = @facture,
+                            Archive = @archive
+                            WHERE CodeConsulation=@consult";
+
+                int rowNb = cnx.Execute(query, new
+                {
+                    consult = consultation.CodeConsultation,
+                    date = consultation.DateConsultation,
+                    codeVeto = consultation.Veterinaire.CodeVeto,
+                    codeAnimal = consultation.Animal.CodeAnimal,
+                    comm = consultation.Commentaire,
+                    etat = consultation.Etat,
+                    facture = consultation.Facture.NumFacture,
+                    archive = (consultation.Archive) ? 1 : 0
+                });
+                SqlConnexion.CloseConnexion(cnx);
+                return (rowNb > 0);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static bool Validate(BO.Consultations consultation)
+        {
+            try
+            {
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                var query = @"UPDATE Consultations 
+                            SET Etat = 1
+                            WHERE CodeConsulation=@consult";
+
+                int rowNb = cnx.Execute(query, new
+                {
+                    consult = consultation.CodeConsultation
+                });
+                SqlConnexion.CloseConnexion(cnx);
+                return (rowNb > 0);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static bool Delete(BO.Consultations consultation)
+        {
+            try
+            {
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                var query = @"DELETE FROM Consultations WHERE CodeConsulation=@consult";
+
+                int rowNb = cnx.Execute(query, new
+                {
+                    consult = consultation.CodeConsultation
+                });
+                SqlConnexion.CloseConnexion(cnx);
+                return (rowNb > 0);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }
