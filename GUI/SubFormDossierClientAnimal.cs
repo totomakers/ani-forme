@@ -260,6 +260,7 @@ namespace GUI
         {
             //==============
             //Animaux =======
+            this.dataGridViewAnimals.DataSource = null;
             this.dataGridViewAnimals.DataSource = BLL.AnimauxMgr.GetAllByClient(currentClient); //load animals list
             this.buttonAddAni.Enabled = true;
             this.buttonEditAni.Enabled = true;
@@ -490,9 +491,9 @@ namespace GUI
             if(animal != null)
             {
                 DialogAnimal DialogAnimal = new GUI.Dialog.DialogAnimal(animal);
-                DialogAnimal.ShowDialog();
                 DialogAnimal.Disposed += UpdateContentEvent;
                 DialogAnimal.buttonValidate.Click += UpdateContentEvent;
+                DialogAnimal.ShowDialog();
             }
         }
 
@@ -503,9 +504,9 @@ namespace GUI
             if (animal != null)
             {
                 DialogAnimal DialogAnimal = new GUI.Dialog.DialogAnimal(animal);
-                DialogAnimal.ShowDialog();
                 DialogAnimal.Disposed += UpdateContentEvent;
                 DialogAnimal.buttonValidate.Click += UpdateContentEvent;
+                DialogAnimal.ShowDialog();
             }
         }
 

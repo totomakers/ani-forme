@@ -124,7 +124,7 @@ namespace BLL
                     return DAL.Animaux.GetAllByTatooArchive(value, archived);
 
                 default:
-                    throw new Exception("W00T ?");
+                    throw new Exception();
             }
         }
 

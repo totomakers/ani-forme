@@ -331,10 +331,11 @@ namespace DAL
 	                        Archive = @archive
                             WHERE CodeAnimal = @codeAnimal";
 
-                int rowNb = cnx.Execute(query, new {codeClient = animal.CodeClient,
-	                                                nomani = animal.NomAnimal,
+                int rowNb = cnx.Execute(query, new {codeAnimal = animal.CodeAnimal,
+                                                    codeClient = animal.CodeClient,
+	                                                nomAnimal = animal.NomAnimal,
 	                                                sexe = animal.Sexe,
-	                                                couleur = animal.Sexe,
+	                                                couleur = animal.Couleur,
 	                                                espece = animal.Espece,
 	                                                race = animal.Race,
 	                                                archive = (animal.Archive) ? 1 : 0

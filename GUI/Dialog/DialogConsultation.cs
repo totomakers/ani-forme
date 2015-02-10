@@ -17,7 +17,7 @@ namespace GUI.Dialog
         private BO.Consultations consultation;
         private BO.Baremes selectedBarems;
         private List<BO.Baremes> barems = new List<BO.Baremes>();
-        private List<BO.LignesConsultations> lignesConsultation = new List<BO.LignesConsultations>();
+        private BindingList<BO.LignesConsultations> lignesConsultation = new BindingList<BO.LignesConsultations>();
         private bool readOnly;
 
         public DialogConsultation(BO.Agenda agenda)
@@ -108,11 +108,12 @@ namespace GUI.Dialog
             try
             {
                 consultation = BLL.ConsultationMgr.Get(agenda.DateRdv, agenda.Animal);
+                this.buttonValidate.Enabled = true;
 
                 if (consultation.Etat >= (short)BLL.ConsultationsEtat.SAISI_VETO_TERMINER_ET_FACTURE_POSSIBLE)
                     this.ReadOnly = true;
 
-                lignesConsultation = BLL.LignesConsultationsMgr.GetAll((Guid)consultation.CodeConsultation); //Récupere tout les actes de la consultation
+                lignesConsultation = new BindingList<BO.LignesConsultations>(BLL.LignesConsultationsMgr.GetAll((Guid)consultation.CodeConsultation)); //Récupere tout les actes de la consultation
             }
             catch (Exception) //la consultation n'existe pas
             {
@@ -126,6 +127,8 @@ namespace GUI.Dialog
                     Veterinaire = vetoLogged,
                     Archive = false
                 };
+
+                this.buttonValidate.Enabled = false;
             }
 
             this.dataGridViewActe.DataSource = lignesConsultation;
@@ -137,7 +140,7 @@ namespace GUI.Dialog
         /// </summary>
         private void RefreshTotal()
         { 
-            double total = lignesConsultation.Sum(x => x.Prix);
+            Decimal total = lignesConsultation.Sum(x => x.Prix);
             this.textBoxActeTotal.Text = total.ToString();
         }
 
@@ -150,7 +153,7 @@ namespace GUI.Dialog
             {
                 //Initialize min max
                 this.textBoxActeMin.Text = selectedBarems.TarifMini.ToString();
-                this.textBoxActeMin.Text = selectedBarems.TarifMaxi.ToString();
+                this.textBoxActeMax.Text = selectedBarems.TarifMaxi.ToString();
 
                 //Reset du prix au min
                 this.numericUpDownActePrix.Minimum = selectedBarems.TarifMini;
@@ -163,7 +166,7 @@ namespace GUI.Dialog
             {
                 //Initialize min max
                 this.textBoxActeMin.Text = "";
-                this.textBoxActeMin.Text = "";
+                this.textBoxActeMax.Text = "";
 
                 //Reset du prix au min
                 this.numericUpDownActePrix.Minimum = 0;
@@ -190,7 +193,12 @@ namespace GUI.Dialog
             if (consultation == null)
                 return; 
 
-            lignesConsultation = BLL.LignesConsultationsMgr.CreateAll(lignesConsultation, (Guid)consultation.CodeConsultation);    
+            lignesConsultation =
+                    new BindingList<BO.LignesConsultations>(BLL.LignesConsultationsMgr.CreateAll(lignesConsultation.ToList(), 
+                                    (Guid)consultation.CodeConsultation));
+
+            this.buttonValidate.Enabled = true;
+            this.dataGridViewActe.Refresh();
         }
 
         
@@ -234,10 +242,15 @@ namespace GUI.Dialog
             }
 
             //Ajoute l'acte en cours au dataGridview
-            BO.LignesConsultations ligne = new BO.LignesConsultations { Archive = false, 
+            BO.LignesConsultations ligne = new BO.LignesConsultations { 
+                                                                        Archive = false, 
                                                                         Consultation = (consultation != null) ? consultation : null, 
-                                                                        Prix = (float)this.numericUpDownActePrix.Value, 
+                                                                        Prix = this.numericUpDownActePrix.Value, 
                                                                         Barem = selectedBarems };
+
+            lignesConsultation.Add(ligne);
+            this.dataGridViewActe.DataSource = new List<BO.LignesConsultations>();
+            this.dataGridViewActe.DataSource = lignesConsultation;
         }
 
         private void buttonActeDelete_Click(object sender, EventArgs e)
@@ -248,7 +261,7 @@ namespace GUI.Dialog
                 BO.LignesConsultations ligne = (BO.LignesConsultations)this.dataGridViewActe.CurrentRow.DataBoundItem;
 
                 //Supprime la ligne dela BDD
-                if (ligne.NumLigne != default(Guid))
+                if (ligne.NumLigne != null && ligne.Consultation != null)
                     BLL.LignesConsultationsMgr.Delete(ligne);
 
                 this.lignesConsultation.RemoveAt(this.dataGridViewActe.CurrentRow.Index);
@@ -268,6 +281,11 @@ namespace GUI.Dialog
             RefreshTarif();
         }
 
+        private void textBoxComment_TextChanged(object sender, EventArgs e)
+        {
+            consultation.Commentaire = textBoxComment.Text;
+        }
+
         private void dataGridViewActe_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             RefreshTotal();
@@ -277,12 +295,9 @@ namespace GUI.Dialog
         {
             RefreshTotal();
         }
-
-        private void textBoxComment_TextChanged(object sender, EventArgs e)
-        {
-            consultation.Commentaire = textBoxComment.Text;
-        }
         #endregion
-      
+
+
+
     }
 }

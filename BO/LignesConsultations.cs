@@ -14,7 +14,7 @@ namespace BO
         private BO.Consultations consultation;
         private Guid? numLigne;
         private BO.Baremes barem;
-        private float prix;
+        private Decimal prix;
         private Boolean rappelEnvoye;
         private Boolean archive;
         #endregion
@@ -44,12 +44,12 @@ namespace BO
             get { return barem; }
             set { barem = value; }
         }
-        public float Prix
+
+        public Decimal Prix
         {
             get { return prix; }
             set { prix = value; }
         }
-
 
         [Browsable(false)]
         public Boolean RappelEnvoye

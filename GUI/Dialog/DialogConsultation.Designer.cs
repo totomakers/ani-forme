@@ -381,12 +381,13 @@
             this.dataGridViewActe.AllowUserToDeleteRows = false;
             this.dataGridViewActe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewActe.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewActe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewActe.Location = new System.Drawing.Point(8, 137);
             this.dataGridViewActe.MultiSelect = false;
             this.dataGridViewActe.Name = "dataGridViewActe";
             this.dataGridViewActe.ReadOnly = true;
-            this.dataGridViewActe.RowHeadersWidth = 25;
+            this.dataGridViewActe.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridViewActe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewActe.Size = new System.Drawing.Size(560, 123);
             this.dataGridViewActe.TabIndex = 7;

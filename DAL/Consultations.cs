@@ -108,7 +108,7 @@ namespace DAL
                             Etat = @etat,
                             NumFacture = @facture,
                             Archive = @archive
-                            WHERE CodeConsulation=@consult";
+                            WHERE CodeConsultation=@consult";
 
                 int rowNb = cnx.Execute(query, new
                 {
@@ -138,7 +138,7 @@ namespace DAL
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
                 var query = @"UPDATE Consultations 
                             SET Etat = 1
-                            WHERE CodeConsulation=@consult";
+                            WHERE CodeConsultation=@consult";
 
                 int rowNb = cnx.Execute(query, new
                 {

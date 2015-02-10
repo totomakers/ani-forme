@@ -138,6 +138,11 @@ namespace BO
                     break;
             }
         }
+
+        public override string ToString()
+        {
+            return this.Libelle;
+        }
         #endregion
     }
 }
