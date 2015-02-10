@@ -36,5 +36,13 @@ namespace BLL
         //Vétérinaires
 
         public static String VETERINAIRES_CANT_DELETE_WITHOUT_GUID = "Impossible de supprimer un vétérinaires sans Guid";
+
+        //==================
+        //LignesConsultations
+
+        public static String LIGNESCONSULTATION_CANT_CREATE_WITHOUT_CONSULTATION = "Une ligne de consultation ne peut pas être enregistrer si elle n'est pas liée a une consultation";
+        public static String LIGNESCONSULTATION_CANT_CREATE_WITHOUT_BAREM = "Une ligne de consultation ne peut pas être enregistrer si elle n'est pas liée a un barem";
+
+        public static String LIGNESCONSULTATION_CANT_DELETE_PK = "Impossible de supprimer une ligne de consultation sans consultation et/ou numéros de ligne";
     }
 }

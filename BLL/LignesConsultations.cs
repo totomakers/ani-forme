@@ -15,7 +15,7 @@ namespace BLL
         /// <returns></returns>
         public static List<BO.LignesConsultations> GetAll(Guid codeConsultation)
         {
-            return new List<BO.LignesConsultations>(); //@TODO : methode getAll
+            return DAL.LignesConsultations.GetAll(codeConsultation);
         }
 
 
@@ -27,10 +27,10 @@ namespace BLL
         public static BO.LignesConsultations Create(BO.LignesConsultations lignesConsultations)
         {
             if (lignesConsultations.Consultation == null)
-                throw new Exception("Une ligne de consultation ne peut pas être enregistrer si elle n'est pas liée a une consultation");
+                throw new Exception(Lang.LIGNESCONSULTATION_CANT_CREATE_WITHOUT_CONSULTATION);
 
             if (lignesConsultations.Barem == null)
-                throw new Exception("Une ligne de consultation ne peut pas être enregistrer si elle n'est pas liée a un barem");
+                throw new Exception(Lang.LIGNESCONSULTATION_CANT_CREATE_WITHOUT_BAREM);
 
             return null; //@TODO : methode create
         }
@@ -46,9 +46,9 @@ namespace BLL
             try
             {
                 if (ligneConsultation.Consultation == null || ligneConsultation.NumLigne == null)
-                    throw new Exception("Impossible de supprimer une ligne de consultation sans consultation et/ou numéros de ligne");
+                    throw new Exception(Lang.LIGNESCONSULTATION_CANT_DELETE_PK);
 
-                return false; //@TODO : methode dal
+                return DAL.LignesConsultations.Delete(ligneConsultation);
             }
             catch (Exception ex)
             {

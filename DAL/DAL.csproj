@@ -48,6 +48,7 @@
     <Compile Include="Consultations.cs" />
     <Compile Include="Factures.cs" />
     <Compile Include="Fournisseurs.cs" />
+    <Compile Include="LignesConsultations.cs" />
     <Compile Include="Properties\Fournisseurs.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
