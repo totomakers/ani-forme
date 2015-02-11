@@ -39,9 +39,9 @@ namespace DAL
         /// <returns></returns>
         public static bool Delete(BO.LignesConsultations ligneConsultation)
         {
-            var query = @"DELETE FROM LignesConsultations lc
-                        WHERE lc.CodeConsultation = @codeConsultation 
-                        AND lc.NumLigne = @numLigne";
+            var query = @"DELETE FROM LignesConsultations
+                        WHERE CodeConsultation = @codeConsultation 
+                        AND NumLigne = @numLigne";
 
             SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
             

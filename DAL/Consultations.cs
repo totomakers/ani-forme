@@ -39,9 +39,16 @@ namespace DAL
         {
             try
             {
-                var query = @"SELECT * FROM Consultations c WHERE CodeConsultation = @code";
+                var query = @"SELECT * FROM Consultations c, Factures f, Veterinaires v, Animaux a
+                            WHERE c.CodeConsultation = @code
+                            AND (f.NumFacture=c.NumFacture OR c.NumFacture is null)
+                            AND v.CodeVeto=c.CodeVeto
+                            AND a.CodeAnimal=c.CodeAnimal";
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
-                BO.Consultations results = cnx.Query<BO.Consultations>(query, new { code = id }).ToList<BO.Consultations>().First();
+                BO.Consultations results = cnx.Query<BO.Consultations, BO.Veterinaires, BO.Animaux, BO.Factures, BO.Consultations>(query,
+                    (consultation, veto, animal, facture) => { consultation.Veterinaire = veto; consultation.Animal = animal; consultation.Facture = facture; return consultation; },
+                    new { code = id },
+                    splitOn: "CodeVeto,CodeAnimal,NumFacture").ToList<BO.Consultations>().First();
                 SqlConnexion.CloseConnexion(cnx);
 
                 return results;
@@ -52,13 +59,21 @@ namespace DAL
             }
         }
 
-        public static BO.Consultations Get(DateTime dateConsultation, BO.Animaux animal)
+        public static BO.Consultations Get(DateTime dateConsultation, BO.Animaux animalParam)
         {
             try
             {
-                var query = @"SELECT * FROM Consultations c WHERE CodeAnimal = @animal AND DateConsultation = @date";
+                var query = @"SELECT * FROM Consultations c, Factures f, Veterinaires v, Animaux a
+                            WHERE c.CodeAnimal = @animal 
+                            AND c.DateConsultation = @date
+                            AND (f.NumFacture=c.NumFacture OR c.NumFacture is null)
+                            AND v.CodeVeto=c.CodeVeto
+                            AND a.CodeAnimal=c.CodeAnimal";
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
-                BO.Consultations results = cnx.Query<BO.Consultations>(query, new { animal = animal.CodeAnimal, date = dateConsultation }).ToList<BO.Consultations>().First();
+                BO.Consultations results = cnx.Query<BO.Consultations, BO.Veterinaires, BO.Animaux, BO.Factures, BO.Consultations>(query,
+                    (consultation, veto, animal, facture) => { consultation.Veterinaire = veto; consultation.Animal = animal; consultation.Facture = facture; return consultation; },
+                    new { animal = animalParam.CodeAnimal, date = dateConsultation },
+                    splitOn: "CodeVeto,CodeAnimal,NumFacture").ToList<BO.Consultations>().First(); 
                 SqlConnexion.CloseConnexion(cnx);
 
                 return results;
