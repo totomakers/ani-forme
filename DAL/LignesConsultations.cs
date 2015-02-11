@@ -80,5 +80,45 @@ namespace DAL
                 throw e;
             }
         }
+
+
+        public static List<BO.LignesConsultations> GetAllRappel()
+        {
+            try
+            {
+                var query = @"select *
+                            from Animaux a, Consultations c, LignesConsultations l, Baremes b, Vaccins v, Clients cl
+                            where c.CodeAnimal = a.CodeAnimal
+                            and c.CodeConsultation = l.CodeConsultation
+                            and b.CodeGroupement = l.CodeGroupement and b.DateVigueur = l.DateVigueur
+                            and v.CodeVaccin = b.CodeVaccin
+                            and l.RappelEnvoye = 0
+                            and cl.Archive = 0
+                            and DATEADD(MONTH, v.PeriodeValidite,c.DateConsultation) < DATEADD(DAY, -15, GETDATE())";
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                List<BO.LignesConsultations> results = cnx.Query<BO.Animaux, BO.Consultations, BO.LignesConsultations, BO.Baremes, BO.Vaccins, BO.Clients, BO.LignesConsultations>(query,
+                    (animal, consultation, ligneconsultation, bareme, vaccin, client) =>
+                    //{ animal.Client = client; consultation.Animal = animal; bareme.Vaccin = vaccin; ligneconsultation.Barem = bareme; ligneconsultation.Consultation = consultation; return ligneconsultation; },
+                    { ligneconsultation.Consultation = consultation; ligneconsultation.Consultation.Animal = animal; ligneconsultation.Consultation.Animal.Client = client; ligneconsultation.Barem = bareme; ligneconsultation.Barem.Vaccin = vaccin; return ligneconsultation;},
+                    splitOn: "CodeAnimal,CodeConsultation,CodeGroupement,DateVigueur,CodeVaccin").ToList<BO.LignesConsultations>();
+                SqlConnexion.CloseConnexion(cnx);
+
+                return results;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static bool Relance()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Relance(BO.Animaux animal)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

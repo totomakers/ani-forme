@@ -62,6 +62,7 @@
             this.dataGridViewAnimauxARelancer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewAnimauxARelancer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewAnimauxARelancer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAnimauxARelancer.Location = new System.Drawing.Point(12, 12);
             this.dataGridViewAnimauxARelancer.Name = "dataGridViewAnimauxARelancer";

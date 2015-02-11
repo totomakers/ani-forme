@@ -11,6 +11,29 @@ namespace DAL
 {
     public class Consultations
     {
+        public static List<BO.Consultations> GetAllByAnimal(BO.Animaux currentAnimal)
+        {
+            try
+            {
+                var query = @"SELECT * FROM Consultations c, Veterinaires v, Animaux a, Factures f
+                            WHERE c.CodeAnimal = @code
+                            AND (f.NumFacture=c.NumFacture OR c.NumFacture is null)
+                            AND v.CodeVeto=c.CodeVeto
+                            AND a.CodeAnimal=c.CodeAnimal";
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                List<BO.Consultations> results = cnx.Query<BO.Consultations, BO.Veterinaires, BO.Animaux, BO.Factures, BO.Consultations>(query,
+                    (consultation, veto, animal, facture) => { consultation.Veterinaire = veto; consultation.Animal = animal; consultation.Facture = facture; return consultation; },
+                    new { code = currentAnimal.CodeAnimal },
+                    splitOn: "CodeVeto,CodeAnimal,NumFacture").ToList<BO.Consultations>();
+                SqlConnexion.CloseConnexion(cnx);
+
+                return results;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
 
         public static int GetNonPayed(BO.Animaux animal)
         {
@@ -187,5 +210,6 @@ namespace DAL
                 throw e;
             }
         }
+
     }
 }

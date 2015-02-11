@@ -60,6 +60,7 @@ namespace BO
         }
 
         [DisplayName("Tarif Fixe")]
+        //[DisplayFormat()]
         public Decimal TarifFixe
         {
             get { return tarifFixe; }

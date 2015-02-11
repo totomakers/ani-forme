@@ -110,5 +110,10 @@ namespace BLL
             return DAL.Consultations.Delete(consultation);
         }
 
+
+        public static List<BO.Consultations> GetAllByAnimal(BO.Animaux currentAnimal)
+        {
+            return DAL.Consultations.GetAllByAnimal(currentAnimal);
+        }
     }
 }

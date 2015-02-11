@@ -98,10 +98,24 @@ namespace BLL
         /// <returns></returns>
         public static List<BO.LignesConsultations> GetAllRappel()
         {
-            //return DAL.LignesConsultations.GetAllRappel();
-            return new List<BO.LignesConsultations>();
+            List<BO.LignesConsultations> retour = DAL.LignesConsultations.GetAllRappel();
+            foreach (BO.LignesConsultations item in retour)
+            {
+                item.Consultation = BLL.ConsultationMgr.Get(item.Consultation.DateConsultation, item.Consultation.Animal);
+            }
+            return retour;
         }
- 
+
+        public static bool Relance()
+        {
+            return DAL.LignesConsultations.Relance();
+        }
+
+        public static bool Relance(BO.Animaux animal)
+        {
+            return DAL.LignesConsultations.Relance(animal);
+        }
+
         /// <summary>
         /// Archive tout les animaux du clients passé en params
         /// </summary>
@@ -119,5 +133,7 @@ namespace BLL
             }
             DAL.Animaux.ArchiveAllByClient(client);
         }
+
+        
     }
 }

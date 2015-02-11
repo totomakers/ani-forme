@@ -173,15 +173,5 @@ namespace BLL
             
             return DAL.Animaux.Update(animal);
         }
-
-        public static Boolean Relance()
-        {
-            return true;
-        }
-
-        public static Boolean Relance(BO.Animaux animal)
-        {
-            return true;
-        }
     }
 }
