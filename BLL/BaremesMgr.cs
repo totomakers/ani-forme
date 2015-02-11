@@ -36,7 +36,7 @@ namespace BLL
         /// <param name="newTarif"></param>
         public static void CreateBareme(BO.Baremes baremeParam, String newTarifFixe, String newTarifMini, String newTarifMaxi)
         {
-            if (Decimal.Parse(newTarifMini) < Decimal.Parse(newTarifMaxi))
+            if (Decimal.Parse(newTarifMini) <= Decimal.Parse(newTarifMaxi))
             {
                 BO.Baremes bareme = DAL.Baremes.GetBareme(baremeParam.CodeGroupement, baremeParam.DateVigueur);
                 if (DAL.Baremes.Archive(bareme, true))

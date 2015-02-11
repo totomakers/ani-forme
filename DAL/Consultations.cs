@@ -39,7 +39,7 @@ namespace DAL
         {
             try
             {
-                var query = @"SELECT * FROM Consultations c, Factures f, Veterinaires v, Animaux a
+                var query = @"SELECT * FROM Consultations c, Veterinaires v, Animaux a, Factures f
                             WHERE c.CodeConsultation = @code
                             AND (f.NumFacture=c.NumFacture OR c.NumFacture is null)
                             AND v.CodeVeto=c.CodeVeto
@@ -63,7 +63,7 @@ namespace DAL
         {
             try
             {
-                var query = @"SELECT * FROM Consultations c, Factures f, Veterinaires v, Animaux a
+                var query = @"SELECT * FROM Consultations c, Veterinaires v, Animaux a, Factures f
                             WHERE c.CodeAnimal = @animal 
                             AND c.DateConsultation = @date
                             AND (f.NumFacture=c.NumFacture OR c.NumFacture is null)
@@ -71,7 +71,7 @@ namespace DAL
                             AND a.CodeAnimal=c.CodeAnimal";
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
                 BO.Consultations results = cnx.Query<BO.Consultations, BO.Veterinaires, BO.Animaux, BO.Factures, BO.Consultations>(query,
-                    (consultation, veto, animal, facture) => { consultation.Veterinaire = veto; consultation.Animal = animal; consultation.Facture = facture; return consultation; },
+                    (consultation, veto, animal, facture) => {consultation.Veterinaire = veto; consultation.Animal = animal; consultation.Facture = facture; return consultation; },
                     new { animal = animalParam.CodeAnimal, date = dateConsultation },
                     splitOn: "CodeVeto,CodeAnimal,NumFacture").First();
                 SqlConnexion.CloseConnexion(cnx);

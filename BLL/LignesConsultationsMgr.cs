@@ -80,7 +80,7 @@ namespace BLL
         }
 
         /// <summary>
-        /// Retourne tous les animaux qui ont besoin de recevoir un rappel
+        /// Retourne toutes les lignes consultations qui ont besoin d'un rappel
         /// </summary>
         /// <returns></returns>
         public static List<BO.LignesConsultations> GetAllRappel()

@@ -87,7 +87,9 @@ namespace GUI
         //===========================
         public static String SUBFORM_LIST_PRICE_TITLE = "Barème";
         public static String SUBFORM_LIST_PRICE_LIB_LIBELLE = "Libellé";
-        public static String SUBFORM_LIST_PRICE_LIB_TARIF_FIXE = "Tarif";
+        public static String SUBFORM_LIST_PRICE_LIB_TARIF_FIXE = "Tarif fixe";
+        public static String SUBFORM_LIST_PRICE_LIB_TARIF_MINI = "Tarif mini";
+        public static String SUBFORM_LIST_PRICE_LIB_TARIF_MAXI = "Tarif maxi";
         public static String SUBFORM_LIST_PRICE_BTN_MODIFY = "Modifier";
         public static String SUBFORM_LIST_PRICE_BTN_IMPORT = "Import XML";
         public static String SUBFORM_LIST_PRICE_LABEL_FILTRE = "Type Acte";

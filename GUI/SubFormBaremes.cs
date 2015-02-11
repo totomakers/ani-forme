@@ -30,6 +30,8 @@ namespace GUI
             this.Text = GUI.Lang.SUBFORM_LIST_PRICE_TITLE;
             this.labelLibelle.Text = GUI.Lang.SUBFORM_LIST_PRICE_LIB_LIBELLE;
             this.labelTarifFixe.Text = GUI.Lang.SUBFORM_LIST_PRICE_LIB_TARIF_FIXE;
+            this.labelTarifMaxi.Text = GUI.Lang.SUBFORM_LIST_PRICE_LIB_TARIF_MAXI;
+            this.labelTarifMini.Text = GUI.Lang.SUBFORM_LIST_PRICE_LIB_TARIF_MINI;
             this.buttonModify.Text = GUI.Lang.SUBFORM_LIST_PRICE_BTN_MODIFY;
             this.buttonImportXml.Text = GUI.Lang.SUBFORM_LIST_PRICE_BTN_IMPORT;
             this.labelFiltre.Text = GUI.Lang.SUBFORM_LIST_PRICE_LABEL_FILTRE;
@@ -41,9 +43,9 @@ namespace GUI
             this.dataGridViewListPrice.AutoResizeRows();
         }
 
-        private void Update_Data(String Type = "")
+        private void Update_Data()
         {
-            this.dataGridViewListPrice.DataSource = BLL.BaremesMgr.GetAll(Type);
+            this.dataGridViewListPrice.DataSource = BLL.BaremesMgr.GetAll(this.comboBoxFiltre.SelectedItem.ToString());
         }
 
         private void Load_Data()
@@ -92,7 +94,7 @@ namespace GUI
 
         private void comboBoxFiltre_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.Update_Data(this.comboBoxFiltre.SelectedItem.ToString());
+            this.Update_Data();
         }
         
     }

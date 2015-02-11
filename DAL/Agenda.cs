@@ -133,7 +133,7 @@ namespace DAL
                                                 nomclient = DAL.Clients.Get(agenda.Animal.Client.CodeClient).NomClient,
 	                                            prenomclient = DAL.Clients.Get(agenda.Animal.Client.CodeClient).PrenomClient,
 	                                            nomanimal = agenda.Animal.NomAnimal,
-	                                            nomveto = agenda.Veterinaires.NomVeto,
+	                                            codeveto = agenda.Veterinaires.CodeVeto,
 	                                            daterdv = agenda.DateRdv,
                                                 urgence = (agenda.Urgence) ? 1 : 0
                                             }, 
