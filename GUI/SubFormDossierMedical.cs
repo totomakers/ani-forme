@@ -108,9 +108,9 @@ namespace GUI
             this.richTextBoxAnimal.Rtf = SubFormDossierMedical.defaultRtfText;
             String finalStringRTF = @"";
 
-            finalStringRTF += @"{\rtf1\ainsi ";
+            finalStringRTF += @"{\rtf1\ainsi\fs20 ";
             finalStringRTF += @"\b Dossier médical de : #animalName\b0\par";
-            finalStringRTF += @"\b\i Propriétaire : #proprioName \i0\b0\par";
+            finalStringRTF += @"\i Propriétaire : #proprioName \i0\par\par";
 
             finalStringRTF = finalStringRTF.Replace("#animalName", currentAnimal.NomAnimal);
             finalStringRTF = finalStringRTF.Replace("#proprioName", currentAnimal.Client.getFullName());
@@ -118,10 +118,28 @@ namespace GUI
             //Bouclie ici avec le remplacement des valeurs
             foreach (BO.Consultations consultation in ConsultationMgr.GetAllByAnimal(currentAnimal))
             {
-                finalStringRTF += @"\b #consultationDate - #consultationVete\b0\par";
+                finalStringRTF += @"\b === Consultation du #consultationDate par #consultationVeto ===\b0 \par";
+               
+                List<BO.LignesConsultations> lignes = LignesConsultationsMgr.GetAll((Guid)consultation.CodeConsultation);
+                foreach (BO.LignesConsultations ligne in lignes)
+                {
+                    //finalStringRTF += @"\u9679 \b Acte [#acteNo] \b0 \par";
+                    finalStringRTF += @"[#acteType] #acteLibelle - #actePrix euros\par";
 
+                    finalStringRTF = finalStringRTF.Replace("#acteNo", ligne.NumLigne.ToString());
+                    finalStringRTF = finalStringRTF.Replace("#acteType", ligne.Barem.TypeActe);
+                    finalStringRTF = finalStringRTF.Replace("#acteLibelle", ligne.Barem.Libelle);
+                    finalStringRTF = finalStringRTF.Replace("#actePrix", ligne.Prix.ToString());
+
+                }
+
+                finalStringRTF += @"\par\b TOTAL #total EUROS \b0\par";
+                finalStringRTF += @"\b Commentaire: #comment \b0\par\par";
+
+                finalStringRTF = finalStringRTF.Replace("#total", lignes.Sum(x => x.Prix).ToString());
+                finalStringRTF = finalStringRTF.Replace("#comment", consultation.Commentaire);
                 finalStringRTF = finalStringRTF.Replace("#consultationDate", consultation.DateConsultation.ToShortDateString());
-                finalStringRTF = finalStringRTF.Replace("#proprioName", consultation.Veterinaire.NomVeto);
+                finalStringRTF = finalStringRTF.Replace("#consultationVeto", consultation.Veterinaire.NomVeto);
             }
             
 
