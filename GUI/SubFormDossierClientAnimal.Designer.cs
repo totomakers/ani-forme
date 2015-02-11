@@ -154,9 +154,9 @@
             // 
             // textBoxFirstName
             // 
+            this.textBoxFirstName.Enabled = false;
             this.textBoxFirstName.Location = new System.Drawing.Point(15, 126);
             this.textBoxFirstName.Name = "textBoxFirstName";
-            this.textBoxFirstName.ReadOnly = true;
             this.textBoxFirstName.Size = new System.Drawing.Size(224, 20);
             this.textBoxFirstName.TabIndex = 12;
             this.textBoxFirstName.TextChanged += new System.EventHandler(this.doCheck);
@@ -173,9 +173,9 @@
             // 
             // textBoxLastName
             // 
+            this.textBoxLastName.Enabled = false;
             this.textBoxLastName.Location = new System.Drawing.Point(15, 170);
             this.textBoxLastName.Name = "textBoxLastName";
-            this.textBoxLastName.ReadOnly = true;
             this.textBoxLastName.Size = new System.Drawing.Size(224, 20);
             this.textBoxLastName.TabIndex = 14;
             this.textBoxLastName.TextChanged += new System.EventHandler(this.doCheck);
@@ -192,9 +192,9 @@
             // 
             // textBoxAdresse
             // 
+            this.textBoxAdresse.Enabled = false;
             this.textBoxAdresse.Location = new System.Drawing.Point(15, 222);
             this.textBoxAdresse.Name = "textBoxAdresse";
-            this.textBoxAdresse.ReadOnly = true;
             this.textBoxAdresse.Size = new System.Drawing.Size(224, 20);
             this.textBoxAdresse.TabIndex = 16;
             this.textBoxAdresse.TextChanged += new System.EventHandler(this.doCheck);
@@ -211,9 +211,9 @@
             // 
             // textBoxPostalCode
             // 
+            this.textBoxPostalCode.Enabled = false;
             this.textBoxPostalCode.Location = new System.Drawing.Point(16, 290);
             this.textBoxPostalCode.Name = "textBoxPostalCode";
-            this.textBoxPostalCode.ReadOnly = true;
             this.textBoxPostalCode.Size = new System.Drawing.Size(223, 20);
             this.textBoxPostalCode.TabIndex = 18;
             this.textBoxPostalCode.TextChanged += new System.EventHandler(this.doCheck);
@@ -230,9 +230,9 @@
             // 
             // textBoxCity
             // 
+            this.textBoxCity.Enabled = false;
             this.textBoxCity.Location = new System.Drawing.Point(16, 331);
             this.textBoxCity.Name = "textBoxCity";
-            this.textBoxCity.ReadOnly = true;
             this.textBoxCity.Size = new System.Drawing.Size(223, 20);
             this.textBoxCity.TabIndex = 20;
             this.textBoxCity.TextChanged += new System.EventHandler(this.doCheck);
@@ -248,9 +248,9 @@
             // 
             // textBoxAdresse2
             // 
+            this.textBoxAdresse2.Enabled = false;
             this.textBoxAdresse2.Location = new System.Drawing.Point(15, 244);
             this.textBoxAdresse2.Name = "textBoxAdresse2";
-            this.textBoxAdresse2.ReadOnly = true;
             this.textBoxAdresse2.Size = new System.Drawing.Size(224, 20);
             this.textBoxAdresse2.TabIndex = 21;
             this.textBoxAdresse2.TextChanged += new System.EventHandler(this.doCheck);
