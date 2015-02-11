@@ -87,7 +87,7 @@ namespace DAL
             try
             {
                 var query = @"select *
-                            from Animaux a, Consultations c, LignesConsultations l, Baremes b, Vaccins v, Clients cl
+                            from LignesConsultations l, Animaux a, Consultations c, Baremes b, Vaccins v, Clients cl
                             where c.CodeAnimal = a.CodeAnimal
                             and c.CodeConsultation = l.CodeConsultation
                             and b.CodeGroupement = l.CodeGroupement and b.DateVigueur = l.DateVigueur
@@ -96,10 +96,9 @@ namespace DAL
                             and cl.Archive = 0
                             and DATEADD(MONTH, v.PeriodeValidite,c.DateConsultation) < DATEADD(DAY, -15, GETDATE())";
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
-                List<BO.LignesConsultations> results = cnx.Query<BO.Animaux, BO.Consultations, BO.LignesConsultations, BO.Baremes, BO.Vaccins, BO.Clients, BO.LignesConsultations>(query,
-                    (animal, consultation, ligneconsultation, bareme, vaccin, client) =>
-                    //{ animal.Client = client; consultation.Animal = animal; bareme.Vaccin = vaccin; ligneconsultation.Barem = bareme; ligneconsultation.Consultation = consultation; return ligneconsultation; },
-                    { ligneconsultation.Consultation = consultation; ligneconsultation.Consultation.Animal = animal; ligneconsultation.Consultation.Animal.Client = client; ligneconsultation.Barem = bareme; ligneconsultation.Barem.Vaccin = vaccin; return ligneconsultation;},
+                List<BO.LignesConsultations> results = cnx.Query<BO.LignesConsultations, BO.Animaux, BO.Consultations, BO.Baremes, BO.Vaccins, BO.Clients, BO.LignesConsultations>(query,
+                    (ligneconsultation, animal, consultation, bareme, vaccin, client) =>
+                    { animal.Client = client; consultation.Animal = animal; bareme.Vaccin = vaccin; ligneconsultation.Barem = bareme; ligneconsultation.Consultation = consultation; return ligneconsultation; },
                     splitOn: "CodeAnimal,CodeConsultation,CodeGroupement,DateVigueur,CodeVaccin").ToList<BO.LignesConsultations>();
                 SqlConnexion.CloseConnexion(cnx);
 
@@ -111,14 +110,20 @@ namespace DAL
             }
         }
 
-        public static bool Relance()
+        public static int Relance(BO.LignesConsultations ligne)
         {
-            throw new NotImplementedException();
-        }
-
-        public static bool Relance(BO.Animaux animal)
-        {
-            throw new NotImplementedException();
+            try
+            {
+                SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
+                var query = @"UPDATE LignesConsultations SET RappelEnvoye = 1 WHERE CodeConsultation = @codeConsultation AND NumLigne = @numLigne";
+                int rowNb = cnx.Execute(query, new { codeConsultation = ligne.Consultation.CodeConsultation, numLigne = ligne.NumLigne });
+                SqlConnexion.CloseConnexion(cnx);
+                return rowNb;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }

@@ -210,8 +210,14 @@ namespace GUI
         //SubFormRelance
         //===========================
 
-        public static String SUBFORM_RELANCE_RELANCE = "Clients relancés";
+        public static string SUBFORM_RELANCE_TITLE = "Relances";
+        public static String SUBFORM_RELANCE_RELANCE = "{0} client(s) relancé(s)";
         public static String SUBFORM_RELANCE_NORELANCE = "Pas de client relancé";
+        public static String SUBFORM_RELANCE_RELANCE_ONE = "Client {0} relancé pour son animal {1}";
+        public static String SUBFORM_RELANCE_NORELANCE_ONE = "Impossible de relancer {0}";
+        public static String SUBFORM_RELANCE_BUTTON_RELANCE_ALL = "Relancer tous";
+        public static String SUBFORM_RELANCE_BUTTON_RELANCE_ONE = "Relancer la ligne selectionnée";
+        public static String SUBFORM_RELANCE_ERROR_DATA_LOAD = "Impossible de charger la liste : {0}";
 
     }
 }

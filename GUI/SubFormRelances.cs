@@ -16,6 +16,14 @@ namespace GUI
         {
             InitializeComponent();
             Load_Content();
+            I18N();
+        }
+
+        private void I18N()
+        {
+            this.Text = GUI.Lang.SUBFORM_RELANCE_TITLE;
+            this.buttonRelanceAll.Text = GUI.Lang.SUBFORM_RELANCE_BUTTON_RELANCE_ALL;
+            this.buttonRelanceOne.Text = GUI.Lang.SUBFORM_RELANCE_BUTTON_RELANCE_ONE;
         }
 
         private void Load_Content()
@@ -23,6 +31,9 @@ namespace GUI
             try
             {
                 List<BO.LignesConsultations> lc = BLL.LignesConsultationsMgr.GetAllRappel();
+                this.dataGridViewAnimauxARelancer.Columns.Clear();
+                this.dataGridViewAnimauxARelancer.Rows.Clear();
+
                 this.dataGridViewAnimauxARelancer.Columns.Add("CodeConsult", "Code Consultation");
                 this.dataGridViewAnimauxARelancer.Columns.Add("NumLigne", "Numero Ligne");
                 this.dataGridViewAnimauxARelancer.Columns.Add("NomClient", "Nom");
@@ -35,28 +46,40 @@ namespace GUI
             }
             catch (Exception e)
             {
-
+                MessageBox.Show(String.Format(GUI.Lang.SUBFORM_RELANCE_ERROR_DATA_LOAD, e.Message));
             }
         }
 
         private void buttonRelanceAll_Click(object sender, EventArgs e)
         {
-            if (BLL.LignesConsultationsMgr.Relance())
-                MessageBox.Show(GUI.Lang.SUBFORM_RELANCE_RELANCE);
+            int nbrow = BLL.LignesConsultationsMgr.Relance();
+            if (nbrow>0)
+                MessageBox.Show(String.Format(GUI.Lang.SUBFORM_RELANCE_RELANCE,nbrow) );
             else
                 MessageBox.Show(GUI.Lang.SUBFORM_RELANCE_NORELANCE);
 
+            Load_Content();
         }
 
         private void buttonRelanceOne_Click(object sender, EventArgs e)
         {
-            BO.Animaux animal = null;
-            if(this.dataGridViewAnimauxARelancer.SelectedRows.Count > 0)
-                animal = (BO.Animaux)this.dataGridViewAnimauxARelancer.SelectedRows[0].DataBoundItem;
-            if (animal != null && BLL.LignesConsultationsMgr.Relance(animal))
-                MessageBox.Show(GUI.Lang.SUBFORM_RELANCE_RELANCE);
+            BO.LignesConsultations ligne = new BO.LignesConsultations();
+            ligne.Consultation = new BO.Consultations();
+            if (this.dataGridViewAnimauxARelancer.SelectedRows.Count > 0)
+            {
+                ligne.Consultation.CodeConsultation = Guid.Parse(this.dataGridViewAnimauxARelancer.SelectedRows[0].Cells[0].FormattedValue.ToString());
+                ligne.NumLigne = Guid.Parse(this.dataGridViewAnimauxARelancer.SelectedRows[0].Cells[1].FormattedValue.ToString());
+            }
+            String NomClient = this.dataGridViewAnimauxARelancer.SelectedRows[0].Cells[2].FormattedValue.ToString();
+            String PrenomClient = this.dataGridViewAnimauxARelancer.SelectedRows[0].Cells[3].FormattedValue.ToString();
+            String NomAnimal = this.dataGridViewAnimauxARelancer.SelectedRows[0].Cells[4].FormattedValue.ToString();
+
+            if (ligne != null && (BLL.LignesConsultationsMgr.Relance(ligne)>0))
+                MessageBox.Show(String.Format(GUI.Lang.SUBFORM_RELANCE_RELANCE_ONE,NomClient, NomAnimal));
             else
-                MessageBox.Show(GUI.Lang.SUBFORM_RELANCE_NORELANCE);
+                MessageBox.Show(String.Format(GUI.Lang.SUBFORM_RELANCE_NORELANCE_ONE,NomClient + ' ' + PrenomClient));
+
+            Load_Content();
         }
     }
 }

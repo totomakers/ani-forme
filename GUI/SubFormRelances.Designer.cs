@@ -38,9 +38,9 @@
             // buttonRelanceAll
             // 
             this.buttonRelanceAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonRelanceAll.Location = new System.Drawing.Point(12, 156);
+            this.buttonRelanceAll.Location = new System.Drawing.Point(12, 257);
             this.buttonRelanceAll.Name = "buttonRelanceAll";
-            this.buttonRelanceAll.Size = new System.Drawing.Size(75, 23);
+            this.buttonRelanceAll.Size = new System.Drawing.Size(75, 50);
             this.buttonRelanceAll.TabIndex = 1;
             this.buttonRelanceAll.Text = "buttonRelanceALL";
             this.buttonRelanceAll.UseVisualStyleBackColor = true;
@@ -49,9 +49,9 @@
             // buttonRelanceOne
             // 
             this.buttonRelanceOne.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonRelanceOne.Location = new System.Drawing.Point(93, 156);
+            this.buttonRelanceOne.Location = new System.Drawing.Point(93, 257);
             this.buttonRelanceOne.Name = "buttonRelanceOne";
-            this.buttonRelanceOne.Size = new System.Drawing.Size(75, 23);
+            this.buttonRelanceOne.Size = new System.Drawing.Size(75, 50);
             this.buttonRelanceOne.TabIndex = 2;
             this.buttonRelanceOne.Text = "buttonRelanceOne";
             this.buttonRelanceOne.UseVisualStyleBackColor = true;
@@ -59,21 +59,27 @@
             // 
             // dataGridViewAnimauxARelancer
             // 
+            this.dataGridViewAnimauxARelancer.AllowUserToAddRows = false;
+            this.dataGridViewAnimauxARelancer.AllowUserToDeleteRows = false;
+            this.dataGridViewAnimauxARelancer.AllowUserToResizeRows = false;
             this.dataGridViewAnimauxARelancer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewAnimauxARelancer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewAnimauxARelancer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAnimauxARelancer.Location = new System.Drawing.Point(12, 12);
+            this.dataGridViewAnimauxARelancer.MultiSelect = false;
             this.dataGridViewAnimauxARelancer.Name = "dataGridViewAnimauxARelancer";
-            this.dataGridViewAnimauxARelancer.Size = new System.Drawing.Size(268, 138);
+            this.dataGridViewAnimauxARelancer.ReadOnly = true;
+            this.dataGridViewAnimauxARelancer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewAnimauxARelancer.Size = new System.Drawing.Size(452, 239);
             this.dataGridViewAnimauxARelancer.TabIndex = 3;
             // 
             // SubFormRelances
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 184);
+            this.ClientSize = new System.Drawing.Size(476, 312);
             this.Controls.Add(this.dataGridViewAnimauxARelancer);
             this.Controls.Add(this.buttonRelanceOne);
             this.Controls.Add(this.buttonRelanceAll);

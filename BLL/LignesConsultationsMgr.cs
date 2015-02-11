@@ -98,22 +98,22 @@ namespace BLL
         /// <returns></returns>
         public static List<BO.LignesConsultations> GetAllRappel()
         {
-            List<BO.LignesConsultations> retour = DAL.LignesConsultations.GetAllRappel();
-            foreach (BO.LignesConsultations item in retour)
+            return DAL.LignesConsultations.GetAllRappel();
+        }
+
+        public static int Relance()
+        {
+            int result = 0;
+            foreach (BO.LignesConsultations item in DAL.LignesConsultations.GetAllRappel())
             {
-                item.Consultation = BLL.ConsultationMgr.Get(item.Consultation.DateConsultation, item.Consultation.Animal);
+                result += DAL.LignesConsultations.Relance(item);
             }
-            return retour;
+            return result;
         }
 
-        public static bool Relance()
+        public static int Relance(BO.LignesConsultations ligne)
         {
-            return DAL.LignesConsultations.Relance();
-        }
-
-        public static bool Relance(BO.Animaux animal)
-        {
-            return DAL.LignesConsultations.Relance(animal);
+            return DAL.LignesConsultations.Relance(ligne);
         }
 
         /// <summary>
