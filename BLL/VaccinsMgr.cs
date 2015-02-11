@@ -18,12 +18,12 @@ namespace BLL
         }
 
         /// <summary>
-        /// Met a jour le vaccin passé en params
+        /// Met a jour le vaccin passé en params a condition que la qte > a la quantite en stock
         /// </summary>
         /// <param name="code"></param>
         /// <param name="Qte"></param>
         /// <returns></returns>
-        public static bool Update(BO.Vaccins vacc, Int32 Qte)
+        public static bool AddQte(BO.Vaccins vacc, Int32 Qte)
         {
             if (vacc.QuantiteStock < Qte)
             {
@@ -32,6 +32,18 @@ namespace BLL
             }
             else
                 throw new Exception(Lang.VACCINS_QUANTITY_NEED_BE_SUPP);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="Qte"></param>
+        /// <returns></returns>
+        public static bool Update(BO.Vaccins vacc, Int32 Qte)
+        {
+            vacc.QuantiteStock = Qte;
+            return DAL.Vaccins.Update(vacc);
         }
     }
 }

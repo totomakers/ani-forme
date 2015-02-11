@@ -31,6 +31,19 @@ namespace BLL
             if (lignesConsultations.Barem == null)
                 throw new Exception(Lang.LIGNESCONSULTATION_CANT_CREATE_WITHOUT_BAREM);
 
+            switch (lignesConsultations.Barem.TypeActe)
+            {
+                case "VACC":
+                    BO.Vaccins vacc = lignesConsultations.Barem.Vaccin;
+                    if (vacc != null)
+                        VaccinsMgr.Update(vacc, vacc.QuantiteStock--);
+                    break;
+
+                case "TATO":
+                    AnimauxMgr.Update(lignesConsultations.Consultation.Animal);
+                    break;
+            }
+
             return DAL.LignesConsultations.Create(lignesConsultations);
         }
 

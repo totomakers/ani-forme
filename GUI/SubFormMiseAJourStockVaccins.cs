@@ -54,7 +54,7 @@ namespace GUI
                     int CellOldIndex = this.dataGridViewVaccin.CurrentCell.ColumnIndex;
 
                     BO.Vaccins vaccin = (BO.Vaccins)this.dataGridViewVaccin.CurrentCell.OwningRow.DataBoundItem;
-                    BLL.VaccinsMgr.Update(vaccin, (int)this.numericUpDownQte.Value);
+                    BLL.VaccinsMgr.AddQte(vaccin, (int)this.numericUpDownQte.Value);
                     UpdateContent();
 
                     //Permet de retourner a la ligne selectionner

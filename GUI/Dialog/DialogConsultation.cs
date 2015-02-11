@@ -19,6 +19,7 @@ namespace GUI.Dialog
         private List<BO.Baremes> barems = new List<BO.Baremes>();
         private BindingList<BO.LignesConsultations> lignesConsultation = new BindingList<BO.LignesConsultations>();
         private bool readOnly;
+        private const String BAREM_TATO = "TATO";
 
         public DialogConsultation(BO.Agenda agenda)
         {
@@ -234,14 +235,28 @@ namespace GUI.Dialog
 
         private void buttonActeAdd_Click(object sender, EventArgs e)
         {
+            //Vérification du barem
             if (selectedBarems == null)
             {
-                MessageBox.Show("Vous devez selectionner un barem pour continuer", 
+                MessageBox.Show("Vous devez selectionner un type d'acte pour continuer", 
                                 Lang.FORM_DEFAULT_ERROR_TITLE, 
                                 MessageBoxButtons.OK, 
                                 MessageBoxIcon.Error);
                 return;
             }
+
+            //Vérification du stock
+            if (selectedBarems.Vaccin != null &&  selectedBarems.Vaccin.QuantiteStock == 0)
+            {
+                MessageBox.Show("Impossible d'ajouter un acte dont le vaccin n'est plus en stock",
+                               Lang.FORM_DEFAULT_ERROR_TITLE,
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Error);
+                return;
+            }
+
+            //Met a jour le tatouage de l'animal
+            consultation.Animal.Tatouage = this.textBoxAniTatoo.Text;
 
             //Ajoute l'acte en cours au dataGridview
             BO.LignesConsultations ligne = new BO.LignesConsultations { 
@@ -275,6 +290,12 @@ namespace GUI.Dialog
             barems = BLL.BaremesMgr.GetAll(comboBoxActeType.Text);
             this.comboBoxActeLibelle.DataSource = barems;
             this.comboBoxActeLibelle.DisplayMember = "Libelle";
+
+            //Remet le tatouage de l'animal
+            if (comboBoxActeType.Text != BAREM_TATO)
+                this.textBoxAniTatoo.Text = consultation.Animal.Tatouage;
+
+            this.textBoxAniTatoo.ReadOnly = !(comboBoxActeType.Text == BAREM_TATO);
         }
 
         private void comboBoxActeLibelle_SelectedIndexChanged(object sender, EventArgs e)
