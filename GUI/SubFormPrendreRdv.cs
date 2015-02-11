@@ -84,6 +84,13 @@ namespace GUI
                 dialog.ShowDialog();
                 dialog.Disposed += UpdateContentEvent;
             }
+            else
+            {
+                MessageBox.Show(GUI.Lang.SUBFORM_PRENDRERDV_ERROR_NOCLIENT,
+                               GUI.Lang.FORM_DEFAULT_ERROR_TITLE,
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Error);
+            }
         }
 
         private void comboBoxVeterianire_SelectedIndexChanged(object sender, EventArgs e)

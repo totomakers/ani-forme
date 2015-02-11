@@ -126,6 +126,8 @@ namespace GUI
         public static String SUBFORM_PRENDRERDV_BTN_SUBMIT = "Valider";
         public static String SUBFORM_PRENDRERDV_BTN_DELETE = "Supprimer";
         public static String SUBFORM_PRENDRERDV_BTN_CANCEL = "Annuler";
+        public static String SUBFORM_PRENDRERDV_ERROR_NOCLIENT = "Pas de client séléctionné";
+        
 
         //============================
         //DialogAnimal
@@ -218,6 +220,8 @@ namespace GUI
         public static String SUBFORM_RELANCE_BUTTON_RELANCE_ALL = "Relancer tous";
         public static String SUBFORM_RELANCE_BUTTON_RELANCE_ONE = "Relancer la ligne selectionnée";
         public static String SUBFORM_RELANCE_ERROR_DATA_LOAD = "Impossible de charger la liste : {0}";
+        public static String SUBFORM_RELANCE_NOLINESELECTED = "Pas de ligne sélectionnée";
+        
 
     }
 }

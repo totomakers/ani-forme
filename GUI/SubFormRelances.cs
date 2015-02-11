@@ -56,7 +56,10 @@ namespace GUI
             if (nbrow>0)
                 MessageBox.Show(String.Format(GUI.Lang.SUBFORM_RELANCE_RELANCE,nbrow) );
             else
-                MessageBox.Show(GUI.Lang.SUBFORM_RELANCE_NORELANCE);
+                MessageBox.Show(GUI.Lang.SUBFORM_RELANCE_NORELANCE,
+                               GUI.Lang.FORM_DEFAULT_ERROR_TITLE,
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Error);
 
             Load_Content();
         }
@@ -69,16 +72,23 @@ namespace GUI
             {
                 ligne.Consultation.CodeConsultation = Guid.Parse(this.dataGridViewAnimauxARelancer.SelectedRows[0].Cells[0].FormattedValue.ToString());
                 ligne.NumLigne = Guid.Parse(this.dataGridViewAnimauxARelancer.SelectedRows[0].Cells[1].FormattedValue.ToString());
+
+                String NomClient = this.dataGridViewAnimauxARelancer.SelectedRows[0].Cells[2].FormattedValue.ToString();
+                String PrenomClient = this.dataGridViewAnimauxARelancer.SelectedRows[0].Cells[3].FormattedValue.ToString();
+                String NomAnimal = this.dataGridViewAnimauxARelancer.SelectedRows[0].Cells[4].FormattedValue.ToString();
+
+                if (ligne != null && (BLL.LignesConsultationsMgr.Relance(ligne) > 0))
+                    MessageBox.Show(String.Format(GUI.Lang.SUBFORM_RELANCE_RELANCE_ONE, NomClient, NomAnimal));
+                else
+                    MessageBox.Show(String.Format(GUI.Lang.SUBFORM_RELANCE_NORELANCE_ONE, NomClient + ' ' + PrenomClient));
             }
-            String NomClient = this.dataGridViewAnimauxARelancer.SelectedRows[0].Cells[2].FormattedValue.ToString();
-            String PrenomClient = this.dataGridViewAnimauxARelancer.SelectedRows[0].Cells[3].FormattedValue.ToString();
-            String NomAnimal = this.dataGridViewAnimauxARelancer.SelectedRows[0].Cells[4].FormattedValue.ToString();
-
-            if (ligne != null && (BLL.LignesConsultationsMgr.Relance(ligne)>0))
-                MessageBox.Show(String.Format(GUI.Lang.SUBFORM_RELANCE_RELANCE_ONE,NomClient, NomAnimal));
             else
-                MessageBox.Show(String.Format(GUI.Lang.SUBFORM_RELANCE_NORELANCE_ONE,NomClient + ' ' + PrenomClient));
-
+            {
+                MessageBox.Show(GUI.Lang.SUBFORM_RELANCE_NOLINESELECTED,
+                               GUI.Lang.FORM_DEFAULT_ERROR_TITLE,
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Error);
+            }
             Load_Content();
         }
     }
