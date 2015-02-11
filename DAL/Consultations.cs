@@ -48,7 +48,7 @@ namespace DAL
                 BO.Consultations results = cnx.Query<BO.Consultations, BO.Veterinaires, BO.Animaux, BO.Factures, BO.Consultations>(query,
                     (consultation, veto, animal, facture) => { consultation.Veterinaire = veto; consultation.Animal = animal; consultation.Facture = facture; return consultation; },
                     new { code = id },
-                    splitOn: "CodeVeto,CodeAnimal,NumFacture").ToList<BO.Consultations>().First();
+                    splitOn: "CodeVeto,CodeAnimal,NumFacture").First();
                 SqlConnexion.CloseConnexion(cnx);
 
                 return results;
@@ -73,7 +73,7 @@ namespace DAL
                 BO.Consultations results = cnx.Query<BO.Consultations, BO.Veterinaires, BO.Animaux, BO.Factures, BO.Consultations>(query,
                     (consultation, veto, animal, facture) => { consultation.Veterinaire = veto; consultation.Animal = animal; consultation.Facture = facture; return consultation; },
                     new { animal = animalParam.CodeAnimal, date = dateConsultation },
-                    splitOn: "CodeVeto,CodeAnimal,NumFacture").ToList<BO.Consultations>().First(); 
+                    splitOn: "CodeVeto,CodeAnimal,NumFacture").First();
                 SqlConnexion.CloseConnexion(cnx);
 
                 return results;

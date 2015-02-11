@@ -131,6 +131,7 @@ namespace GUI.Dialog
                 this.buttonValidate.Enabled = false;
             }
 
+            this.textBoxComment.Text = consultation.Commentaire;
             this.dataGridViewActe.DataSource = lignesConsultation;
             this.comboBoxActeType.DataSource = BLL.BaremesMgr.GetTypeActe();
         }
