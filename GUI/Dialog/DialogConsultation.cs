@@ -153,14 +153,29 @@ namespace GUI.Dialog
         {
             if (selectedBarems != null)
             {
-                //Initialize min max
-                this.textBoxActeMin.Text = selectedBarems.TarifMini.ToString();
-                this.textBoxActeMax.Text = selectedBarems.TarifMaxi.ToString();
+                if (selectedBarems.TarifFixe == 0)
+                {
 
-                //Reset du prix au min
-                this.numericUpDownActePrix.Minimum = selectedBarems.TarifMini;
-                this.numericUpDownActePrix.Maximum = selectedBarems.TarifMaxi;
-                this.numericUpDownActePrix.Value = selectedBarems.TarifMini;
+                    //Initialize min max
+                    this.textBoxActeMin.Text = selectedBarems.TarifMini.ToString();
+                    this.textBoxActeMax.Text = selectedBarems.TarifMaxi.ToString();
+
+                    //Reset du prix au min
+                    this.numericUpDownActePrix.Minimum = selectedBarems.TarifMini;
+                    this.numericUpDownActePrix.Maximum = selectedBarems.TarifMaxi;
+                    this.numericUpDownActePrix.Value = selectedBarems.TarifMini;
+                }
+                else
+                {
+                    //Initialize min max
+                    this.textBoxActeMin.Text = selectedBarems.TarifFixe.ToString();
+                    this.textBoxActeMax.Text = selectedBarems.TarifFixe.ToString();
+
+                    //Reset du prix au min
+                    this.numericUpDownActePrix.Minimum = selectedBarems.TarifFixe;
+                    this.numericUpDownActePrix.Maximum = selectedBarems.TarifFixe;
+                    this.numericUpDownActePrix.Value = selectedBarems.TarifFixe;
+                }
 
                 this.numericUpDownActePrix.Enabled = true;
             }

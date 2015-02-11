@@ -100,6 +100,7 @@
             this.textBoxTarifFixe.Name = "textBoxTarifFixe";
             this.textBoxTarifFixe.Size = new System.Drawing.Size(100, 20);
             this.textBoxTarifFixe.TabIndex = 5;
+            this.textBoxTarifFixe.TextChanged += new System.EventHandler(this.textBoxTarifFixe_TextChanged);
             // 
             // buttonModify
             // 

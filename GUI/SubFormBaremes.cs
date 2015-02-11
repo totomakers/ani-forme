@@ -96,6 +96,11 @@ namespace GUI
         {
             this.Update_Data();
         }
+
+        private void textBoxTarifFixe_TextChanged(object sender, EventArgs e)
+        {
+
+        }
         
     }
 }
