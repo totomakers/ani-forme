@@ -42,13 +42,15 @@
             // 
             // groupBoxVeto
             // 
+            this.groupBoxVeto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxVeto.Controls.Add(this.dateTimePickerDate);
             this.groupBoxVeto.Controls.Add(this.labelDate);
             this.groupBoxVeto.Controls.Add(this.comboBoxVeto);
             this.groupBoxVeto.Controls.Add(this.labelVeto);
             this.groupBoxVeto.Location = new System.Drawing.Point(9, 10);
             this.groupBoxVeto.Name = "groupBoxVeto";
-            this.groupBoxVeto.Size = new System.Drawing.Size(345, 52);
+            this.groupBoxVeto.Size = new System.Drawing.Size(346, 52);
             this.groupBoxVeto.TabIndex = 0;
             this.groupBoxVeto.TabStop = false;
             this.groupBoxVeto.Text = "De :";
@@ -100,7 +102,8 @@
             this.dataGridViewAgenda.Location = new System.Drawing.Point(11, 68);
             this.dataGridViewAgenda.Name = "dataGridViewAgenda";
             this.dataGridViewAgenda.ReadOnly = true;
-            this.dataGridViewAgenda.Size = new System.Drawing.Size(343, 200);
+            this.dataGridViewAgenda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewAgenda.Size = new System.Drawing.Size(344, 200);
             this.dataGridViewAgenda.TabIndex = 1;
             this.dataGridViewAgenda.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAgenda_CellDoubleClick);
             this.dataGridViewAgenda.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridViewAgenda_RowsAdded);
@@ -108,7 +111,7 @@
             // buttonDossierMedical
             // 
             this.buttonDossierMedical.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDossierMedical.Location = new System.Drawing.Point(279, 274);
+            this.buttonDossierMedical.Location = new System.Drawing.Point(280, 274);
             this.buttonDossierMedical.Name = "buttonDossierMedical";
             this.buttonDossierMedical.Size = new System.Drawing.Size(75, 38);
             this.buttonDossierMedical.TabIndex = 2;
@@ -120,7 +123,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(363, 316);
+            this.ClientSize = new System.Drawing.Size(364, 316);
             this.Controls.Add(this.buttonDossierMedical);
             this.Controls.Add(this.dataGridViewAgenda);
             this.Controls.Add(this.groupBoxVeto);

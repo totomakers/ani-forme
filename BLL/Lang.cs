@@ -37,6 +37,11 @@ namespace BLL
 
         public static String VETERINAIRES_CANT_DELETE_WITHOUT_GUID = "Impossible de supprimer un vétérinaires sans Guid";
 
+        //=================
+        //Vaccins
+
+        public static String VACCINS_QUANTITY_NEED_BE_SUPP = "La quantité mise à jour doit être supérieur à l'ancienne";
+
         //==================
         //LignesConsultations
 

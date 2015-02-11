@@ -19,7 +19,8 @@ namespace GUI
             I18N();
 
             this.comboBoxVeto.DataSource = BLL.VeterinairesMgr.GetAll(false);
-            this.comboBoxVeto.SelectedItem = ((List<BO.Veterinaires>)this.comboBoxVeto.DataSource).First(x => x.AccountId == BLL.AccountMgr.loggedAccount.Id);
+
+            this.comboBoxVeto.SelectedItem = ((List<BO.Veterinaires>)this.comboBoxVeto.DataSource).FirstOrDefault(x => x.AccountId == BLL.AccountMgr.loggedAccount.Id);
 
             UpdateContent();
         }
@@ -58,8 +59,8 @@ namespace GUI
         {
             BO.Animaux animal = null;
             
-            if(this.dataGridViewAgenda.SelectedCells.Count > 0)
-                animal = ((BO.Agenda)this.dataGridViewAgenda.SelectedCells[0].OwningRow.DataBoundItem).Animal;
+            if(this.dataGridViewAgenda.CurrentCell != null)
+                animal = ((BO.Agenda)this.dataGridViewAgenda.CurrentCell.OwningRow.DataBoundItem).Animal;
             
             SubFormDossierMedical frm;
             
@@ -73,9 +74,9 @@ namespace GUI
 
         private void dataGridViewAgenda_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (this.dataGridViewAgenda.SelectedCells.Count > 0)
+            if (this.dataGridViewAgenda.CurrentCell != null)
             {
-               BO.Agenda agenda = (BO.Agenda)this.dataGridViewAgenda.SelectedCells[0].OwningRow.DataBoundItem;
+                BO.Agenda agenda = (BO.Agenda)this.dataGridViewAgenda.CurrentCell.OwningRow.DataBoundItem;
                DialogConsultation consultation = new DialogConsultation(agenda);
                consultation.Show();
             }

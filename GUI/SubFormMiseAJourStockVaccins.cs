@@ -31,8 +31,6 @@ namespace GUI
         public void LoadContent()
         {
             this.dataGridViewVaccin.DataSource = BLL.VaccinsMgr.GetAll();
-            this.dataGridViewVaccin.Columns[0].Visible = false;
-            
             this.comboBoxFrounisseur.DataSource = BLL.FournisseurMgr.GetAll();
         }
 
@@ -40,15 +38,37 @@ namespace GUI
         #region Evenements
         private void dataGridViewVaccin_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            this.textBoxNomVaccin.Text = this.dataGridViewVaccin.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
-            this.textBoxQte.Text = this.dataGridViewVaccin.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
+            this.textBoxNomVaccin.Text = this.dataGridViewVaccin.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();
+           
+            this.numericUpDownQte.Minimum = (decimal)((Int32)this.dataGridViewVaccin.Rows[e.RowIndex].Cells[1].Value);
+            this.numericUpDownQte.Value = (decimal)((Int32)this.dataGridViewVaccin.Rows[e.RowIndex].Cells[1].Value);
         }
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            BLL.VaccinsMgr.Update(  this.dataGridViewVaccin.SelectedCells[0].OwningRow.Cells[0].FormattedValue.ToString(),
-                                    this.textBoxQte.Text);
-            UpdateContent();
+            try
+            {
+                if (this.dataGridViewVaccin.CurrentCell != null)
+                {
+                    int RowOldIndex = this.dataGridViewVaccin.CurrentCell.OwningRow.Index; //Sauvegarde de l'ancien index de ligne
+                    int CellOldIndex = this.dataGridViewVaccin.CurrentCell.ColumnIndex;
+
+                    BO.Vaccins vaccin = (BO.Vaccins)this.dataGridViewVaccin.CurrentCell.OwningRow.DataBoundItem;
+                    BLL.VaccinsMgr.Update(vaccin, (int)this.numericUpDownQte.Value);
+                    UpdateContent();
+
+                    //Permet de retourner a la ligne selectionner
+                    if (this.dataGridViewVaccin.RowCount > RowOldIndex && this.dataGridViewVaccin.ColumnCount > CellOldIndex)
+                        this.dataGridViewVaccin.CurrentCell = this.dataGridViewVaccin.Rows[RowOldIndex].Cells[CellOldIndex];
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,
+                                GUI.Lang.FORM_DEFAULT_ERROR_TITLE,
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
         }
         
         public void UpdateContent()

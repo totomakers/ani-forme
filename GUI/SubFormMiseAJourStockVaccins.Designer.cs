@@ -33,11 +33,12 @@
             this.labelNomVaccin = new System.Windows.Forms.Label();
             this.labelQte = new System.Windows.Forms.Label();
             this.textBoxNomVaccin = new System.Windows.Forms.TextBox();
-            this.textBoxQte = new System.Windows.Forms.TextBox();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.comboBoxFrounisseur = new System.Windows.Forms.ComboBox();
             this.labelFrounisseur = new System.Windows.Forms.Label();
+            this.numericUpDownQte = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVaccin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQte)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewVaccin
@@ -50,6 +51,7 @@
             this.dataGridViewVaccin.Location = new System.Drawing.Point(5, 12);
             this.dataGridViewVaccin.Name = "dataGridViewVaccin";
             this.dataGridViewVaccin.ReadOnly = true;
+            this.dataGridViewVaccin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewVaccin.Size = new System.Drawing.Size(486, 196);
             this.dataGridViewVaccin.TabIndex = 0;
             this.dataGridViewVaccin.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewVaccin_RowEnter);
@@ -84,14 +86,6 @@
             this.textBoxNomVaccin.Size = new System.Drawing.Size(100, 20);
             this.textBoxNomVaccin.TabIndex = 3;
             // 
-            // textBoxQte
-            // 
-            this.textBoxQte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxQte.Location = new System.Drawing.Point(227, 215);
-            this.textBoxQte.Name = "textBoxQte";
-            this.textBoxQte.Size = new System.Drawing.Size(73, 20);
-            this.textBoxQte.TabIndex = 4;
-            // 
             // buttonUpdate
             // 
             this.buttonUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -122,15 +116,22 @@
             this.labelFrounisseur.Text = "labelFournisseur";
             this.labelFrounisseur.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // numericUpDownQte
+            // 
+            this.numericUpDownQte.Location = new System.Drawing.Point(222, 214);
+            this.numericUpDownQte.Name = "numericUpDownQte";
+            this.numericUpDownQte.Size = new System.Drawing.Size(83, 20);
+            this.numericUpDownQte.TabIndex = 8;
+            // 
             // SubFormMiseAJourStockVaccins
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(498, 273);
+            this.Controls.Add(this.numericUpDownQte);
             this.Controls.Add(this.labelFrounisseur);
             this.Controls.Add(this.comboBoxFrounisseur);
             this.Controls.Add(this.buttonUpdate);
-            this.Controls.Add(this.textBoxQte);
             this.Controls.Add(this.textBoxNomVaccin);
             this.Controls.Add(this.labelQte);
             this.Controls.Add(this.labelNomVaccin);
@@ -139,6 +140,7 @@
             this.Name = "SubFormMiseAJourStockVaccins";
             this.Text = "SubFormUpdateStockVaccin";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVaccin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQte)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,9 +152,9 @@
         private System.Windows.Forms.Label labelNomVaccin;
         private System.Windows.Forms.Label labelQte;
         private System.Windows.Forms.TextBox textBoxNomVaccin;
-        private System.Windows.Forms.TextBox textBoxQte;
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.ComboBox comboBoxFrounisseur;
         private System.Windows.Forms.Label labelFrounisseur;
+        private System.Windows.Forms.NumericUpDown numericUpDownQte;
     }
 }

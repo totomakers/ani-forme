@@ -519,9 +519,9 @@ namespace GUI
                 return;
 
             DialogAnimal DialogAnimal = new GUI.Dialog.DialogAnimal(currentClient);
-            DialogAnimal.ShowDialog();
             DialogAnimal.Disposed += UpdateContentEvent;
             DialogAnimal.buttonValidate.Click += UpdateContentEvent;
+            DialogAnimal.ShowDialog();
         }
 
         public void OnCancelClicked(object sender, EventArgs e)

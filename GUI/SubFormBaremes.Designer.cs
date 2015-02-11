@@ -55,18 +55,19 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewListPrice.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewListPrice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewListPrice.Location = new System.Drawing.Point(12, 27);
+            this.dataGridViewListPrice.Location = new System.Drawing.Point(12, 34);
             this.dataGridViewListPrice.Name = "dataGridViewListPrice";
             this.dataGridViewListPrice.ReadOnly = true;
             this.dataGridViewListPrice.RowHeadersWidth = 25;
-            this.dataGridViewListPrice.Size = new System.Drawing.Size(672, 273);
+            this.dataGridViewListPrice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewListPrice.Size = new System.Drawing.Size(672, 336);
             this.dataGridViewListPrice.TabIndex = 0;
             this.dataGridViewListPrice.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewListPrice_RowEnter);
             // 
             // labelLibelle
             // 
             this.labelLibelle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelLibelle.Location = new System.Drawing.Point(12, 309);
+            this.labelLibelle.Location = new System.Drawing.Point(12, 379);
             this.labelLibelle.Name = "labelLibelle";
             this.labelLibelle.Size = new System.Drawing.Size(75, 20);
             this.labelLibelle.TabIndex = 4;
@@ -76,7 +77,7 @@
             // textBoxLibelle
             // 
             this.textBoxLibelle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxLibelle.Location = new System.Drawing.Point(93, 309);
+            this.textBoxLibelle.Location = new System.Drawing.Point(93, 379);
             this.textBoxLibelle.Name = "textBoxLibelle";
             this.textBoxLibelle.ReadOnly = true;
             this.textBoxLibelle.Size = new System.Drawing.Size(100, 20);
@@ -85,7 +86,7 @@
             // labelTarifFixe
             // 
             this.labelTarifFixe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelTarifFixe.Location = new System.Drawing.Point(12, 335);
+            this.labelTarifFixe.Location = new System.Drawing.Point(12, 405);
             this.labelTarifFixe.Name = "labelTarifFixe";
             this.labelTarifFixe.Size = new System.Drawing.Size(75, 20);
             this.labelTarifFixe.TabIndex = 6;
@@ -95,7 +96,7 @@
             // textBoxTarifFixe
             // 
             this.textBoxTarifFixe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxTarifFixe.Location = new System.Drawing.Point(93, 335);
+            this.textBoxTarifFixe.Location = new System.Drawing.Point(93, 405);
             this.textBoxTarifFixe.Name = "textBoxTarifFixe";
             this.textBoxTarifFixe.Size = new System.Drawing.Size(100, 20);
             this.textBoxTarifFixe.TabIndex = 5;
@@ -103,7 +104,7 @@
             // buttonModify
             // 
             this.buttonModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonModify.Location = new System.Drawing.Point(386, 334);
+            this.buttonModify.Location = new System.Drawing.Point(386, 404);
             this.buttonModify.Name = "buttonModify";
             this.buttonModify.Size = new System.Drawing.Size(75, 20);
             this.buttonModify.TabIndex = 7;
@@ -114,7 +115,7 @@
             // buttonImportXml
             // 
             this.buttonImportXml.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonImportXml.Location = new System.Drawing.Point(609, 335);
+            this.buttonImportXml.Location = new System.Drawing.Point(609, 405);
             this.buttonImportXml.Name = "buttonImportXml";
             this.buttonImportXml.Size = new System.Drawing.Size(75, 20);
             this.buttonImportXml.TabIndex = 8;
@@ -125,7 +126,7 @@
             // comboBoxFiltre
             // 
             this.comboBoxFiltre.FormattingEnabled = true;
-            this.comboBoxFiltre.Location = new System.Drawing.Point(93, 3);
+            this.comboBoxFiltre.Location = new System.Drawing.Point(93, 7);
             this.comboBoxFiltre.Name = "comboBoxFiltre";
             this.comboBoxFiltre.Size = new System.Drawing.Size(100, 21);
             this.comboBoxFiltre.TabIndex = 9;
@@ -133,17 +134,17 @@
             // 
             // labelFiltre
             // 
-            this.labelFiltre.Location = new System.Drawing.Point(12, 3);
+            this.labelFiltre.Location = new System.Drawing.Point(12, 9);
             this.labelFiltre.Name = "labelFiltre";
-            this.labelFiltre.Size = new System.Drawing.Size(75, 21);
+            this.labelFiltre.Size = new System.Drawing.Size(75, 15);
             this.labelFiltre.TabIndex = 10;
             this.labelFiltre.Text = "labelfiltre";
-            this.labelFiltre.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelFiltre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelTarifMaxi
             // 
             this.labelTarifMaxi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelTarifMaxi.Location = new System.Drawing.Point(199, 335);
+            this.labelTarifMaxi.Location = new System.Drawing.Point(199, 405);
             this.labelTarifMaxi.Name = "labelTarifMaxi";
             this.labelTarifMaxi.Size = new System.Drawing.Size(75, 20);
             this.labelTarifMaxi.TabIndex = 14;
@@ -153,7 +154,7 @@
             // textBoxTarifMaxi
             // 
             this.textBoxTarifMaxi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxTarifMaxi.Location = new System.Drawing.Point(280, 335);
+            this.textBoxTarifMaxi.Location = new System.Drawing.Point(280, 405);
             this.textBoxTarifMaxi.Name = "textBoxTarifMaxi";
             this.textBoxTarifMaxi.Size = new System.Drawing.Size(100, 20);
             this.textBoxTarifMaxi.TabIndex = 13;
@@ -161,7 +162,7 @@
             // labelTarifMini
             // 
             this.labelTarifMini.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelTarifMini.Location = new System.Drawing.Point(199, 309);
+            this.labelTarifMini.Location = new System.Drawing.Point(199, 379);
             this.labelTarifMini.Name = "labelTarifMini";
             this.labelTarifMini.Size = new System.Drawing.Size(75, 20);
             this.labelTarifMini.TabIndex = 12;
@@ -171,7 +172,7 @@
             // textBoxTarifMini
             // 
             this.textBoxTarifMini.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxTarifMini.Location = new System.Drawing.Point(280, 309);
+            this.textBoxTarifMini.Location = new System.Drawing.Point(280, 379);
             this.textBoxTarifMini.Name = "textBoxTarifMini";
             this.textBoxTarifMini.Size = new System.Drawing.Size(100, 20);
             this.textBoxTarifMini.TabIndex = 11;
@@ -180,7 +181,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(696, 360);
+            this.ClientSize = new System.Drawing.Size(696, 430);
             this.Controls.Add(this.labelTarifMaxi);
             this.Controls.Add(this.textBoxTarifMaxi);
             this.Controls.Add(this.labelTarifMini);

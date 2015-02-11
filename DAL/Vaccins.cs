@@ -17,7 +17,8 @@ namespace DAL
             try
             {
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
-                List<BO.Vaccins> results = cnx.Query<BO.Vaccins>(@"SELECT * FROM Vaccins ORDER BY QuantiteStock").ToList<BO.Vaccins>();
+                List<BO.Vaccins> results = cnx.Query<BO.Vaccins>(@"SELECT * FROM Vaccins ORDER BY NomVaccin")
+                                           .ToList<BO.Vaccins>();
                 SqlConnexion.CloseConnexion(cnx);
 
                 return results;

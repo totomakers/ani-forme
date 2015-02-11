@@ -19,7 +19,7 @@ namespace BO
         private Guid? codeClient;
         private BO.Clients client;
         private String tatouage;
-        private String antecedent;
+        private String antecedents;
         private Boolean archive;
         #endregion
 
@@ -86,10 +86,10 @@ namespace BO
             set { tatouage = value; }
         }
 
-        public String Antecedent
+        public String Antecedents
         {
-            get { return antecedent; }
-            set { antecedent = value; }
+            get { return antecedents; }
+            set { antecedents = value; }
         }
 
         [Browsable(false)]

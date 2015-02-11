@@ -24,6 +24,7 @@ namespace BO
         #endregion
 
         #region Getter/Setter
+        [Browsable(false)]
         public Guid? CodeVaccin
         {
             get { return codeVaccin; }

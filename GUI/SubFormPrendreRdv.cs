@@ -16,6 +16,7 @@ namespace GUI
         public SubFormPrendreRdv()
         {
             InitializeComponent();
+            InitializePrendreRdv();
             I18N();
         }
 
@@ -30,11 +31,14 @@ namespace GUI
             this.groupBoxVeto.Text = GUI.Lang.SUBFORM_PRENDRERDV_GB_VETO;
         }
 
-        public void UpdateContent()
+        public void InitializePrendreRdv()
         {
             this.comboBoxClient.DataSource = BLL.ClientsMgr.GetAll(false);
             this.comboBoxVeterianire.DataSource = BLL.VeterinairesMgr.GetAll(false);
+        }
 
+        public void UpdateContent()
+        {
             BO.Veterinaires veto = (BO.Veterinaires)this.comboBoxVeterianire.SelectedItem;
             this.dataGridViewAgenda.DataSource = BLL.AgendaMgr.GetAll(veto, this.dateTimePicker1.Value);
         }
@@ -155,12 +159,15 @@ namespace GUI
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            BO.Agenda agenda = (BO.Agenda)this.dataGridViewAgenda.SelectedCells[0].OwningRow.DataBoundItem;
-
-            if (agenda != null)
+            if (this.dataGridViewAgenda.SelectedCells.Count > 0)
             {
-                BLL.AgendaMgr.Delete(agenda);
-                UpdateContent();
+                BO.Agenda agenda = (BO.Agenda)this.dataGridViewAgenda.SelectedCells[0].OwningRow.DataBoundItem;
+
+                if (agenda != null)
+                {
+                    BLL.AgendaMgr.Delete(agenda);
+                    UpdateContent();
+                }
             }
         }
 

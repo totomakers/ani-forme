@@ -23,16 +23,15 @@ namespace BLL
         /// <param name="code"></param>
         /// <param name="Qte"></param>
         /// <returns></returns>
-        public static bool Update(String code, String Qte)
+        public static bool Update(BO.Vaccins vacc, Int32 Qte)
         {
-            BO.Vaccins vacc = DAL.Vaccins.Get(Guid.Parse(code));
-            if (vacc.QuantiteStock < int.Parse(Qte))
+            if (vacc.QuantiteStock < Qte)
             {
-                vacc.QuantiteStock = int.Parse(Qte);
+                vacc.QuantiteStock = Qte;
                 return DAL.Vaccins.Update(vacc);
             }
             else
-                return false;
+                throw new Exception(Lang.VACCINS_QUANTITY_NEED_BE_SUPP);
         }
     }
 }

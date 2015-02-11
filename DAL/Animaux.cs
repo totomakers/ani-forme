@@ -348,24 +348,32 @@ namespace DAL
                 SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
                 var query = @"UPDATE Animaux 
                             SET 
-                            CodeClient = @codeClient,
 	                        NomAnimal = @nomAnimal,
 	                        Sexe = @sexe,
 	                        Couleur = @couleur,
+                            Race = @race,
 	                        Espece = @espece,
-	                        Race = @race,
-	                        Archive = @archive
+                            CodeClient = @codeClient,
+                            Tatouage = @tatouage,
+	                        Antecedents = @antecedents,
+                            Archive = @archive
                             WHERE CodeAnimal = @codeAnimal";
 
-                int rowNb = cnx.Execute(query, new {codeAnimal = animal.CodeAnimal,
-                                                    codeClient = animal.CodeClient,
-	                                                nomAnimal = animal.NomAnimal,
-	                                                sexe = animal.Sexe,
-	                                                couleur = animal.Couleur,
-	                                                espece = animal.Espece,
-	                                                race = animal.Race,
-	                                                archive = (animal.Archive) ? 1 : 0
-                                                    });
+                int rowNb = cnx.Execute(query, 
+                    new
+                    {
+                        codeAnimal = animal.CodeAnimal,
+                        codeClient = animal.CodeClient,
+                        nomAnimal = animal.NomAnimal,
+                        sexe = animal.Sexe,
+                        couleur = animal.Couleur,
+                        espece = animal.Espece,
+                        race = animal.Race,
+                        tatouage = animal.Tatouage,
+                        antecedents = animal.Antecedents,
+                        archive = false
+                    });
+
                 SqlConnexion.CloseConnexion(cnx);
                 return (rowNb > 0);
             }

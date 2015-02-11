@@ -70,11 +70,14 @@ namespace GUI
 
         private void buttonModify_Click(object sender, EventArgs e)
         {
-            BO.Baremes bareme = new BO.Baremes();
-            bareme.CodeGroupement = dataGridViewListPrice.SelectedCells[0].OwningRow.Cells[0].FormattedValue.ToString();
-            bareme.DateVigueur = dataGridViewListPrice.SelectedCells[0].OwningRow.Cells[1].FormattedValue.ToString();
-            BLL.BaremesMgr.CreateBareme(bareme, this.textBoxTarifFixe.Text, this.textBoxTarifMini.Text,this.textBoxTarifMaxi.Text);
-            this.Update_Data();
+            if (dataGridViewListPrice.CurrentCell != null)
+            {
+                BO.Baremes bareme = new BO.Baremes();
+                bareme.CodeGroupement = dataGridViewListPrice.CurrentCell.OwningRow.Cells[0].FormattedValue.ToString();
+                bareme.DateVigueur = dataGridViewListPrice.CurrentCell.OwningRow.Cells[1].FormattedValue.ToString();
+                BLL.BaremesMgr.CreateBareme(bareme, this.textBoxTarifFixe.Text, this.textBoxTarifMini.Text, this.textBoxTarifMaxi.Text);
+                this.Update_Data();
+            }
         }
 
         private void buttonImportXml_Click(object sender, EventArgs e)
