@@ -20,7 +20,7 @@ namespace GUI
 
         private void Load_Content()
         {
-            this.dataGridViewAnimauxARelancer.DataSource = BLL.LignesConsultationsMgr.GetAllRappel();
+            //this.dataGridViewAnimauxARelancer.DataSource = BLL.LignesConsultationsMgr.GetAllRappel();
         }
 
         private void buttonRelanceAll_Click(object sender, EventArgs e)

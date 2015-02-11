@@ -58,6 +58,7 @@
             this.dateTimePickerDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerDate.Location = new System.Drawing.Point(248, 19);
             this.dateTimePickerDate.Name = "dateTimePickerDate";
+            this.dateTimePickerDate.ShowUpDown = true;
             this.dateTimePickerDate.Size = new System.Drawing.Size(88, 20);
             this.dateTimePickerDate.TabIndex = 3;
             this.dateTimePickerDate.ValueChanged += new System.EventHandler(this.dateTimePickerDate_ValueChanged);

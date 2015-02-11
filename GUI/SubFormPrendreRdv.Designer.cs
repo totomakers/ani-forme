@@ -118,6 +118,11 @@
             // 
             // numericUpDownMin
             // 
+            this.numericUpDownMin.Increment = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
             this.numericUpDownMin.Location = new System.Drawing.Point(79, 64);
             this.numericUpDownMin.Maximum = new decimal(new int[] {
             60,

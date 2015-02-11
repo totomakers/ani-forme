@@ -13,7 +13,7 @@ namespace BO
         private Guid? numLigne;
         private BO.Baremes bareme;
         private float prix;
-        private Byte archive;
+        private Boolean archive;
         #endregion
 
         #region Constructor
@@ -47,7 +47,7 @@ namespace BO
             set { prix = value; }
         }
 
-        public Byte Archive
+        public Boolean Archive
         {
             get { return archive; }
             set { archive = value; }

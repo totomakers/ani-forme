@@ -115,7 +115,7 @@ namespace GUI.Dialog
 
                 lignesConsultation = new BindingList<BO.LignesConsultations>(BLL.LignesConsultationsMgr.GetAll((Guid)consultation.CodeConsultation)); //Récupere tout les actes de la consultation
             }
-            catch (Exception) //la consultation n'existe pas
+            catch (Exception ex) //la consultation n'existe pas
             {
                 consultation = new BO.Consultations
                 {

@@ -39,6 +39,13 @@ namespace BO
             set { numLigne = value; }
         }
 
+        [DisplayName("Type")]
+        public String TypeBarem
+        {
+            get { return (barem != null) ? barem.TypeActe : ""; }
+            set { }
+        }
+
         public BO.Baremes Barem
         {
             get { return barem; }

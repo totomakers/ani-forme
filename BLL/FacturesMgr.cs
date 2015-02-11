@@ -15,6 +15,11 @@ namespace BLL
 
     public class FacturesMgr
     {
+        /// <summary>
+        /// Retourne le nombre de facture non payée du client
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
         public static Int32 Impayees(BO.Clients client)
         {
             return DAL.Factures.CountFactureByClient(client) - DAL.Factures.CountFactureEtatByClient(client, (short)BLL.FacturesEtat.PAYEE);

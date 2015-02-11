@@ -14,7 +14,7 @@ namespace BO
         private String nomVaccin;
         private Int32 quantiteStock;
         private Int32 periodeValidite;
-        private Byte archive;
+        private Boolean archive;
         #endregion
 
         #region Constructor
@@ -52,7 +52,7 @@ namespace BO
         }
 
         [Browsable(false)]
-        public Byte Archive
+        public Boolean Archive
         {
             get { return archive; }
             set { archive = value; }

@@ -85,9 +85,10 @@ namespace BLL
         /// <returns></returns>
         public static List<BO.LignesConsultations> GetAllRappel()
         {
-            return DAL.LignesConsultations.GetAllRappel();
+            //return DAL.LignesConsultations.GetAllRappel();
+            return new List<BO.LignesConsultations>();
         }
-
+ 
         /// <summary>
         /// Archive tout les animaux du clients passé en params
         /// </summary>
@@ -96,7 +97,7 @@ namespace BLL
         {
             if (client.CodeClient == null)
                 throw new Exception(Lang.ANIMAUX_CANT_DELETE_ANI_CUST_WITHOUT_GUID);
-
+ 
             List<BO.Animaux> animaux = DAL.Animaux.GetAllByClient(client);
             foreach (BO.Animaux animal in animaux)
             {
