@@ -41,8 +41,8 @@ namespace GUI.Dialog
                 this.textBoxComment.ReadOnly = readOnly;
                 this.buttonActeAdd.Enabled = !readOnly;
                 this.buttonActeDelete.Enabled = !readOnly;
-                this.buttonDelete.Enabled = !readOnly;
                 this.buttonSave.Enabled = !readOnly;
+                this.buttonValidate.Enabled = !readOnly;
             }
         }
 
@@ -262,11 +262,11 @@ namespace GUI.Dialog
                 //Supprime l'acte selectionner
                 BO.LignesConsultations ligne = (BO.LignesConsultations)this.dataGridViewActe.CurrentRow.DataBoundItem;
 
+                this.lignesConsultation.RemoveAt(this.dataGridViewActe.CurrentRow.Index);
+
                 //Supprime la ligne dela BDD
                 if (ligne.NumLigne != null && ligne.Consultation != null)
                     BLL.LignesConsultationsMgr.Delete(ligne);
-
-                this.lignesConsultation.RemoveAt(this.dataGridViewActe.CurrentRow.Index);
             }
         }
 

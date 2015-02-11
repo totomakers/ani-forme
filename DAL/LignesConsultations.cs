@@ -19,14 +19,15 @@ namespace DAL
         {
             var query = String.Format(@"SELECT * FROM  LignesConsultations lc
                                         INNER JOIN Baremes b ON b.CodeGroupement = lc.CodeGroupement AND b.DateVigueur = lc.DateVigueur
+                                        INNER JOIN Consultations c ON c.CodeConsultation = lc.CodeConsultation
                                         WHERE lc.CodeConsultation = @codeConsultation 
                                         ORDER BY lc.NumLigne");
 
             SqlConnection cnx = DAL.SqlConnexion.OpenConnexion();
-            List<BO.LignesConsultations> results = cnx.Query<BO.LignesConsultations, BO.Baremes, BO.LignesConsultations>(query,
-                                                    (animaux, barem) => { animaux.Barem = barem; return animaux; },
+            List<BO.LignesConsultations> results = cnx.Query<BO.LignesConsultations, BO.Baremes, BO.Consultations, BO.LignesConsultations>(query,
+                                                    (animaux, barem, consultations) => { animaux.Barem = barem; animaux.Consultation = consultations;  return animaux; },
                                                     new { codeConsultation = codeConsultation },
-                                                    splitOn : "CodeConsultation,NumLigne").ToList<BO.LignesConsultations>();
+                                                    splitOn : "CodeGroupement,DateVigueur, codeConsultation").ToList<BO.LignesConsultations>();
             SqlConnexion.CloseConnexion(cnx);
 
             return results;
