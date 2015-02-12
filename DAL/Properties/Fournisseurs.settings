@@ -1,9 +1,0 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DAL.Properties" GeneratedClassName="Fournisseurs">
-  <Profiles />
-  <Settings>
-    <Setting Name="Chemin" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Users\Administrateur\Desktop\Ani-Forme\fournisseurs.txt</Value>
-    </Setting>
-  </Settings>
-</SettingsFile>

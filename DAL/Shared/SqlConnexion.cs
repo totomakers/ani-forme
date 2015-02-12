@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -16,10 +17,10 @@ namespace DAL
             try
             {
                 String cnxStr = String.Format(ConnexionString,
-                                              Properties.Connexion.Default.Server,
-                                              Properties.Connexion.Default.Database,
-                                              Properties.Connexion.Default.Username,
-                                              Properties.Connexion.Default.Password);
+                                              ConfigurationManager.AppSettings["Server"],
+                                              ConfigurationManager.AppSettings["Database"],
+                                              ConfigurationManager.AppSettings["Username"],
+                                              ConfigurationManager.AppSettings["Password"]);
 
                 var connexion = new SqlConnection(cnxStr);
                 connexion.Open();

@@ -20,7 +20,7 @@ namespace DAL
             String line;
             try
             {
-                System.IO.StreamReader file = new System.IO.StreamReader(Properties.Fournisseurs.Default.Chemin);
+                System.IO.StreamReader file = new System.IO.StreamReader(ConfigurationManager.AppSettings["Chemin"]);
                 while ((line = file.ReadLine()) != null)
                 {
                     result.Add(new BO.Fournisseurs(line.ToString()));

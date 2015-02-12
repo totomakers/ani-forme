@@ -1,5 +1,5 @@
-CREATE DATABASE ani_form;
-USE ani_form;
+CREATE DATABASE ani_forme;
+USE ani_forme;
 
 /* Table de gestion des comptes utilisateurs */
 CREATE TABLE dbo.Account(
