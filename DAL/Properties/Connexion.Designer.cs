@@ -25,7 +25,7 @@ namespace DAL.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ani_forme")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ani_form")]
         public string Database {
             get {
                 return ((string)(this["Database"]));
